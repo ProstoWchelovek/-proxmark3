@@ -1,0 +1,594 @@
+┌─────────┬─────────┬─────────┬──────────┬──────────┬──────────┬────────────┬──────────┬─────────┐
+│ ГЛАВНАЯ │  КАРТА  │ ЗАПИСЬ  │ СНИФИНГ  │ ЭМУЛЯЦИЯ │  ДАННЫЕ  │ ИНСТРУМЕНТЫ │ СКРИПТЫ  │ СИСТЕМА │
+└─────────┴─────────┴─────────┴──────────┴──────────┴──────────┴────────────┴──────────┴─────────┘
+1. ГЛАВНАЯ
+ГЛАВНАЯ
+├─ [ Подключить / Отключить ] ⓘ       ← hw status + автоопределение порта
+├─ Статус ⓘ                           ← hw status
+├─ Версии ⓘ                           ← hw version
+├─ Настройка антенн ⓘ                 ← hw tune
+└─ Автопоиск ⓘ                        ← auto
+2. КАРТА — единый процесс со всеми типами
+ШАГ 1: ПОИСК
+ПОИСК
+├─ [ ОБЩИЙ ПОИСК ] ⓘ                  ← auto
+├─ [ ПОИСК LF ] ⓘ                     ← lf search
+├─ [ ПОИСК HF ] ⓘ                     ← hf search
+│
+└─ ▼ Конкретный протокол (стрелка вниз)
+   │
+   ├─ LF: EM4100, EM4x05, EM4x50, EM4x70, T55xx, HID, AWID,
+   │      Hitag/S/µ, FDX-B/A, COTAG, GALLAGHER, GProxII, Idteck,
+   │      Indala, IO, Jablotron, Keri, Motorola, Nedap, NexWatch,
+   │      Noralsy, PAC, Paradox, PCF7931, Presco, Pyramid,
+   │      Securakey, TI, Trovan, Viking, VISA2000, ZX8211
+   │
+   ├─ HF: 14443A, 14443B, 15693, Mifare Classic/Ultra/DESFire/Plus,
+   │      iClass, Legic, FeliCa, Calypso, CIPURSE, SEOS, SECC,
+   │      Topaz, Saflok, ST25TA, NTAG424, ALIRO, EMRTD, EPA,
+   │      FIDO, ICT, Jooki, KSX6924, LTO, Fudan, CryptoRF, GST,
+   │      Gallagher HF, ST, Tesla, Texkom, Thinfilm, Xerox,
+   │      Waveshare, FMCOS, Mifare SEN
+   │
+   ├─ NFC ⓘ                            ← nfc decode / type1-4 / mf / barcode
+   │  ├─ nfc decode → декодирование NDEF
+   │  ├─ nfc type1 read → Topaz
+   │  ├─ nfc type2 read → NTAG
+   │  ├─ nfc type4a read / write / format / st25taread
+   │  ├─ nfc type4b read
+   │  ├─ nfc mf cread / cwrite / cformat / pread
+   │  └─ nfc barcode read / sim
+   │
+   ├─ EMV ⓘ                            ← emv reader / scan / search / select / ...
+   │  ├─ emv reader / scan / search / select / readrec / exec
+   │  ├─ emv pse / gpo / genac / intauth / challenge
+   │  ├─ emv roca / simulation / smart2nfc / test
+   │  └─ emv list
+   │
+   ├─ Smart card (ISO 7816) ⓘ          ← smart reader / raw / info / ...
+   │  ├─ smart reader / raw / info
+   │  ├─ smart list / brute
+   │  └─ smart pcsc / upgrade / setclock
+   │
+   └─ PIV ⓘ                            ← piv scan / getdata / select / authsign
+      └─ piv select / getdata / authsign / scan / list
+ШАГ 2: ЧТЕНИЕ
+ЧТЕНИЕ
+│
+├─ HF:
+│  ├─ 14443A: hf 14a reader / info / cuids / raw / apdu / apdufind / ndefread
+│  ├─ 14443B: hf 14b reader / info / rdbl / dump / restore / raw / apdu / ndefread
+│  │           ctdump / ctrdbl / setuid / tearoff / view / valid / config
+│  ├─ 15693:  hf 15 reader / info / rdbl / rdmulti / dump / restore / raw
+│  │           demod / samples / view / wipe / findafi / writeafi / writedsfid
+│  │           csetuid / cfinalize / slixwritepwd / slixeasenable/disable
+│  │           slixprivacyenable/disable / slixprotectpage / passprotectafi/eas
+│  ├─ Mifare Classic: hf mf info / dump / restore / rdbl / rdsc / acl / mad
+│  │           madread / madwrite / madverify / isen / personalize / setmod
+│  │           value / view / wipe / ndefread / ndefformat / encodehid
+│  │           auth4 / keygen / decrypt / supercard / fchk
+│  │           cgetblk / cgetsc / cview / ginfo / ggetblk / gview
+│  │           gdmgetcfg / gdmgetblk / ekeyprn / egetblk / egetsc / eview
+│  ├─ Mifare Ultralight: hf mfu ndefread / rdbl / restore / tamper / view / wipe
+│  │           keygen / pwdgen / otptear / countertear / cauth / cchk
+│  ├─ Mifare DESFire: hf mfdes info / getversion / getuid / pc / mad / setconfig
+│  │           lsapp / getaids / getappnames / lsfiles / getfileids / getfileisoids
+│  │           getfilesettings / getkeysettings / getkeyversions / dump / read / value
+│  │           selectapp / selectisofid / getdelegateappinfo
+│  │           bruteaid / brutedamslot / bruteisofid / verifycert / intauth
+│  │           vdesign / test / makemfclicense / createmfcmapping
+│  ├─ Mifare Plus: hf mfp info / dump / acl / auth / chk / rdbl / rdsc
+│  │           initp / commitp / wrp / ndefformat / ndefread / ndefwrite
+│  │           mad / madread / madwrite / madverify
+│  ├─ iClass: hf iclass reader / info / rdbl / dump / restore / sniff / view
+│  │           chk / loclass / lookup / legrec / legbrute / unhash
+│  │           blacktears / tear / liberate / configcard / calcnewkey
+│  │           encode / encrypt / decrypt / creditepurse / managekeys
+│  │           permutekey / sam / eview
+│  ├─ Legic: hf legic reader / info / rdbl / dump / restore / clone / migrate
+│  │           wipe / eview / einfo
+│  ├─ FeliCa: hf felica reader / info / raw / rdbl / rqsyscode / rqspecver
+│  │           auth1 / auth2 / resetmode / litedump / liteauth / litesim
+│  ├─ Calypso: hf calypso info / dump / probecmdcompat / list
+│  ├─ CIPURSE: hf cipurse info / read / auth / select / aread / test / default
+│  ├─ SEOS: hf seos info / pacs / adf / gdf / sam / managekeys / list
+│  ├─ SECC: hf secc info / sim / sniff
+│  ├─ Topaz: hf topaz reader / info / rdbl / dump / raw / view / sniff
+│  ├─ Saflok: hf saflok read / info / decode / decrypt / interrogate / test / cksum
+│  ├─ ST25TA: hf st25ta info / ndefread / list
+│  ├─ NTAG 424: hf ntag424 info / view / auth / read / write / getfs
+│  ├─ Apple VAS: hf vas info / reader / decrypt
+│  ├─ ALIRO: hf aliro info / read / list
+│  ├─ EMRTD: hf emrtd info / list
+│  ├─ EPA: hf epa info
+│  ├─ FIDO: hf fido info
+│  ├─ ICT: hf ict reader / credential / info / list
+│  ├─ Jooki: hf jooki decode / info
+│  ├─ KS X 6924: hf ksx6924 info / select / balance / init / prec
+│  ├─ LTO: hf lto reader / info
+│  ├─ Fudan: hf fudan reader
+│  ├─ CryptoRF: hf cryptorf reader / info
+│  ├─ GST: hf gst reader / info / list / test
+│  ├─ Gallagher HF: hf gallagher info / decode
+│  ├─ ST: hf st info
+│  ├─ Tesla: hf tesla info / list
+│  ├─ Texkom: hf texkom reader
+│  ├─ Thinfilm: hf thinfilm info
+│  ├─ Xerox: hf xerox reader / info / dump
+│  ├─ Waveshare: hf waveshare info
+│  ├─ FMCOS: hf fmcos readbinary / readrecord / balance / history / info
+│  │           tidsetcard / tidsetuid / tidsetauth
+│  ├─ Mifare SEN: hf mfsen info
+│  └─ EMV: emv reader / scan / readrec / search / select / pse / gpo
+│           genac / intauth / challenge / exec / roca / test / smart2nfc / list
+│
+├─ LF:
+│  ├─ EM4100: lf em 410x reader / watch / spoof / brute
+│  ├─ EM4x05: lf em 4x05 info / read / dump / demod / sniff / chk / brute
+│  │           config / clonehelp / view / wipe / unlock
+│  ├─ EM4x50: lf em 4x50 info / rdbl / dump / login / reader / chk / brute
+│  │           restore / view / wipe / eview
+│  ├─ EM4x70: lf em 4x70 info / auth / calc / brute / recover / autorecover
+│  ├─ T55xx: lf t55xx detect / info / read / dump / chk / bruteforce
+│  │           config / protect / recoverpw / p1detect / resetread / special
+│  │           wakeup / wipe
+│  ├─ Hitag: lf hitag info / reader / read / dump / sniff / view / chk
+│  │           crack2 / ta / cc / lookup / test / eview / list
+│  ├─ Hitag S: lf hitag hts reader / rdbl / dump / restore / list
+│  ├─ Hitag µ: lf hitag htu reader / rdbl / dump / list
+│  ├─ HID: lf hid reader / brute / watch
+│  ├─ AWID: lf awid reader / watch / brute
+│  ├─ FDX-B: lf fdxb reader / demod
+│  ├─ FDX-A: lf destron reader / demod
+│  ├─ COTAG: lf cotag reader / demod
+│  ├─ GALLAGHER: lf gallagher reader / demod
+│  ├─ GProx II: lf gproxii reader / demod
+│  ├─ Idteck: lf idteck reader / demod
+│  ├─ Indala: lf indala reader / demod
+│  ├─ IO Prox: lf io reader / demod
+│  ├─ Jablotron: lf jablotron reader
+│  ├─ Keri: lf keri reader / demod
+│  ├─ Motorola: lf motorola reader / demod
+│  ├─ Nedap: lf nedap reader / demod
+│  ├─ NexWatch: lf nexwatch reader / demod
+│  ├─ Noralsy: lf noralsy reader / demod
+│  ├─ PAC: lf pac reader / demod
+│  ├─ Paradox: lf paradox reader / demod
+│  ├─ PCF7931: lf pcf7931 reader
+│  ├─ Presco: lf presco reader / demod
+│  ├─ Pyramid: lf pyramid reader / demod
+│  ├─ Securakey: lf securakey reader / demod
+│  ├─ TI: lf ti reader / demod
+│  ├─ Trovan: lf trovan reader / demod
+│  ├─ Viking: lf viking reader / demod
+│  ├─ VISA 2000: lf visa2000 reader / demod
+│  ├─ ZX8211: lf zx8211 reader / demod
+│  └─ Общие: lf read / config / cmdread / relay / snoop
+│
+├─ NFC: nfc decode / type1 read / type2 read / type4a read / type4b read
+│       nfc mf cread / pread / barcode read
+│
+├─ Smart card: smart reader / raw / info / list / brute / pcsc / upgrade / setclock
+│
+└─ PIV: piv scan / getdata / select / authsign / list
+ШАГ 3: СТРУКТУРА / СЕКТОРЫ
+СТРУКТУРА
+├─ HF Mifare: hf mf info / acl / mad / isen
+├─ HF DESFire: hf mfdes lsapp / lsfiles / getfilesettings / getkeysettings
+│               getkeyversions / getfileids / getfileisoids / getaids / getappnames
+├─ HF iClass: hf iclass info
+├─ HF 15693: hf 15 info
+├─ HF FeliCa: hf felica info / rqsyscode / rqspecver
+├─ HF Calypso: hf calypso info
+├─ HF CIPURSE: hf cipurse info
+├─ HF SEOS: hf seos info
+├─ HF Topaz: hf topaz info
+├─ HF Saflok: hf saflok info
+├─ HF ST25TA: hf st25ta info
+├─ HF KSX6924: hf ksx6924 info
+├─ HF FMCOS: hf fmcos info
+├─ HF NTAG424: hf ntag424 info
+├─ LF T55xx: lf t55xx info / detect / config
+├─ LF EM4x05: lf em 4x05 info
+├─ LF EM4x50: lf em 4x50 info
+├─ LF EM4x70: lf em 4x70 info
+├─ LF Hitag: lf hitag info
+├─ EMV: emv search / select / pse
+├─ NFC: nfc decode
+├─ MAD: mad read / decode / verify
+└─ Smart card: smart info
+ШАГ 4: РАСШИФРОВКА КЛЮЧАМИ
+КЛЮЧИ
+├─ Mifare Classic: hf mf chk / fchk + mfc_default_keys.dic
+├─ Mifare DESFire: hf mfdes bruteaid / brutedamslot / bruteisofid + mfdes_default_keys.dic
+├─ Mifare Plus: hf mfp chk + mfp_default_keys.dic
+├─ Mifare Ultralight: hf mfu pwdgen / cauth / cchk + mfulc/mfulaes словари
+├─ iClass: hf iclass chk / loclass / lookup + iclass_default_keys.dic
+├─ Legic: hf legic info
+├─ Hitag: lf hitag chk + ht2_default.dic
+├─ T55xx: lf t55xx chk / bruteforce / recoverpw + t55xx_default_pwds.dic
+├─ EM4x05: lf em 4x05 chk / brute / unlock
+├─ EM4x50: lf em 4x50 chk / brute / login
+├─ EM4x70: lf em 4x70 brute / recover / autorecover / auth / setpin / setkey / calc
+├─ EM410x: lf em 410x brute
+├─ HID: lf hid brute
+├─ AWID: lf awid brute
+├─ CIPURSE: hf cipurse auth
+├─ SEOS: hf seos managekeys
+├─ Saflok: hf saflok cksum / decrypt / decode
+├─ PCF7931: lf pcf7931 config
+├─ FeliCa: hf felica auth1 / auth2 / liteauth
+├─ FMCOS: hf fmcos authexternal / authinternal / key / pinverify / pinchange
+│           pinreset / pinunblock / tidsetauth
+├─ NTAG424: hf ntag424 auth
+└─ [ Свой словарь ]
+ШАГ 5: АТАКИ / ВОССТАНОВЛЕНИЕ БЕЗ КЛЮЧА
+АТАКИ
+├─ Mifare Classic: hf mf nested / hardnested / staticnested / darkside
+│                   autopwn / decrypt / keygen / supercard
+├─ Mifare Ultralight: hf mfu pwdgen / otptear / countertear
+├─ Mifare DESFire: hf mfdes bruteaid / brutedamslot / bruteisofid
+├─ iClass: hf iclass loclass / legrec / legbrute / unhash / blacktears
+│           tear / liberate / lookup
+├─ Hitag: lf hitag crack2 / ta / cc
+├─ EM4x05: lf em 4x05 brute / unlock
+├─ EM4x50: lf em 4x50 brute
+├─ EM4x70: lf em 4x70 brute / recover / autorecover
+├─ T55xx: lf t55xx bruteforce / recoverpw
+├─ EM410x: lf em 410x brute
+├─ HID: lf hid brute
+├─ AWID: lf awid brute
+├─ 14443B: hf 14b tearoff
+├─ Saflok: hf saflok decrypt
+├─ ST25TA: hf st25ta pwd
+├─ NTAG424: hf ntag424 auth
+├─ Standalone атаки:
+│  ├─ hf_st25_tearoff → ST25 tear-off автономно
+│  ├─ hf_doegox_auth0 → NTAG424 auth0 автономно
+│  ├─ hf_doegox_commit → NTAG424 commit автономно
+│  ├─ lf_em4100rswb → EM4100 read/write brute автономно
+│  ├─ lf_hidbrute → HID брутфорс автономно
+│  ├─ lf_hidfcbrute → HID facility code brute автономно
+│  ├─ lf_proxbrute → Prox брутфорс автономно
+│  ├─ lf_prox2brute → Prox II брутфорс автономно
+│  └─ hf_bog → извлечение паролей ULC/ULEV1/NTAG из снифа автономно
+└─ [ Выбрать инструмент вручную ]
+ШАГ 6: РЕЗУЛЬТАТ
+РЕЗУЛЬТАТ
+├─ Дамп данных в буфер
+├─ [ Сохранить в файл ] ⓘ             ← data save / hf mf csave / esave
+├─ [ Перейти в ЗАПИСЬ ]
+├─ [ Перейти в ЭМУЛЯЦИЮ ]
+├─ [ Открыть в ДАННЫХ ]
+├─ [ Разбор трейса ] ⓘ                ← trace list
+└─ [ Экспорт ] ⓘ                      ← trace save
+3. ЗАПИСЬ
+ЗАПИСЬ
+│
+│ ШАГ 1: ИСТОЧНИК
+│ ├─ [ Из файла ] ⓘ                   ← data load
+│ ├─ [ Из буфера ]
+│ └─ [ Из сохранённых карт ]
+│
+│ ШАГ 2: ЦЕЛЬ
+│ └─ [ Определить карту ] ⓘ
+│
+│ ШАГ 3: ЗАПИСЬ
+│ ├─ HF:
+│ │  ├─ Mifare Classic: wrbl / cload / csetblk / csetuid / cwipe
+│ │  │  gen3uid / gen3blk / gen3freeze / gload / gsetblk / gchpwd
+│ │  │  gdmsetcfg / gdmsetblk / gdmsethidblk / gdmsetuid / gdmwipe / gdmsetsig
+│ │  │  restore / ndefwrite / personalize / setmod / value / madwrite / encodehid
+│ │  ├─ Mifare Ultralight: wrbl / restore / wipe / tamper
+│ │  ├─ Mifare DESFire: write / createfile / createvaluefile / createrecordfile
+│ │  │  createmacfile / deletefile / createapp / createdelegateapp / deleteapp
+│ │  │  changekey / chkeysettings / chfilesettings / setconfig / formatpicc
+│ │  │  clearrecfile / value / makemfclicense / createmfcmapping
+│ │  ├─ Mifare Plus: wrbl / initp / commitp / wrp / personal / ndefwrite
+│ │  │  chkey / chconf
+│ │  ├─ iClass: wrbl / restore / creditepurse / tear / configcard
+│ │  │  calcnewkey / encode / encrypt
+│ │  ├─ Legic: wrbl / clone / migrate / wipe
+│ │  ├─ 14443A: ndefwrite / ndefformat
+│ │  ├─ 14443B: wrbl / setuid / restore / tearoff
+│ │  ├─ 15693: wrbl / csetuid / cfinalize / writeafi / writedsfid
+│ │  │  slixwritepwd / slixeasenable/disable / slixprivacyenable/disable
+│ │  │  slixprotectpage / passprotectafi/eas / restore / wipe
+│ │  ├─ Topaz: wrbl
+│ │  ├─ Saflok: encode / encrypt / provision / modify
+│ │  ├─ SEOS: write / managekeys
+│ │  ├─ ST25TA: protect / pwd
+│ │  ├─ CIPURSE: awrite / create / delete / formatall
+│ │  ├─ NTAG424: write / changefs / changekey
+│ │  ├─ FeliCa: litesim
+│ │  ├─ FMCOS: writebinary / writerecord / append / erase / createdir
+│ │  │  createfile / createkeyfile / authexternal / authinternal / key
+│ │  │  pinverify / pinchange / pinreset / pinunblock
+│ │  │  balance / credit / purchase / overdraft / history
+│ │  │  block / unblock / tidsetcard / tidsetuid / tidsetauth / tiderase
+│ │  │  tidprovision / tidcreatedf / tidcreatebin / tidcreaterec
+│ │  ├─ Jooki: clone
+│ │  ├─ Waveshare: load / config / upload
+│ │  └─ NFC: nfc type4a write / format / st25taread / mf cwrite / cformat
+│ │
+│ ├─ LF:
+│ │  ├─ T55xx: write / config / protect / wakeup / special / wipe
+│ │  ├─ EM4x05: write / config / wipe / unlock
+│ │  ├─ EM4x50: wrbl / wrpwd / restore / wipe
+│ │  ├─ EM4x70: write / unlock / auth / setpin / setkey
+│ │  ├─ Hitag: wrbl / hts wrbl / hts restore / htu wrbl
+│ │  ├─ PCF7931: write / config
+│ │  └─ Клонирование: em 410x clone / fdxb clone / destron clone / gallagher clone
+│ │     gproxii clone / idteck clone / indala clone / io clone / jablotron clone
+│ │     keri clone / motorola clone / nedap clone / nexwatch clone / noralsy clone
+│ │     pac clone / paradox clone / presco clone / pyramid clone / securakey clone
+│ │     ti clone / trovan clone / viking clone / visa2000 clone
+│ │
+│ └─ UID: hf mf csetuid / gen3uid / gdmsetuid / hf 15 csetuid / hf 14b setuid
+│
+│ ШАГ 4: ВЕРИФИКАЦИЯ
+│ └─ [ Проверить запись ] ⓘ           ← повторное чтение
+4. СНИФИНГ
+СНИФИНГ
+│
+│ ШАГ 1: ТИП
+│ ├─ [ Общий HF ] ⓘ                   ← hf sniff
+│ ├─ [ ISO 14443A ] ⓘ                 ← hf 14a sniff
+│ ├─ [ ISO 14443B ] ⓘ                 ← hf 14b sniff
+│ ├─ [ ISO 15693 ] ⓘ                  ← hf 15 sniff
+│ ├─ [ LF ] ⓘ                         ← lf sniff / lf snoop
+│ ├─ [ Legic ] ⓘ                      ← hf legic sniff
+│ ├─ [ iClass ] ⓘ                     ← hf iclass sniff
+│ ├─ [ FeliCa ] ⓘ                     ← hf felica sniff
+│ ├─ [ Topaz ] ⓘ                      ← hf topaz sniff
+│ ├─ [ EMV ] ⓘ                        ← emv exec
+│ ├─ [ SEOS ] ⓘ                       ← hf seos list
+│ ├─ [ SECC ] ⓘ                       ← hf secc sniff
+│ ├─ [ Hitag ] ⓘ                      ← lf hitag sniff
+│ ├─ [ EM4x05 ] ⓘ                     ← lf em 4x05 sniff
+│ ├─ [ LF relay ] ⓘ                   ← lf relay
+│ └─ [ Автономный режим ] ⓘ           ← hw standalone
+│    ├─ hf_14asniff → ISO14443A снифинг в flash
+│    ├─ hf_14bsniff → ISO14443B снифинг в flash
+│    ├─ hf_15sniff → ISO15693 снифинг в flash
+│    ├─ hf_unisniff → Universal снифинг
+│    ├─ hf_bog → извлечение паролей ULC/ULEV1/NTAG
+│    └─ lf_nexid → снифинг NexWatch/NexKey
+│
+│ ШАГ 2: ЗАХВАТ
+│ ├─ [ Старт ]  [ Стоп ]
+│ └─ Захват в buffer
+│
+│ ШАГ 3: АНАЛИЗ
+│ ├─ [ Разбор трейса ] ⓘ              ← trace list
+│ ├─ [ Извлечение auth ] ⓘ            ← trace extract
+│ ├─ [ Сохранить трейс ] ⓘ            ← trace save
+│ ├─ [ Загрузить трейс ] ⓘ            ← trace load
+│ └─ [ Экспорт ] ⓘ                    ← trace save
+5. ЭМУЛЯЦИЯ
+ЭМУЛЯЦИЯ
+│
+│ ШАГ 1: ИСТОЧНИК
+│ ├─ [ Из файла ] ⓘ
+│ ├─ [ Из сохранённых карт ]
+│ ├─ [ Из буфера ]
+│ └─ [ Ввести вручную ]
+│
+│ ШАГ 2: ЗАГРУЗКА В ЭМУЛЯТОР
+│ ├─ HF: hf mf eload/esave/eview/esetblk/egetblk/egetsc/ekeyprn/ecfill/eclr
+│ │       hf mfu eload/esave/eview/esetblk
+│ │       hf iclass eload/esave/eview/esetblk
+│ │       hf legic eload/esave/eview/einfo
+│ │       hf 15 eload/esave/eview
+│ └─ LF: lf hitag eload/eview / lf em 4x50 eload/esave/eview / lf t55xx sim
+│
+│ ШАГ 3: ТИП ЭМУЛЯЦИИ
+│ ├─ HF:
+│ │  ├─ hf mf sim / hf mfu sim / hf 14a sim / hf 14a simaid
+│ │  ├─ hf iclass sim / hf iclass tagsim
+│ │  ├─ hf legic sim / hf 15 sim / hf felica litesim
+│ │  ├─ hf seos sim / hf secc sim / hf st25ta sim / hf topaz sim
+│ │  ├─ hf thinfilm sim / hf texkom sim / hf jooki sim / hf 14b sim
+│ │  ├─ emv simulation
+│ │  └─ nfc barcode sim
+│ │
+│ ├─ LF:
+│ │  ├─ lf sim / lf em 410x sim / lf em 4x50 sim / lf t55xx sim
+│ │  ├─ lf hitag sim / lf hitag hts sim / lf hitag htu sim
+│ │  ├─ lf hid sim / lf awid sim / lf fdxb sim / lf destron sim
+│ │  ├─ lf gallagher sim / lf gproxii sim / lf idteck sim / lf indala sim
+│ │  ├─ lf io sim / lf jablotron sim / lf keri sim / lf motorola sim
+│ │  ├─ lf nedap sim / lf nexwatch sim / lf noralsy sim / lf pac sim
+│ │  ├─ lf paradox sim / lf presco sim / lf pyramid sim / lf securakey sim
+│ │  └─ lf ti sim / lf trovan sim / lf viking sim / lf visa2000 sim / lf zx8211 sim
+│ │
+│ └─ [ Автономный режим ] ⓘ           ← hw standalone
+│    ├─ hf_15sim → ISO15693 симуляция из flash
+│    ├─ hf_mfcsim → Mifare Classic симуляция
+│    ├─ hf_legicsim → Legic симуляция
+│    ├─ hf_reblay → Relay через Bluetooth
+│    ├─ hf_cardhopper → Card hopping relay
+│    ├─ hf_iceclass → iClass автономно
+│    ├─ hf_legic → Legic автономно
+│    ├─ hf_emvpng → EMV автономно
+│    ├─ hf_aveful / hf_colin / hf_craftbyte / hf_mattyrun → Custom HF
+│    ├─ hf_msdsal / hf_tcprst / hf_tmudford / hf_young → Custom HF
+│    ├─ dankarmulti → Multi-mode
+│    ├─ lf_em4100emul → EM4100 эмуляция
+│    ├─ lf_em4100rsww → EM4100 read/write
+│    ├─ lf_em4100rwc → EM4100 read/write clone
+│    ├─ lf_multihid → Multiple HID симуляция
+│    ├─ lf_icehid → HID related
+│    ├─ lf_nedap_sim → Nedap симуляция
+│    └─ lf_samyrun / lf_tharexde → Custom LF
+│
+│ ШАГ 4: ЗАПУСК
+│ ├─ [ Старт эмуляции ]
+│ └─ [ Стоп ]
+6. ДАННЫЕ (только файлы, ключи, буфер)
+ДАННЫЕ
+│
+├─ Сохранённые дампы
+│  ├─ [ Загрузить ] ⓘ                 ← data load / hf mf eload
+│  ├─ [ Сохранить ] ⓘ                 ← data save / hf mf csave / esave
+│  ├─ [ Удалить ]
+│  └─ [ Открыть в КАРТЕ / ЗАПИСИ / ЭМУЛЯЦИИ ]
+│
+├─ Словари ключей
+│  ├─ mfc_default_keys.dic / mfc_keys_bmp_sorted.dic / mfc_keys_icbmp_sorted.dic
+│  ├─ mfc_keys_mrzd_sorted.dic / mfdes_default_keys.dic / mfp_default_keys.dic
+│  ├─ mfulc_default_keys.dic / mfulaes_hw1/2.dic / mfulaes_segment_hw1/2/3.dic
+│  ├─ mfulc_hw1/2.dic / mfulc_segment_hw1/2/3.dic
+│  ├─ iclass_default_keys.dic / iclass_elite_keys.dic / iclass_other.dic
+│  ├─ ht2_default.dic / t55xx_default_pwds.dic
+│  ├─ Extras: 4/6/8/12/16_byte_password/words/ascii_numbers.dic
+│  └─ [ Добавить свой словарь ]
+│
+├─ Flash-память ⓘ                     ← mem info / dump / load / wipe / baudrate
+│  └─ SPIFFS ⓘ                        ← mem spiffs tree / upload / view / rename / unmount / wipe
+│
+├─ Трейсы ⓘ                           ← trace list / load / save / extract
+│
+├─ Буфер данных ⓘ
+│  ├─ data load / save / samples / hexsamples / bitsamples
+│  ├─ data plot / grid / clear / hide / num
+│  ├─ data rawdemod / autodemod / modulation
+│  ├─ data manrawdecode / biphaserawdecode / fsktonrz
+│  ├─ data detectclock / askedgedetect / fitscore / spectrum
+│  ├─ data fft / autocorr / hpf / iir / norm
+│  ├─ data decimate / undecimate / ltrim / mtrim / rtrim
+│  ├─ data zerocrossings / shiftgraphzero / convertbitstream
+│  ├─ data getbitstream / setgraphmarkers / timescale
+│  ├─ data envelope / cthreshold / dirthreshold
+│  ├─ data asn1 / atr / xor / diff / crypto / bmap / qrcode
+│  ├─ data gensignal / test_ss8 / test_ss32 / test_ss32s
+│  └─ data setdebugmode
+│
+├─ MAD ⓘ                              ← mad read / write / verify / decode / encode / test
+│
+└─ Ресурсы ⓘ
+   ├─ aidlist.json / aid_desfire.json / capk.txt / ecplist.json / ecp_taxonomy.json
+   ├─ emv_defparams.json / hf_fido2_defparams.json / hidconfig_sample.json
+   ├─ iceman.txt / mad.json / oids.json
+   ├─ calypso: ic_families.json / manufacturers.json / nodes.json / operators.json
+   ├─ felica: felica_ic_code_list.json / felica_system_code_list.json
+   └─ duox_trust: nxp-*.pem
+7. ИНСТРУМЕНТЫ
+ИНСТРУМЕНТЫ
+│
+├─ Analyse ⓘ
+│  ├─ analyse lrc / crc / chksum / dates / lfsr / a / nuid
+│  ├─ analyse demodbuff / freq / foo / regex / units
+│
+├─ Wiegand ⓘ
+│  └─ wiegand list / encode / decode
+│
+├─ RevEng (CRC) ⓘ
+│  └─ reveng calc / search / info / list
+│
+├─ USART / Bluetooth ⓘ
+│  ├─ usart config / tx / rx / txrx / txhex / rxhex
+│  └─ usart btpin / btfactory
+│
+├─ MQTT ⓘ
+│  └─ mqtt send / receive
+│
+├─ HF специальные ⓘ
+│  ├─ hf plot / tune
+│  ├─ hf 14a config / chaining / antifuzz
+│  ├─ hf 14b config
+│  ├─ hf mfdes verifycert / intauth
+│  ├─ hf iclass liberate / blacktears
+│  ├─ hf felica rqsyscode / rqspecver / resetmode
+│  ├─ hf ksx6924 init / prec / balance
+│  ├─ hf saflok interrogate / test / cksum
+│  ├─ hf vas decrypt
+│  ├─ hf aliro read
+│  ├─ hf calypso probecmdcompat
+│  ├─ hf cipurse test / default
+│  ├─ hf seos sam
+│  ├─ hf fmcos history / block / unblock
+│  ├─ hf waveshare load / config / upload
+│  ├─ hf gst test
+│  └─ hf ict credential
+│
+└─ LF специальные ⓘ
+   ├─ lf config / cmdread / relay / snoop
+   ├─ lf em 410x watch / spoof
+   ├─ lf em 4x05 sniff / unlock / clonehelp
+   ├─ lf em 4x50 login
+   ├─ lf em 4x70 calc / recover / autorecover
+   ├─ lf hitag crack2 / ta / cc / lookup
+   ├─ lf hitag hts restore
+   ├─ lf t55xx p1detect / resetread / special / wakeup
+   ├─ lf hid watch / lf awid watch
+   └─ lf pcf7931 config
+8. СКРИПТЫ
+СКРИПТЫ
+│
+├─ Список ⓘ                           ← script list
+├─ Запустить ⓘ                        ← script run <name>
+├─ Python-скрипты: amiibo_change_uid, des_talk, findbits, fm11rf08s_full,
+│  fm11rf08s_recovery, hf_mfu_uscuid, ice, intertic, mfuev1_counter_reset,
+│  mfulaes_mask_recovery, mfulc_counterfeit_recovery, mf_backdoor_dump,
+│  ntag22x_libsuncmac, ntag22x_suncmac_recovery, parity, paxton_convert,
+│  paxton_net, paxton_switch, pm3, pm3_eml2mfd, pm3_eml_mfd_test,
+│  pm3_help2json, pm3_help2list, pm3_mfd2eml, pm3_nfc2eml, pm3_resources,
+│  read_t-union, spi_flash_decode, theremin, xorcheck
+│
+└─ Lua-скрипты: data_hex_crc, data_mfu_bin2eml, data_mf_accessdecode,
+   data_mf_bin2eml, data_mf_bin2html, data_mf_eml2bin, data_mf_eml2html,
+   hf_14a_aztek, hf_14a_i2crevive, hf_14a_protectimus_nfc, hf_14a_raw,
+   hf_14a_read_ltocm, hf_14b_calypso, hf_14b_mobib, hf_15_magic,
+   hf_i2c_plus_2k_utils, hf_legic, hf_legic_buffer2card, hf_legic_clone,
+   hf_mfp_raw, hf_mfu_amiibo_restore, hf_mfu_amiibo_sim, hf_mfu_magicwrite,
+   hf_mfu_pwdgen_italy, hf_mfu_setuid, hf_mfu_ultra, hf_mf_autopwn,
+   hf_mf_dump_luxeo, hf_mf_em_util, hf_mf_format, hf_mf_gen3_writer,
+   hf_mf_keycheck, hf_mf_magicrevive, hf_mf_mini_dumpdecrypt, hf_mf_sim_hid,
+   hf_mf_tnp3_clone, hf_mf_tnp3_dump, hf_mf_tnp3_sim, hf_mf_uidbruteforce,
+   hf_mf_uidkeycalc, hf_mf_uidkeycalc_mizip, hf_mf_uid_downgrade,
+   hf_mf_ultimatecard, hf_mf_uscuid_prog, hf_ndef_dump, hf_ntag_3d,
+   hf_ntag_bruteforce, hf_ntag_dt, init_rdv4, lf_awid_bulkclone,
+   lf_electra, lf_em4100_bulk, lf_em4x05_kybercrystals, lf_em_tearoff,
+   lf_em_tearoff_protect, lf_hid_bulkclone, lf_hid_bulkclone_v2,
+   lf_ht2_paxton, lf_ident_json, lf_ioprox_bulkclone, lf_t55xx_chk,
+   lf_t55xx_chk_date, lf_t55xx_fix, lf_t55xx_multiwriter, lf_t55xx_reset,
+   mem_readpwd, mem_spiffs_readpwd, mfc_hammerlite, multi_bruteforce,
+   ntag_clean, ntag_getsig, ntag_hammertime
+9. СИСТЕМА
+СИСТЕМА
+│
+├─ ПРОШИВКА
+│  ├─ Обновить прошивку ⓘ             ← pm3-flash / pm3-flash-all
+│  ├─ Обновить бутром ⓘ               ← pm3-flash-bootrom
+│  ├─ Режим загрузчика ⓘ              ← hw bootloader
+│  └─ Версии ⓘ                        ← hw version
+│
+├─ УСТРОЙСТВО
+│  ├─ Перезагрузка ⓘ                  ← hw reset
+│  ├─ Статус ⓘ                        ← hw status
+│  ├─ Настройка антенн ⓘ              ← hw tune
+│  ├─ Проверка цепей ⓘ                ← hw teardown
+│  ├─ Затухание HF ⓘ                  ← hw decay
+│  ├─ Память ARM ⓘ                    ← hw readmem
+│  ├─ Мультиплексор ⓘ                 ← hw setmux
+│  ├─ LCD ⓘ                           ← hw lcd
+│  ├─ Антенна вкл/выкл ⓘ              ← hw kick
+│  └─ Прервать операцию ⓘ             ← hw break
+│
+├─ НАСТРОЙКИ КЛИЕНТА ⓘ                ← prefs show / get / set
+│  ├─ client.debug / client.delay / client.timeout
+│  ├─ hf.field.timeout_sec / savepaths / output / barmode
+│  ├─ plotsliders / mqtt / color / emoji / hints
+│
+├─ ОТЛАДКА (скрыто, галочка)
+│  ├─ data setdebugmode / data setgraphmarkers
+│  ├─ rem / msleep / hints / clear
+│  └─ CLI-режим
+│
+└─ ОПАСНЫЕ ОПЕРАЦИИ (с подтверждением)
+   ├─ mem wipe / mem spiffs wipe
+   ├─ hf mf gchpwd / gen3freeze / cwipe / gdmwipe
+   ├─ hf 15 cfinalize / passprotectafi / passprotecteas
+   ├─ hf cipurse formatall / hf mfdes formatpicc
+   └─ lf t55xx wipe
