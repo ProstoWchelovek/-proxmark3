@@ -1,0 +1,3640 @@
+Ñòðóêòóðà ïàïîê
+Ñåðèéíûé íîìåð òîìà: 000001B1 C65A:CB5B
+C:\PROXMARK3\PROXSPACE\PM3
+¦   .bashrc
+¦   .bash_logout
+¦   .bash_profile
+¦   .profile
+¦   
++---.proxmark3
+¦   ¦   history.txt
+¦   ¦   preferences.json
+¦   ¦   
+¦   L---logs
+¦           log_20260817230649.txt
+¦           log_20260817230708.txt
+¦           log_20260817231248.txt
+¦           log_20260817231316.txt
+¦           log_20260817231500.txt
+¦           log_20260817231705.txt
+¦           log_20260817231740.txt
+¦           
+L---proxmark3
+    ¦   .coverity.conf.sample
+    ¦   .git-blame-ignore-revs
+    ¦   .gitattributes
+    ¦   .gitignore
+    ¦   .lsan_suppressions
+    ¦   .mailmap
+    ¦   .Makefile.options.cache
+    ¦   AUTHORS.md
+    ¦   CHANGELOG.md
+    ¦   COMPILING.txt
+    ¦   CONTRIBUTING.md
+    ¦   covbuild.sh
+    ¦   covconfig.sh
+    ¦   covsubmit.sh
+    ¦   filter_git_blame.sh
+    ¦   LICENSE.txt
+    ¦   Makefile
+    ¦   Makefile.defs
+    ¦   Makefile.host
+    ¦   Makefile.platform.sample
+    ¦   pm3
+    ¦   pm3-flash
+    ¦   pm3-flash-all
+    ¦   pm3-flash-bootrom
+    ¦   pm3-flash-fullimage
+    ¦   README.md
+    ¦   SECURITY.md
+    ¦   
+    +---.git
+    ¦   ¦   config
+    ¦   ¦   description
+    ¦   ¦   HEAD
+    ¦   ¦   index
+    ¦   ¦   packed-refs
+    ¦   ¦   
+    ¦   +---branches
+    ¦   +---hooks
+    ¦   ¦       applypatch-msg.sample
+    ¦   ¦       commit-msg.sample
+    ¦   ¦       fsmonitor-watchman.sample
+    ¦   ¦       post-update.sample
+    ¦   ¦       pre-applypatch.sample
+    ¦   ¦       pre-commit.sample
+    ¦   ¦       pre-merge-commit.sample
+    ¦   ¦       pre-push.sample
+    ¦   ¦       pre-rebase.sample
+    ¦   ¦       pre-receive.sample
+    ¦   ¦       prepare-commit-msg.sample
+    ¦   ¦       push-to-checkout.sample
+    ¦   ¦       sendemail-validate.sample
+    ¦   ¦       update.sample
+    ¦   ¦       
+    ¦   +---info
+    ¦   ¦       exclude
+    ¦   ¦       
+    ¦   +---logs
+    ¦   ¦   ¦   HEAD
+    ¦   ¦   ¦   
+    ¦   ¦   L---refs
+    ¦   ¦       +---heads
+    ¦   ¦       ¦       master
+    ¦   ¦       ¦       
+    ¦   ¦       L---remotes
+    ¦   ¦           L---origin
+    ¦   ¦                   HEAD
+    ¦   ¦                   
+    ¦   +---objects
+    ¦   ¦   +---info
+    ¦   ¦   L---pack
+    ¦   ¦           pack-706b4f7ca938cdbc2822a747b9f051c981b1944e.idx
+    ¦   ¦           pack-706b4f7ca938cdbc2822a747b9f051c981b1944e.pack
+    ¦   ¦           pack-706b4f7ca938cdbc2822a747b9f051c981b1944e.rev
+    ¦   ¦           
+    ¦   L---refs
+    ¦       +---heads
+    ¦       ¦       master
+    ¦       ¦       
+    ¦       +---remotes
+    ¦       ¦   L---origin
+    ¦       ¦           HEAD
+    ¦       ¦           
+    ¦       L---tags
+    +---.github
+    ¦   ¦   FUNDING.yml
+    ¦   ¦   
+    ¦   +---ISSUE_TEMPLATE
+    ¦   ¦       bug_report.md
+    ¦   ¦       checklist-for-release.md
+    ¦   ¦       config.yml
+    ¦   ¦       feature_request.md
+    ¦   ¦       
+    ¦   L---workflows
+    ¦           codeql-analysis.yml
+    ¦           macos.yml
+    ¦           rebase.yml
+    ¦           ubuntu.yml
+    ¦           uniq.yaml
+    ¦           windows.yml
+    ¦           
+    +---.vscode
+    ¦   ¦   extensions.json
+    ¦   ¦   setup.sh
+    ¦   ¦   tasks.json
+    ¦   ¦   
+    ¦   L---templates
+    ¦           launch_linux.json
+    ¦           launch_ps.json
+    ¦           launch_wsl.json
+    ¦           
+    +---armsrc
+    ¦   ¦   appmain.c
+    ¦   ¦   appmain.h
+    ¦   ¦   BigBuf.c
+    ¦   ¦   BigBuf.h
+    ¦   ¦   buzzer_disabled.c
+    ¦   ¦   buzzer_disabled.h
+    ¦   ¦   cmac_3des.c
+    ¦   ¦   cmac_3des.h
+    ¦   ¦   cmac_calc.c
+    ¦   ¦   cmac_calc.h
+    ¦   ¦   cmd.c
+    ¦   ¦   cmd.h
+    ¦   ¦   dbprint.c
+    ¦   ¦   dbprint.h
+    ¦   ¦   desfire_crypto.c
+    ¦   ¦   desfire_crypto.h
+    ¦   ¦   em4x50.c
+    ¦   ¦   em4x50.h
+    ¦   ¦   em4x70.c
+    ¦   ¦   em4x70.h
+    ¦   ¦   emvsim.c
+    ¦   ¦   emvsim.h
+    ¦   ¦   emvtags.h
+    ¦   ¦   epa.c
+    ¦   ¦   epa.h
+    ¦   ¦   felica.c
+    ¦   ¦   felica.h
+    ¦   ¦   felicasim.c
+    ¦   ¦   felicasim.h
+    ¦   ¦   fonts_disabled.c
+    ¦   ¦   fonts_disabled.h
+    ¦   ¦   fpgaloader.c
+    ¦   ¦   fpgaloader.h
+    ¦   ¦   fpga_version_info.c
+    ¦   ¦   frozen.c
+    ¦   ¦   frozen.h
+    ¦   ¦   hfops.c
+    ¦   ¦   hfops.h
+    ¦   ¦   hfsnoop.c
+    ¦   ¦   hfsnoop.h
+    ¦   ¦   hitag2.c
+    ¦   ¦   hitag2.h
+    ¦   ¦   hitag2_crack.c
+    ¦   ¦   hitag2_crack.h
+    ¦   ¦   hitagS.c
+    ¦   ¦   hitagS.h
+    ¦   ¦   hitagu.c
+    ¦   ¦   hitagu.h
+    ¦   ¦   hitag_common.c
+    ¦   ¦   hitag_common.h
+    ¦   ¦   i2c.c
+    ¦   ¦   i2c.h
+    ¦   ¦   i2c_direct.c
+    ¦   ¦   i2c_direct.h
+    ¦   ¦   iclass.c
+    ¦   ¦   iclass.h
+    ¦   ¦   iso14443a.c
+    ¦   ¦   iso14443a.h
+    ¦   ¦   iso14443b.c
+    ¦   ¦   iso14443b.h
+    ¦   ¦   iso15693.c
+    ¦   ¦   iso15693.h
+    ¦   ¦   LCD_disabled.c
+    ¦   ¦   LCD_disabled.h
+    ¦   ¦   ldscript
+    ¦   ¦   legicrf.c
+    ¦   ¦   legicrf.h
+    ¦   ¦   legicrfsim.c
+    ¦   ¦   legicrfsim.h
+    ¦   ¦   lfadc.c
+    ¦   ¦   lfadc.h
+    ¦   ¦   lfops.c
+    ¦   ¦   lfops.h
+    ¦   ¦   lfsampling.c
+    ¦   ¦   lfsampling.h
+    ¦   ¦   lfzx.c
+    ¦   ¦   lfzx.h
+    ¦   ¦   Makefile
+    ¦   ¦   mifarecmd.c
+    ¦   ¦   mifarecmd.h
+    ¦   ¦   mifaredesfire.c
+    ¦   ¦   mifaredesfire.h
+    ¦   ¦   mifaresim.c
+    ¦   ¦   mifaresim.h
+    ¦   ¦   mifaresniff_disabled.c
+    ¦   ¦   mifaresniff_disabled.h
+    ¦   ¦   mifareutil.c
+    ¦   ¦   mifareutil.h
+    ¦   ¦   nprintf.c
+    ¦   ¦   nprintf.h
+    ¦   ¦   optimized_cipher.c
+    ¦   ¦   optimized_cipher.h
+    ¦   ¦   optimized_cipherutils.c
+    ¦   ¦   optimized_cipherutils.h
+    ¦   ¦   optimized_elite.c
+    ¦   ¦   optimized_elite.h
+    ¦   ¦   optimized_ikeys.c
+    ¦   ¦   optimized_ikeys.h
+    ¦   ¦   pcf7931.c
+    ¦   ¦   pcf7931.h
+    ¦   ¦   printf.c
+    ¦   ¦   printf.h
+    ¦   ¦   sam_common.c
+    ¦   ¦   sam_common.h
+    ¦   ¦   sam_mfc.c
+    ¦   ¦   sam_mfc.h
+    ¦   ¦   sam_picopass.c
+    ¦   ¦   sam_picopass.h
+    ¦   ¦   sam_sc.c
+    ¦   ¦   sam_sc.h
+    ¦   ¦   sam_seos.c
+    ¦   ¦   sam_seos.h
+    ¦   ¦   secc.c
+    ¦   ¦   secc.h
+    ¦   ¦   seos.c
+    ¦   ¦   seos.h
+    ¦   ¦   spiffs.c
+    ¦   ¦   spiffs.h
+    ¦   ¦   spiffs_cache.c
+    ¦   ¦   spiffs_check.c
+    ¦   ¦   spiffs_config.h
+    ¦   ¦   spiffs_gc.c
+    ¦   ¦   spiffs_hydrogen.c
+    ¦   ¦   spiffs_nucleus.c
+    ¦   ¦   spiffs_nucleus.h
+    ¦   ¦   start.c
+    ¦   ¦   string.c
+    ¦   ¦   string.h
+    ¦   ¦   thinfilm.c
+    ¦   ¦   thinfilm.h
+    ¦   ¦   usart.c
+    ¦   ¦   usart.h
+    ¦   ¦   util.c
+    ¦   ¦   util.h
+    ¦   ¦   version_pm3.c
+    ¦   ¦   vtsend.c
+    ¦   ¦   vtsend.h
+    ¦   ¦   wiegand.c
+    ¦   ¦   wiegand.h
+    ¦   ¦   
+    ¦   +---obj
+    ¦   ¦   ¦   .dummy
+    ¦   ¦   ¦   aes.d
+    ¦   ¦   ¦   aes.o
+    ¦   ¦   ¦   appmain.d
+    ¦   ¦   ¦   appmain.o
+    ¦   ¦   ¦   BigBuf.d
+    ¦   ¦   ¦   BigBuf.o
+    ¦   ¦   ¦   bruteforce.d
+    ¦   ¦   ¦   bruteforce.o
+    ¦   ¦   ¦   clocks.d
+    ¦   ¦   ¦   clocks.o
+    ¦   ¦   ¦   cmac_3des.d
+    ¦   ¦   ¦   cmac_3des.o
+    ¦   ¦   ¦   cmac_calc.d
+    ¦   ¦   ¦   cmac_calc.o
+    ¦   ¦   ¦   cmd.d
+    ¦   ¦   ¦   cmd.o
+    ¦   ¦   ¦   commonutil.d
+    ¦   ¦   ¦   commonutil.o
+    ¦   ¦   ¦   crc.d
+    ¦   ¦   ¦   crc.o
+    ¦   ¦   ¦   crc16.d
+    ¦   ¦   ¦   crc16.o
+    ¦   ¦   ¦   crc32.d
+    ¦   ¦   ¦   crc32.o
+    ¦   ¦   ¦   crypto1.d
+    ¦   ¦   ¦   crypto1.o
+    ¦   ¦   ¦   dbprint.d
+    ¦   ¦   ¦   dbprint.o
+    ¦   ¦   ¦   des.d
+    ¦   ¦   ¦   des.o
+    ¦   ¦   ¦   desfire_crypto.d
+    ¦   ¦   ¦   desfire_crypto.o
+    ¦   ¦   ¦   em4x50.d
+    ¦   ¦   ¦   em4x50.o
+    ¦   ¦   ¦   em4x70.d
+    ¦   ¦   ¦   em4x70.o
+    ¦   ¦   ¦   epa.d
+    ¦   ¦   ¦   epa.o
+    ¦   ¦   ¦   felica.d
+    ¦   ¦   ¦   felica.o
+    ¦   ¦   ¦   felicasim.d
+    ¦   ¦   ¦   felicasim.o
+    ¦   ¦   ¦   fpgaloader.d
+    ¦   ¦   ¦   fpgaloader.o
+    ¦   ¦   ¦   fpga_all.bit.z
+    ¦   ¦   ¦   fpga_all.o
+    ¦   ¦   ¦   fpga_version_info.o
+    ¦   ¦   ¦   fullimage.data.bin
+    ¦   ¦   ¦   fullimage.data.bin.z
+    ¦   ¦   ¦   fullimage.elf
+    ¦   ¦   ¦   fullimage.s19
+    ¦   ¦   ¦   fullimage.stage1.elf
+    ¦   ¦   ¦   fullimage.stage1.map
+    ¦   ¦   ¦   generator.d
+    ¦   ¦   ¦   generator.o
+    ¦   ¦   ¦   hfops.d
+    ¦   ¦   ¦   hfops.o
+    ¦   ¦   ¦   hfsnoop.d
+    ¦   ¦   ¦   hfsnoop.o
+    ¦   ¦   ¦   hitag2.d
+    ¦   ¦   ¦   hitag2.o
+    ¦   ¦   ¦   hitag2_crack.d
+    ¦   ¦   ¦   hitag2_crack.o
+    ¦   ¦   ¦   hitag2_crypto.d
+    ¦   ¦   ¦   hitag2_crypto.o
+    ¦   ¦   ¦   hitagS.d
+    ¦   ¦   ¦   hitagS.o
+    ¦   ¦   ¦   hitagu.d
+    ¦   ¦   ¦   hitagu.o
+    ¦   ¦   ¦   hitag_common.d
+    ¦   ¦   ¦   hitag_common.o
+    ¦   ¦   ¦   iclass.d
+    ¦   ¦   ¦   iclass.o
+    ¦   ¦   ¦   iso14443a.d
+    ¦   ¦   ¦   iso14443a.o
+    ¦   ¦   ¦   iso14443b.d
+    ¦   ¦   ¦   iso14443b.o
+    ¦   ¦   ¦   iso15693.d
+    ¦   ¦   ¦   iso15693.o
+    ¦   ¦   ¦   iso15693tools.d
+    ¦   ¦   ¦   iso15693tools.o
+    ¦   ¦   ¦   legicrf.d
+    ¦   ¦   ¦   legicrf.o
+    ¦   ¦   ¦   legicrfsim.d
+    ¦   ¦   ¦   legicrfsim.o
+    ¦   ¦   ¦   legic_prng.d
+    ¦   ¦   ¦   legic_prng.o
+    ¦   ¦   ¦   lfadc.d
+    ¦   ¦   ¦   lfadc.o
+    ¦   ¦   ¦   lfdemod.d
+    ¦   ¦   ¦   lfdemod.o
+    ¦   ¦   ¦   lfops.d
+    ¦   ¦   ¦   lfops.o
+    ¦   ¦   ¦   lfsampling.d
+    ¦   ¦   ¦   lfsampling.o
+    ¦   ¦   ¦   lfzx.d
+    ¦   ¦   ¦   lfzx.o
+    ¦   ¦   ¦   lf_samyrun.d
+    ¦   ¦   ¦   lf_samyrun.o
+    ¦   ¦   ¦   lz4.d
+    ¦   ¦   ¦   lz4.o
+    ¦   ¦   ¦   mifarecmd.d
+    ¦   ¦   ¦   mifarecmd.o
+    ¦   ¦   ¦   mifaredesfire.d
+    ¦   ¦   ¦   mifaredesfire.o
+    ¦   ¦   ¦   mifaresim.d
+    ¦   ¦   ¦   mifaresim.o
+    ¦   ¦   ¦   mifareutil.d
+    ¦   ¦   ¦   mifareutil.o
+    ¦   ¦   ¦   optimized_cipher.d
+    ¦   ¦   ¦   optimized_cipher.o
+    ¦   ¦   ¦   optimized_cipherutils.d
+    ¦   ¦   ¦   optimized_cipherutils.o
+    ¦   ¦   ¦   optimized_elite.d
+    ¦   ¦   ¦   optimized_elite.o
+    ¦   ¦   ¦   optimized_ikeys.d
+    ¦   ¦   ¦   optimized_ikeys.o
+    ¦   ¦   ¦   pcf7931.d
+    ¦   ¦   ¦   pcf7931.o
+    ¦   ¦   ¦   platform_util.d
+    ¦   ¦   ¦   platform_util.o
+    ¦   ¦   ¦   printf.d
+    ¦   ¦   ¦   printf.o
+    ¦   ¦   ¦   sam_common.d
+    ¦   ¦   ¦   sam_common.o
+    ¦   ¦   ¦   sam_mfc.d
+    ¦   ¦   ¦   sam_mfc.o
+    ¦   ¦   ¦   sam_picopass.d
+    ¦   ¦   ¦   sam_picopass.o
+    ¦   ¦   ¦   sam_sc.d
+    ¦   ¦   ¦   sam_sc.o
+    ¦   ¦   ¦   sam_seos.d
+    ¦   ¦   ¦   sam_seos.o
+    ¦   ¦   ¦   secc.d
+    ¦   ¦   ¦   secc.o
+    ¦   ¦   ¦   seos.d
+    ¦   ¦   ¦   seos.o
+    ¦   ¦   ¦   sha1.d
+    ¦   ¦   ¦   sha1.o
+    ¦   ¦   ¦   sha256.d
+    ¦   ¦   ¦   sha256.o
+    ¦   ¦   ¦   start.d
+    ¦   ¦   ¦   start.o
+    ¦   ¦   ¦   string.d
+    ¦   ¦   ¦   string.o
+    ¦   ¦   ¦   thinfilm.d
+    ¦   ¦   ¦   thinfilm.o
+    ¦   ¦   ¦   ticks.d
+    ¦   ¦   ¦   ticks.o
+    ¦   ¦   ¦   usb_cdc.d
+    ¦   ¦   ¦   usb_cdc.o
+    ¦   ¦   ¦   util.d
+    ¦   ¦   ¦   util.o
+    ¦   ¦   ¦   version_pm3.o
+    ¦   ¦   ¦   
+    ¦   ¦   L---Standalone
+    ¦   ¦           .dummy
+    ¦   ¦           
+    ¦   L---Standalone
+    ¦           dankarmulti.c
+    ¦           dankarmulti.h
+    ¦           hf_14asniff.c
+    ¦           hf_14bsniff.c
+    ¦           hf_15sim.c
+    ¦           hf_15sniff.c
+    ¦           hf_aveful.c
+    ¦           hf_bog.c
+    ¦           hf_cardhopper.c
+    ¦           hf_colin.c
+    ¦           hf_colin.h
+    ¦           hf_craftbyte.c
+    ¦           hf_doegox_auth0.c
+    ¦           hf_doegox_commit.c
+    ¦           hf_emvpng.c
+    ¦           hf_iceclass.c
+    ¦           hf_legic.c
+    ¦           hf_legicsim.c
+    ¦           hf_mattyrun.c
+    ¦           hf_mattyrun.h
+    ¦           hf_mfcsim.c
+    ¦           hf_msdsal.c
+    ¦           hf_reblay.c
+    ¦           hf_st25_tearoff.c
+    ¦           hf_tcprst.c
+    ¦           hf_tmudford.c
+    ¦           hf_unisniff.c
+    ¦           hf_young.c
+    ¦           lf_em4100emul.c
+    ¦           lf_em4100rswb.c
+    ¦           lf_em4100rsww.c
+    ¦           lf_em4100rwc.c
+    ¦           lf_hidbrute.c
+    ¦           lf_hidfcbrute.c
+    ¦           lf_icehid.c
+    ¦           lf_multihid.c
+    ¦           lf_nedap_sim.c
+    ¦           lf_nexid.c
+    ¦           lf_prox2brute.c
+    ¦           lf_proxbrute.c
+    ¦           lf_samyrun.c
+    ¦           lf_skeleton.c
+    ¦           lf_tharexde.c
+    ¦           Makefile.hal
+    ¦           Makefile.inc
+    ¦           placeholder.c
+    ¦           readme.md
+    ¦           standalone.h
+    ¦           
+    +---bootrom
+    ¦   ¦   bootrom.c
+    ¦   ¦   flash-reset.s
+    ¦   ¦   ldscript-flash
+    ¦   ¦   Makefile
+    ¦   ¦   ram-reset.s
+    ¦   ¦   version_pm3.c
+    ¦   ¦   
+    ¦   L---obj
+    ¦           .dummy
+    ¦           bootrom.d
+    ¦           bootrom.elf
+    ¦           bootrom.map
+    ¦           bootrom.o
+    ¦           bootrom.s19
+    ¦           clocks.d
+    ¦           clocks.o
+    ¦           flash-reset.o
+    ¦           ram-reset.o
+    ¦           usb_cdc.d
+    ¦           usb_cdc.o
+    ¦           version_pm3.o
+    ¦           
+    +---client
+    ¦   ¦   atr_scrap_pcsctools.py
+    ¦   ¦   CMakeLists.txt
+    ¦   ¦   default_keys_dic2lua.awk
+    ¦   ¦   emojis_scrap_github.py
+    ¦   ¦   Makefile
+    ¦   ¦   pm3_cmd_h2lua.awk
+    ¦   ¦   proxmark3.exe
+    ¦   ¦   README-bitlib
+    ¦   ¦   update_amiibo_tools_lua.py
+    ¦   ¦   
+    ¦   +---cmdscripts
+    ¦   ¦       example.cmd
+    ¦   ¦       rdv4_init_extflash.cmd
+    ¦   ¦       test_psk_clone.cmd
+    ¦   ¦       
+    ¦   +---deps
+    ¦   ¦   ¦   .gitignore
+    ¦   ¦   ¦   amiibo.cmake
+    ¦   ¦   ¦   cliparser.cmake
+    ¦   ¦   ¦   CMakeLists.txt
+    ¦   ¦   ¦   gd-static.patch
+    ¦   ¦   ¦   get_linenoise.sh
+    ¦   ¦   ¦   hardnested.cmake
+    ¦   ¦   ¦   id48lib.cmake
+    ¦   ¦   ¦   jansson.cmake
+    ¦   ¦   ¦   linenoise-ng-1.0.1.zip
+    ¦   ¦   ¦   lua.cmake
+    ¦   ¦   ¦   mbedtls.cmake
+    ¦   ¦   ¦   mqtt.cmake
+    ¦   ¦   ¦   reveng.cmake
+    ¦   ¦   ¦   tinycbor.cmake
+    ¦   ¦   ¦   vec.cmake
+    ¦   ¦   ¦   whereami.cmake
+    ¦   ¦   ¦   
+    ¦   ¦   +---amiitool
+    ¦   ¦   ¦   ¦   amiibo.c
+    ¦   ¦   ¦   ¦   amiibo.h
+    ¦   ¦   ¦   ¦   amiitool.c
+    ¦   ¦   ¦   ¦   drbg.c
+    ¦   ¦   ¦   ¦   drbg.h
+    ¦   ¦   ¦   ¦   keygen.c
+    ¦   ¦   ¦   ¦   keygen.h
+    ¦   ¦   ¦   ¦   libamiibo.a
+    ¦   ¦   ¦   ¦   LICENSE
+    ¦   ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   L---obj
+    ¦   ¦   ¦           amiibo.d
+    ¦   ¦   ¦           amiibo.o
+    ¦   ¦   ¦           drbg.d
+    ¦   ¦   ¦           drbg.o
+    ¦   ¦   ¦           keygen.d
+    ¦   ¦   ¦           keygen.o
+    ¦   ¦   ¦           
+    ¦   ¦   +---cliparser
+    ¦   ¦   ¦   ¦   argtable3.c
+    ¦   ¦   ¦   ¦   argtable3.h
+    ¦   ¦   ¦   ¦   cliparser.c
+    ¦   ¦   ¦   ¦   cliparser.h
+    ¦   ¦   ¦   ¦   getopt.h
+    ¦   ¦   ¦   ¦   libcliparser.a
+    ¦   ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   ¦   README.md
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   L---obj
+    ¦   ¦   ¦           argtable3.d
+    ¦   ¦   ¦           argtable3.o
+    ¦   ¦   ¦           cliparser.d
+    ¦   ¦   ¦           cliparser.o
+    ¦   ¦   ¦           
+    ¦   ¦   +---hardnested
+    ¦   ¦   ¦   ¦   hardnested_bf_core.c
+    ¦   ¦   ¦   ¦   hardnested_bf_core.h
+    ¦   ¦   ¦   ¦   hardnested_bitarray_core.c
+    ¦   ¦   ¦   ¦   hardnested_bitarray_core.h
+    ¦   ¦   ¦   ¦   hardnested_bruteforce.c
+    ¦   ¦   ¦   ¦   hardnested_bruteforce.h
+    ¦   ¦   ¦   ¦   hardnested_tables.c
+    ¦   ¦   ¦   ¦   libhardnested.a
+    ¦   ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   L---obj
+    ¦   ¦   ¦           hardnested_bf_core_AVX.d
+    ¦   ¦   ¦           hardnested_bf_core_AVX.o
+    ¦   ¦   ¦           hardnested_bf_core_AVX2.d
+    ¦   ¦   ¦           hardnested_bf_core_AVX2.o
+    ¦   ¦   ¦           hardnested_bf_core_AVX512.d
+    ¦   ¦   ¦           hardnested_bf_core_AVX512.o
+    ¦   ¦   ¦           hardnested_bf_core_MMX.d
+    ¦   ¦   ¦           hardnested_bf_core_MMX.o
+    ¦   ¦   ¦           hardnested_bf_core_NOSIMD.d
+    ¦   ¦   ¦           hardnested_bf_core_NOSIMD.o
+    ¦   ¦   ¦           hardnested_bf_core_SSE2.d
+    ¦   ¦   ¦           hardnested_bf_core_SSE2.o
+    ¦   ¦   ¦           hardnested_bitarray_core_AVX.d
+    ¦   ¦   ¦           hardnested_bitarray_core_AVX.o
+    ¦   ¦   ¦           hardnested_bitarray_core_AVX2.d
+    ¦   ¦   ¦           hardnested_bitarray_core_AVX2.o
+    ¦   ¦   ¦           hardnested_bitarray_core_AVX512.d
+    ¦   ¦   ¦           hardnested_bitarray_core_AVX512.o
+    ¦   ¦   ¦           hardnested_bitarray_core_MMX.d
+    ¦   ¦   ¦           hardnested_bitarray_core_MMX.o
+    ¦   ¦   ¦           hardnested_bitarray_core_NOSIMD.d
+    ¦   ¦   ¦           hardnested_bitarray_core_NOSIMD.o
+    ¦   ¦   ¦           hardnested_bitarray_core_SSE2.d
+    ¦   ¦   ¦           hardnested_bitarray_core_SSE2.o
+    ¦   ¦   ¦           hardnested_bruteforce.d
+    ¦   ¦   ¦           hardnested_bruteforce.o
+    ¦   ¦   ¦           
+    ¦   ¦   +---id48
+    ¦   ¦   ¦   ¦   .gitignore
+    ¦   ¦   ¦   ¦   CMakeLists.txt
+    ¦   ¦   ¦   ¦   LICENSE
+    ¦   ¦   ¦   ¦   README.md
+    ¦   ¦   ¦   ¦   TECHNICAL.md
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   +---espresso
+    ¦   ¦   ¦   ¦       output_g1.pla
+    ¦   ¦   ¦   ¦       output_g2.pla
+    ¦   ¦   ¦   ¦       output_g3.pla
+    ¦   ¦   ¦   ¦       output_g4.pla
+    ¦   ¦   ¦   ¦       output_xx.pla
+    ¦   ¦   ¦   ¦       
+    ¦   ¦   ¦   +---public
+    ¦   ¦   ¦   ¦       id48.h
+    ¦   ¦   ¦   ¦       
+    ¦   ¦   ¦   +---src
+    ¦   ¦   ¦   ¦   ¦   CMakeLists.txt
+    ¦   ¦   ¦   ¦   ¦   id48_data.c
+    ¦   ¦   ¦   ¦   ¦   id48_generator.c
+    ¦   ¦   ¦   ¦   ¦   id48_internals.h
+    ¦   ¦   ¦   ¦   ¦   id48_recover.c
+    ¦   ¦   ¦   ¦   ¦   libid48.a
+    ¦   ¦   ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   ¦   L---obj
+    ¦   ¦   ¦   ¦           id48_data.d
+    ¦   ¦   ¦   ¦           id48_data.o
+    ¦   ¦   ¦   ¦           id48_generator.d
+    ¦   ¦   ¦   ¦           id48_generator.o
+    ¦   ¦   ¦   ¦           id48_recover.d
+    ¦   ¦   ¦   ¦           id48_recover.o
+    ¦   ¦   ¦   ¦           
+    ¦   ¦   ¦   L---tests
+    ¦   ¦   ¦       ¦   CMakeLists.txt
+    ¦   ¦   ¦       ¦   
+    ¦   ¦   ¦       +---espresso
+    ¦   ¦   ¦       ¦       array_size2.h
+    ¦   ¦   ¦       ¦       CMakeLists.txt
+    ¦   ¦   ¦       ¦       main.c
+    ¦   ¦   ¦       ¦       verify_espresso.c
+    ¦   ¦   ¦       ¦       verify_espresso.h
+    ¦   ¦   ¦       ¦       
+    ¦   ¦   ¦       +---generator
+    ¦   ¦   ¦       ¦       array_size2.h
+    ¦   ¦   ¦       ¦       CMakeLists.txt
+    ¦   ¦   ¦       ¦       main.c
+    ¦   ¦   ¦       ¦       
+    ¦   ¦   ¦       L---recovery
+    ¦   ¦   ¦               array_size2.h
+    ¦   ¦   ¦               CMakeLists.txt
+    ¦   ¦   ¦               main.c
+    ¦   ¦   ¦               
+    ¦   ¦   +---jansson
+    ¦   ¦   ¦       dump.c
+    ¦   ¦   ¦       error.c
+    ¦   ¦   ¦       hashtable.c
+    ¦   ¦   ¦       hashtable.h
+    ¦   ¦   ¦       hashtable_seed.c
+    ¦   ¦   ¦       jansson.def
+    ¦   ¦   ¦       jansson.h
+    ¦   ¦   ¦       jansson_config.h
+    ¦   ¦   ¦       jansson_config.h.in
+    ¦   ¦   ¦       jansson_private.h
+    ¦   ¦   ¦       load.c
+    ¦   ¦   ¦       lookup3.h
+    ¦   ¦   ¦       Makefile
+    ¦   ¦   ¦       memory.c
+    ¦   ¦   ¦       pack_unpack.c
+    ¦   ¦   ¦       strbuffer.c
+    ¦   ¦   ¦       strbuffer.h
+    ¦   ¦   ¦       strconv.c
+    ¦   ¦   ¦       utf.c
+    ¦   ¦   ¦       utf.h
+    ¦   ¦   ¦       value.c
+    ¦   ¦   ¦       
+    ¦   ¦   +---liblua
+    ¦   ¦   ¦       lapi.c
+    ¦   ¦   ¦       lapi.h
+    ¦   ¦   ¦       lauxlib.c
+    ¦   ¦   ¦       lauxlib.h
+    ¦   ¦   ¦       lbaselib.c
+    ¦   ¦   ¦       lcode.c
+    ¦   ¦   ¦       lcode.h
+    ¦   ¦   ¦       lcorolib.c
+    ¦   ¦   ¦       lctype.c
+    ¦   ¦   ¦       lctype.h
+    ¦   ¦   ¦       ldblib.c
+    ¦   ¦   ¦       ldebug.c
+    ¦   ¦   ¦       ldebug.h
+    ¦   ¦   ¦       ldo.c
+    ¦   ¦   ¦       ldo.h
+    ¦   ¦   ¦       ldump.c
+    ¦   ¦   ¦       lfunc.c
+    ¦   ¦   ¦       lfunc.h
+    ¦   ¦   ¦       lgc.c
+    ¦   ¦   ¦       lgc.h
+    ¦   ¦   ¦       linit.c
+    ¦   ¦   ¦       liolib.c
+    ¦   ¦   ¦       ljumptab.h
+    ¦   ¦   ¦       llex.c
+    ¦   ¦   ¦       llex.h
+    ¦   ¦   ¦       llimits.h
+    ¦   ¦   ¦       lmathlib.c
+    ¦   ¦   ¦       lmem.c
+    ¦   ¦   ¦       lmem.h
+    ¦   ¦   ¦       loadlib.c
+    ¦   ¦   ¦       lobject.c
+    ¦   ¦   ¦       lobject.h
+    ¦   ¦   ¦       lopcodes.c
+    ¦   ¦   ¦       lopcodes.h
+    ¦   ¦   ¦       lopnames.h
+    ¦   ¦   ¦       loslib.c
+    ¦   ¦   ¦       lparser.c
+    ¦   ¦   ¦       lparser.h
+    ¦   ¦   ¦       lprefix.h
+    ¦   ¦   ¦       lstate.c
+    ¦   ¦   ¦       lstate.h
+    ¦   ¦   ¦       lstring.c
+    ¦   ¦   ¦       lstring.h
+    ¦   ¦   ¦       lstrlib.c
+    ¦   ¦   ¦       ltable.c
+    ¦   ¦   ¦       ltable.h
+    ¦   ¦   ¦       ltablib.c
+    ¦   ¦   ¦       ltm.c
+    ¦   ¦   ¦       ltm.h
+    ¦   ¦   ¦       lua.c
+    ¦   ¦   ¦       lua.h
+    ¦   ¦   ¦       lua.hpp
+    ¦   ¦   ¦       luac.c
+    ¦   ¦   ¦       luaconf.h
+    ¦   ¦   ¦       lualib.h
+    ¦   ¦   ¦       lundump.c
+    ¦   ¦   ¦       lundump.h
+    ¦   ¦   ¦       lutf8lib.c
+    ¦   ¦   ¦       lvm.c
+    ¦   ¦   ¦       lvm.h
+    ¦   ¦   ¦       lzio.c
+    ¦   ¦   ¦       lzio.h
+    ¦   ¦   ¦       Makefile
+    ¦   ¦   ¦       
+    ¦   ¦   +---mqtt
+    ¦   ¦   ¦   ¦   LICENSE
+    ¦   ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   ¦   mbedtls_sockets.h
+    ¦   ¦   ¦   ¦   mqtt.a
+    ¦   ¦   ¦   ¦   mqtt.c
+    ¦   ¦   ¦   ¦   mqtt.h
+    ¦   ¦   ¦   ¦   mqtt_pal.c
+    ¦   ¦   ¦   ¦   mqtt_pal.h
+    ¦   ¦   ¦   ¦   posix_sockets.h
+    ¦   ¦   ¦   ¦   readme.md
+    ¦   ¦   ¦   ¦   win32_sockets.h
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   L---obj
+    ¦   ¦   ¦           mqtt.d
+    ¦   ¦   ¦           mqtt.o
+    ¦   ¦   ¦           mqtt_pal.d
+    ¦   ¦   ¦           mqtt_pal.o
+    ¦   ¦   ¦           
+    ¦   ¦   +---reveng
+    ¦   ¦   ¦   ¦   bmpbit.c
+    ¦   ¦   ¦   ¦   bmptst.exe
+    ¦   ¦   ¦   ¦   cli.c
+    ¦   ¦   ¦   ¦   config.h
+    ¦   ¦   ¦   ¦   libreveng.a
+    ¦   ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   ¦   model.c
+    ¦   ¦   ¦   ¦   poly.c
+    ¦   ¦   ¦   ¦   preset.c
+    ¦   ¦   ¦   ¦   reveng.c
+    ¦   ¦   ¦   ¦   reveng.h
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   L---obj
+    ¦   ¦   ¦           bmpbit.d
+    ¦   ¦   ¦           bmpbit.o
+    ¦   ¦   ¦           cli.d
+    ¦   ¦   ¦           cli.o
+    ¦   ¦   ¦           model.d
+    ¦   ¦   ¦           model.o
+    ¦   ¦   ¦           poly.d
+    ¦   ¦   ¦           poly.o
+    ¦   ¦   ¦           preset.d
+    ¦   ¦   ¦           preset.o
+    ¦   ¦   ¦           reveng.d
+    ¦   ¦   ¦           reveng.o
+    ¦   ¦   ¦           
+    ¦   ¦   +---tinycbor
+    ¦   ¦   ¦   ¦   cbor.h
+    ¦   ¦   ¦   ¦   cborencoder.c
+    ¦   ¦   ¦   ¦   cborencoder_close_container_checked.c
+    ¦   ¦   ¦   ¦   cborerrorstrings.c
+    ¦   ¦   ¦   ¦   cborinternal_p.h
+    ¦   ¦   ¦   ¦   cborjson.h
+    ¦   ¦   ¦   ¦   cborparser.c
+    ¦   ¦   ¦   ¦   cborparser_dup_string.c
+    ¦   ¦   ¦   ¦   cborpretty.c
+    ¦   ¦   ¦   ¦   cborpretty_stdio.c
+    ¦   ¦   ¦   ¦   cbortojson.c
+    ¦   ¦   ¦   ¦   cborvalidation.c
+    ¦   ¦   ¦   ¦   compilersupport_p.h
+    ¦   ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   ¦   open_memstream.c
+    ¦   ¦   ¦   ¦   tinycbor-version.h
+    ¦   ¦   ¦   ¦   tinycbor.a
+    ¦   ¦   ¦   ¦   utf8_p.h
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   L---obj
+    ¦   ¦   ¦           cborencoder.d
+    ¦   ¦   ¦           cborencoder.o
+    ¦   ¦   ¦           cborencoder_close_container_checked.d
+    ¦   ¦   ¦           cborencoder_close_container_checked.o
+    ¦   ¦   ¦           cborerrorstrings.d
+    ¦   ¦   ¦           cborerrorstrings.o
+    ¦   ¦   ¦           cborparser.d
+    ¦   ¦   ¦           cborparser.o
+    ¦   ¦   ¦           cborparser_dup_string.d
+    ¦   ¦   ¦           cborparser_dup_string.o
+    ¦   ¦   ¦           cborpretty.d
+    ¦   ¦   ¦           cborpretty.o
+    ¦   ¦   ¦           cbortojson.d
+    ¦   ¦   ¦           cbortojson.o
+    ¦   ¦   ¦           cborvalidation.d
+    ¦   ¦   ¦           cborvalidation.o
+    ¦   ¦   ¦           
+    ¦   ¦   +---vec
+    ¦   ¦   ¦   ¦   LICENSE
+    ¦   ¦   ¦   ¦   README.md
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   L---vec
+    ¦   ¦   ¦       ¦   vec.h
+    ¦   ¦   ¦       ¦   
+    ¦   ¦   ¦       L---private
+    ¦   ¦   ¦               gcc.h
+    ¦   ¦   ¦               generic.h
+    ¦   ¦   ¦               neon_asm.h
+    ¦   ¦   ¦               neon_intrin.h
+    ¦   ¦   ¦               sse2.h
+    ¦   ¦   ¦               sse41.h
+    ¦   ¦   ¦               
+    ¦   ¦   L---whereami
+    ¦   ¦       ¦   libwhereami.a
+    ¦   ¦       ¦   Makefile
+    ¦   ¦       ¦   whereami.c
+    ¦   ¦       ¦   whereami.h
+    ¦   ¦       ¦   
+    ¦   ¦       L---obj
+    ¦   ¦               whereami.d
+    ¦   ¦               whereami.o
+    ¦   ¦               
+    ¦   +---dictionaries
+    ¦   ¦   ¦   ht2_default.dic
+    ¦   ¦   ¦   iclass_default_keys.dic
+    ¦   ¦   ¦   iclass_elite_keys.dic
+    ¦   ¦   ¦   mfc_default_keys.dic
+    ¦   ¦   ¦   mfc_keys_bmp_sorted.dic
+    ¦   ¦   ¦   mfc_keys_icbmp_sorted.dic
+    ¦   ¦   ¦   mfc_keys_mrzd_sorted.dic
+    ¦   ¦   ¦   mfdes_default_keys.dic
+    ¦   ¦   ¦   mfp_default_keys.dic
+    ¦   ¦   ¦   mfulaes_hw1.dic
+    ¦   ¦   ¦   mfulaes_hw2.dic
+    ¦   ¦   ¦   mfulaes_segment_hw1.dic
+    ¦   ¦   ¦   mfulaes_segment_hw2.dic
+    ¦   ¦   ¦   mfulaes_segment_hw3.dic
+    ¦   ¦   ¦   mfulc_default_keys.dic
+    ¦   ¦   ¦   mfulc_hw1.dic
+    ¦   ¦   ¦   mfulc_hw2.dic
+    ¦   ¦   ¦   mfulc_segment_hw1.dic
+    ¦   ¦   ¦   mfulc_segment_hw2.dic
+    ¦   ¦   ¦   mfulc_segment_hw3.dic
+    ¦   ¦   ¦   t55xx_default_pwds.dic
+    ¦   ¦   ¦   
+    ¦   ¦   L---extras
+    ¦   ¦           12_byte_most_common_password.dic
+    ¦   ¦           12_byte_most_common_password_uppercase.dic
+    ¦   ¦           12_byte_words.dic
+    ¦   ¦           12_byte_words_uppercase.dic
+    ¦   ¦           16_byte_most_common_password.dic
+    ¦   ¦           16_byte_most_common_password_uppercase.dic
+    ¦   ¦           16_byte_words.dic
+    ¦   ¦           16_byte_words_uppercase.dic
+    ¦   ¦           4_byte_ascii_numbers.dic
+    ¦   ¦           4_byte_most_common_password.dic
+    ¦   ¦           4_byte_most_common_password_uppercase.dic
+    ¦   ¦           4_byte_words.dic
+    ¦   ¦           4_byte_words_uppercase.dic
+    ¦   ¦           6_byte_ascii_numbers.dic
+    ¦   ¦           6_byte_most_common_password.dic
+    ¦   ¦           6_byte_most_common_password_uppercase.dic
+    ¦   ¦           6_byte_words.dic
+    ¦   ¦           6_byte_words_uppercase.dic
+    ¦   ¦           8_byte_most_common_password.dic
+    ¦   ¦           8_byte_most_common_password_uppercase.dic
+    ¦   ¦           8_byte_words.dic
+    ¦   ¦           8_byte_words_uppercase.dic
+    ¦   ¦           iclass_other.dic
+    ¦   ¦           readme.md
+    ¦   ¦           
+    ¦   +---experimental_client_with_swig
+    ¦   ¦       00make_swig.sh
+    ¦   ¦       01make_client_cmake.sh
+    ¦   ¦       01make_client_makefile.sh
+    ¦   ¦       02a_run_test_lua.sh
+    ¦   ¦       02b_run_test_py.sh
+    ¦   ¦       testembedded.lua
+    ¦   ¦       testembedded.py
+    ¦   ¦       
+    ¦   +---experimental_lib
+    ¦   ¦   ¦   .gitignore
+    ¦   ¦   ¦   00make_swig.sh
+    ¦   ¦   ¦   01make_lib.sh
+    ¦   ¦   ¦   01make_lib_continue.sh
+    ¦   ¦   ¦   CMakeLists.txt
+    ¦   ¦   ¦   
+    ¦   ¦   +---example_c
+    ¦   ¦   ¦       01make_test.sh
+    ¦   ¦   ¦       02run_test.sh
+    ¦   ¦   ¦       02run_test_grab.sh
+    ¦   ¦   ¦       test.c
+    ¦   ¦   ¦       test_grab.c
+    ¦   ¦   ¦       
+    ¦   ¦   +---example_lua
+    ¦   ¦   ¦       01link_lib.sh
+    ¦   ¦   ¦       02run_test.sh
+    ¦   ¦   ¦       test.lua
+    ¦   ¦   ¦       
+    ¦   ¦   L---example_py
+    ¦   ¦           01link_lib.sh
+    ¦   ¦           02run_test.sh
+    ¦   ¦           02run_test_interactive.sh
+    ¦   ¦           test.py
+    ¦   ¦           
+    ¦   +---include
+    ¦   ¦       pm3.h
+    ¦   ¦       
+    ¦   +---lualibs
+    ¦   ¦       7816_error.lua
+    ¦   ¦       amiibo_tools.lua
+    ¦   ¦       ansicolors.lua
+    ¦   ¦       commands.lua
+    ¦   ¦       default_toys.lua
+    ¦   ¦       default_toys_di.lua
+    ¦   ¦       dkjson.lua
+    ¦   ¦       getopt.lua
+    ¦   ¦       hf_reader.lua
+    ¦   ¦       htmlskel.lua
+    ¦   ¦       html_dumplib.lua
+    ¦   ¦       md5.lua
+    ¦   ¦       mfc_default_keys.lua
+    ¦   ¦       pm3_cmd.lua
+    ¦   ¦       precalc.lua
+    ¦   ¦       read14a.lua
+    ¦   ¦       read14b.lua
+    ¦   ¦       read15.lua
+    ¦   ¦       t55xx_config.lua
+    ¦   ¦       taglib.lua
+    ¦   ¦       testresult.lua
+    ¦   ¦       trace_parse.lua
+    ¦   ¦       utils.lua
+    ¦   ¦       
+    ¦   +---luascripts
+    ¦   ¦   ¦   data_hex_crc.lua
+    ¦   ¦   ¦   data_mfu_bin2eml.lua
+    ¦   ¦   ¦   data_mf_accessdecode.lua
+    ¦   ¦   ¦   data_mf_bin2eml.lua
+    ¦   ¦   ¦   data_mf_bin2html.lua
+    ¦   ¦   ¦   data_mf_eml2bin.lua
+    ¦   ¦   ¦   data_mf_eml2html.lua
+    ¦   ¦   ¦   hf_14a_aztek.lua
+    ¦   ¦   ¦   hf_14a_i2crevive.lua
+    ¦   ¦   ¦   hf_14a_protectimus_nfc.lua
+    ¦   ¦   ¦   hf_14a_raw.lua
+    ¦   ¦   ¦   hf_14a_read_ltocm.lua
+    ¦   ¦   ¦   hf_14b_calypso.lua
+    ¦   ¦   ¦   hf_14b_mobib.lua
+    ¦   ¦   ¦   hf_15_magic.lua
+    ¦   ¦   ¦   hf_i2c_plus_2k_utils.lua
+    ¦   ¦   ¦   hf_legic.lua
+    ¦   ¦   ¦   hf_legic_buffer2card.lua
+    ¦   ¦   ¦   hf_legic_clone.lua
+    ¦   ¦   ¦   hf_mfp_raw.lua
+    ¦   ¦   ¦   hf_mfu_amiibo_restore.lua
+    ¦   ¦   ¦   hf_mfu_amiibo_sim.lua
+    ¦   ¦   ¦   hf_mfu_magicwrite.lua
+    ¦   ¦   ¦   hf_mfu_pwdgen_italy.lua
+    ¦   ¦   ¦   hf_mfu_setuid.lua
+    ¦   ¦   ¦   hf_mfu_ultra.lua
+    ¦   ¦   ¦   hf_mf_autopwn.lua
+    ¦   ¦   ¦   hf_mf_dump_luxeo.lua
+    ¦   ¦   ¦   hf_mf_em_util.lua
+    ¦   ¦   ¦   hf_mf_format.lua
+    ¦   ¦   ¦   hf_mf_gen3_writer.lua
+    ¦   ¦   ¦   hf_mf_keycheck.lua
+    ¦   ¦   ¦   hf_mf_magicrevive.lua
+    ¦   ¦   ¦   hf_mf_mini_dumpdecrypt.lua
+    ¦   ¦   ¦   hf_mf_sim_hid.lua
+    ¦   ¦   ¦   hf_mf_tnp3_clone.lua
+    ¦   ¦   ¦   hf_mf_tnp3_dump.lua
+    ¦   ¦   ¦   hf_mf_tnp3_sim.lua
+    ¦   ¦   ¦   hf_mf_uidbruteforce.lua
+    ¦   ¦   ¦   hf_mf_uidkeycalc.lua
+    ¦   ¦   ¦   hf_mf_uidkeycalc_mizip.lua
+    ¦   ¦   ¦   hf_mf_uid_downgrade.lua
+    ¦   ¦   ¦   hf_mf_ultimatecard.lua
+    ¦   ¦   ¦   hf_mf_uscuid_prog.lua
+    ¦   ¦   ¦   hf_ndef_dump.lua
+    ¦   ¦   ¦   hf_ntag_3d.lua
+    ¦   ¦   ¦   hf_ntag_bruteforce.lua
+    ¦   ¦   ¦   hf_ntag_dt.lua
+    ¦   ¦   ¦   init_rdv4.lua
+    ¦   ¦   ¦   lf_awid_bulkclone.lua
+    ¦   ¦   ¦   lf_electra.lua
+    ¦   ¦   ¦   lf_em4100_bulk.lua
+    ¦   ¦   ¦   lf_em4x05_kybercrystals.lua
+    ¦   ¦   ¦   lf_em_tearoff.lua
+    ¦   ¦   ¦   lf_em_tearoff_protect.lua
+    ¦   ¦   ¦   lf_hid_bulkclone.lua
+    ¦   ¦   ¦   lf_hid_bulkclone_v2.lua
+    ¦   ¦   ¦   lf_ht2_paxton.lau
+    ¦   ¦   ¦   lf_ident_json.lua
+    ¦   ¦   ¦   lf_ioprox_bulkclone.lua
+    ¦   ¦   ¦   lf_t55xx_chk.lua
+    ¦   ¦   ¦   lf_t55xx_chk_date.lua
+    ¦   ¦   ¦   lf_t55xx_fix.lua
+    ¦   ¦   ¦   lf_t55xx_multiwriter.lua
+    ¦   ¦   ¦   lf_t55xx_reset.lua
+    ¦   ¦   ¦   mem_readpwd.lua
+    ¦   ¦   ¦   mem_spiffs_readpwd.lua
+    ¦   ¦   ¦   mfc_hammerlite.lua
+    ¦   ¦   ¦   multi_bruteforce.lua
+    ¦   ¦   ¦   ntag_clean.lua
+    ¦   ¦   ¦   ntag_getsig.lua
+    ¦   ¦   ¦   ntag_hammertime.lua
+    ¦   ¦   ¦   
+    ¦   ¦   +---examples
+    ¦   ¦   ¦       example_cmdline.lua
+    ¦   ¦   ¦       example_parameters.lua
+    ¦   ¦   ¦       
+    ¦   ¦   L---tests
+    ¦   ¦           data_tracetest.lua
+    ¦   ¦           hf_read.lua
+    ¦   ¦           lf_t55xx_defaultask.lua
+    ¦   ¦           lf_t55xx_defaultbi.lua
+    ¦   ¦           lf_t55xx_defaultfsk.lua
+    ¦   ¦           lf_t55xx_defaultpsk.lua
+    ¦   ¦           lf_t55xx_writetest.lua
+    ¦   ¦           
+    ¦   +---obj
+    ¦   ¦   ¦   aidsearch.d
+    ¦   ¦   ¦   aidsearch.o
+    ¦   ¦   ¦   atrs.d
+    ¦   ¦   ¦   atrs.o
+    ¦   ¦   ¦   bruteforce.d
+    ¦   ¦   ¦   bruteforce.o
+    ¦   ¦   ¦   bucketsort.d
+    ¦   ¦   ¦   bucketsort.o
+    ¦   ¦   ¦   cardhelper.d
+    ¦   ¦   ¦   cardhelper.o
+    ¦   ¦   ¦   cmdanalyse.d
+    ¦   ¦   ¦   cmdanalyse.o
+    ¦   ¦   ¦   cmdcrc.d
+    ¦   ¦   ¦   cmdcrc.o
+    ¦   ¦   ¦   cmddata.d
+    ¦   ¦   ¦   cmddata.o
+    ¦   ¦   ¦   cmdflashmem.d
+    ¦   ¦   ¦   cmdflashmem.o
+    ¦   ¦   ¦   cmdflashmemspiffs.d
+    ¦   ¦   ¦   cmdflashmemspiffs.o
+    ¦   ¦   ¦   cmdhf.d
+    ¦   ¦   ¦   cmdhf.o
+    ¦   ¦   ¦   cmdhf14a.d
+    ¦   ¦   ¦   cmdhf14a.o
+    ¦   ¦   ¦   cmdhf14b.d
+    ¦   ¦   ¦   cmdhf14b.o
+    ¦   ¦   ¦   cmdhf15.d
+    ¦   ¦   ¦   cmdhf15.o
+    ¦   ¦   ¦   cmdhfaliro.d
+    ¦   ¦   ¦   cmdhfaliro.o
+    ¦   ¦   ¦   cmdhfcalypso.d
+    ¦   ¦   ¦   cmdhfcalypso.o
+    ¦   ¦   ¦   cmdhfcipurse.d
+    ¦   ¦   ¦   cmdhfcipurse.o
+    ¦   ¦   ¦   cmdhfcryptorf.d
+    ¦   ¦   ¦   cmdhfcryptorf.o
+    ¦   ¦   ¦   cmdhfemrtd.d
+    ¦   ¦   ¦   cmdhfemrtd.o
+    ¦   ¦   ¦   cmdhfepa.d
+    ¦   ¦   ¦   cmdhfepa.o
+    ¦   ¦   ¦   cmdhffelica.d
+    ¦   ¦   ¦   cmdhffelica.o
+    ¦   ¦   ¦   cmdhffido.d
+    ¦   ¦   ¦   cmdhffido.o
+    ¦   ¦   ¦   cmdhffmcos.d
+    ¦   ¦   ¦   cmdhffmcos.o
+    ¦   ¦   ¦   cmdhffudan.d
+    ¦   ¦   ¦   cmdhffudan.o
+    ¦   ¦   ¦   cmdhfgallagher.d
+    ¦   ¦   ¦   cmdhfgallagher.o
+    ¦   ¦   ¦   cmdhfgst.d
+    ¦   ¦   ¦   cmdhfgst.o
+    ¦   ¦   ¦   cmdhficlass.d
+    ¦   ¦   ¦   cmdhficlass.o
+    ¦   ¦   ¦   cmdhfict.d
+    ¦   ¦   ¦   cmdhfict.o
+    ¦   ¦   ¦   cmdhfjooki.d
+    ¦   ¦   ¦   cmdhfjooki.o
+    ¦   ¦   ¦   cmdhfksx6924.d
+    ¦   ¦   ¦   cmdhfksx6924.o
+    ¦   ¦   ¦   cmdhflegic.d
+    ¦   ¦   ¦   cmdhflegic.o
+    ¦   ¦   ¦   cmdhflist.d
+    ¦   ¦   ¦   cmdhflist.o
+    ¦   ¦   ¦   cmdhflto.d
+    ¦   ¦   ¦   cmdhflto.o
+    ¦   ¦   ¦   cmdhfmf.d
+    ¦   ¦   ¦   cmdhfmf.o
+    ¦   ¦   ¦   cmdhfmfdes.d
+    ¦   ¦   ¦   cmdhfmfdes.o
+    ¦   ¦   ¦   cmdhfmfhard.d
+    ¦   ¦   ¦   cmdhfmfhard.o
+    ¦   ¦   ¦   cmdhfmfp.d
+    ¦   ¦   ¦   cmdhfmfp.o
+    ¦   ¦   ¦   cmdhfmfsen.d
+    ¦   ¦   ¦   cmdhfmfsen.o
+    ¦   ¦   ¦   cmdhfmfu.d
+    ¦   ¦   ¦   cmdhfmfu.o
+    ¦   ¦   ¦   cmdhfntag424.d
+    ¦   ¦   ¦   cmdhfntag424.o
+    ¦   ¦   ¦   cmdhfsaflok.d
+    ¦   ¦   ¦   cmdhfsaflok.o
+    ¦   ¦   ¦   cmdhfsecc.d
+    ¦   ¦   ¦   cmdhfsecc.o
+    ¦   ¦   ¦   cmdhfseos.d
+    ¦   ¦   ¦   cmdhfseos.o
+    ¦   ¦   ¦   cmdhfst.d
+    ¦   ¦   ¦   cmdhfst.o
+    ¦   ¦   ¦   cmdhfst25ta.d
+    ¦   ¦   ¦   cmdhfst25ta.o
+    ¦   ¦   ¦   cmdhftesla.d
+    ¦   ¦   ¦   cmdhftesla.o
+    ¦   ¦   ¦   cmdhftexkom.d
+    ¦   ¦   ¦   cmdhftexkom.o
+    ¦   ¦   ¦   cmdhfthinfilm.d
+    ¦   ¦   ¦   cmdhfthinfilm.o
+    ¦   ¦   ¦   cmdhftopaz.d
+    ¦   ¦   ¦   cmdhftopaz.o
+    ¦   ¦   ¦   cmdhfvas.d
+    ¦   ¦   ¦   cmdhfvas.o
+    ¦   ¦   ¦   cmdhfxerox.d
+    ¦   ¦   ¦   cmdhfxerox.o
+    ¦   ¦   ¦   cmdhw.d
+    ¦   ¦   ¦   cmdhw.o
+    ¦   ¦   ¦   cmdlf.d
+    ¦   ¦   ¦   cmdlf.o
+    ¦   ¦   ¦   cmdlfawid.d
+    ¦   ¦   ¦   cmdlfawid.o
+    ¦   ¦   ¦   cmdlfcotag.d
+    ¦   ¦   ¦   cmdlfcotag.o
+    ¦   ¦   ¦   cmdlfdestron.d
+    ¦   ¦   ¦   cmdlfdestron.o
+    ¦   ¦   ¦   cmdlfem.d
+    ¦   ¦   ¦   cmdlfem.o
+    ¦   ¦   ¦   cmdlfem410x.d
+    ¦   ¦   ¦   cmdlfem410x.o
+    ¦   ¦   ¦   cmdlfem4x05.d
+    ¦   ¦   ¦   cmdlfem4x05.o
+    ¦   ¦   ¦   cmdlfem4x50.d
+    ¦   ¦   ¦   cmdlfem4x50.o
+    ¦   ¦   ¦   cmdlfem4x70.d
+    ¦   ¦   ¦   cmdlfem4x70.o
+    ¦   ¦   ¦   cmdlffdxb.d
+    ¦   ¦   ¦   cmdlffdxb.o
+    ¦   ¦   ¦   cmdlfgallagher.d
+    ¦   ¦   ¦   cmdlfgallagher.o
+    ¦   ¦   ¦   cmdlfguard.d
+    ¦   ¦   ¦   cmdlfguard.o
+    ¦   ¦   ¦   cmdlfhid.d
+    ¦   ¦   ¦   cmdlfhid.o
+    ¦   ¦   ¦   cmdlfhitag.d
+    ¦   ¦   ¦   cmdlfhitag.o
+    ¦   ¦   ¦   cmdlfhitaghts.d
+    ¦   ¦   ¦   cmdlfhitaghts.o
+    ¦   ¦   ¦   cmdlfhitagu.d
+    ¦   ¦   ¦   cmdlfhitagu.o
+    ¦   ¦   ¦   cmdlfidteck.d
+    ¦   ¦   ¦   cmdlfidteck.o
+    ¦   ¦   ¦   cmdlfindala.d
+    ¦   ¦   ¦   cmdlfindala.o
+    ¦   ¦   ¦   cmdlfio.d
+    ¦   ¦   ¦   cmdlfio.o
+    ¦   ¦   ¦   cmdlfjablotron.d
+    ¦   ¦   ¦   cmdlfjablotron.o
+    ¦   ¦   ¦   cmdlfkeri.d
+    ¦   ¦   ¦   cmdlfkeri.o
+    ¦   ¦   ¦   cmdlfmotorola.d
+    ¦   ¦   ¦   cmdlfmotorola.o
+    ¦   ¦   ¦   cmdlfnedap.d
+    ¦   ¦   ¦   cmdlfnedap.o
+    ¦   ¦   ¦   cmdlfnexwatch.d
+    ¦   ¦   ¦   cmdlfnexwatch.o
+    ¦   ¦   ¦   cmdlfnoralsy.d
+    ¦   ¦   ¦   cmdlfnoralsy.o
+    ¦   ¦   ¦   cmdlfpac.d
+    ¦   ¦   ¦   cmdlfpac.o
+    ¦   ¦   ¦   cmdlfparadox.d
+    ¦   ¦   ¦   cmdlfparadox.o
+    ¦   ¦   ¦   cmdlfpcf7931.d
+    ¦   ¦   ¦   cmdlfpcf7931.o
+    ¦   ¦   ¦   cmdlfpresco.d
+    ¦   ¦   ¦   cmdlfpresco.o
+    ¦   ¦   ¦   cmdlfpyramid.d
+    ¦   ¦   ¦   cmdlfpyramid.o
+    ¦   ¦   ¦   cmdlfsecurakey.d
+    ¦   ¦   ¦   cmdlfsecurakey.o
+    ¦   ¦   ¦   cmdlft55xx.d
+    ¦   ¦   ¦   cmdlft55xx.o
+    ¦   ¦   ¦   cmdlfti.d
+    ¦   ¦   ¦   cmdlfti.o
+    ¦   ¦   ¦   cmdlftrovan.d
+    ¦   ¦   ¦   cmdlftrovan.o
+    ¦   ¦   ¦   cmdlfviking.d
+    ¦   ¦   ¦   cmdlfviking.o
+    ¦   ¦   ¦   cmdlfvisa2000.d
+    ¦   ¦   ¦   cmdlfvisa2000.o
+    ¦   ¦   ¦   cmdlfzx8211.d
+    ¦   ¦   ¦   cmdlfzx8211.o
+    ¦   ¦   ¦   cmdmad.d
+    ¦   ¦   ¦   cmdmad.o
+    ¦   ¦   ¦   cmdmain.d
+    ¦   ¦   ¦   cmdmain.o
+    ¦   ¦   ¦   cmdmqtt.d
+    ¦   ¦   ¦   cmdmqtt.o
+    ¦   ¦   ¦   cmdnfc.d
+    ¦   ¦   ¦   cmdnfc.o
+    ¦   ¦   ¦   cmdparser.d
+    ¦   ¦   ¦   cmdparser.o
+    ¦   ¦   ¦   cmdpiv.d
+    ¦   ¦   ¦   cmdpiv.o
+    ¦   ¦   ¦   cmdscript.d
+    ¦   ¦   ¦   cmdscript.o
+    ¦   ¦   ¦   cmdsmartcard.d
+    ¦   ¦   ¦   cmdsmartcard.o
+    ¦   ¦   ¦   cmdtrace.d
+    ¦   ¦   ¦   cmdtrace.o
+    ¦   ¦   ¦   cmdusart.d
+    ¦   ¦   ¦   cmdusart.o
+    ¦   ¦   ¦   cmdwiegand.d
+    ¦   ¦   ¦   cmdwiegand.o
+    ¦   ¦   ¦   commonutil.d
+    ¦   ¦   ¦   commonutil.o
+    ¦   ¦   ¦   comms.d
+    ¦   ¦   ¦   comms.o
+    ¦   ¦   ¦   crc.d
+    ¦   ¦   ¦   crc.o
+    ¦   ¦   ¦   crc16.d
+    ¦   ¦   ¦   crc16.o
+    ¦   ¦   ¦   crc32.d
+    ¦   ¦   ¦   crc32.o
+    ¦   ¦   ¦   crc64.d
+    ¦   ¦   ¦   crc64.o
+    ¦   ¦   ¦   fileutils.d
+    ¦   ¦   ¦   fileutils.o
+    ¦   ¦   ¦   flash.d
+    ¦   ¦   ¦   flash.o
+    ¦   ¦   ¦   frame_progress.d
+    ¦   ¦   ¦   frame_progress.o
+    ¦   ¦   ¦   generator.d
+    ¦   ¦   ¦   generator.o
+    ¦   ¦   ¦   graph.d
+    ¦   ¦   ¦   graph.o
+    ¦   ¦   ¦   hidsio.d
+    ¦   ¦   ¦   hidsio.o
+    ¦   ¦   ¦   iso15693tools.d
+    ¦   ¦   ¦   iso15693tools.o
+    ¦   ¦   ¦   iso4217.d
+    ¦   ¦   ¦   iso4217.o
+    ¦   ¦   ¦   jansson_path.d
+    ¦   ¦   ¦   jansson_path.o
+    ¦   ¦   ¦   legic_prng.d
+    ¦   ¦   ¦   legic_prng.o
+    ¦   ¦   ¦   lfdemod.d
+    ¦   ¦   ¦   lfdemod.o
+    ¦   ¦   ¦   libmbedtls.a
+    ¦   ¦   ¦   lua_bitlib.d
+    ¦   ¦   ¦   lua_bitlib.o
+    ¦   ¦   ¦   pla.d
+    ¦   ¦   ¦   pla.o
+    ¦   ¦   ¦   pm3.d
+    ¦   ¦   ¦   pm3.o
+    ¦   ¦   ¦   pm3line.d
+    ¦   ¦   ¦   pm3line.o
+    ¦   ¦   ¦   pm3_binlib.d
+    ¦   ¦   ¦   pm3_binlib.o
+    ¦   ¦   ¦   pm3_bitlib.d
+    ¦   ¦   ¦   pm3_bitlib.o
+    ¦   ¦   ¦   pm3_dsp.d
+    ¦   ¦   ¦   pm3_dsp.o
+    ¦   ¦   ¦   pm3_fit.d
+    ¦   ¦   ¦   pm3_fit.o
+    ¦   ¦   ¦   pm3_lua.d
+    ¦   ¦   ¦   pm3_luawrap.o
+    ¦   ¦   ¦   pm3_py.d
+    ¦   ¦   ¦   pm3_pywrap.o
+    ¦   ¦   ¦   preferences.d
+    ¦   ¦   ¦   preferences.o
+    ¦   ¦   ¦   proxgui.d
+    ¦   ¦   ¦   proxgui.o
+    ¦   ¦   ¦   proxguiqt.d
+    ¦   ¦   ¦   proxguiqt.moc.d
+    ¦   ¦   ¦   proxguiqt.moc.o
+    ¦   ¦   ¦   proxguiqt.o
+    ¦   ¦   ¦   proxmark3.d
+    ¦   ¦   ¦   proxmark3.o
+    ¦   ¦   ¦   scandir.d
+    ¦   ¦   ¦   scandir.o
+    ¦   ¦   ¦   scripting.d
+    ¦   ¦   ¦   scripting.o
+    ¦   ¦   ¦   ui.d
+    ¦   ¦   ¦   ui.o
+    ¦   ¦   ¦   util.d
+    ¦   ¦   ¦   util.o
+    ¦   ¦   ¦   util_posix.d
+    ¦   ¦   ¦   util_posix.o
+    ¦   ¦   ¦   version_pm3.d
+    ¦   ¦   ¦   version_pm3.o
+    ¦   ¦   ¦   wiegand_formats.d
+    ¦   ¦   ¦   wiegand_formats.o
+    ¦   ¦   ¦   wiegand_formatutils.d
+    ¦   ¦   ¦   wiegand_formatutils.o
+    ¦   ¦   ¦   
+    ¦   ¦   +---cipurse
+    ¦   ¦   ¦       cipursecore.d
+    ¦   ¦   ¦       cipursecore.o
+    ¦   ¦   ¦       cipursecrypto.d
+    ¦   ¦   ¦       cipursecrypto.o
+    ¦   ¦   ¦       cipursetest.d
+    ¦   ¦   ¦       cipursetest.o
+    ¦   ¦   ¦       
+    ¦   ¦   +---crapto1
+    ¦   ¦   ¦       crapto1.d
+    ¦   ¦   ¦       crapto1.o
+    ¦   ¦   ¦       crypto1.d
+    ¦   ¦   ¦       crypto1.o
+    ¦   ¦   ¦       
+    ¦   ¦   +---crypto
+    ¦   ¦   ¦       asn1dump.d
+    ¦   ¦   ¦       asn1dump.o
+    ¦   ¦   ¦       asn1utils.d
+    ¦   ¦   ¦       asn1utils.o
+    ¦   ¦   ¦       duoxcrypto.d
+    ¦   ¦   ¦       duoxcrypto.o
+    ¦   ¦   ¦       libpcrypto.d
+    ¦   ¦   ¦       libpcrypto.o
+    ¦   ¦   ¦       originality.d
+    ¦   ¦   ¦       originality.o
+    ¦   ¦   ¦       
+    ¦   ¦   +---emv
+    ¦   ¦   ¦   ¦   cmdemv.d
+    ¦   ¦   ¦   ¦   cmdemv.o
+    ¦   ¦   ¦   ¦   crypto.d
+    ¦   ¦   ¦   ¦   crypto.o
+    ¦   ¦   ¦   ¦   crypto_polarssl.d
+    ¦   ¦   ¦   ¦   crypto_polarssl.o
+    ¦   ¦   ¦   ¦   dol.d
+    ¦   ¦   ¦   ¦   dol.o
+    ¦   ¦   ¦   ¦   emvcore.d
+    ¦   ¦   ¦   ¦   emvcore.o
+    ¦   ¦   ¦   ¦   emvjson.d
+    ¦   ¦   ¦   ¦   emvjson.o
+    ¦   ¦   ¦   ¦   emv_pk.d
+    ¦   ¦   ¦   ¦   emv_pk.o
+    ¦   ¦   ¦   ¦   emv_pki.d
+    ¦   ¦   ¦   ¦   emv_pki.o
+    ¦   ¦   ¦   ¦   emv_pki_priv.d
+    ¦   ¦   ¦   ¦   emv_pki_priv.o
+    ¦   ¦   ¦   ¦   emv_roca.d
+    ¦   ¦   ¦   ¦   emv_roca.o
+    ¦   ¦   ¦   ¦   emv_tags.d
+    ¦   ¦   ¦   ¦   emv_tags.o
+    ¦   ¦   ¦   ¦   tlv.d
+    ¦   ¦   ¦   ¦   tlv.o
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   L---test
+    ¦   ¦   ¦           cda_test.d
+    ¦   ¦   ¦           cda_test.o
+    ¦   ¦   ¦           cryptotest.d
+    ¦   ¦   ¦           cryptotest.o
+    ¦   ¦   ¦           crypto_test.d
+    ¦   ¦   ¦           crypto_test.o
+    ¦   ¦   ¦           dda_test.d
+    ¦   ¦   ¦           dda_test.o
+    ¦   ¦   ¦           sda_test.d
+    ¦   ¦   ¦           sda_test.o
+    ¦   ¦   ¦           
+    ¦   ¦   +---fido
+    ¦   ¦   ¦       additional_ca.d
+    ¦   ¦   ¦       additional_ca.o
+    ¦   ¦   ¦       cbortools.d
+    ¦   ¦   ¦       cbortools.o
+    ¦   ¦   ¦       cose.d
+    ¦   ¦   ¦       cose.o
+    ¦   ¦   ¦       fidocore.d
+    ¦   ¦   ¦       fidocore.o
+    ¦   ¦   ¦       
+    ¦   ¦   +---hitag2
+    ¦   ¦   ¦       hitag2_crypto.d
+    ¦   ¦   ¦       hitag2_crypto.o
+    ¦   ¦   ¦       
+    ¦   ¦   +---iso7816
+    ¦   ¦   ¦       apduinfo.d
+    ¦   ¦   ¦       apduinfo.o
+    ¦   ¦   ¦       iso7816core.d
+    ¦   ¦   ¦       iso7816core.o
+    ¦   ¦   ¦       
+    ¦   ¦   +---ksx6924
+    ¦   ¦   ¦       ksx6924core.d
+    ¦   ¦   ¦       ksx6924core.o
+    ¦   ¦   ¦       
+    ¦   ¦   +---loclass
+    ¦   ¦   ¦       cipher.d
+    ¦   ¦   ¦       cipher.o
+    ¦   ¦   ¦       cipherutils.d
+    ¦   ¦   ¦       cipherutils.o
+    ¦   ¦   ¦       cipher_bs.d
+    ¦   ¦   ¦       cipher_bs.o
+    ¦   ¦   ¦       cipher_bs_avx2.d
+    ¦   ¦   ¦       cipher_bs_avx2.o
+    ¦   ¦   ¦       cipher_bs_avx512.d
+    ¦   ¦   ¦       cipher_bs_avx512.o
+    ¦   ¦   ¦       cipher_bs_dispatch.d
+    ¦   ¦   ¦       cipher_bs_dispatch.o
+    ¦   ¦   ¦       cipher_bs_neon.d
+    ¦   ¦   ¦       cipher_bs_neon.o
+    ¦   ¦   ¦       elite_crack.d
+    ¦   ¦   ¦       elite_crack.o
+    ¦   ¦   ¦       ikeys.d
+    ¦   ¦   ¦       ikeys.o
+    ¦   ¦   ¦       
+    ¦   ¦   +---mbedtls
+    ¦   ¦   ¦       aes.d
+    ¦   ¦   ¦       aes.o
+    ¦   ¦   ¦       arc4.d
+    ¦   ¦   ¦       arc4.o
+    ¦   ¦   ¦       asn1parse.d
+    ¦   ¦   ¦       asn1parse.o
+    ¦   ¦   ¦       asn1write.d
+    ¦   ¦   ¦       asn1write.o
+    ¦   ¦   ¦       base64.d
+    ¦   ¦   ¦       base64.o
+    ¦   ¦   ¦       bignum.d
+    ¦   ¦   ¦       bignum.o
+    ¦   ¦   ¦       blowfish.d
+    ¦   ¦   ¦       blowfish.o
+    ¦   ¦   ¦       camellia.d
+    ¦   ¦   ¦       camellia.o
+    ¦   ¦   ¦       certs.d
+    ¦   ¦   ¦       certs.o
+    ¦   ¦   ¦       cipher.d
+    ¦   ¦   ¦       cipher.o
+    ¦   ¦   ¦       cipher_wrap.d
+    ¦   ¦   ¦       cipher_wrap.o
+    ¦   ¦   ¦       cmac.d
+    ¦   ¦   ¦       cmac.o
+    ¦   ¦   ¦       ctr_drbg.d
+    ¦   ¦   ¦       ctr_drbg.o
+    ¦   ¦   ¦       des.d
+    ¦   ¦   ¦       des.o
+    ¦   ¦   ¦       ecc_point_compression.d
+    ¦   ¦   ¦       ecc_point_compression.o
+    ¦   ¦   ¦       ecdh.d
+    ¦   ¦   ¦       ecdh.o
+    ¦   ¦   ¦       ecdsa.d
+    ¦   ¦   ¦       ecdsa.o
+    ¦   ¦   ¦       ecp.d
+    ¦   ¦   ¦       ecp.o
+    ¦   ¦   ¦       ecp_curves.d
+    ¦   ¦   ¦       ecp_curves.o
+    ¦   ¦   ¦       entropy.d
+    ¦   ¦   ¦       entropy.o
+    ¦   ¦   ¦       entropy_poll.d
+    ¦   ¦   ¦       entropy_poll.o
+    ¦   ¦   ¦       error.d
+    ¦   ¦   ¦       error.o
+    ¦   ¦   ¦       gcm.d
+    ¦   ¦   ¦       gcm.o
+    ¦   ¦   ¦       hkdf.d
+    ¦   ¦   ¦       hkdf.o
+    ¦   ¦   ¦       md.d
+    ¦   ¦   ¦       md.o
+    ¦   ¦   ¦       md5.d
+    ¦   ¦   ¦       md5.o
+    ¦   ¦   ¦       net_sockets.d
+    ¦   ¦   ¦       net_sockets.o
+    ¦   ¦   ¦       oid.d
+    ¦   ¦   ¦       oid.o
+    ¦   ¦   ¦       pem.d
+    ¦   ¦   ¦       pem.o
+    ¦   ¦   ¦       pk.d
+    ¦   ¦   ¦       pk.o
+    ¦   ¦   ¦       pkcs12.d
+    ¦   ¦   ¦       pkcs12.o
+    ¦   ¦   ¦       pkcs5.d
+    ¦   ¦   ¦       pkcs5.o
+    ¦   ¦   ¦       pkparse.d
+    ¦   ¦   ¦       pkparse.o
+    ¦   ¦   ¦       pkwrite.d
+    ¦   ¦   ¦       pkwrite.o
+    ¦   ¦   ¦       pk_wrap.d
+    ¦   ¦   ¦       pk_wrap.o
+    ¦   ¦   ¦       platform.d
+    ¦   ¦   ¦       platform.o
+    ¦   ¦   ¦       platform_util.d
+    ¦   ¦   ¦       platform_util.o
+    ¦   ¦   ¦       rsa.d
+    ¦   ¦   ¦       rsa.o
+    ¦   ¦   ¦       rsa_internal.d
+    ¦   ¦   ¦       rsa_internal.o
+    ¦   ¦   ¦       sha1.d
+    ¦   ¦   ¦       sha1.o
+    ¦   ¦   ¦       sha256.d
+    ¦   ¦   ¦       sha256.o
+    ¦   ¦   ¦       sha512.d
+    ¦   ¦   ¦       sha512.o
+    ¦   ¦   ¦       threading.d
+    ¦   ¦   ¦       threading.o
+    ¦   ¦   ¦       x509.d
+    ¦   ¦   ¦       x509.o
+    ¦   ¦   ¦       x509_crl.d
+    ¦   ¦   ¦       x509_crl.o
+    ¦   ¦   ¦       x509_crt.d
+    ¦   ¦   ¦       x509_crt.o
+    ¦   ¦   ¦       
+    ¦   ¦   +---mifare
+    ¦   ¦   ¦       aiddesfire.d
+    ¦   ¦   ¦       aiddesfire.o
+    ¦   ¦   ¦       desfirecore.d
+    ¦   ¦   ¦       desfirecore.o
+    ¦   ¦   ¦       desfirecrypto.d
+    ¦   ¦   ¦       desfirecrypto.o
+    ¦   ¦   ¦       desfiresecurechan.d
+    ¦   ¦   ¦       desfiresecurechan.o
+    ¦   ¦   ¦       desfiretest.d
+    ¦   ¦   ¦       desfiretest.o
+    ¦   ¦   ¦       gallaghercore.d
+    ¦   ¦   ¦       gallaghercore.o
+    ¦   ¦   ¦       gallaghertest.d
+    ¦   ¦   ¦       gallaghertest.o
+    ¦   ¦   ¦       gen4.d
+    ¦   ¦   ¦       gen4.o
+    ¦   ¦   ¦       lrpcrypto.d
+    ¦   ¦   ¦       lrpcrypto.o
+    ¦   ¦   ¦       mad.d
+    ¦   ¦   ¦       mad.o
+    ¦   ¦   ¦       mad_test.d
+    ¦   ¦   ¦       mad_test.o
+    ¦   ¦   ¦       mfkey.d
+    ¦   ¦   ¦       mfkey.o
+    ¦   ¦   ¦       mifare4.d
+    ¦   ¦   ¦       mifare4.o
+    ¦   ¦   ¦       mifaredefault.d
+    ¦   ¦   ¦       mifaredefault.o
+    ¦   ¦   ¦       mifarehost.d
+    ¦   ¦   ¦       mifarehost.o
+    ¦   ¦   ¦       prime.d
+    ¦   ¦   ¦       prime.o
+    ¦   ¦   ¦       
+    ¦   ¦   +---nfc
+    ¦   ¦   ¦       ndef.d
+    ¦   ¦   ¦       ndef.o
+    ¦   ¦   ¦       
+    ¦   ¦   +---parsers
+    ¦   ¦   ¦   ¦   parsehrt.d
+    ¦   ¦   ¦   ¦   parsehrt.o
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   L---hrtparser
+    ¦   ¦   ¦           hrtparser.d
+    ¦   ¦   ¦           hrtparser.o
+    ¦   ¦   ¦           
+    ¦   ¦   +---qrcode
+    ¦   ¦   ¦       qrcode.d
+    ¦   ¦   ¦       qrcode.o
+    ¦   ¦   ¦       
+    ¦   ¦   +---relay
+    ¦   ¦   ¦       relay_posix.d
+    ¦   ¦   ¦       relay_posix.o
+    ¦   ¦   ¦       relay_win32.d
+    ¦   ¦   ¦       relay_win32.o
+    ¦   ¦   ¦       
+    ¦   ¦   L---uart
+    ¦   ¦           ringbuffer.d
+    ¦   ¦           ringbuffer.o
+    ¦   ¦           uart_common.d
+    ¦   ¦           uart_common.o
+    ¦   ¦           uart_posix.d
+    ¦   ¦           uart_posix.o
+    ¦   ¦           uart_win32.d
+    ¦   ¦           uart_win32.o
+    ¦   ¦           
+    ¦   +---pyscripts
+    ¦   ¦       amiibo_change_uid.py
+    ¦   ¦       des_talk.py
+    ¦   ¦       findbits.py
+    ¦   ¦       fm11rf08s_full.py
+    ¦   ¦       fm11rf08s_recovery.py
+    ¦   ¦       hf_mfu_uscuid.py
+    ¦   ¦       ice.py
+    ¦   ¦       intertic.py
+    ¦   ¦       mfuev1_counter_reset.py
+    ¦   ¦       mfulaes_mask_recovery.py
+    ¦   ¦       mfulc_counterfeit_recovery.py
+    ¦   ¦       mf_backdoor_dump.py
+    ¦   ¦       ntag22x_libsuncmac.py
+    ¦   ¦       ntag22x_suncmac_recovery.py
+    ¦   ¦       parity.py
+    ¦   ¦       paxton_convert.py
+    ¦   ¦       paxton_net.py
+    ¦   ¦       paxton_switch.py
+    ¦   ¦       pm3.py
+    ¦   ¦       pm3_eml2mfd.py
+    ¦   ¦       pm3_eml_mfd_test.py
+    ¦   ¦       pm3_help2json.py
+    ¦   ¦       pm3_help2list.py
+    ¦   ¦       pm3_mfd2eml.py
+    ¦   ¦       pm3_nfc2eml.py
+    ¦   ¦       pm3_resources.py
+    ¦   ¦       read_t-union.py
+    ¦   ¦       spi_flash_decode.py
+    ¦   ¦       theremin.py
+    ¦   ¦       xorcheck.py
+    ¦   ¦       
+    ¦   +---resources
+    ¦   ¦   ¦   aidlist.json
+    ¦   ¦   ¦   aid_desfire.json
+    ¦   ¦   ¦   capk.txt
+    ¦   ¦   ¦   ecplist.json
+    ¦   ¦   ¦   ecp_taxonomy.json
+    ¦   ¦   ¦   emv_defparams.json
+    ¦   ¦   ¦   gst.google.der
+    ¦   ¦   ¦   gst.passkit.der
+    ¦   ¦   ¦   hardnested_bf_bench_data.bin
+    ¦   ¦   ¦   hf_fido2_defparams.json
+    ¦   ¦   ¦   hidconfig_sample.json
+    ¦   ¦   ¦   iceman.txt
+    ¦   ¦   ¦   iclass_decryptionkey.bin
+    ¦   ¦   ¦   iclass_dump.bin
+    ¦   ¦   ¦   key_retail.bin
+    ¦   ¦   ¦   mad.json
+    ¦   ¦   ¦   oids.json
+    ¦   ¦   ¦   pm3_generic_private_key.pem
+    ¦   ¦   ¦   pm3_generic_private_key.sha512.txt
+    ¦   ¦   ¦   sim011.bin
+    ¦   ¦   ¦   sim011.sha512.txt
+    ¦   ¦   ¦   sim013.bin
+    ¦   ¦   ¦   sim013.sha512.txt
+    ¦   ¦   ¦   sim014.bin
+    ¦   ¦   ¦   sim014.sha512.txt
+    ¦   ¦   ¦   vas.passkit.der
+    ¦   ¦   ¦   vas.springcard.der
+    ¦   ¦   ¦   vas.zebra.der
+    ¦   ¦   ¦   
+    ¦   ¦   +---calypso
+    ¦   ¦   ¦       ic_families.json
+    ¦   ¦   ¦       manufacturers.json
+    ¦   ¦   ¦       nodes.json
+    ¦   ¦   ¦       operators.json
+    ¦   ¦   ¦       
+    ¦   ¦   +---duox_trust
+    ¦   ¦   ¦   L---nxp
+    ¦   ¦   ¦           nxp-auth-e201-sn63709320101001-c01.pem
+    ¦   ¦   ¦           nxp-auth-e202-sn63709320101002-c01.pem
+    ¦   ¦   ¦           nxp-auth-e203-sn63709320101003-c01.pem
+    ¦   ¦   ¦           nxp-evcharging-e201-sn63709320010001-c03.pem
+    ¦   ¦   ¦           nxp-evcharging-e201-sn63709320010002-c02.pem
+    ¦   ¦   ¦           nxp-leaf-e200-sn63709320131000-c02.pem
+    ¦   ¦   ¦           nxp-leaf-e500-sn63709320130000-c01.pem
+    ¦   ¦   ¦           nxp-orig-e200-sn63709320111000-c02.pem
+    ¦   ¦   ¦           nxp-orig-e201-sn63709320110001-c01.pem
+    ¦   ¦   ¦           nxp-orig-e202-sn63709320110002-c01.pem
+    ¦   ¦   ¦           nxp-orig-e203-sn63709320110003-c01.pem
+    ¦   ¦   ¦           nxp-orig-e500-sn63709320110000-c01.pem
+    ¦   ¦   ¦           nxp-picc-e200-sn63709320121000-c02.pem
+    ¦   ¦   ¦           nxp-picc-e500-sn63709320120000-c01.pem
+    ¦   ¦   ¦           
+    ¦   ¦   +---felica
+    ¦   ¦   ¦       felica_ic_code_list.json
+    ¦   ¦   ¦       felica_system_code_list.json
+    ¦   ¦   ¦       
+    ¦   ¦   L---hardnested_tables
+    ¦   ¦           bitflip_0_001_states.bin.lz4
+    ¦   ¦           bitflip_0_003_states.bin.lz4
+    ¦   ¦           bitflip_0_005_states.bin.lz4
+    ¦   ¦           bitflip_0_007_states.bin.lz4
+    ¦   ¦           bitflip_0_009_states.bin.lz4
+    ¦   ¦           bitflip_0_00b_states.bin.lz4
+    ¦   ¦           bitflip_0_00d_states.bin.lz4
+    ¦   ¦           bitflip_0_00f_states.bin.lz4
+    ¦   ¦           bitflip_0_010_states.bin.lz4
+    ¦   ¦           bitflip_0_014_states.bin.lz4
+    ¦   ¦           bitflip_0_01c_states.bin.lz4
+    ¦   ¦           bitflip_0_021_states.bin.lz4
+    ¦   ¦           bitflip_0_023_states.bin.lz4
+    ¦   ¦           bitflip_0_025_states.bin.lz4
+    ¦   ¦           bitflip_0_027_states.bin.lz4
+    ¦   ¦           bitflip_0_029_states.bin.lz4
+    ¦   ¦           bitflip_0_02b_states.bin.lz4
+    ¦   ¦           bitflip_0_02d_states.bin.lz4
+    ¦   ¦           bitflip_0_02f_states.bin.lz4
+    ¦   ¦           bitflip_0_030_states.bin.lz4
+    ¦   ¦           bitflip_0_034_states.bin.lz4
+    ¦   ¦           bitflip_0_03c_states.bin.lz4
+    ¦   ¦           bitflip_0_040_states.bin.lz4
+    ¦   ¦           bitflip_0_044_states.bin.lz4
+    ¦   ¦           bitflip_0_04c_states.bin.lz4
+    ¦   ¦           bitflip_0_051_states.bin.lz4
+    ¦   ¦           bitflip_0_053_states.bin.lz4
+    ¦   ¦           bitflip_0_055_states.bin.lz4
+    ¦   ¦           bitflip_0_057_states.bin.lz4
+    ¦   ¦           bitflip_0_059_states.bin.lz4
+    ¦   ¦           bitflip_0_05b_states.bin.lz4
+    ¦   ¦           bitflip_0_05d_states.bin.lz4
+    ¦   ¦           bitflip_0_05f_states.bin.lz4
+    ¦   ¦           bitflip_0_064_states.bin.lz4
+    ¦   ¦           bitflip_0_06c_states.bin.lz4
+    ¦   ¦           bitflip_0_071_states.bin.lz4
+    ¦   ¦           bitflip_0_073_states.bin.lz4
+    ¦   ¦           bitflip_0_075_states.bin.lz4
+    ¦   ¦           bitflip_0_077_states.bin.lz4
+    ¦   ¦           bitflip_0_079_states.bin.lz4
+    ¦   ¦           bitflip_0_07b_states.bin.lz4
+    ¦   ¦           bitflip_0_07f_states.bin.lz4
+    ¦   ¦           bitflip_0_081_states.bin.lz4
+    ¦   ¦           bitflip_0_083_states.bin.lz4
+    ¦   ¦           bitflip_0_085_states.bin.lz4
+    ¦   ¦           bitflip_0_087_states.bin.lz4
+    ¦   ¦           bitflip_0_089_states.bin.lz4
+    ¦   ¦           bitflip_0_08b_states.bin.lz4
+    ¦   ¦           bitflip_0_08d_states.bin.lz4
+    ¦   ¦           bitflip_0_08f_states.bin.lz4
+    ¦   ¦           bitflip_0_090_states.bin.lz4
+    ¦   ¦           bitflip_0_094_states.bin.lz4
+    ¦   ¦           bitflip_0_09c_states.bin.lz4
+    ¦   ¦           bitflip_0_0a1_states.bin.lz4
+    ¦   ¦           bitflip_0_0a3_states.bin.lz4
+    ¦   ¦           bitflip_0_0a5_states.bin.lz4
+    ¦   ¦           bitflip_0_0a7_states.bin.lz4
+    ¦   ¦           bitflip_0_0a9_states.bin.lz4
+    ¦   ¦           bitflip_0_0ab_states.bin.lz4
+    ¦   ¦           bitflip_0_0ad_states.bin.lz4
+    ¦   ¦           bitflip_0_0af_states.bin.lz4
+    ¦   ¦           bitflip_0_0b0_states.bin.lz4
+    ¦   ¦           bitflip_0_0b4_states.bin.lz4
+    ¦   ¦           bitflip_0_0bc_states.bin.lz4
+    ¦   ¦           bitflip_0_0c0_states.bin.lz4
+    ¦   ¦           bitflip_0_0c4_states.bin.lz4
+    ¦   ¦           bitflip_0_0cc_states.bin.lz4
+    ¦   ¦           bitflip_0_0d1_states.bin.lz4
+    ¦   ¦           bitflip_0_0d3_states.bin.lz4
+    ¦   ¦           bitflip_0_0d5_states.bin.lz4
+    ¦   ¦           bitflip_0_0d7_states.bin.lz4
+    ¦   ¦           bitflip_0_0d9_states.bin.lz4
+    ¦   ¦           bitflip_0_0db_states.bin.lz4
+    ¦   ¦           bitflip_0_0dd_states.bin.lz4
+    ¦   ¦           bitflip_0_0df_states.bin.lz4
+    ¦   ¦           bitflip_0_0e4_states.bin.lz4
+    ¦   ¦           bitflip_0_0ec_states.bin.lz4
+    ¦   ¦           bitflip_0_0f1_states.bin.lz4
+    ¦   ¦           bitflip_0_0f3_states.bin.lz4
+    ¦   ¦           bitflip_0_0f5_states.bin.lz4
+    ¦   ¦           bitflip_0_0f7_states.bin.lz4
+    ¦   ¦           bitflip_0_0f9_states.bin.lz4
+    ¦   ¦           bitflip_0_0fb_states.bin.lz4
+    ¦   ¦           bitflip_0_0fd_states.bin.lz4
+    ¦   ¦           bitflip_0_0ff_states.bin.lz4
+    ¦   ¦           bitflip_0_104_states.bin.lz4
+    ¦   ¦           bitflip_0_10c_states.bin.lz4
+    ¦   ¦           bitflip_0_111_states.bin.lz4
+    ¦   ¦           bitflip_0_113_states.bin.lz4
+    ¦   ¦           bitflip_0_115_states.bin.lz4
+    ¦   ¦           bitflip_0_117_states.bin.lz4
+    ¦   ¦           bitflip_0_119_states.bin.lz4
+    ¦   ¦           bitflip_0_11b_states.bin.lz4
+    ¦   ¦           bitflip_0_11d_states.bin.lz4
+    ¦   ¦           bitflip_0_11f_states.bin.lz4
+    ¦   ¦           bitflip_0_124_states.bin.lz4
+    ¦   ¦           bitflip_0_12c_states.bin.lz4
+    ¦   ¦           bitflip_0_131_states.bin.lz4
+    ¦   ¦           bitflip_0_133_states.bin.lz4
+    ¦   ¦           bitflip_0_135_states.bin.lz4
+    ¦   ¦           bitflip_0_137_states.bin.lz4
+    ¦   ¦           bitflip_0_139_states.bin.lz4
+    ¦   ¦           bitflip_0_13b_states.bin.lz4
+    ¦   ¦           bitflip_0_13d_states.bin.lz4
+    ¦   ¦           bitflip_0_13f_states.bin.lz4
+    ¦   ¦           bitflip_0_141_states.bin.lz4
+    ¦   ¦           bitflip_0_143_states.bin.lz4
+    ¦   ¦           bitflip_0_145_states.bin.lz4
+    ¦   ¦           bitflip_0_147_states.bin.lz4
+    ¦   ¦           bitflip_0_149_states.bin.lz4
+    ¦   ¦           bitflip_0_14b_states.bin.lz4
+    ¦   ¦           bitflip_0_14d_states.bin.lz4
+    ¦   ¦           bitflip_0_14f_states.bin.lz4
+    ¦   ¦           bitflip_0_150_states.bin.lz4
+    ¦   ¦           bitflip_0_154_states.bin.lz4
+    ¦   ¦           bitflip_0_15c_states.bin.lz4
+    ¦   ¦           bitflip_0_161_states.bin.lz4
+    ¦   ¦           bitflip_0_163_states.bin.lz4
+    ¦   ¦           bitflip_0_165_states.bin.lz4
+    ¦   ¦           bitflip_0_167_states.bin.lz4
+    ¦   ¦           bitflip_0_169_states.bin.lz4
+    ¦   ¦           bitflip_0_16b_states.bin.lz4
+    ¦   ¦           bitflip_0_16d_states.bin.lz4
+    ¦   ¦           bitflip_0_16f_states.bin.lz4
+    ¦   ¦           bitflip_0_170_states.bin.lz4
+    ¦   ¦           bitflip_0_174_states.bin.lz4
+    ¦   ¦           bitflip_0_17c_states.bin.lz4
+    ¦   ¦           bitflip_0_184_states.bin.lz4
+    ¦   ¦           bitflip_0_18c_states.bin.lz4
+    ¦   ¦           bitflip_0_191_states.bin.lz4
+    ¦   ¦           bitflip_0_193_states.bin.lz4
+    ¦   ¦           bitflip_0_195_states.bin.lz4
+    ¦   ¦           bitflip_0_197_states.bin.lz4
+    ¦   ¦           bitflip_0_199_states.bin.lz4
+    ¦   ¦           bitflip_0_19b_states.bin.lz4
+    ¦   ¦           bitflip_0_19d_states.bin.lz4
+    ¦   ¦           bitflip_0_19f_states.bin.lz4
+    ¦   ¦           bitflip_0_1a4_states.bin.lz4
+    ¦   ¦           bitflip_0_1ac_states.bin.lz4
+    ¦   ¦           bitflip_0_1b1_states.bin.lz4
+    ¦   ¦           bitflip_0_1b3_states.bin.lz4
+    ¦   ¦           bitflip_0_1b5_states.bin.lz4
+    ¦   ¦           bitflip_0_1b7_states.bin.lz4
+    ¦   ¦           bitflip_0_1b9_states.bin.lz4
+    ¦   ¦           bitflip_0_1bb_states.bin.lz4
+    ¦   ¦           bitflip_0_1bd_states.bin.lz4
+    ¦   ¦           bitflip_0_1bf_states.bin.lz4
+    ¦   ¦           bitflip_0_1c1_states.bin.lz4
+    ¦   ¦           bitflip_0_1c3_states.bin.lz4
+    ¦   ¦           bitflip_0_1c5_states.bin.lz4
+    ¦   ¦           bitflip_0_1c9_states.bin.lz4
+    ¦   ¦           bitflip_0_1cb_states.bin.lz4
+    ¦   ¦           bitflip_0_1d0_states.bin.lz4
+    ¦   ¦           bitflip_0_1d4_states.bin.lz4
+    ¦   ¦           bitflip_0_1dc_states.bin.lz4
+    ¦   ¦           bitflip_0_1e1_states.bin.lz4
+    ¦   ¦           bitflip_0_1e3_states.bin.lz4
+    ¦   ¦           bitflip_0_1e5_states.bin.lz4
+    ¦   ¦           bitflip_0_1e7_states.bin.lz4
+    ¦   ¦           bitflip_0_1e9_states.bin.lz4
+    ¦   ¦           bitflip_0_1eb_states.bin.lz4
+    ¦   ¦           bitflip_0_1ed_states.bin.lz4
+    ¦   ¦           bitflip_0_1ef_states.bin.lz4
+    ¦   ¦           bitflip_0_1f0_states.bin.lz4
+    ¦   ¦           bitflip_0_1f4_states.bin.lz4
+    ¦   ¦           bitflip_0_1fc_states.bin.lz4
+    ¦   ¦           bitflip_0_210_states.bin.lz4
+    ¦   ¦           bitflip_0_225_states.bin.lz4
+    ¦   ¦           bitflip_0_227_states.bin.lz4
+    ¦   ¦           bitflip_0_22d_states.bin.lz4
+    ¦   ¦           bitflip_0_22f_states.bin.lz4
+    ¦   ¦           bitflip_0_240_states.bin.lz4
+    ¦   ¦           bitflip_0_275_states.bin.lz4
+    ¦   ¦           bitflip_0_277_states.bin.lz4
+    ¦   ¦           bitflip_0_27f_states.bin.lz4
+    ¦   ¦           bitflip_0_294_states.bin.lz4
+    ¦   ¦           bitflip_0_2a1_states.bin.lz4
+    ¦   ¦           bitflip_0_2a3_states.bin.lz4
+    ¦   ¦           bitflip_0_2a9_states.bin.lz4
+    ¦   ¦           bitflip_0_2ab_states.bin.lz4
+    ¦   ¦           bitflip_0_2c4_states.bin.lz4
+    ¦   ¦           bitflip_0_2f1_states.bin.lz4
+    ¦   ¦           bitflip_0_2f3_states.bin.lz4
+    ¦   ¦           bitflip_0_2f9_states.bin.lz4
+    ¦   ¦           bitflip_0_2fb_states.bin.lz4
+    ¦   ¦           bitflip_0_335_states.bin.lz4
+    ¦   ¦           bitflip_0_337_states.bin.lz4
+    ¦   ¦           bitflip_0_33d_states.bin.lz4
+    ¦   ¦           bitflip_0_33f_states.bin.lz4
+    ¦   ¦           bitflip_0_350_states.bin.lz4
+    ¦   ¦           bitflip_0_365_states.bin.lz4
+    ¦   ¦           bitflip_0_367_states.bin.lz4
+    ¦   ¦           bitflip_0_36d_states.bin.lz4
+    ¦   ¦           bitflip_0_36f_states.bin.lz4
+    ¦   ¦           bitflip_0_384_states.bin.lz4
+    ¦   ¦           bitflip_0_3b1_states.bin.lz4
+    ¦   ¦           bitflip_0_3b3_states.bin.lz4
+    ¦   ¦           bitflip_0_3b9_states.bin.lz4
+    ¦   ¦           bitflip_0_3bb_states.bin.lz4
+    ¦   ¦           bitflip_0_3d4_states.bin.lz4
+    ¦   ¦           bitflip_0_3e1_states.bin.lz4
+    ¦   ¦           bitflip_0_3e3_states.bin.lz4
+    ¦   ¦           bitflip_0_3e9_states.bin.lz4
+    ¦   ¦           bitflip_0_3eb_states.bin.lz4
+    ¦   ¦           bitflip_1_002_states.bin.lz4
+    ¦   ¦           bitflip_1_008_states.bin.lz4
+    ¦   ¦           bitflip_1_00a_states.bin.lz4
+    ¦   ¦           bitflip_1_012_states.bin.lz4
+    ¦   ¦           bitflip_1_018_states.bin.lz4
+    ¦   ¦           bitflip_1_01a_states.bin.lz4
+    ¦   ¦           bitflip_1_020_states.bin.lz4
+    ¦   ¦           bitflip_1_028_states.bin.lz4
+    ¦   ¦           bitflip_1_02a_states.bin.lz4
+    ¦   ¦           bitflip_1_02e_states.bin.lz4
+    ¦   ¦           bitflip_1_032_states.bin.lz4
+    ¦   ¦           bitflip_1_036_states.bin.lz4
+    ¦   ¦           bitflip_1_038_states.bin.lz4
+    ¦   ¦           bitflip_1_03a_states.bin.lz4
+    ¦   ¦           bitflip_1_03e_states.bin.lz4
+    ¦   ¦           bitflip_1_040_states.bin.lz4
+    ¦   ¦           bitflip_1_042_states.bin.lz4
+    ¦   ¦           bitflip_1_046_states.bin.lz4
+    ¦   ¦           bitflip_1_048_states.bin.lz4
+    ¦   ¦           bitflip_1_04a_states.bin.lz4
+    ¦   ¦           bitflip_1_04e_states.bin.lz4
+    ¦   ¦           bitflip_1_052_states.bin.lz4
+    ¦   ¦           bitflip_1_056_states.bin.lz4
+    ¦   ¦           bitflip_1_058_states.bin.lz4
+    ¦   ¦           bitflip_1_05a_states.bin.lz4
+    ¦   ¦           bitflip_1_05e_states.bin.lz4
+    ¦   ¦           bitflip_1_060_states.bin.lz4
+    ¦   ¦           bitflip_1_062_states.bin.lz4
+    ¦   ¦           bitflip_1_066_states.bin.lz4
+    ¦   ¦           bitflip_1_068_states.bin.lz4
+    ¦   ¦           bitflip_1_06a_states.bin.lz4
+    ¦   ¦           bitflip_1_06e_states.bin.lz4
+    ¦   ¦           bitflip_1_072_states.bin.lz4
+    ¦   ¦           bitflip_1_076_states.bin.lz4
+    ¦   ¦           bitflip_1_078_states.bin.lz4
+    ¦   ¦           bitflip_1_07a_states.bin.lz4
+    ¦   ¦           bitflip_1_07e_states.bin.lz4
+    ¦   ¦           bitflip_1_080_states.bin.lz4
+    ¦   ¦           bitflip_1_082_states.bin.lz4
+    ¦   ¦           bitflip_1_086_states.bin.lz4
+    ¦   ¦           bitflip_1_088_states.bin.lz4
+    ¦   ¦           bitflip_1_08a_states.bin.lz4
+    ¦   ¦           bitflip_1_08e_states.bin.lz4
+    ¦   ¦           bitflip_1_092_states.bin.lz4
+    ¦   ¦           bitflip_1_096_states.bin.lz4
+    ¦   ¦           bitflip_1_098_states.bin.lz4
+    ¦   ¦           bitflip_1_09a_states.bin.lz4
+    ¦   ¦           bitflip_1_09e_states.bin.lz4
+    ¦   ¦           bitflip_1_0a0_states.bin.lz4
+    ¦   ¦           bitflip_1_0a2_states.bin.lz4
+    ¦   ¦           bitflip_1_0a6_states.bin.lz4
+    ¦   ¦           bitflip_1_0a8_states.bin.lz4
+    ¦   ¦           bitflip_1_0aa_states.bin.lz4
+    ¦   ¦           bitflip_1_0ae_states.bin.lz4
+    ¦   ¦           bitflip_1_0b2_states.bin.lz4
+    ¦   ¦           bitflip_1_0b6_states.bin.lz4
+    ¦   ¦           bitflip_1_0b8_states.bin.lz4
+    ¦   ¦           bitflip_1_0ba_states.bin.lz4
+    ¦   ¦           bitflip_1_0be_states.bin.lz4
+    ¦   ¦           bitflip_1_0c0_states.bin.lz4
+    ¦   ¦           bitflip_1_0c2_states.bin.lz4
+    ¦   ¦           bitflip_1_0c6_states.bin.lz4
+    ¦   ¦           bitflip_1_0c8_states.bin.lz4
+    ¦   ¦           bitflip_1_0ca_states.bin.lz4
+    ¦   ¦           bitflip_1_0ce_states.bin.lz4
+    ¦   ¦           bitflip_1_0d2_states.bin.lz4
+    ¦   ¦           bitflip_1_0d6_states.bin.lz4
+    ¦   ¦           bitflip_1_0d8_states.bin.lz4
+    ¦   ¦           bitflip_1_0da_states.bin.lz4
+    ¦   ¦           bitflip_1_0de_states.bin.lz4
+    ¦   ¦           bitflip_1_0e0_states.bin.lz4
+    ¦   ¦           bitflip_1_0e8_states.bin.lz4
+    ¦   ¦           bitflip_1_0f8_states.bin.lz4
+    ¦   ¦           bitflip_1_108_states.bin.lz4
+    ¦   ¦           bitflip_1_111_states.bin.lz4
+    ¦   ¦           bitflip_1_113_states.bin.lz4
+    ¦   ¦           bitflip_1_115_states.bin.lz4
+    ¦   ¦           bitflip_1_117_states.bin.lz4
+    ¦   ¦           bitflip_1_118_states.bin.lz4
+    ¦   ¦           bitflip_1_11a_states.bin.lz4
+    ¦   ¦           bitflip_1_11b_states.bin.lz4
+    ¦   ¦           bitflip_1_120_states.bin.lz4
+    ¦   ¦           bitflip_1_122_states.bin.lz4
+    ¦   ¦           bitflip_1_128_states.bin.lz4
+    ¦   ¦           bitflip_1_131_states.bin.lz4
+    ¦   ¦           bitflip_1_135_states.bin.lz4
+    ¦   ¦           bitflip_1_138_states.bin.lz4
+    ¦   ¦           bitflip_1_145_states.bin.lz4
+    ¦   ¦           bitflip_1_147_states.bin.lz4
+    ¦   ¦           bitflip_1_148_states.bin.lz4
+    ¦   ¦           bitflip_1_158_states.bin.lz4
+    ¦   ¦           bitflip_1_160_states.bin.lz4
+    ¦   ¦           bitflip_1_161_states.bin.lz4
+    ¦   ¦           bitflip_1_163_states.bin.lz4
+    ¦   ¦           bitflip_1_165_states.bin.lz4
+    ¦   ¦           bitflip_1_168_states.bin.lz4
+    ¦   ¦           bitflip_1_178_states.bin.lz4
+    ¦   ¦           bitflip_1_180_states.bin.lz4
+    ¦   ¦           bitflip_1_188_states.bin.lz4
+    ¦   ¦           bitflip_1_191_states.bin.lz4
+    ¦   ¦           bitflip_1_198_states.bin.lz4
+    ¦   ¦           bitflip_1_199_states.bin.lz4
+    ¦   ¦           bitflip_1_19d_states.bin.lz4
+    ¦   ¦           bitflip_1_19f_states.bin.lz4
+    ¦   ¦           bitflip_1_1a0_states.bin.lz4
+    ¦   ¦           bitflip_1_1a8_states.bin.lz4
+    ¦   ¦           bitflip_1_1b3_states.bin.lz4
+    ¦   ¦           bitflip_1_1b5_states.bin.lz4
+    ¦   ¦           bitflip_1_1b7_states.bin.lz4
+    ¦   ¦           bitflip_1_1b8_states.bin.lz4
+    ¦   ¦           bitflip_1_1b9_states.bin.lz4
+    ¦   ¦           bitflip_1_1bd_states.bin.lz4
+    ¦   ¦           bitflip_1_1c1_states.bin.lz4
+    ¦   ¦           bitflip_1_1c3_states.bin.lz4
+    ¦   ¦           bitflip_1_1c8_states.bin.lz4
+    ¦   ¦           bitflip_1_1c9_states.bin.lz4
+    ¦   ¦           bitflip_1_1cd_states.bin.lz4
+    ¦   ¦           bitflip_1_1cf_states.bin.lz4
+    ¦   ¦           bitflip_1_1d8_states.bin.lz4
+    ¦   ¦           bitflip_1_1e0_states.bin.lz4
+    ¦   ¦           bitflip_1_1e1_states.bin.lz4
+    ¦   ¦           bitflip_1_1e5_states.bin.lz4
+    ¦   ¦           bitflip_1_1e7_states.bin.lz4
+    ¦   ¦           bitflip_1_1e8_states.bin.lz4
+    ¦   ¦           bitflip_1_1e9_states.bin.lz4
+    ¦   ¦           bitflip_1_1eb_states.bin.lz4
+    ¦   ¦           bitflip_1_1ed_states.bin.lz4
+    ¦   ¦           bitflip_1_1f8_states.bin.lz4
+    ¦   ¦           bitflip_1_208_states.bin.lz4
+    ¦   ¦           bitflip_1_220_states.bin.lz4
+    ¦   ¦           bitflip_1_24a_states.bin.lz4
+    ¦   ¦           bitflip_1_24e_states.bin.lz4
+    ¦   ¦           bitflip_1_25a_states.bin.lz4
+    ¦   ¦           bitflip_1_25e_states.bin.lz4
+    ¦   ¦           bitflip_1_262_states.bin.lz4
+    ¦   ¦           bitflip_1_266_states.bin.lz4
+    ¦   ¦           bitflip_1_272_states.bin.lz4
+    ¦   ¦           bitflip_1_276_states.bin.lz4
+    ¦   ¦           bitflip_1_280_states.bin.lz4
+    ¦   ¦           bitflip_1_2a8_states.bin.lz4
+    ¦   ¦           bitflip_1_2c2_states.bin.lz4
+    ¦   ¦           bitflip_1_2c6_states.bin.lz4
+    ¦   ¦           bitflip_1_2d2_states.bin.lz4
+    ¦   ¦           bitflip_1_2d6_states.bin.lz4
+    ¦   ¦           bitflip_1_328_states.bin.lz4
+    ¦   ¦           bitflip_1_388_states.bin.lz4
+    ¦   ¦           bitflip_1_3a0_states.bin.lz4
+    ¦   ¦           
+    ¦   L---src
+    ¦       ¦   aidsearch.c
+    ¦       ¦   aidsearch.h
+    ¦       ¦   atrs.c
+    ¦       ¦   atrs.h
+    ¦       ¦   cmdanalyse.c
+    ¦       ¦   cmdanalyse.h
+    ¦       ¦   cmdcrc.c
+    ¦       ¦   cmdcrc.h
+    ¦       ¦   cmddata.c
+    ¦       ¦   cmddata.h
+    ¦       ¦   cmdflashmem.c
+    ¦       ¦   cmdflashmem.h
+    ¦       ¦   cmdflashmemspiffs.c
+    ¦       ¦   cmdflashmemspiffs.h
+    ¦       ¦   cmdhf.c
+    ¦       ¦   cmdhf.h
+    ¦       ¦   cmdhf14a.c
+    ¦       ¦   cmdhf14a.h
+    ¦       ¦   cmdhf14b.c
+    ¦       ¦   cmdhf14b.h
+    ¦       ¦   cmdhf15.c
+    ¦       ¦   cmdhf15.h
+    ¦       ¦   cmdhfaliro.c
+    ¦       ¦   cmdhfaliro.h
+    ¦       ¦   cmdhfcalypso.c
+    ¦       ¦   cmdhfcalypso.h
+    ¦       ¦   cmdhfcipurse.c
+    ¦       ¦   cmdhfcipurse.h
+    ¦       ¦   cmdhfcryptorf.c
+    ¦       ¦   cmdhfcryptorf.h
+    ¦       ¦   cmdhfemrtd.c
+    ¦       ¦   cmdhfemrtd.h
+    ¦       ¦   cmdhfepa.c
+    ¦       ¦   cmdhfepa.h
+    ¦       ¦   cmdhffelica.c
+    ¦       ¦   cmdhffelica.h
+    ¦       ¦   cmdhffido.c
+    ¦       ¦   cmdhffido.h
+    ¦       ¦   cmdhffmcos.c
+    ¦       ¦   cmdhffmcos.h
+    ¦       ¦   cmdhffudan.c
+    ¦       ¦   cmdhffudan.h
+    ¦       ¦   cmdhfgallagher.c
+    ¦       ¦   cmdhfgallagher.h
+    ¦       ¦   cmdhfgst.c
+    ¦       ¦   cmdhfgst.h
+    ¦       ¦   cmdhficlass.c
+    ¦       ¦   cmdhficlass.h
+    ¦       ¦   cmdhfict.c
+    ¦       ¦   cmdhfict.h
+    ¦       ¦   cmdhfjooki.c
+    ¦       ¦   cmdhfjooki.h
+    ¦       ¦   cmdhfksx6924.c
+    ¦       ¦   cmdhfksx6924.h
+    ¦       ¦   cmdhflegic.c
+    ¦       ¦   cmdhflegic.h
+    ¦       ¦   cmdhflist.c
+    ¦       ¦   cmdhflist.h
+    ¦       ¦   cmdhflto.c
+    ¦       ¦   cmdhflto.h
+    ¦       ¦   cmdhfmf.c
+    ¦       ¦   cmdhfmf.h
+    ¦       ¦   cmdhfmfdes.c
+    ¦       ¦   cmdhfmfdes.h
+    ¦       ¦   cmdhfmfhard.c
+    ¦       ¦   cmdhfmfhard.h
+    ¦       ¦   cmdhfmfp.c
+    ¦       ¦   cmdhfmfp.h
+    ¦       ¦   cmdhfmfsen.c
+    ¦       ¦   cmdhfmfsen.h
+    ¦       ¦   cmdhfmfu.c
+    ¦       ¦   cmdhfmfu.h
+    ¦       ¦   cmdhfntag424.c
+    ¦       ¦   cmdhfntag424.h
+    ¦       ¦   cmdhfsaflok.c
+    ¦       ¦   cmdhfsaflok.h
+    ¦       ¦   cmdhfsecc.c
+    ¦       ¦   cmdhfsecc.h
+    ¦       ¦   cmdhfseos.c
+    ¦       ¦   cmdhfseos.h
+    ¦       ¦   cmdhfst.c
+    ¦       ¦   cmdhfst.h
+    ¦       ¦   cmdhfst25ta.c
+    ¦       ¦   cmdhfst25ta.h
+    ¦       ¦   cmdhftesla.c
+    ¦       ¦   cmdhftesla.h
+    ¦       ¦   cmdhftexkom.c
+    ¦       ¦   cmdhftexkom.h
+    ¦       ¦   cmdhfthinfilm.c
+    ¦       ¦   cmdhfthinfilm.h
+    ¦       ¦   cmdhftopaz.c
+    ¦       ¦   cmdhftopaz.h
+    ¦       ¦   cmdhfvas.c
+    ¦       ¦   cmdhfvas.h
+    ¦       ¦   cmdhfwaveshare.c
+    ¦       ¦   cmdhfwaveshare.h
+    ¦       ¦   cmdhfxerox.c
+    ¦       ¦   cmdhfxerox.h
+    ¦       ¦   cmdhw.c
+    ¦       ¦   cmdhw.h
+    ¦       ¦   cmdlf.c
+    ¦       ¦   cmdlf.h
+    ¦       ¦   cmdlfawid.c
+    ¦       ¦   cmdlfawid.h
+    ¦       ¦   cmdlfcotag.c
+    ¦       ¦   cmdlfcotag.h
+    ¦       ¦   cmdlfdestron.c
+    ¦       ¦   cmdlfdestron.h
+    ¦       ¦   cmdlfem.c
+    ¦       ¦   cmdlfem.h
+    ¦       ¦   cmdlfem410x.c
+    ¦       ¦   cmdlfem410x.h
+    ¦       ¦   cmdlfem4x05.c
+    ¦       ¦   cmdlfem4x05.h
+    ¦       ¦   cmdlfem4x50.c
+    ¦       ¦   cmdlfem4x50.h
+    ¦       ¦   cmdlfem4x70.c
+    ¦       ¦   cmdlfem4x70.h
+    ¦       ¦   cmdlffdxb.c
+    ¦       ¦   cmdlffdxb.h
+    ¦       ¦   cmdlfgallagher.c
+    ¦       ¦   cmdlfgallagher.h
+    ¦       ¦   cmdlfguard.c
+    ¦       ¦   cmdlfguard.h
+    ¦       ¦   cmdlfhid.c
+    ¦       ¦   cmdlfhid.h
+    ¦       ¦   cmdlfhitag.c
+    ¦       ¦   cmdlfhitag.h
+    ¦       ¦   cmdlfhitaghts.c
+    ¦       ¦   cmdlfhitaghts.h
+    ¦       ¦   cmdlfhitagu.c
+    ¦       ¦   cmdlfhitagu.h
+    ¦       ¦   cmdlfidteck.c
+    ¦       ¦   cmdlfidteck.h
+    ¦       ¦   cmdlfindala.c
+    ¦       ¦   cmdlfindala.h
+    ¦       ¦   cmdlfio.c
+    ¦       ¦   cmdlfio.h
+    ¦       ¦   cmdlfjablotron.c
+    ¦       ¦   cmdlfjablotron.h
+    ¦       ¦   cmdlfkeri.c
+    ¦       ¦   cmdlfkeri.h
+    ¦       ¦   cmdlfmotorola.c
+    ¦       ¦   cmdlfmotorola.h
+    ¦       ¦   cmdlfnedap.c
+    ¦       ¦   cmdlfnedap.h
+    ¦       ¦   cmdlfnexwatch.c
+    ¦       ¦   cmdlfnexwatch.h
+    ¦       ¦   cmdlfnoralsy.c
+    ¦       ¦   cmdlfnoralsy.h
+    ¦       ¦   cmdlfpac.c
+    ¦       ¦   cmdlfpac.h
+    ¦       ¦   cmdlfparadox.c
+    ¦       ¦   cmdlfparadox.h
+    ¦       ¦   cmdlfpcf7931.c
+    ¦       ¦   cmdlfpcf7931.h
+    ¦       ¦   cmdlfpresco.c
+    ¦       ¦   cmdlfpresco.h
+    ¦       ¦   cmdlfpyramid.c
+    ¦       ¦   cmdlfpyramid.h
+    ¦       ¦   cmdlfsecurakey.c
+    ¦       ¦   cmdlfsecurakey.h
+    ¦       ¦   cmdlft55xx.c
+    ¦       ¦   cmdlft55xx.h
+    ¦       ¦   cmdlfti.c
+    ¦       ¦   cmdlfti.h
+    ¦       ¦   cmdlftrovan.c
+    ¦       ¦   cmdlftrovan.h
+    ¦       ¦   cmdlfverichip_disabled.c
+    ¦       ¦   cmdlfverichip_disabled.h
+    ¦       ¦   cmdlfviking.c
+    ¦       ¦   cmdlfviking.h
+    ¦       ¦   cmdlfvisa2000.c
+    ¦       ¦   cmdlfvisa2000.h
+    ¦       ¦   cmdlfzx8211.c
+    ¦       ¦   cmdlfzx8211.h
+    ¦       ¦   cmdmad.c
+    ¦       ¦   cmdmad.h
+    ¦       ¦   cmdmain.c
+    ¦       ¦   cmdmain.h
+    ¦       ¦   cmdmqtt.c
+    ¦       ¦   cmdmqtt.h
+    ¦       ¦   cmdnfc.c
+    ¦       ¦   cmdnfc.h
+    ¦       ¦   cmdparser.c
+    ¦       ¦   cmdparser.h
+    ¦       ¦   cmdpiv.c
+    ¦       ¦   cmdpiv.h
+    ¦       ¦   cmdscript.c
+    ¦       ¦   cmdscript.h
+    ¦       ¦   cmdsmartcard.c
+    ¦       ¦   cmdsmartcard.h
+    ¦       ¦   cmdtrace.c
+    ¦       ¦   cmdtrace.h
+    ¦       ¦   cmdusart.c
+    ¦       ¦   cmdusart.h
+    ¦       ¦   cmdwiegand.c
+    ¦       ¦   cmdwiegand.h
+    ¦       ¦   comms.c
+    ¦       ¦   comms.h
+    ¦       ¦   elf.h
+    ¦       ¦   emojis.h
+    ¦       ¦   emojis_alt.h
+    ¦       ¦   fileutils.c
+    ¦       ¦   fileutils.h
+    ¦       ¦   flash.c
+    ¦       ¦   flash.h
+    ¦       ¦   frame_data.h
+    ¦       ¦   frame_progress.c
+    ¦       ¦   frame_progress.h
+    ¦       ¦   graph.c
+    ¦       ¦   graph.h
+    ¦       ¦   guidummy.cpp
+    ¦       ¦   hidsio.c
+    ¦       ¦   hidsio.h
+    ¦       ¦   imgutils.c
+    ¦       ¦   imgutils.h
+    ¦       ¦   iso4217.c
+    ¦       ¦   iso4217.h
+    ¦       ¦   jansson_path.c
+    ¦       ¦   jansson_path.h
+    ¦       ¦   lua_bitlib.c
+    ¦       ¦   lua_bitlib.h
+    ¦       ¦   pla.c
+    ¦       ¦   pla.h
+    ¦       ¦   pm3.c
+    ¦       ¦   pm3.i
+    ¦       ¦   pm3line.c
+    ¦       ¦   pm3line.h
+    ¦       ¦   pm3line_vocabulary.h
+    ¦       ¦   pm3_binlib.c
+    ¦       ¦   pm3_binlib.h
+    ¦       ¦   pm3_bitlib.c
+    ¦       ¦   pm3_bitlib.h
+    ¦       ¦   pm3_bit_limits.h
+    ¦       ¦   pm3_dsp.c
+    ¦       ¦   pm3_dsp.h
+    ¦       ¦   pm3_fit.c
+    ¦       ¦   pm3_fit.h
+    ¦       ¦   pm3_luawrap.c
+    ¦       ¦   pm3_pywrap.c
+    ¦       ¦   preferences.c
+    ¦       ¦   preferences.h
+    ¦       ¦   proxendian.h
+    ¦       ¦   proxgui.cpp
+    ¦       ¦   proxgui.h
+    ¦       ¦   proxguiqt.cpp
+    ¦       ¦   proxguiqt.h
+    ¦       ¦   proxguiqt.moc.cpp
+    ¦       ¦   proxmark3.c
+    ¦       ¦   proxmark3.h
+    ¦       ¦   pthread_spin_lock_shim.h
+    ¦       ¦   scandir.c
+    ¦       ¦   scandir.h
+    ¦       ¦   scripting.c
+    ¦       ¦   scripting.h
+    ¦       ¦   ui.c
+    ¦       ¦   ui.h
+    ¦       ¦   util.c
+    ¦       ¦   util.h
+    ¦       ¦   util_darwin.h
+    ¦       ¦   util_darwin.m
+    ¦       ¦   version_pm3.c
+    ¦       ¦   wiegand_formats.c
+    ¦       ¦   wiegand_formats.h
+    ¦       ¦   wiegand_formatutils.c
+    ¦       ¦   wiegand_formatutils.h
+    ¦       ¦   
+    ¦       +---cipurse
+    ¦       ¦       cipursecore.c
+    ¦       ¦       cipursecore.h
+    ¦       ¦       cipursecrypto.c
+    ¦       ¦       cipursecrypto.h
+    ¦       ¦       cipursetest.c
+    ¦       ¦       cipursetest.h
+    ¦       ¦       
+    ¦       +---crypto
+    ¦       ¦       asn1dump.c
+    ¦       ¦       asn1dump.h
+    ¦       ¦       asn1utils.c
+    ¦       ¦       asn1utils.h
+    ¦       ¦       duoxcrypto.c
+    ¦       ¦       duoxcrypto.h
+    ¦       ¦       libpcrypto.c
+    ¦       ¦       libpcrypto.h
+    ¦       ¦       originality.c
+    ¦       ¦       originality.h
+    ¦       ¦       
+    ¦       +---emv
+    ¦       ¦   ¦   cmdemv.c
+    ¦       ¦   ¦   cmdemv.h
+    ¦       ¦   ¦   crypto.c
+    ¦       ¦   ¦   crypto.h
+    ¦       ¦   ¦   crypto_backend.h
+    ¦       ¦   ¦   crypto_polarssl.c
+    ¦       ¦   ¦   dol.c
+    ¦       ¦   ¦   dol.h
+    ¦       ¦   ¦   emvcore.c
+    ¦       ¦   ¦   emvcore.h
+    ¦       ¦   ¦   emvjson.c
+    ¦       ¦   ¦   emvjson.h
+    ¦       ¦   ¦   emv_pk.c
+    ¦       ¦   ¦   emv_pk.h
+    ¦       ¦   ¦   emv_pki.c
+    ¦       ¦   ¦   emv_pki.h
+    ¦       ¦   ¦   emv_pki_priv.c
+    ¦       ¦   ¦   emv_pki_priv.h
+    ¦       ¦   ¦   emv_roca.c
+    ¦       ¦   ¦   emv_roca.h
+    ¦       ¦   ¦   emv_tags.c
+    ¦       ¦   ¦   emv_tags.h
+    ¦       ¦   ¦   tlv.c
+    ¦       ¦   ¦   tlv.h
+    ¦       ¦   ¦   
+    ¦       ¦   L---test
+    ¦       ¦           cda_test.c
+    ¦       ¦           cda_test.h
+    ¦       ¦           cryptotest.c
+    ¦       ¦           cryptotest.h
+    ¦       ¦           crypto_test.c
+    ¦       ¦           crypto_test.h
+    ¦       ¦           dda_test.c
+    ¦       ¦           dda_test.h
+    ¦       ¦           sda_test.c
+    ¦       ¦           sda_test.h
+    ¦       ¦           
+    ¦       +---fido
+    ¦       ¦       additional_ca.c
+    ¦       ¦       additional_ca.h
+    ¦       ¦       cbortools.c
+    ¦       ¦       cbortools.h
+    ¦       ¦       cose.c
+    ¦       ¦       cose.h
+    ¦       ¦       fidocore.c
+    ¦       ¦       fidocore.h
+    ¦       ¦       
+    ¦       +---iso7816
+    ¦       ¦       apduinfo.c
+    ¦       ¦       apduinfo.h
+    ¦       ¦       iso7816core.c
+    ¦       ¦       iso7816core.h
+    ¦       ¦       
+    ¦       +---ksx6924
+    ¦       ¦       ksx6924core.c
+    ¦       ¦       ksx6924core.h
+    ¦       ¦       
+    ¦       +---loclass
+    ¦       ¦       cipher.c
+    ¦       ¦       cipher.h
+    ¦       ¦       cipherutils.c
+    ¦       ¦       cipherutils.h
+    ¦       ¦       cipher_bs.c
+    ¦       ¦       cipher_bs.h
+    ¦       ¦       cipher_bs_avx2.c
+    ¦       ¦       cipher_bs_avx2.h
+    ¦       ¦       cipher_bs_avx512.c
+    ¦       ¦       cipher_bs_avx512.h
+    ¦       ¦       cipher_bs_dispatch.c
+    ¦       ¦       cipher_bs_dispatch.h
+    ¦       ¦       cipher_bs_neon.c
+    ¦       ¦       cipher_bs_neon.h
+    ¦       ¦       elite_crack.c
+    ¦       ¦       elite_crack.h
+    ¦       ¦       hash1_brute.c
+    ¦       ¦       hash1_brute.h
+    ¦       ¦       ikeys.c
+    ¦       ¦       ikeys.h
+    ¦       ¦       
+    ¦       +---mifare
+    ¦       ¦       aiddesfire.c
+    ¦       ¦       aiddesfire.h
+    ¦       ¦       desfirecore.c
+    ¦       ¦       desfirecore.h
+    ¦       ¦       desfirecrypto.c
+    ¦       ¦       desfirecrypto.h
+    ¦       ¦       desfiresecurechan.c
+    ¦       ¦       desfiresecurechan.h
+    ¦       ¦       desfiretest.c
+    ¦       ¦       desfiretest.h
+    ¦       ¦       gallaghercore.c
+    ¦       ¦       gallaghercore.h
+    ¦       ¦       gallaghertest.c
+    ¦       ¦       gallaghertest.h
+    ¦       ¦       gen4.c
+    ¦       ¦       gen4.h
+    ¦       ¦       lrpcrypto.c
+    ¦       ¦       lrpcrypto.h
+    ¦       ¦       mad.c
+    ¦       ¦       mad.h
+    ¦       ¦       mad_test.c
+    ¦       ¦       mad_test.h
+    ¦       ¦       mfkey.c
+    ¦       ¦       mfkey.h
+    ¦       ¦       mifare4.c
+    ¦       ¦       mifare4.h
+    ¦       ¦       mifaredefault.c
+    ¦       ¦       mifaredefault.h
+    ¦       ¦       mifarehost.c
+    ¦       ¦       mifarehost.h
+    ¦       ¦       prime.c
+    ¦       ¦       prime.h
+    ¦       ¦       
+    ¦       +---nfc
+    ¦       ¦       ndef.c
+    ¦       ¦       ndef.h
+    ¦       ¦       
+    ¦       +---parsers
+    ¦       ¦   ¦   parsehrt.c
+    ¦       ¦   ¦   parsehrt.h
+    ¦       ¦   ¦   
+    ¦       ¦   L---hrtparser
+    ¦       ¦           hrtparser.c
+    ¦       ¦           hrtparser.h
+    ¦       ¦           
+    ¦       +---qrcode
+    ¦       ¦       qrcode.c
+    ¦       ¦       qrcode.h
+    ¦       ¦       
+    ¦       +---relay
+    ¦       ¦       relay.h
+    ¦       ¦       relay_posix.c
+    ¦       ¦       relay_win32.c
+    ¦       ¦       
+    ¦       +---uart
+    ¦       ¦       README.md
+    ¦       ¦       ringbuffer.c
+    ¦       ¦       ringbuffer.h
+    ¦       ¦       uart.h
+    ¦       ¦       uart_common.c
+    ¦       ¦       uart_posix.c
+    ¦       ¦       uart_win32.c
+    ¦       ¦       
+    ¦       L---ui
+    ¦               image.ui
+    ¦               overlays.ui
+    ¦               ui_image.h
+    ¦               ui_overlays.h
+    ¦               
+    +---common
+    ¦   ¦   bruteforce.c
+    ¦   ¦   bruteforce.h
+    ¦   ¦   bucketsort.c
+    ¦   ¦   bucketsort.h
+    ¦   ¦   cardhelper.c
+    ¦   ¦   cardhelper.h
+    ¦   ¦   commonutil.c
+    ¦   ¦   commonutil.h
+    ¦   ¦   crc.c
+    ¦   ¦   crc.h
+    ¦   ¦   crc16.c
+    ¦   ¦   crc16.h
+    ¦   ¦   crc32.c
+    ¦   ¦   crc32.h
+    ¦   ¦   crc64.c
+    ¦   ¦   crc64.h
+    ¦   ¦   default_version_pm3.c
+    ¦   ¦   generator.c
+    ¦   ¦   generator.h
+    ¦   ¦   get_lz4.sh
+    ¦   ¦   iso15693tools.c
+    ¦   ¦   iso15693tools.h
+    ¦   ¦   legic_prng.c
+    ¦   ¦   legic_prng.h
+    ¦   ¦   lfdemod.c
+    ¦   ¦   lfdemod.h
+    ¦   ¦   parity.h
+    ¦   ¦   util_posix.c
+    ¦   ¦   util_posix.h
+    ¦   ¦   
+    ¦   +---crapto1
+    ¦   ¦       crapto1.c
+    ¦   ¦       crapto1.h
+    ¦   ¦       crypto1.c
+    ¦   ¦       readme
+    ¦   ¦       
+    ¦   +---cryptorf
+    ¦   ¦       cryptolib.c
+    ¦   ¦       cryptolib.h
+    ¦   ¦       
+    ¦   +---hitag2
+    ¦   ¦       hitag2_crypto.c
+    ¦   ¦       hitag2_crypto.h
+    ¦   ¦       
+    ¦   +---lz4
+    ¦   ¦       LICENSE
+    ¦   ¦       lz4.c
+    ¦   ¦       lz4.h
+    ¦   ¦       lz4hc.c
+    ¦   ¦       lz4hc.h
+    ¦   ¦       
+    ¦   L---mbedtls
+    ¦           aes.c
+    ¦           aes.h
+    ¦           aesni.c
+    ¦           aesni.h
+    ¦           arc4.c
+    ¦           arc4.h
+    ¦           aria.c
+    ¦           aria.h
+    ¦           asn1.h
+    ¦           asn1parse.c
+    ¦           asn1write.c
+    ¦           asn1write.h
+    ¦           base64.c
+    ¦           base64.h
+    ¦           bignum.c
+    ¦           bignum.h
+    ¦           blowfish.c
+    ¦           blowfish.h
+    ¦           bn_mul.h
+    ¦           camellia.c
+    ¦           camellia.h
+    ¦           ccm.c
+    ¦           ccm.h
+    ¦           certs.c
+    ¦           certs.h
+    ¦           chacha20.c
+    ¦           chacha20.h
+    ¦           chachapoly.c
+    ¦           chachapoly.h
+    ¦           check_config.h
+    ¦           check_crypto_config.h
+    ¦           cipher.c
+    ¦           cipher.h
+    ¦           cipher_internal.h
+    ¦           cipher_wrap.c
+    ¦           cmac.c
+    ¦           cmac.h
+    ¦           common.h
+    ¦           compat-1.3.h
+    ¦           config.h
+    ¦           config_psa.h
+    ¦           ctr_drbg.c
+    ¦           ctr_drbg.h
+    ¦           debug.c
+    ¦           debug.h
+    ¦           des.c
+    ¦           des.h
+    ¦           dhm.c
+    ¦           dhm.h
+    ¦           ecc_point_compression.c
+    ¦           ecc_point_compression.h
+    ¦           ecdh.c
+    ¦           ecdh.h
+    ¦           ecdsa.c
+    ¦           ecdsa.h
+    ¦           ecjpake.c
+    ¦           ecjpake.h
+    ¦           ecp.c
+    ¦           ecp.h
+    ¦           ecp_curves.c
+    ¦           ecp_internal.h
+    ¦           entropy.c
+    ¦           entropy.h
+    ¦           entropy_poll.c
+    ¦           entropy_poll.h
+    ¦           error.c
+    ¦           error.h
+    ¦           gcm.c
+    ¦           gcm.h
+    ¦           havege.c
+    ¦           havege.h
+    ¦           hkdf.c
+    ¦           hkdf.h
+    ¦           hmac_drbg.c
+    ¦           hmac_drbg.h
+    ¦           Makefile
+    ¦           md.c
+    ¦           md.h
+    ¦           md2.c
+    ¦           md2.h
+    ¦           md4.c
+    ¦           md4.h
+    ¦           md5.c
+    ¦           md5.h
+    ¦           md_internal.h
+    ¦           memory_buffer_alloc.c
+    ¦           memory_buffer_alloc.h
+    ¦           net.h
+    ¦           net_sockets.c
+    ¦           net_sockets.h
+    ¦           nist_kw.c
+    ¦           nist_kw.h
+    ¦           oid.c
+    ¦           oid.h
+    ¦           padlock.c
+    ¦           padlock.h
+    ¦           pem.c
+    ¦           pem.h
+    ¦           pk.c
+    ¦           pk.h
+    ¦           pkcs11.c
+    ¦           pkcs11.h
+    ¦           pkcs12.c
+    ¦           pkcs12.h
+    ¦           pkcs5.c
+    ¦           pkcs5.h
+    ¦           pkparse.c
+    ¦           pkwrite.c
+    ¦           pk_internal.h
+    ¦           pk_wrap.c
+    ¦           platform.c
+    ¦           platform.h
+    ¦           platform_time.h
+    ¦           platform_util.c
+    ¦           platform_util.h
+    ¦           poly1305.c
+    ¦           poly1305.h
+    ¦           psa_crypto.c
+    ¦           psa_crypto_client.c
+    ¦           psa_crypto_core.h
+    ¦           psa_crypto_driver_wrappers.c
+    ¦           psa_crypto_driver_wrappers.h
+    ¦           psa_crypto_ecp.c
+    ¦           psa_crypto_ecp.h
+    ¦           psa_crypto_invasive.h
+    ¦           psa_crypto_its.h
+    ¦           psa_crypto_random_impl.h
+    ¦           psa_crypto_rsa.c
+    ¦           psa_crypto_rsa.h
+    ¦           psa_crypto_se.c
+    ¦           psa_crypto_se.h
+    ¦           psa_crypto_service_integration.h
+    ¦           psa_crypto_slot_management.c
+    ¦           psa_crypto_slot_management.h
+    ¦           psa_crypto_storage.c
+    ¦           psa_crypto_storage.h
+    ¦           psa_its_file.c
+    ¦           psa_util.h
+    ¦           ripemd160.c
+    ¦           ripemd160.h
+    ¦           rsa.c
+    ¦           rsa.h
+    ¦           rsa_internal.c
+    ¦           rsa_internal.h
+    ¦           sha1.c
+    ¦           sha1.h
+    ¦           sha256.c
+    ¦           sha256.h
+    ¦           sha512.c
+    ¦           sha512.h
+    ¦           ssl.h
+    ¦           ssl_cache.c
+    ¦           ssl_cache.h
+    ¦           ssl_ciphersuites.c
+    ¦           ssl_ciphersuites.h
+    ¦           ssl_cli.c
+    ¦           ssl_cookie.c
+    ¦           ssl_cookie.h
+    ¦           ssl_internal.h
+    ¦           ssl_invasive.h
+    ¦           ssl_msg.c
+    ¦           ssl_srv.c
+    ¦           ssl_ticket.c
+    ¦           ssl_ticket.h
+    ¦           ssl_tls.c
+    ¦           ssl_tls13_keys.c
+    ¦           ssl_tls13_keys.h
+    ¦           threading.c
+    ¦           threading.h
+    ¦           timing.c
+    ¦           timing.h
+    ¦           version.c
+    ¦           version.h
+    ¦           version_features.c
+    ¦           x509.c
+    ¦           x509.h
+    ¦           x509write_crt.c
+    ¦           x509write_csr.c
+    ¦           x509_create.c
+    ¦           x509_crl.c
+    ¦           x509_crl.h
+    ¦           x509_crt.c
+    ¦           x509_crt.h
+    ¦           x509_csr.c
+    ¦           x509_csr.h
+    ¦           xtea.c
+    ¦           xtea.h
+    ¦           
+    +---common_arm
+    ¦       clocks.c
+    ¦       clocks.h
+    ¦       flashmem.c
+    ¦       flashmem.h
+    ¦       ldscript.common
+    ¦       Makefile.common
+    ¦       Makefile.hal
+    ¦       ticks.c
+    ¦       ticks.h
+    ¦       usb_cdc.c
+    ¦       usb_cdc.h
+    ¦       
+    +---common_fpga
+    ¦       fpga.h
+    ¦       
+    +---doc
+    ¦   ¦   aidlist.md
+    ¦   ¦   bt_manual_v10.md
+    ¦   ¦   cheatsheet.md
+    ¦   ¦   cipurse.md
+    ¦   ¦   cliparser.md
+    ¦   ¦   clocks.md
+    ¦   ¦   cloner_notes.md
+    ¦   ¦   colors_notes.md
+    ¦   ¦   commands.json
+    ¦   ¦   commands.md
+    ¦   ¦   desfire.md
+    ¦   ¦   emv_notes.md
+    ¦   ¦   extensions_notes.md
+    ¦   ¦   ext_flash_notes.md
+    ¦   ¦   fm11rf08s_manual_recovery.md
+    ¦   ¦   fmcos.md
+    ¦   ¦   fmcos_example.md
+    ¦   ¦   fpga_arm_notes.md
+    ¦   ¦   hid_downgrade.md
+    ¦   ¦   iclass_legrec_legbrute_key_recovery.md
+    ¦   ¦   jooki_notes.md
+    ¦   ¦   jtag_notes.md
+    ¦   ¦   loclass_notes.md
+    ¦   ¦   magic_cards_notes.md
+    ¦   ¦   mfc_notes.md
+    ¦   ¦   mfu_binary_format_notes.md
+    ¦   ¦   ndef_type4a.md
+    ¦   ¦   new_frame_format.md
+    ¦   ¦   path_notes.md
+    ¦   ¦   T5577_Guide.md
+    ¦   ¦   t55xx_block0.png
+    ¦   ¦   t55xx_clock0_cfg.png
+    ¦   ¦   t55xx_mem_map.png
+    ¦   ¦   termux_notes.md
+    ¦   ¦   trace_notes.md
+    ¦   ¦   uart_notes.md
+    ¦   ¦   unofficial_desfire_bible.md
+    ¦   ¦   
+    ¦   +---datasheets
+    ¦   ¦       Atmel_SAM7S_Series_Datasheet_AT91SAM_6175M-ATARM-26-Oct-12.pdf
+    ¦   ¦       DS_N76E003_EN_Rev1.09.pdf
+    ¦   ¦       hc06.pdf
+    ¦   ¦       hc06_chinese.pdf
+    ¦   ¦       W25X40CL_H_20220301.pdf
+    ¦   ¦       XILINX_Spartan-II_FPGA_Family.pdf
+    ¦   ¦       
+    ¦   +---img
+    ¦   ¦       readermanager_1.png
+    ¦   ¦       readermanager_2.png
+    ¦   ¦       readermanager_3.png
+    ¦   ¦       readermanager_4.png
+    ¦   ¦       
+    ¦   +---md
+    ¦   ¦   +---Development
+    ¦   ¦   ¦       Coverity-Scan-Config-and-Run.md
+    ¦   ¦   ¦       Maintainers.md
+    ¦   ¦   ¦       Makefile-vs-CMake.md
+    ¦   ¦   ¦       
+    ¦   ¦   +---em4x70
+    ¦   ¦   ¦       arbitrary_lf_em_commands.md
+    ¦   ¦   ¦       lf_em4x70_trace_notes.md
+    ¦   ¦   ¦       
+    ¦   ¦   +---Installation_Instructions
+    ¦   ¦   ¦       iOS-Installation-Instructions.md
+    ¦   ¦   ¦       Linux-Installation-Instructions.md
+    ¦   ¦   ¦       macOS-Compile-From-Source-Instructions.md
+    ¦   ¦   ¦       macOS-Homebrew-Installation-Instructions.md
+    ¦   ¦   ¦       macOS-MacPorts-Installation-Instructions.md
+    ¦   ¦   ¦       ModemManager-Must-Be-Discarded.md
+    ¦   ¦   ¦       Troubleshooting.md
+    ¦   ¦   ¦       usb-enumeration-and-flash.md
+    ¦   ¦   ¦       VSCode-Installation-Instructions.md
+    ¦   ¦   ¦       Windows-Installation-Instructions.md
+    ¦   ¦   ¦       Windows-WSL2-Installation-Instructions.md
+    ¦   ¦   ¦       wsl2_p9np.png
+    ¦   ¦   ¦       
+    ¦   ¦   L---Use_of_Proxmark
+    ¦   ¦           0_Compilation-Instructions.md
+    ¦   ¦           1_Validation.md
+    ¦   ¦           2_Configuration-and-Verification.md
+    ¦   ¦           3_Commands-and-Features.md
+    ¦   ¦           4_Advanced-compilation-parameters.md
+    ¦   ¦           
+    ¦   +---original_proxmark3
+    ¦   ¦       Compiling Proxmark source and firmware upgrading v1.pdf
+    ¦   ¦       Proxmark III - Ubuntu GSG v1.pdf
+    ¦   ¦       Proxmark III - Windows 7 GSG v1.pdf
+    ¦   ¦       Proxmark III - Windows XP SP3 GSG v1.pdf
+    ¦   ¦       proxmark3.brd
+    ¦   ¦       proxmark3.pdf
+    ¦   ¦       proxmark3.sch
+    ¦   ¦       proxmark3.xls
+    ¦   ¦       proxmark3_schema.pdf
+    ¦   ¦       RFID_Antenna-Basic-Form.stl
+    ¦   ¦       RFID_Antenna-With-Lanyard-Hook.stl
+    ¦   ¦       system.txt
+    ¦   ¦       
+    ¦   L---standalone
+    ¦           dankarmulti.md
+    ¦           hf_14asniff.md
+    ¦           hf_14bsniff.md
+    ¦           hf_15sim.md
+    ¦           hf_15sniff.md
+    ¦           hf_aveful.md
+    ¦           hf_bog.md
+    ¦           hf_cardhopper.md
+    ¦           hf_colin.md
+    ¦           hf_craftbyte.md
+    ¦           hf_doegox_auth0.md
+    ¦           hf_emvpng.md
+    ¦           hf_iceclass.md
+    ¦           hf_legic.md
+    ¦           hf_legicsim.md
+    ¦           hf_mattyrun.md
+    ¦           hf_mfcsim.md
+    ¦           hf_msdsal.md
+    ¦           hf_reblay.md
+    ¦           hf_st25_tearoff.md
+    ¦           hf_tcprst.md
+    ¦           hf_tmudford.md
+    ¦           hf_unisniff.md
+    ¦           hf_young.md
+    ¦           lf_em4100emul.md
+    ¦           lf_em4100rswb.md
+    ¦           lf_em4100rsww.md
+    ¦           lf_em4100rwc.md
+    ¦           lf_hidbrute.md
+    ¦           lf_hidfcbrute.md
+    ¦           lf_icehid.md
+    ¦           lf_multihid.md
+    ¦           lf_nedap_sim.md
+    ¦           lf_nexid.md
+    ¦           lf_prox2brute.md
+    ¦           lf_proxbrute.md
+    ¦           lf_samyrun.md
+    ¦           lf_tharexde.md
+    ¦           
+    +---docker
+    ¦   ¦   build-all.sh
+    ¦   ¦   build.sh
+    ¦   ¦   rm.sh
+    ¦   ¦   run.sh
+    ¦   ¦   termux-README.md
+    ¦   ¦   
+    ¦   +---archlinux
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---debian-13-trixie
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---debian-13-trixie-arm64
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---debian-13-trixie-armhf
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---debian-14-forky
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---fedora-41
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---fedora-42
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---fedora-43
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---homebrew
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       
+    ¦   +---kali
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---opensuse-leap
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---opensuse-tumbleweed
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---parrot-core-latest
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---ubuntu-22.04
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---ubuntu-24.04
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   +---ubuntu-25.04
+    ¦   ¦       Dockerfile
+    ¦   ¦       docker_conf.inc
+    ¦   ¦       README.md
+    ¦   ¦       run_tests.sh
+    ¦   ¦       
+    ¦   L---ubuntu-25.10
+    ¦           Dockerfile
+    ¦           docker_conf.inc
+    ¦           README.md
+    ¦           run_tests.sh
+    ¦           
+    +---driver
+    ¦       77-pm3-usb-device-blacklist-dialout.rules
+    ¦       77-pm3-usb-device-blacklist-uucp.rules
+    ¦       proxmark3.inf
+    ¦       
+    +---fpga
+    ¦   ¦   clk_divider.v
+    ¦   ¦   define.v
+    ¦   ¦   fpga_icopyx_felica.bit
+    ¦   ¦   fpga_icopyx_hf.bit
+    ¦   ¦   fpga_icopyx_hf.v
+    ¦   ¦   fpga_icopyx_hf_15.bit
+    ¦   ¦   fpga_icopyx_lf.bit
+    ¦   ¦   fpga_icopyx_lf.v
+    ¦   ¦   fpga_icopyx_top.v
+    ¦   ¦   fpga_pm3_felica.bit
+    ¦   ¦   fpga_pm3_hf.bit
+    ¦   ¦   fpga_pm3_hf_15.bit
+    ¦   ¦   fpga_pm3_lf.bit
+    ¦   ¦   fpga_pm3_top.v
+    ¦   ¦   fpga_pm3_ult_felica.bit
+    ¦   ¦   fpga_pm3_ult_hf.bit
+    ¦   ¦   fpga_pm3_ult_hf_15.bit
+    ¦   ¦   fpga_pm3_ult_lf.bit
+    ¦   ¦   hi_flite.v
+    ¦   ¦   hi_get_trace.v
+    ¦   ¦   hi_iso14443a.v
+    ¦   ¦   hi_reader.v
+    ¦   ¦   hi_simulate.v
+    ¦   ¦   hi_sniffer.v
+    ¦   ¦   lf_edge_detect.v
+    ¦   ¦   lo_adc.v
+    ¦   ¦   lo_edge_detect.v
+    ¦   ¦   lo_passthru.v
+    ¦   ¦   lo_read.v
+    ¦   ¦   lo_simulate.v
+    ¦   ¦   lp20khz_1MSa_iir_filter.v
+    ¦   ¦   Makefile
+    ¦   ¦   min_max_tracker.v
+    ¦   ¦   mux16.v
+    ¦   ¦   mux2_onein.v
+    ¦   ¦   mux2_oneout.v
+    ¦   ¦   mux8.v
+    ¦   ¦   strip_date_time_from_binary.py
+    ¦   ¦   xc2s30-5-vq100.ucf
+    ¦   ¦   xc2s50-5-tq144.ucf
+    ¦   ¦   xc3s100e-4-vq100.ucf
+    ¦   ¦   
+    ¦   L---tests
+    ¦       ¦   Makefile
+    ¦       ¦   plot_edgedetect.py
+    ¦       ¦   sim.tcl
+    ¦       ¦   tb_lf_edge_detect.v
+    ¦       ¦   tb_lp20khz_1MSa_iir_filter.v
+    ¦       ¦   tb_min_max_tracker.v
+    ¦       ¦   testbed_fpga.v
+    ¦       ¦   testbed_hi_read_tx.v
+    ¦       ¦   testbed_hi_simulate.v
+    ¦       ¦   testbed_lo_read.v
+    ¦       ¦   testbed_lo_simulate.v
+    ¦       ¦   
+    ¦       L---tb_data
+    ¦               pcf7931_read_1MSA_data.filtered.gold
+    ¦               pcf7931_read_1MSA_data.high.gold
+    ¦               pcf7931_read_1MSA_data.highz.gold
+    ¦               pcf7931_read_1MSA_data.in
+    ¦               pcf7931_read_1MSA_data.low.gold
+    ¦               pcf7931_read_1MSA_data.lowz.gold
+    ¦               pcf7931_read_1MSA_data.max.gold
+    ¦               pcf7931_read_1MSA_data.min.gold
+    ¦               pcf7931_read_1MSA_data.state.gold
+    ¦               pcf7931_read_1MSA_data.time
+    ¦               pcf7931_read_1MSA_data.toggle.gold
+    ¦               pcf7931_write1byte_1MSA_data.filtered.gold
+    ¦               pcf7931_write1byte_1MSA_data.high.gold
+    ¦               pcf7931_write1byte_1MSA_data.highz.gold
+    ¦               pcf7931_write1byte_1MSA_data.in
+    ¦               pcf7931_write1byte_1MSA_data.low.gold
+    ¦               pcf7931_write1byte_1MSA_data.lowz.gold
+    ¦               pcf7931_write1byte_1MSA_data.max.gold
+    ¦               pcf7931_write1byte_1MSA_data.min.gold
+    ¦               pcf7931_write1byte_1MSA_data.state.gold
+    ¦               pcf7931_write1byte_1MSA_data.time
+    ¦               pcf7931_write1byte_1MSA_data.toggle.gold
+    ¦               
+    +---include
+    ¦       ansi.h
+    ¦       at91sam7s512.h
+    ¦       common.h
+    ¦       config_gpio.h
+    ¦       desfire.h
+    ¦       em4x50.h
+    ¦       em4x70.h
+    ¦       hitag.h
+    ¦       iclass_cmd.h
+    ¦       iso14b.h
+    ¦       iso15.h
+    ¦       iso18.h
+    ¦       legic.h
+    ¦       mifare.h
+    ¦       pm3_cmd.h
+    ¦       pmflash.h
+    ¦       protocols.h
+    ¦       protocol_vigik.h
+    ¦       proxmark3_arm.h
+    ¦       seos_cmd.h
+    ¦       usart_defs.h
+    ¦       zx8211.h
+    ¦       
+    +---recovery
+    ¦       bootrom.bin
+    ¦       fullimage.bin
+    ¦       Makefile
+    ¦       proxmark3_recovery.bin
+    ¦       
+    +---tools
+    ¦   ¦   analyzesize.py
+    ¦   ¦   build_all_firmwares.sh
+    ¦   ¦   findbits.py
+    ¦   ¦   findbits_test.py
+    ¦   ¦   lena.bmp
+    ¦   ¦   Makefile
+    ¦   ¦   mkversion.sh
+    ¦   ¦   pm3-clone.sh
+    ¦   ¦   pm3trace_edit.py
+    ¦   ¦   pm3_amii_bin2eml.pl
+    ¦   ¦   pm3_cs8.pl
+    ¦   ¦   pm3_online_check.py
+    ¦   ¦   pm3_online_tests.sh
+    ¦   ¦   pm3_pm32wav.py
+    ¦   ¦   pm3_reblay-emulating.py
+    ¦   ¦   pm3_reblay-reading.py
+    ¦   ¦   pm3_tears_for_fears.py
+    ¦   ¦   pm3_tests.sh
+    ¦   ¦   recover_pk.py
+    ¦   ¦   release_tests.sh
+    ¦   ¦   requirements.txt
+    ¦   ¦   rfidtest.pl
+    ¦   ¦   shell.nix
+    ¦   ¦   xorcheck.py
+    ¦   ¦   
+    ¦   +---btaddon
+    ¦   ¦       hc06_console_AT.py
+    ¦   ¦       hc06_factory.py
+    ¦   ¦       requirements.txt
+    ¦   ¦       
+    ¦   +---cryptorf
+    ¦   ¦   ¦   cm.c
+    ¦   ¦   ¦   cm.exe
+    ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   sm.c
+    ¦   ¦   ¦   sm.exe
+    ¦   ¦   ¦   sma.cpp
+    ¦   ¦   ¦   sma.exe
+    ¦   ¦   ¦   sma_multi.cpp
+    ¦   ¦   ¦   sma_multi.exe
+    ¦   ¦   ¦   test.sh
+    ¦   ¦   ¦   util.c
+    ¦   ¦   ¦   util.h
+    ¦   ¦   ¦   
+    ¦   ¦   L---obj
+    ¦   ¦           cm.d
+    ¦   ¦           cm.o
+    ¦   ¦           cryptolib.d
+    ¦   ¦           cryptolib.o
+    ¦   ¦           sm.d
+    ¦   ¦           sm.o
+    ¦   ¦           sma.d
+    ¦   ¦           sma.o
+    ¦   ¦           sma_multi.d
+    ¦   ¦           sma_multi.o
+    ¦   ¦           util.d
+    ¦   ¦           util.o
+    ¦   ¦           
+    ¦   +---deprecated-hid-flasher
+    ¦   ¦   ¦   unbind-proxmark
+    ¦   ¦   ¦   
+    ¦   ¦   L---flasher
+    ¦   ¦       ¦   elf.h
+    ¦   ¦       ¦   flash.c
+    ¦   ¦       ¦   flash.h
+    ¦   ¦       ¦   flasher.c
+    ¦   ¦       ¦   Info.plist
+    ¦   ¦       ¦   Makefile
+    ¦   ¦       ¦   proxendian.h
+    ¦   ¦       ¦   proxmark3.h
+    ¦   ¦       ¦   proxusb.c
+    ¦   ¦       ¦   proxusb.h
+    ¦   ¦       ¦   README.md
+    ¦   ¦       ¦   sleep.h
+    ¦   ¦       ¦   usb_cmd.h
+    ¦   ¦       ¦   
+    ¦   ¦       L---obj
+    ¦   ¦               .dummy
+    ¦   ¦               
+    ¦   +---fpga_compress
+    ¦   ¦   ¦   fpga_compress.c
+    ¦   ¦   ¦   fpga_compress.exe
+    ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   
+    ¦   ¦   L---obj
+    ¦   ¦           fpga_compress.d
+    ¦   ¦           fpga_compress.o
+    ¦   ¦           lz4.d
+    ¦   ¦           lz4.o
+    ¦   ¦           lz4hc.d
+    ¦   ¦           lz4hc.o
+    ¦   ¦           
+    ¦   +---hitag2crack
+    ¦   ¦   ¦   .gitignore
+    ¦   ¦   ¦   hitag2_gen_nRaR.py
+    ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   README.md
+    ¦   ¦   ¦   
+    ¦   ¦   +---common
+    ¦   ¦   ¦   ¦   hitagcrypto.c
+    ¦   ¦   ¦   ¦   hitagcrypto.h
+    ¦   ¦   ¦   ¦   ht2crackutils.c
+    ¦   ¦   ¦   ¦   ht2crackutils.h
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   L---OpenCL-Headers
+    ¦   ¦   ¦       ¦   CODE_OF_CONDUCT.md
+    ¦   ¦   ¦       ¦   LICENSE
+    ¦   ¦   ¦       ¦   README.md
+    ¦   ¦   ¦       ¦   
+    ¦   ¦   ¦       L---CL
+    ¦   ¦   ¦               cl.h
+    ¦   ¦   ¦               cl_d3d10.h
+    ¦   ¦   ¦               cl_d3d11.h
+    ¦   ¦   ¦               cl_dx9_media_sharing.h
+    ¦   ¦   ¦               cl_dx9_media_sharing_intel.h
+    ¦   ¦   ¦               cl_egl.h
+    ¦   ¦   ¦               cl_ext.h
+    ¦   ¦   ¦               cl_ext_intel.h
+    ¦   ¦   ¦               cl_function_types.h
+    ¦   ¦   ¦               cl_gl.h
+    ¦   ¦   ¦               cl_gl_ext.h
+    ¦   ¦   ¦               cl_half.h
+    ¦   ¦   ¦               cl_icd.h
+    ¦   ¦   ¦               cl_layer.h
+    ¦   ¦   ¦               cl_platform.h
+    ¦   ¦   ¦               cl_va_api_media_sharing_intel.h
+    ¦   ¦   ¦               cl_version.h
+    ¦   ¦   ¦               opencl.h
+    ¦   ¦   ¦               
+    ¦   ¦   +---crack2
+    ¦   ¦   ¦       .gitignore
+    ¦   ¦   ¦       ht2crack2buildtable.c
+    ¦   ¦   ¦       ht2crack2gentest.c
+    ¦   ¦   ¦       ht2crack2search.c
+    ¦   ¦   ¦       ht2crack2search_multi.c
+    ¦   ¦   ¦       Makefile
+    ¦   ¦   ¦       README.md
+    ¦   ¦   ¦       runalltests.sh
+    ¦   ¦   ¦       runtest.sh
+    ¦   ¦   ¦       
+    ¦   ¦   +---crack3
+    ¦   ¦   ¦       .gitignore
+    ¦   ¦   ¦       ht2crack3.c
+    ¦   ¦   ¦       ht2crack3test.c
+    ¦   ¦   ¦       Makefile
+    ¦   ¦   ¦       README.md
+    ¦   ¦   ¦       
+    ¦   ¦   +---crack4
+    ¦   ¦   ¦       .gitignore
+    ¦   ¦   ¦       ht2crack4.c
+    ¦   ¦   ¦       Makefile
+    ¦   ¦   ¦       README.md
+    ¦   ¦   ¦       
+    ¦   ¦   +---crack5
+    ¦   ¦   ¦       .gitignore
+    ¦   ¦   ¦       ht2crack5.c
+    ¦   ¦   ¦       Makefile
+    ¦   ¦   ¦       README.md
+    ¦   ¦   ¦       
+    ¦   ¦   +---crack5gpu_disabled
+    ¦   ¦   ¦       .gitignore
+    ¦   ¦   ¦       ht2crack5gpu.c
+    ¦   ¦   ¦       ht2crack5kernel.cl
+    ¦   ¦   ¦       Makefile
+    ¦   ¦   ¦       README.md
+    ¦   ¦   ¦       
+    ¦   ¦   L---crack5opencl
+    ¦   ¦           .gitignore
+    ¦   ¦           dolphin_macro.h
+    ¦   ¦           hitag2.c
+    ¦   ¦           hitag2.h
+    ¦   ¦           ht2crack5opencl.c
+    ¦   ¦           ht2crack5opencl.h
+    ¦   ¦           ht2crack5opencl_kernel.cl
+    ¦   ¦           Makefile
+    ¦   ¦           opencl.c
+    ¦   ¦           opencl.h
+    ¦   ¦           queue.c
+    ¦   ¦           queue.h
+    ¦   ¦           README.md
+    ¦   ¦           threads.c
+    ¦   ¦           threads.h
+    ¦   ¦           
+    ¦   +---jtag_openocd
+    ¦   ¦       board-at91sam7s.cfg
+    ¦   ¦       general.cfg
+    ¦   ¦       interface-buspirate.cfg
+    ¦   ¦       interface-c232hm.cfg
+    ¦   ¦       interface-cmsis-dap.cfg
+    ¦   ¦       interface-raspberrypi.cfg
+    ¦   ¦       interface-raspberrypi2.cfg
+    ¦   ¦       interface-shikra.cfg
+    ¦   ¦       openocd_configuration.sample
+    ¦   ¦       openocd_flash_dump.sh
+    ¦   ¦       openocd_flash_recovery.sh
+    ¦   ¦       openocd_interactive.sh
+    ¦   ¦       
+    ¦   +---mfc
+    ¦   ¦   ¦   pm3_eml2lower.sh
+    ¦   ¦   ¦   pm3_eml2mfd.py
+    ¦   ¦   ¦   pm3_eml2upper.sh
+    ¦   ¦   ¦   pm3_eml_mfd_test.py
+    ¦   ¦   ¦   pm3_gen_dictionary.py
+    ¦   ¦   ¦   pm3_gen_mfsim.sh
+    ¦   ¦   ¦   pm3_key_file_diff.py
+    ¦   ¦   ¦   pm3_mf7b_wipe.py
+    ¦   ¦   ¦   pm3_mfd2eml.py
+    ¦   ¦   ¦   pm3_mfdread.py
+    ¦   ¦   ¦   
+    ¦   ¦   +---card_only
+    ¦   ¦   ¦   ¦   .gitignore
+    ¦   ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   ¦   nested_util.c
+    ¦   ¦   ¦   ¦   nested_util.h
+    ¦   ¦   ¦   ¦   nonce2key.c
+    ¦   ¦   ¦   ¦   nonce2key.exe
+    ¦   ¦   ¦   ¦   staticnested_0nt.c
+    ¦   ¦   ¦   ¦   staticnested_0nt.exe
+    ¦   ¦   ¦   ¦   staticnested_1nt.c
+    ¦   ¦   ¦   ¦   staticnested_1nt.exe
+    ¦   ¦   ¦   ¦   staticnested_2nt.c
+    ¦   ¦   ¦   ¦   staticnested_2nt.exe
+    ¦   ¦   ¦   ¦   staticnested_2nt_test.sh
+    ¦   ¦   ¦   ¦   staticnested_2x1nt_rf08s.c
+    ¦   ¦   ¦   ¦   staticnested_2x1nt_rf08s.exe
+    ¦   ¦   ¦   ¦   staticnested_2x1nt_rf08s_1key.c
+    ¦   ¦   ¦   ¦   staticnested_2x1nt_rf08s_1key.exe
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   L---obj
+    ¦   ¦   ¦           bucketsort.d
+    ¦   ¦   ¦           bucketsort.o
+    ¦   ¦   ¦           crapto1.d
+    ¦   ¦   ¦           crapto1.o
+    ¦   ¦   ¦           crypto1.d
+    ¦   ¦   ¦           crypto1.o
+    ¦   ¦   ¦           nested_util.d
+    ¦   ¦   ¦           nested_util.o
+    ¦   ¦   ¦           nonce2key.d
+    ¦   ¦   ¦           nonce2key.o
+    ¦   ¦   ¦           staticnested_0nt.d
+    ¦   ¦   ¦           staticnested_0nt.o
+    ¦   ¦   ¦           staticnested_1nt.d
+    ¦   ¦   ¦           staticnested_1nt.o
+    ¦   ¦   ¦           staticnested_2nt.d
+    ¦   ¦   ¦           staticnested_2nt.o
+    ¦   ¦   ¦           staticnested_2x1nt_rf08s.d
+    ¦   ¦   ¦           staticnested_2x1nt_rf08s.o
+    ¦   ¦   ¦           staticnested_2x1nt_rf08s_1key.d
+    ¦   ¦   ¦           staticnested_2x1nt_rf08s_1key.o
+    ¦   ¦   ¦           
+    ¦   ¦   +---card_reader
+    ¦   ¦   ¦   ¦   .gitignore
+    ¦   ¦   ¦   ¦   iso14443crc.c
+    ¦   ¦   ¦   ¦   iso14443crc.h
+    ¦   ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   ¦   mfkey32.c
+    ¦   ¦   ¦   ¦   mfkey32.exe
+    ¦   ¦   ¦   ¦   mfkey32nested.c
+    ¦   ¦   ¦   ¦   mfkey32nested.exe
+    ¦   ¦   ¦   ¦   mfkey32v2.c
+    ¦   ¦   ¦   ¦   mfkey32v2.exe
+    ¦   ¦   ¦   ¦   mfkey64.c
+    ¦   ¦   ¦   ¦   mfkey64.exe
+    ¦   ¦   ¦   ¦   mfkey_examples.md
+    ¦   ¦   ¦   ¦   mf_nonce_brute.c
+    ¦   ¦   ¦   ¦   mf_nonce_brute.exe
+    ¦   ¦   ¦   ¦   mf_nonce_brute_examples.md
+    ¦   ¦   ¦   ¦   mf_trace_brute.c
+    ¦   ¦   ¦   ¦   mf_trace_brute.exe
+    ¦   ¦   ¦   ¦   protocol.h
+    ¦   ¦   ¦   ¦   sleep.c
+    ¦   ¦   ¦   ¦   sleep.h
+    ¦   ¦   ¦   ¦   util_posix.c
+    ¦   ¦   ¦   ¦   util_posix.h
+    ¦   ¦   ¦   ¦   
+    ¦   ¦   ¦   L---obj
+    ¦   ¦   ¦           bucketsort.d
+    ¦   ¦   ¦           bucketsort.o
+    ¦   ¦   ¦           crapto1.d
+    ¦   ¦   ¦           crapto1.o
+    ¦   ¦   ¦           crypto1.d
+    ¦   ¦   ¦           crypto1.o
+    ¦   ¦   ¦           iso14443crc.d
+    ¦   ¦   ¦           iso14443crc.o
+    ¦   ¦   ¦           mfkey32.d
+    ¦   ¦   ¦           mfkey32.o
+    ¦   ¦   ¦           mfkey32nested.d
+    ¦   ¦   ¦           mfkey32nested.o
+    ¦   ¦   ¦           mfkey32v2.d
+    ¦   ¦   ¦           mfkey32v2.o
+    ¦   ¦   ¦           mfkey64.d
+    ¦   ¦   ¦           mfkey64.o
+    ¦   ¦   ¦           mf_nonce_brute.d
+    ¦   ¦   ¦           mf_nonce_brute.o
+    ¦   ¦   ¦           mf_trace_brute.d
+    ¦   ¦   ¦           mf_trace_brute.o
+    ¦   ¦   ¦           sleep.d
+    ¦   ¦   ¦           sleep.o
+    ¦   ¦   ¦           util_posix.d
+    ¦   ¦   ¦           util_posix.o
+    ¦   ¦   ¦           
+    ¦   ¦   L---protocol
+    ¦   ¦           Makefile
+    ¦   ¦           mfc-protocol-demo.c
+    ¦   ¦           
+    ¦   +---mfd_aes_brute
+    ¦   ¦   ¦   aes-ni.h
+    ¦   ¦   ¦   brute_key.c
+    ¦   ¦   ¦   brute_key.exe
+    ¦   ¦   ¦   detectaes.h
+    ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   mfd_aes_brute.c
+    ¦   ¦   ¦   mfd_aes_brute.exe
+    ¦   ¦   ¦   mfd_multi_brute.c
+    ¦   ¦   ¦   mfd_multi_brute.exe
+    ¦   ¦   ¦   randoms.c
+    ¦   ¦   ¦   randoms.h
+    ¦   ¦   ¦   readme.txt
+    ¦   ¦   ¦   util_posix.c
+    ¦   ¦   ¦   util_posix.h
+    ¦   ¦   ¦   
+    ¦   ¦   L---obj
+    ¦   ¦           brute_key.d
+    ¦   ¦           brute_key.o
+    ¦   ¦           mfd_aes_brute.d
+    ¦   ¦           mfd_aes_brute.o
+    ¦   ¦           mfd_multi_brute.d
+    ¦   ¦           mfd_multi_brute.o
+    ¦   ¦           randoms.d
+    ¦   ¦           randoms.o
+    ¦   ¦           util_posix.d
+    ¦   ¦           util_posix.o
+    ¦   ¦           
+    ¦   +---mfulc_des_brute
+    ¦   ¦   ¦   Makefile
+    ¦   ¦   ¦   mfulc_des_brute.c
+    ¦   ¦   ¦   mfulc_des_brute.exe
+    ¦   ¦   ¦   
+    ¦   ¦   L---obj
+    ¦   ¦           mfulc_des_brute.d
+    ¦   ¦           mfulc_des_brute.o
+    ¦   ¦           
+    ¦   +---mfulc_des_brute_cuda
+    ¦   ¦       desbrute.cu
+    ¦   ¦       desbrute.h
+    ¦   ¦       des_host.h
+    ¦   ¦       main.cu
+    ¦   ¦       Makefile
+    ¦   ¦       
+    ¦   +---simmodule
+    ¦   ¦       sim011.asm
+    ¦   ¦       sim013.asm
+    ¦   ¦       
+    ¦   L---twn
+    ¦           AppBlaster.exe
+    ¦           decoder.bix
+    ¦           encoder.bix
+    ¦           pcsc.bix
+    ¦           
+    L---traces
+        ¦   hf_14a_mfu-sim.trace
+        ¦   hf_14a_mfu.trace
+        ¦   hf_14a_mfuc.trace
+        ¦   hf_14a_mfuc_defaultkey.trace
+        ¦   hf_14a_mful_aes_defaultkey.trace
+        ¦   hf_14a_mful_aes_defaultkey_secure_message.trace
+        ¦   hf_14a_reader_4b.trace
+        ¦   hf_14a_reader_4b_rats.trace
+        ¦   hf_14a_reader_7b_rats.trace
+        ¦   hf_14b_cryptorf_select.trace
+        ¦   hf_14b_raw_010fxxxxxxxx_innovatron.pm3
+        ¦   hf_14b_raw_050008_resp.pm3
+        ¦   hf_14b_raw_0600_st_sri512.pm3
+        ¦   hf_14b_raw_0600_st_sri512_collision.pm3
+        ¦   hf_14b_raw_10_ask_ctx.pm3
+        ¦   hf_14b_reader.trace
+        ¦   hf_14b_xerox_info.trace
+        ¦   hf_15_reader.trace
+        ¦   hf_iclass_sniff.trace
+        ¦   hf_mfdes_sniff.trace
+        ¦   hf_mfp_mad_sl3.trace
+        ¦   hf_mfp_read_sc0_sl3.trace
+        ¦   hf_mf_hid_sio_sim.trace
+        ¦   hf_seos_sniff_fc54_cn64001.trace
+        ¦   hf_sniff_14b_scl3711.pm3
+        ¦   hf_visa_apple_ecp.trace
+        ¦   hf_visa_apple_normal.trace
+        ¦   hf_visa_apple_transit_bypass.trace
+        ¦   lf_ATA5577.txt
+        ¦   lf_ATA5577_awid_26.pm3
+        ¦   lf_ATA5577_awid_50.pm3
+        ¦   lf_ATA5577_em410x.pm3
+        ¦   lf_ATA5577_fdxb_animal.pm3
+        ¦   lf_ATA5577_fdxb_extended.pm3
+        ¦   lf_ATA5577_gallagher.pm3
+        ¦   lf_ATA5577_gproxii.pm3
+        ¦   lf_ATA5577_HID-FC1-C9.pm3
+        ¦   lf_ATA5577_hid.pm3
+        ¦   lf_ATA5577_hid_48.pm3
+        ¦   lf_ATA5577_indala.pm3
+        ¦   lf_ATA5577_indala_224.pm3
+        ¦   lf_ATA5577_indala_hedem.pm3
+        ¦   lf_ATA5577_io.pm3
+        ¦   lf_ATA5577_jablotron.pm3
+        ¦   lf_ATA5577_keri.pm3
+        ¦   lf_ATA5577_keri_internalid.pm3
+        ¦   lf_ATA5577_keri_msid.pm3
+        ¦   lf_ATA5577_motorola.pm3
+        ¦   lf_ATA5577_nedap.pm3
+        ¦   lf_ATA5577_nexwatch.pm3
+        ¦   lf_ATA5577_nexwatch_nexkey.pm3
+        ¦   lf_ATA5577_nexwatch_quadrakey.pm3
+        ¦   lf_ATA5577_noralsy.pm3
+        ¦   lf_ATA5577_pac.pm3
+        ¦   lf_ATA5577_paradox.pm3
+        ¦   lf_ATA5577_presco.pm3
+        ¦   lf_ATA5577_pyramid.pm3
+        ¦   lf_ATA5577_securakey.pm3
+        ¦   lf_ATA5577_viking.pm3
+        ¦   lf_ATA5577_visa2000.pm3
+        ¦   lf_AWID-15-259.pm3
+        ¦   lf_Casi-12ed825c29.pm3
+        ¦   lf_cotag_220_8331.pm3
+        ¦   lf_EM4102-1.pm3
+        ¦   lf_EM4102-2.pm3
+        ¦   lf_EM4102-3.pm3
+        ¦   lf_EM4102-clamshell.pm3
+        ¦   lf_EM4102-fob.pm3
+        ¦   lf_EM4102-thin.pm3
+        ¦   lf_EM4305_fdxa_destron.pm3
+        ¦   lf_EM4x05.pm3
+        ¦   lf_EM4x50.pm3
+        ¦   lf_FDXB_Bio-Thermo.pm3
+        ¦   lf_GALLAGHER.pm3
+        ¦   lf_GProx_36_30_14489.pm3
+        ¦   lf_HID-proxCardII-05512-11432784-1.pm3
+        ¦   lf_HID-weak-fob-11647.pm3
+        ¦   lf_HitagS256_dump.trace
+        ¦   lf_hitag_crypto_dump.trace
+        ¦   lf_HomeAgain.pm3
+        ¦   lf_HomeAgain1600.pm3
+        ¦   lf_IDTECK_4944544B351FBE4B.pm3
+        ¦   lf_IDTECK_4944544BAC40E069.pm3
+        ¦   lf_IDTECK_idk50_PSK
+        ¦   lf_Indala-00002-12345678-1A.pm3
+        ¦   lf_Indala-504278295.pm3
+        ¦   lf_indala_4041x_234_21801.pm3
+        ¦   lf_IOProx-XSF-01-3B-44725.pm3
+        ¦   lf_IOProx-XSF-01-BE-03011.pm3
+        ¦   lf_Keri.pm3
+        ¦   lf_Motorola_0437_00072.pm3
+        ¦   lf_NEXWATCH_Nexkey_74755342.pm3
+        ¦   lf_NEXWATCH_Quadrakey-521512301.pm3
+        ¦   lf_NEXWATCH_Securakey-64169.pm3
+        ¦   lf_PAC-8E4C058E.pm3
+        ¦   lf_Paradox-96_40426-APJN08.pm3
+        ¦   lf_Q5_mod-ask-biph-50.pm3
+        ¦   lf_Q5_mod-ask-man-100.pm3
+        ¦   lf_Q5_mod-ask-man-128.pm3
+        ¦   lf_Q5_mod-ask-man-16.pm3
+        ¦   lf_Q5_mod-ask-man-32.pm3
+        ¦   lf_Q5_mod-ask-man-40.pm3
+        ¦   lf_Q5_mod-ask-man-8.pm3
+        ¦   lf_Q5_mod-biphase.pm3
+        ¦   lf_Q5_mod-direct-32.pm3
+        ¦   lf_Q5_mod-direct-40.pm3
+        ¦   lf_Q5_mod-direct-50.pm3
+        ¦   lf_Q5_mod-fsk1-50.pm3
+        ¦   lf_Q5_mod-fsk1.pm3
+        ¦   lf_Q5_mod-fsk1a-50.pm3
+        ¦   lf_Q5_mod-fsk2-50.pm3
+        ¦   lf_Q5_mod-fsk2.pm3
+        ¦   lf_Q5_mod-fsk2a-40.pm3
+        ¦   lf_Q5_mod-fsk2a-50.pm3
+        ¦   lf_Q5_mod-manchester.pm3
+        ¦   lf_Q5_mod-nrz.pm3
+        ¦   lf_Q5_mod-psk1-32-4.pm3
+        ¦   lf_Q5_mod-psk1-64-8.pm3
+        ¦   lf_Q5_mod-psk1.pm3
+        ¦   lf_Q5_mod-psk2-32-2.pm3
+        ¦   lf_Q5_mod-psk2.pm3
+        ¦   lf_Q5_mod-psk3-32-8.pm3
+        ¦   lf_Q5_mod-psk3.pm3
+        ¦   lf_sniff_blue_cloner_em4100.pm3
+        ¦   lf_sniff_ht2-BC3B8810-acg-reader.pm3
+        ¦   lf_sniff_ht2-BC3B8810-frosch-reader.pm3
+        ¦   lf_sniff_ht2-BC3B8810-rfidler-reader.pm3
+        ¦   lf_TI.pm3
+        ¦   lf_Transit999-best.pm3
+        ¦   lf_VeriChip_1022000000084146.pm3
+        ¦   lf_VISA2000.pm3
+        ¦   README.md
+        ¦   
+        +---cotag
+        ¦       lf_cotag_active_00001558_700000.pm3
+        ¦       lf_cotag_active_00001577_700000.pm3
+        ¦       lf_cotag_active_00385816_700000.pm3
+        ¦       lf_cotag_passive_02402442_700000.pm3
+        ¦       lf_cotag_passive_02402447_700000.pm3
+        ¦       lf_cotag_passive_bewator_01576805_700000.pm3
+        ¦       lf_cotag_passive_bewator_01576807_700000.pm3
+        ¦       lf_cotag_passive_bewator_01576814_700000.pm3
+        ¦       
+        +---EMV
+        ¦       mastercardtags.txt
+        ¦       testcard.txt
+        ¦       visaCVN17.txt
+        ¦       visaDCVV.txt
+        ¦       visaEMV.txt
+        ¦       visaFDDA.txt
+        ¦       visatags.txt
+        ¦       
+        +---iclass
+        ¦       encoder.cfg
+        ¦       hf-iclass-dump.json
+        ¦       hf-iclass-se-weird.json
+        ¦       iclass-flipper.picopass
+        ¦       
+        L---mifare
+                ntag216-empty.json
+                s20-empty-key.bin
+                s20-empty.json
+                s50-empty-key.bin
+                s50-empty.bin
+                
