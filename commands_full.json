@@ -1,0 +1,1302 @@
+[
+  {
+    "tab": "ВКЛАДКА 1: ГЛАВНАЯ",
+    "section": "",
+    "name": "hw status",
+    "icon": "!!",
+    "cmd": "hw status",
+    "desc": "Получение полного статуса устройства: напряжение питания, температура чипа, состояние антенн, версия FPGA, режим работы. Показывает исправность всех подсистем Proxmark3.",
+    "params": "",
+    "action": "выполняет hw status и выводит результат."
+  },
+  {
+    "tab": "ВКЛАДКА 1: ГЛАВНАЯ",
+    "section": "",
+    "name": "hw version",
+    "icon": "!!",
+    "cmd": "hw version",
+    "desc": "Вывод версий всех компонентов: клиент, bootrom, прошивка ARM, FPGA, версия ОС. Показывает тип устройства (Easy/RDV4), частоту тактирования, объём доступной памяти.",
+    "params": "",
+    "action": "выполняет hw version."
+  },
+  {
+    "tab": "ВКЛАДКА 1: ГЛАВНАЯ",
+    "section": "",
+    "name": "hw tune",
+    "icon": "!!",
+    "cmd": "hw tune",
+    "desc": "Непрерывная настройка и калибровка антенн LF (125 кГц) и HF (13.56 МГц). Измеряет резонансные частоты, добротность, уровень сигнала. Нажатие кнопки на устройстве останавливает процесс.",
+    "params": "-h — справка, -l — только LF, -f <частота> — конкретная частота",
+    "action": "выполняет hw tune."
+  },
+  {
+    "tab": "ВКЛАДКА 1: ГЛАВНАЯ",
+    "section": "",
+    "name": "Подключить / Отключить",
+    "icon": "!",
+    "cmd": "hw connect / hw ping",
+    "desc": "Установка или разрыв соединения с устройством Proxmark3. Автоматическое определение COM-порта. Проверка связи.",
+    "params": "-c <порт> — указать COM-порт вручную",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 1: ГЛАВНАЯ",
+    "section": "",
+    "name": "Автопоиск",
+    "icon": "!",
+    "cmd": "auto",
+    "desc": "Автоматическое определение неизвестного тега. Последовательно опрашивает LF (125/134 кГц) и HF (13.56 МГц) диапазоны, определяет тип карты, UID, технологию.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "ОБЩИЙ ПОИСК",
+    "icon": "!",
+    "cmd": "auto",
+    "desc": "Автоматическое определение неизвестного тега. Сначала проверяет LF диапазон, затем HF. Определяет тип карты, UID, SAK, ATQA. Результат выводится в информационную панель.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "ПОИСК LF",
+    "icon": "!",
+    "cmd": "lf search",
+    "desc": "Поиск среди всех низкочастотных протоколов (125/134 кГц). Автоматически определяет формат: EM4100, HID, AWID, Indala, FDX-B, T55xx и другие. Выводит UID, формат, данные.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "ПОИСК HF",
+    "icon": "!",
+    "cmd": "hf search",
+    "desc": "Поиск среди всех высокочастотных протоколов (13.56 МГц). Определяет тип: ISO 14443A, 14443B, ISO 15693, Mifare, DESFire, iClass, Legic, FeliCa и другие. Выводит UID, SAK, ATQA, тип чипа.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: EM4100/4102",
+    "icon": "!",
+    "cmd": "lf em 410x reader",
+    "desc": "Чтение тега EM4100/EM4102. Определяет 40-битный UID, формат (Standard/HID), версию. EM4100 — самый распространённый формат LF-карт (ключи домофонов, пропуска).",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: EM4x05",
+    "icon": "!!",
+    "cmd": "lf em 4x05 info",
+    "desc": "Получение информации о чипе EM4205/EM4305/EM4369/EM4469. Показывает конфигурацию, данные блоков, тип модуляции. Перезаписываемый чип для клонирования.",
+    "params": "",
+    "action": "выполняет lf em 4x05 info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: EM4x50",
+    "icon": "!!",
+    "cmd": "lf em 4x50 info",
+    "desc": "Получение информации о чипе EM4350/EM4450. Показывает UID, данные блоков, тип модуляции. Используется в автомобильных ключах и системах контроля доступа.",
+    "params": "",
+    "action": "выполняет lf em 4x50 info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: EM4x70",
+    "icon": "!!",
+    "cmd": "lf em 4x70 info",
+    "desc": "Получение информации о чипе EM4070/EM4170. Криптографический чип с взаимной аутентификацией. Используется в автомобильных иммобилайзерах.",
+    "params": "",
+    "action": "выполняет lf em 4x70 info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: T55xx",
+    "icon": "!!",
+    "cmd": "lf t55xx info",
+    "desc": "Детальная информация о T55x7/T5577. Показывает конфигурацию блоков, тип модуляции, пароль, lock-биты. T5577 — универсальный перезаписываемый чип для клонирования любых LF-форматов.",
+    "params": "",
+    "action": "выполняет lf t55xx info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: HID Prox",
+    "icon": "!",
+    "cmd": "lf hid reader",
+    "desc": "Чтение карты HID ProxCard II. Определяет facility code, card number, формат (26/34/35/37/48 бит). Один из самых распространённых форматов в системах контроля доступа.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: AWID",
+    "icon": "!",
+    "cmd": "lf awid reader",
+    "desc": "Чтение карты AWID. Определяет facility code, card number, формат (26/34/50 бит). Формат используется в системах AWID (AWID-50, AWID-26).",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Hitag",
+    "icon": "!!",
+    "cmd": "lf hitag info",
+    "desc": "Информация о транспондере Hitag 2. Показывает UID, тип чипа, объём памяти, статус защиты. Hitag 2 используется в автомобильных ключах (BMW, Mercedes, Volkswagen).",
+    "params": "",
+    "action": "выполняет lf hitag info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Hitag S",
+    "icon": "!",
+    "cmd": "lf hitag hts reader",
+    "desc": "Чтение транспондера Hitag S/8211. Определяет UID, данные блоков. Используется в автомобильных ключах нового поколения.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Hitag µ",
+    "icon": "!",
+    "cmd": "lf hitag htu reader",
+    "desc": "Чтение транспондера Hitag µ/8265. Определяет UID, данные блоков. Уменьшенный вариант Hitag для автомобильных приложений.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: FDX-B",
+    "icon": "!",
+    "cmd": "lf fdxb reader",
+    "desc": "Чтение тега FDX-B (ISO 11784/11785). Формат чипов животных. Определяет 15-значный номер животного, страну, тип чипа. Используется ветеринарами.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: FDX-A / Destron",
+    "icon": "!",
+    "cmd": "lf destron reader",
+    "desc": "Чтение тега FDX-A Destron. Ранний формат чипов животных. Определяет UID и данные. Совместим с Destron Fearing.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: COTAG",
+    "icon": "!",
+    "cmd": "lf cotag reader",
+    "desc": "Чтение тега COTAG. Используется в системах контроля доступа COTAG (Швеция). Определяет UID и формат данных.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: GALLAGHER",
+    "icon": "!",
+    "cmd": "lf gallagher reader",
+    "desc": "Чтение карты GALLAGHER. Формат используется в системах GALLAGHER Cardax. Определяет facility code, card number.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: GProx II",
+    "icon": "!",
+    "cmd": "lf gproxii reader",
+    "desc": "Чтение карты Guardall Prox II. Формат используется в системах Guardall. Определяет facility code, card number, формат.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Idteck",
+    "icon": "!",
+    "cmd": "lf idteck reader",
+    "desc": "Чтение карты Idteck. Формат используется в системах Idteck (Швеция). Определяет UID и данные.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Indala",
+    "icon": "!",
+    "cmd": "lf indala reader",
+    "desc": "Чтение карты Indala (Motorola). Определяет facility code, card number, формат (26/224 бит). Один из старейших форматов контроля доступа.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: IO Prox",
+    "icon": "!",
+    "cmd": "lf io reader",
+    "desc": "Чтение карты ioProx. Определяет facility code, card number. Формат используется в системах ioProx.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Jablotron",
+    "icon": "!",
+    "cmd": "lf jablotron reader",
+    "desc": "Чтение карты Jablotron. Формат используется в охранных системах Jablotron (Чехия). Определяет UID и данные.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Keri",
+    "icon": "!",
+    "cmd": "lf keri reader",
+    "desc": "Чтение карты KERI. Формат используется в системах KERI Systems. Определяет facility code, card number.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Motorola",
+    "icon": "!",
+    "cmd": "lf motorola reader",
+    "desc": "Чтение карты Motorola Flexpass. Определяет UID и данные. Формат используется в системах Motorola.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Nedap",
+    "icon": "!",
+    "cmd": "lf nedap reader",
+    "desc": "Чтение карты Nedap. Формат используется в системах Nedap (Нидерланды). Определяет UID и данные.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: NexWatch",
+    "icon": "!",
+    "cmd": "lf nexwatch reader",
+    "desc": "Чтение карты NexWatch. Определяет UID, формат (NexKey, Quadrakey, Securakey). Формат используется в системах NexWatch.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Noralsy",
+    "icon": "!",
+    "cmd": "lf noralsy reader",
+    "desc": "Чтение карты Noralsy. Формат используется в системах Noralsy. Определяет UID и данные.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: PAC",
+    "icon": "!",
+    "cmd": "lf pac reader",
+    "desc": "Чтение карты PAC/Stanley. Определяет UID и данные. Формат используется в системах PAC (Pacific Access Control).",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Paradox",
+    "icon": "!",
+    "cmd": "lf paradox reader",
+    "desc": "Чтение карты Paradox. Формат используется в охранных системах Paradox. Определяет facility code, card number.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: PCF7931",
+    "icon": "!",
+    "cmd": "lf pcf7931 reader",
+    "desc": "Чтение транспондера PCF7931 (NXP). Используется в автомобильных ключах. Определяет UID и данные.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Presco",
+    "icon": "!",
+    "cmd": "lf presco reader",
+    "desc": "Чтение карты Presco. Определяет UID и данные. Формат используется в системах Presco.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Pyramid",
+    "icon": "!",
+    "cmd": "lf pyramid reader",
+    "desc": "Чтение карты Farpointe/Pyramid. Определяет facility code, card number. Формат используется в системах Farpointe Data.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Securakey",
+    "icon": "!",
+    "cmd": "lf securakey reader",
+    "desc": "Чтение карты Securakey. Формат используется в системах Securakey. Определяет UID и данные.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: TI",
+    "icon": "!",
+    "cmd": "lf ti reader",
+    "desc": "Чтение транспондера Texas Instruments (TI). Используется в автомобильных иммобилайзерах. Определяет UID и данные.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Trovan",
+    "icon": "!",
+    "cmd": "lf trovan reader",
+    "desc": "Чтение тега Trovan. Формат чипов животных Trovan. Определяет UID и данные.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: Viking",
+    "icon": "!",
+    "cmd": "lf viking reader",
+    "desc": "Чтение карты Viking. Формат используется в системах Viking. Определяет UID и данные.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: VISA 2000",
+    "icon": "!",
+    "cmd": "lf visa2000 reader",
+    "desc": "Чтение карты VISA 2000. Формат используется в системах VISA 2000. Определяет UID и данные.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "LF: ZX8211",
+    "icon": "!",
+    "cmd": "lf zx8211 reader",
+    "desc": "Чтение тега ZX8211. Формат используется в системах ZX. Определяет UID и данные.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: ISO 14443A",
+    "icon": "!!",
+    "cmd": "hf 14a info",
+    "desc": "Опрос карты ISO 14443A. Определяет UID (4/7/10 байт), SAK, ATQA, тип чипа (Mifare Classic/Ultralight/DESFire/Plus), ATS. Основа для работы с большинством бесконтактных карт.",
+    "params": "",
+    "action": "выполняет hf 14a info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: ISO 14443B",
+    "icon": "!!",
+    "cmd": "hf 14b info",
+    "desc": "Опрос карты ISO 14443B. Определяет UID, AID, протокол. Используется в транспортных картах, паспортах, Calypso.",
+    "params": "",
+    "action": "выполняет hf 14b info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: ISO 15693",
+    "icon": "!!",
+    "cmd": "hf 15 info",
+    "desc": "Опрос карты ISO 15693. Определяет UID, DSFID, AFI, объём памяти, количество блоков. Используется в библиотечных системах, инвентаризации, NFC-V.",
+    "params": "",
+    "action": "выполняет hf 15 info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: Mifare Classic",
+    "icon": "!!",
+    "cmd": "hf mf info",
+    "desc": "Информация о Mifare Classic. Определяет тип (1K/2K/4K), UID, SAK, ATQA, версию чипа, размер памяти, ATS. Mifare Classic — самый распространённый формат бесконтактных карт.",
+    "params": "",
+    "action": "выполняет hf mf info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: Mifare Ultralight",
+    "icon": "!!",
+    "cmd": "hf mfu info",
+    "desc": "Информация о Mifare Ultralight. Определяет тип (UL/UL EV1/UL C/UL AES/NTAG), UID, размер памяти, версию. Используется в NFC-метках, транспортных картах, Amiibo.",
+    "params": "",
+    "action": "выполняет hf mfu info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: Mifare DESFire",
+    "icon": "!!",
+    "cmd": "hf mfdes info",
+    "desc": "Информация о Mifare DESFire. Определяет тип (EV1/EV2/EV3), UID, версию, количество приложений и файлов. Самый защищённый формат Mifare, используется в транспортных и платёжных системах.",
+    "params": "",
+    "action": "выполняет hf mfdes info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: Mifare Plus",
+    "icon": "!!",
+    "cmd": "hf mfp info",
+    "desc": "Информация о Mifare Plus. Определяет тип (S/X/SE/PE), уровень безопасности (SL0/SL1/SL2/SL3), UID, размер памяти. Переходный формат от Classic к DESFire.",
+    "params": "",
+    "action": "выполняет hf mfp info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: iClass",
+    "icon": "!!",
+    "cmd": "hf iclass info",
+    "desc": "Информация о iClass/PicoPass. Определяет тип (Standard/Elite), CSN, конфигурацию блоков. Формат HID iClass используется в системах контроля доступа.",
+    "params": "",
+    "action": "выполняет hf iclass info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: Legic",
+    "icon": "!!",
+    "cmd": "hf legic reader",
+    "desc": "Чтение карты Legic. Определяет тип (Prime/Advant), UID, размер памяти. Формат Legic используется в системах Legic (Швейцария).",
+    "params": "",
+    "action": "выполняет hf legic reader."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: FeliCa",
+    "icon": "!!",
+    "cmd": "hf felica reader",
+    "desc": "Опрос карты FeliCa (ISO 18092). Определяет IDm (UID), PMm, System Code. Формат используется в Японии (Suica, PASMO, ICOCA).",
+    "params": "",
+    "action": "выполняет hf felica reader."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: Calypso",
+    "icon": "!!",
+    "cmd": "hf calypso info",
+    "desc": "Информация о транспортной карте Calypso. Определяет тип, AID, структуру файлов. Формат используется в транспортных системах Европы.",
+    "params": "",
+    "action": "выполняет hf calypso info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: CIPURSE",
+    "icon": "!!",
+    "cmd": "hf cipurse info",
+    "desc": "Информация о карте CIPURSE. Определяет тип, AID, структуру. Формат CIPURSE используется в транспортных системах нового поколения.",
+    "params": "",
+    "action": "выполняет hf cipurse info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: SEOS",
+    "icon": "!!",
+    "cmd": "hf seos info",
+    "desc": "Информация о карте SEOS (Secure Element OS). Определяет тип, AID, структуру. Формат HID SEOS используется в системах контроля доступа нового поколения.",
+    "params": "",
+    "action": "выполняет hf seos info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: SECC",
+    "icon": "!!",
+    "cmd": "hf secc info",
+    "desc": "Информация о SECC (Secure Element Contactless Card). Определяет тип, структуру.",
+    "params": "",
+    "action": "выполняет hf secc info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: Topaz",
+    "icon": "!!",
+    "cmd": "hf topaz info",
+    "desc": "Информация о Topaz/NFC Type 1. Определяет UID, размер памяти, версию. Topaz — формат NFC Type 1 (Innovision/Broadcom).",
+    "params": "",
+    "action": "выполняет hf topaz info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: Saflok",
+    "icon": "!!",
+    "cmd": "hf saflok info",
+    "desc": "Информация о карте Saflok. Формат используется в гостиничных электронных замках Saflok. Определяет тип, данные.",
+    "params": "",
+    "action": "выполняет hf saflok info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: ST25TA",
+    "icon": "!!",
+    "cmd": "hf st25ta info",
+    "desc": "Информация о ST25TA (STMicroelectronics). Определяет UID, размер памяти, NDEF. NFC Type 4 тег с защитой паролем.",
+    "params": "",
+    "action": "выполняет hf st25ta info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: NTAG 424",
+    "icon": "!!",
+    "cmd": "hf ntag424 info",
+    "desc": "Информация о NXP NTAG 424 DNA. Определяет UID, размер памяти, версию. NTAG 424 — защищённый NFC-тег с аппаратным шифрованием AES.",
+    "params": "",
+    "action": "выполняет hf ntag424 info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: Apple VAS",
+    "icon": "!!",
+    "cmd": "hf vas info",
+    "desc": "Информация об апплете Apple VAS (Value Added Services). Определяет AID, версию. Используется в Apple Wallet для транспортных карт, пропусков.",
+    "params": "",
+    "action": "выполняет hf vas info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: ALIRO",
+    "icon": "!!",
+    "cmd": "hf aliro info",
+    "desc": "Информация об апплете ALIRO. Цифровые учётные данные доступа. Определяет AID, версию. Новый стандарт для цифровых ключей.",
+    "params": "",
+    "action": "выполняет hf aliro info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: EMRTD",
+    "icon": "!!",
+    "cmd": "hf emrtd info",
+    "desc": "Информация о eMRTD (электронный машиночитаемый проездной документ). Определяет тип, структуру данных. Используется в электронных паспортах и визах.",
+    "params": "",
+    "action": "выполняет hf emrtd info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: EPA",
+    "icon": "!!",
+    "cmd": "hf epa info",
+    "desc": "Информация о EPA (German Identification Card). Немецкая идентификационная карта. Определяет тип, структуру.",
+    "params": "",
+    "action": "выполняет hf epa info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: FIDO",
+    "icon": "!!",
+    "cmd": "hf fido info",
+    "desc": "Информация об аутентификаторе FIDO/FIDO2. Определяет тип, AID, версию. FIDO — стандарт беспарольной аутентификации.",
+    "params": "",
+    "action": "выполняет hf fido info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: ICT",
+    "icon": "!!",
+    "cmd": "hf ict info",
+    "desc": "Информация о ICT. Определяет тип (Mifare Classic / DESFire), структуру. Формат ICT используется в системах контроля доступа.",
+    "params": "",
+    "action": "выполняет hf ict info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: Jooki",
+    "icon": "!!",
+    "cmd": "hf jooki info",
+    "desc": "Информация о Jooki. Детские NFC-игрушки. Определяет тип, данные. Jooki использует NTAG для хранения данных игрушек.",
+    "params": "",
+    "action": "выполняет hf jooki info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: KS X 6924",
+    "icon": "!!",
+    "cmd": "hf ksx6924 info",
+    "desc": "Информация о карте KS X 6924 (T-Money, Корея). Определяет тип, баланс, структуру. Формат корейских транспортных карт.",
+    "params": "",
+    "action": "выполняет hf ksx6924 info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: LTO",
+    "icon": "!!",
+    "cmd": "hf lto info",
+    "desc": "Информация о LTO (Linear Tape-Open). Определяет тип, данные. Формат используется в ленточных накопителях.",
+    "params": "",
+    "action": "выполняет hf lto info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: Fudan",
+    "icon": "!!",
+    "cmd": "hf fudan info",
+    "desc": "Информация о карте Fudan. Китайский аналог Mifare. Определяет тип, UID, размер памяти.",
+    "params": "",
+    "action": "выполняет hf fudan info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: CryptoRF",
+    "icon": "!!",
+    "cmd": "hf cryptorf info",
+    "desc": "Информация о CryptoRF (Atmel). Криптографический чип. Определяет тип, зону, данные. Используется в защищённых приложениях.",
+    "params": "",
+    "action": "выполняет hf cryptorf info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "",
+    "name": "HF: GST",
+    "icon": "!!",
+    "cmd": "hf gallagher info",
+    "desc": "Информация о Gallagher DESFire. Определяет тип, структуру. Формат Gallagher используется в системах контроля доступа нового поколения.",
+    "params": "",
+    "action": "выполняет hf gallagher info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "HF: Gallagher HF !!",
+    "name": "HF: ST",
+    "icon": "!!",
+    "cmd": "hf st info",
+    "desc": "Информация о ST (STMicroelectronics). Определяет тип, данные. Общий модуль для чипов ST.",
+    "params": "",
+    "action": "выполняет hf st info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "HF: Gallagher HF !!",
+    "name": "HF: Tesla",
+    "icon": "!!",
+    "cmd": "hf tesla info",
+    "desc": "Информация о карте Tesla. Определяет тип, данные. Формат Tesla используется в автомобилях Tesla для бесконтактных ключей.",
+    "params": "",
+    "action": "выполняет hf tesla info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "HF: Gallagher HF !!",
+    "name": "HF: Texkom",
+    "icon": "!!",
+    "cmd": "hf texkom info",
+    "desc": "Информация о Texkom. Определяет тип, данные. Формат Texkom используется в системах контроля доступа.",
+    "params": "",
+    "action": "выполняет hf texkom info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "HF: Gallagher HF !!",
+    "name": "HF: Thinfilm",
+    "icon": "!!",
+    "cmd": "hf thinfilm info",
+    "desc": "Информация о Thinfilm. Печатная электроника. Определяет тип, данные. Thinfilm — NFC-метки на основе печатной электроники.",
+    "params": "",
+    "action": "выполняет hf thinfilm info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "HF: Gallagher HF !!",
+    "name": "HF: Xerox",
+    "icon": "!!",
+    "cmd": "hf xerox info",
+    "desc": "Информация о Xerox. Определяет тип картриджа, серийный номер. Формат используется в принтерах Xerox для идентификации картриджей.",
+    "params": "",
+    "action": "выполняет hf xerox info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "HF: Gallagher HF !!",
+    "name": "HF: Waveshare",
+    "icon": "!!",
+    "cmd": "hf waveshare info",
+    "desc": "Информация о Waveshare e-ink дисплее. Определяет тип, данные. Waveshare — e-ink дисплеи с NFC-интерфейсом.",
+    "params": "",
+    "action": "выполняет hf waveshare info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "HF: Gallagher HF !!",
+    "name": "HF: FMCOS",
+    "icon": "!!",
+    "cmd": "hf fmcos info",
+    "desc": "Информация о FMCOS CPU карте. Определяет тип, AID, структуру. FMCOS — китайские CPU-карты.",
+    "params": "",
+    "action": "выполняет hf fmcos info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "HF: Gallagher HF !!",
+    "name": "HF: Mifare SEN",
+    "icon": "!!",
+    "cmd": "hf mfsen info",
+    "desc": "Информация о Mifare SEN. Определяет тип, данные. Mifare SEN — специализированный формат Mifare.",
+    "params": "",
+    "action": "выполняет hf mfsen info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "HF: Gallagher HF !!",
+    "name": "NFC",
+    "icon": "!",
+    "cmd": "nfc decode",
+    "desc": "Декодирование NDEF записей. Парсит NDEF-сообщения из буфера данных. Определяет тип записи (URI, Text, MIME, Smart Poster).",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "HF: Gallagher HF !!",
+    "name": "EMV",
+    "icon": "!",
+    "cmd": "emv reader",
+    "desc": "Работа как EMV ридер. Определяет тип платёжной карты, AID, срок действия, номер. EMV — стандарт платёжных карт (Visa, Mastercard, МИР).",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "HF: Gallagher HF !!",
+    "name": "Smart card (ISO 7816)",
+    "icon": "!!",
+    "cmd": "smart info",
+    "desc": "Информация о контактной смарт-карте. Определяет ATR, протокол (T=0/T=1), скорость. ISO 7816 — стандарт контактных смарт-карт.",
+    "params": "",
+    "action": "выполняет smart info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 1: ПОИСК",
+    "section": "HF: Gallagher HF !!",
+    "name": "PIV",
+    "icon": "!",
+    "cmd": "piv scan",
+    "desc": "Сканирование PIV карты. Определяет тип, AID, данные. PIV — формат идентификационных карт госслужащих США.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 2: ЧТЕНИЕ — SMART CARD (ISO 7816)",
+    "section": "",
+    "name": "Smart card: smart info",
+    "icon": "!!",
+    "cmd": "smart info",
+    "desc": "Информация о контактной смарт-карте. Определяет ATR (Answer To Reset), протокол (T=0/T=1), скорость передачи, исторические байты. Показывает тип карты: SIM, банковская, идентификационная.",
+    "params": "-v — подробный вывод",
+    "action": "выполняет smart info."
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 2: ЧТЕНИЕ — SMART CARD (ISO 7816)",
+    "section": "",
+    "name": "Smart card: smart reader",
+    "icon": "!",
+    "cmd": "smart reader",
+    "desc": "Ридер контактных смарт-карт. Опрос карты в слоте ISO 7816. Выводит ATR, тип карты, доступные AID.",
+    "params": "-v — подробный вывод, -@ — непрерывный режим",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 2: ЧТЕНИЕ — SMART CARD (ISO 7816)",
+    "section": "",
+    "name": "Smart card: smart raw",
+    "icon": "!",
+    "cmd": "smart raw",
+    "desc": "Отправка сырых APDU команд на контактную карту. Позволяет отправлять произвольные ISO 7816-4 APDU для продвинутых пользователей.",
+    "params": "-d <hex> — APDU данные, -t — TLV парсинг ответа, -v — подробный вывод",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 2: ЧТЕНИЕ — SMART CARD (ISO 7816)",
+    "section": "",
+    "name": "Smart card: smart list",
+    "icon": "!",
+    "cmd": "smart list",
+    "desc": "Список AID для контактных карт. Перечисляет известные Application IDs для смарт-карт.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 2: ЧТЕНИЕ — SMART CARD (ISO 7816)",
+    "section": "",
+    "name": "Smart card: smart brute",
+    "icon": "!",
+    "cmd": "smart brute",
+    "desc": "Брутфорс AID для контактных карт. Перебирает AID из словаря для поиска доступных приложений на карте.",
+    "params": "-f <файл> — файл со списком AID",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 2: ЧТЕНИЕ — SMART CARD (ISO 7816)",
+    "section": "",
+    "name": "Smart card: smart pcsc",
+    "icon": "!",
+    "cmd": "smart pcsc",
+    "desc": "PCSC режим для контактных карт. Передаёт управление картой PCSC-драйверу для работы со сторонними приложениями (OpenSC, pkcs11).",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 2: ЧТЕНИЕ — SMART CARD (ISO 7816)",
+    "section": "",
+    "name": "Smart card: smart upgrade",
+    "icon": "!",
+    "cmd": "",
+    "desc": "Обновление SAM модуля. Обновляет прошивку Secure Access Module.",
+    "params": "-f <файл> — файл прошивки",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — ШАГ 2: ЧТЕНИЕ — SMART CARD (ISO 7816)",
+    "section": "",
+    "name": "Smart card: smart setclock",
+    "icon": "!",
+    "cmd": "smart setclock",
+    "desc": "Установка частоты тактирования контактной карты. Настраивает F и D параметры для оптимальной скорости обмена.",
+    "params": "-c <частота> — частота в Hz",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf search",
+    "icon": "!",
+    "cmd": "lf search",
+    "desc": "Автоматический поиск низкочастотного тега. Последовательно проверяет все поддерживаемые LF протоколы: EM4100, HID, AWID, Indala, FDX-B, T55xx, Hitag, и другие. Выводит тип карты, UID, формат данных.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf read",
+    "icon": "!",
+    "cmd": "lf read",
+    "desc": "Чтение LF-тега. Захватывает сигнал с антенны и сохраняет в буфер для последующей демодуляции. Основа для всех LF операций.",
+    "params": "-h — справка, -s <samples> — количество сэмплов",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf config",
+    "icon": "!",
+    "cmd": "lf config",
+    "desc": "Настройка LF захвата. Устанавливает параметры: делитель частоты, количество сэмплов, триггер, бит на сэмпл. Важно для корректного чтения конкретных типов карт.",
+    "params": "-d <делитель> — делитель, -s <samples> — сэмплы, -t <триггер> — триггер, -b <bps> — бит на сэмпл",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf sim",
+    "icon": "!",
+    "cmd": "lf sim",
+    "desc": "Симуляция LF тега из буфера. Эмулирует сигнал из GraphBuffer. Позволяет воспроизвести любую LF карту из захваченных данных.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf simask",
+    "icon": "!",
+    "cmd": "lf simask",
+    "desc": "Симуляция ASK модуляции LF. Эмулирует LF сигнал с ASK модуляцией. Параметры: тип ASK (манчестер/би-фаз), частота, инверсия.",
+    "params": "-m — манчестер, -b — би-фаз, -c <частота> — частота, -i — инверсия",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf simfsk",
+    "icon": "!",
+    "cmd": "lf simfsk",
+    "desc": "Симуляция FSK модуляции LF. Эмулирует LF сигнал с FSK модуляцией. Параметры: тип FSK (FSK1/FSK2), частоты, инверсия.",
+    "params": "-f <тип> — FSK1/FSK2, -c <частота> — частота, -i — инверсия",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf simpsk",
+    "icon": "!",
+    "cmd": "lf simpsk",
+    "desc": "Симуляция PSK модуляции LF. Эмулирует LF сигнал с PSK модуляцией. Параметры: тип PSK (PSK1/PSK2/PSK3), частота, фаза.",
+    "params": "-p <тип> — PSK1/PSK2/PSK3, -c <частота> — частота",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf simbidir",
+    "icon": "!",
+    "cmd": "lf simbidir",
+    "desc": "Двунаправленная симуляция LF. Эмулирует LF тег с возможностью получения данных от ридера (bidirectional). Используется для карт с двусторонним обменом.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf sniff",
+    "icon": "!",
+    "cmd": "lf sniff",
+    "desc": "Снифинг LF обмена. Захватывает обмен между ридером и LF картой. Сохраняет в буфер для последующего анализа. Поддерживает триггеры.",
+    "params": "-h — справка, -t <триггер> — триггер захвата",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf snoop",
+    "icon": "!",
+    "cmd": "lf snoop",
+    "desc": "Запись LF поля. Пассивная запись LF поля без взаимодействия с картой. Полезно для анализа работы ридеров.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf relay",
+    "icon": "!",
+    "cmd": "lf relay",
+    "desc": "LF relay между двумя Proxmark3. Ретранслирует LF сигнал между двумя устройствами. Используется для relay-атак на LF системы контроля доступа.",
+    "params": "-h — справка",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf cmdread",
+    "icon": "!",
+    "cmd": "lf cmdread",
+    "desc": "Модуляция поля ридера для отправки команды. Позволяет отправить команду LF карте через модуляцию поля. Используется для специальных протоколов (EM4x05, EM4x50).",
+    "params": "-d <данные> — данные для отправки",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 2: КАРТА — LF ПРОТОКОЛЫ (полный список команд)",
+    "section": "",
+    "name": "LF: lf tune",
+    "icon": "!",
+    "cmd": "lf zx demod",
+    "desc": "Чтение карты VISA 2000.",
+    "params": "-@ — непрерывный режим",
+    "action": "выполняет lf hitag info."
+  },
+  {
+    "tab": "ВКЛАДКА 3: ЗАПИСЬ",
+    "section": "ШАГ 1: ИСТОЧНИК",
+    "name": "Из файла",
+    "icon": "!",
+    "cmd": "data load",
+    "desc": "Загрузка файла дампа в буфер данных для последующей записи на карту. Поддерживает форматы .bin, .json, .eml.",
+    "params": "-f <файл> — имя файла",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 3: ЗАПИСЬ",
+    "section": "ШАГ 1: ИСТОЧНИК",
+    "name": "Из буфера",
+    "icon": "!",
+    "cmd": "",
+    "desc": "Использование данных, уже находящихся в GraphBuffer или DataBuffer (например, после чтения или снифинга).",
+    "params": "",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 3: ЗАПИСЬ",
+    "section": "ШАГ 1: ИСТОЧНИК",
+    "name": "Из сохранённых карт",
+    "icon": "!",
+    "cmd": "",
+    "desc": "Выбор ранее сохранённого дампа из внутреннего хранилища приложения.",
+    "params": "",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 3: ЗАПИСЬ",
+    "section": "ШАГ 2: ЦЕЛЬ",
+    "name": "Определить карту",
+    "icon": "!",
+    "cmd": "lf hid clone",
+    "desc": "Клонирование карты HID ProxCard на болванку T5577. Кодирует Facility Code и Card Number в формат HID и записывает в T5577.",
+    "params": "-f <fc> — facility code, -c <cn> — card number",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 3: ЗАПИСЬ",
+    "section": "ШАГ 4: ВЕРИФИКАЦИЯ",
+    "name": "Проверить запись",
+    "icon": "!",
+    "cmd": "Повторное выполнение reader / info / dump",
+    "desc": "Автоматическое повторное чтение карты после записи для сравнения с исходным дампом. Гарантирует, что данные были записаны корректно и без ошибок.",
+    "params": "",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 4: СНИФИНГ",
+    "section": "ШАГ 2: ЗАХВАТ",
+    "name": "Старт / Стоп",
+    "icon": "!",
+    "cmd": "trace load",
+    "desc": "Загрузка ранее сохранённого трейса из файла в буфер для анализа.",
+    "params": "-f <файл> — имя файла",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 5: ЭМУЛЯЦИЯ",
+    "section": "ШАГ 1: ИСТОЧНИК",
+    "name": "Из файла / Из буфера / Ввести вручную",
+    "icon": "!",
+    "cmd": "lf hid sim",
+    "desc": "Эмуляция карты HID Prox. Генерирует сигнал HID на основе Facility Code и Card Number.",
+    "params": "-f <fc> — facility code, -c <cn> — card number",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 5: ЭМУЛЯЦИЯ",
+    "section": "ШАГ 4: ЗАПУСК",
+    "name": "Старт эмуляции / Стоп",
+    "icon": "!",
+    "cmd": "",
+    "desc": "Кнопки запуска и остановки процесса эмуляции. Во время эмуляции устройство блокирует другие операции с антенной.",
+    "params": "",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 6: ДАННЫЕ",
+    "section": "",
+    "name": "Управление словарями",
+    "icon": "!",
+    "cmd": "mad decode",
+    "desc": "Декодирование сырых данных MAD.",
+    "params": "-a — ASK, -f — FSK, -p — PSK",
+    "action": "выполняет mem info."
+  },
+  {
+    "tab": "ВКЛАДКА 6: ДАННЫЕ",
+    "section": "",
+    "name": "Ресурсы",
+    "icon": "!",
+    "cmd": "",
+    "desc": "Просмотр встроенных JSON и PEM файлов (aidlist.json, key dictionaries, NXP certificates).",
+    "params": "",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 7: ИНСТРУМЕНТЫ",
+    "section": "",
+    "name": "Analyse",
+    "icon": "!!",
+    "cmd": "analyse",
+    "desc": "Набор утилит для анализа данных:",
+    "params": "",
+    "action": "открывает меню подкоманд."
+  },
+  {
+    "tab": "ВКЛАДКА 7: ИНСТРУМЕНТЫ",
+    "section": "",
+    "name": "Wiegand",
+    "icon": "!!",
+    "cmd": "wiegand",
+    "desc": "Инструменты для работы с форматом Wiegand:",
+    "params": "",
+    "action": "открывает меню подкоманд."
+  },
+  {
+    "tab": "ВКЛАДКА 7: ИНСТРУМЕНТЫ",
+    "section": "",
+    "name": "RevEng (CRC)",
+    "icon": "!!",
+    "cmd": "reveng",
+    "desc": "Интеграция с RevEng (Reverse Engine). Позволяет вычислить неизвестную модель CRC (полином, инверсия, init) по известным парам \"данные-CRC\".",
+    "params": "",
+    "action": "открывает меню подкоманд."
+  },
+  {
+    "tab": "ВКЛАДКА 7: ИНСТРУМЕНТЫ",
+    "section": "",
+    "name": "USART / Bluetooth",
+    "icon": "!!",
+    "cmd": "usart",
+    "desc": "Управление UART/Bluetooth модулем (если установлен на RDV4):",
+    "params": "",
+    "action": "открывает меню подкоманд."
+  },
+  {
+    "tab": "ВКЛАДКА 7: ИНСТРУМЕНТЫ",
+    "section": "",
+    "name": "MQTT",
+    "icon": "!!",
+    "cmd": "mqtt",
+    "desc": "Отправка и получение сообщений по протоколу MQTT. Полезно для интеграции с IoT-системами и умным домом.",
+    "params": "",
+    "action": "открывает меню подкоманд."
+  },
+  {
+    "tab": "ВКЛАДКА 7: ИНСТРУМЕНТЫ",
+    "section": "",
+    "name": "HF специальные",
+    "icon": "!!",
+    "cmd": "",
+    "desc": "Специфичные HF утилиты:",
+    "params": "",
+    "action": "открывает меню подкоманд."
+  },
+  {
+    "tab": "ВКЛАДКА 7: ИНСТРУМЕНТЫ",
+    "section": "",
+    "name": "LF специальные",
+    "icon": "!!",
+    "cmd": "",
+    "desc": "Специфичные LF утилиты:",
+    "params": "",
+    "action": "открывает меню подкоманд."
+  },
+  {
+    "tab": "ВКЛАДКА 8: СКРИПТЫ",
+    "section": "",
+    "name": "Python-скрипты",
+    "icon": "!",
+    "cmd": "",
+    "desc": "Быстрый запуск популярных Python-скриптов:",
+    "params": "",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 8: СКРИПТЫ",
+    "section": "",
+    "name": "Lua-скрипты",
+    "icon": "!",
+    "cmd": "",
+    "desc": "Быстрый запуск популярных Lua-скриптов:",
+    "params": "",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 9: СИСТЕМА",
+    "section": "",
+    "name": "CLI-режим",
+    "icon": "!",
+    "cmd": "",
+    "desc": "Переключение в режим командной строки внутри GUI для ручного ввода произвольных команд Proxmark3.",
+    "params": "",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 9: СИСТЕМА",
+    "section": "",
+    "name": "Mem wipe",
+    "icon": "!",
+    "cmd": "",
+    "desc": "Полное стирание SPI Flash памяти.",
+    "params": "",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 9: СИСТЕМА",
+    "section": "",
+    "name": "HF 15 cfinalize",
+    "icon": "!",
+    "cmd": "",
+    "desc": "Финализация ISO 15693 magic-карты (необратимо).",
+    "params": "",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 9: СИСТЕМА",
+    "section": "",
+    "name": "HF Mifare gen3freeze",
+    "icon": "!",
+    "cmd": "",
+    "desc": "Блокировка UID на Gen3 (необратимо).",
+    "params": "",
+    "action": ""
+  },
+  {
+    "tab": "ВКЛАДКА 9: СИСТЕМА",
+    "section": "",
+    "name": "HF CIPURSE formatall",
+    "icon": "!",
+    "cmd": "",
+    "desc": "Полный сброс CIPURSE карты (необратимо).",
+    "params": "",
+    "action": ""
+  }
+]
