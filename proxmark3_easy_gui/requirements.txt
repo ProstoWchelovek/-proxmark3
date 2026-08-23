@@ -1,0 +1,13 @@
+# Proxmark3 Easy GUI - Зависимости
+# Основные библиотеки для GUI и работы с устройством
+
+customtkinter>=5.2.0
+matplotlib>=3.7.0
+pyserial>=3.5
+Pillow>=10.0.0
+numpy>=1.24.0
+packaging>=23.0
+
+# Дополнительные (опционально)
+# requests>=2.31.0  # Для автообновления и загрузки ProxSpace
+# pywin32>=306      # Для интеграции с Windows (опционально)
