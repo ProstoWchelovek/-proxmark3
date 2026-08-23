@@ -61,15 +61,15 @@ except ImportError:
 try:
     from src.commands import (
         CommandInfo, CommandCategory, CommandRisk, CommandParameter,
-        get_command, get_commands_by_category, search_commands, 
-        COMMANDS_DB, get_command_categories
+         
+        COMMANDS_DB
     )
 except ImportError:
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from src.commands import (
         CommandInfo, CommandCategory, CommandRisk, CommandParameter,
-        get_command, get_commands_by_category, search_commands,
-        COMMANDS_DB, get_command_categories
+        
+        COMMANDS_DB
     )
 
 
