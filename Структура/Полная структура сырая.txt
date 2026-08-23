@@ -1,0 +1,894 @@
+У меня есть структура, нужно написать приложение для удобного доступа ко всему сразу с помощью древовидной архитектуры  
+Proxmark3 Iceman
+│
+├─ help                          ← справка (всегда доступна)
+├─ auto                          ← автоопределение тегов
+├─ clear                         ← очистка экрана
+├─ hints                         ← подсказки вкл/выкл
+├─ msleep                        ← пауза
+├─ rem                           ← комментарий в лог
+├─ quit / exit                   ← выход
+│
+├─ prefs                         ← настройки клиента
+│  ├─ prefs show
+│  ├─ prefs get
+│  │  ├─ plotsliders
+│  │  └─ mqtt
+│  └─ prefs set
+│     ├─ barmode
+│     ├─ client.debug
+│     ├─ client.delay
+│     ├─ client.timeout
+│     ├─ hf.field.timeout_sec
+│     ├─ color
+│     ├─ emoji
+│     ├─ hints
+│     ├─ savepaths
+│     ├─ output
+│     ├─ plotsliders
+│     └─ mqtt
+│
+├─ analyse                       ← утилиты анализа
+│  ├─ analyse lrc
+│  ├─ analyse crc
+│  ├─ analyse chksum
+│  ├─ analyse dates
+│  ├─ analyse lfsr
+│  ├─ analyse a
+│  ├─ analyse nuid
+│  ├─ analyse demodbuff
+│  ├─ analyse freq
+│  ├─ analyse foo
+│  ├─ analyse regex
+│  └─ analyse units
+│
+├─ data                          ← буфер данных и графики
+│  ├─ data load                  ← загрузка данных
+│  ├─ data save                  ← сохранение данных
+│  ├─ data samples               ← сырые сэмплы
+│  ├─ data plot                  ← окно графика
+│  ├─ data grid                  ← сетка на графике
+│  ├─ data gensignal             ← генерация сигнала
+│  ├─ data rawdemod              ← сырая демодуляция
+│  ├─ data autodemod             ← автодемодуляция
+│  ├─ data fft                   ← FFT
+│  ├─ data modulation            ← идентификация LF-сигнала
+│  ├─ data detectclock           ← детект частоты
+│  ├─ data askedgedetect         ← ASK детектор
+│  ├─ data manrawdecode          ← Manchester декод
+│  ├─ data biphaserawdecode      ← Biphase декод
+│  ├─ data fsktonrz              ← FSK→NRZ
+│  ├─ data fitscore              ← ранжирование гипотез
+│  ├─ data spectrum              ← спектральные пики
+│  ├─ data autocorr              ← автокорреляция
+│  ├─ data convertbitstream      ← конвертация битпотока
+│  ├─ data cthreshold            ← пороги
+│  ├─ data dirthreshold          ← направленные пороги
+│  ├─ data decimate              ← децимация
+│  ├─ data undecimate            ← раз-децимация
+│  ├─ data envelope              ← огибающая
+│  ├─ data getbitstream          ← битпоток
+│  ├─ data hpf                   ← фильтр ВЧ
+│  ├─ data iir                   ← IIR фильтр
+│  ├─ data ltrim / mtrim / rtrim ← обрезка
+│  ├─ data norm                  ← нормализация
+│  ├─ data setgraphmarkers       ← маркеры
+│  ├─ data shiftgraphzero        ← сдвиг нуля
+│  ├─ data timescale             ← шкала времени
+│  ├─ data zerocrossings         ← переходы нуля
+│  ├─ data asn1                  ← ASN.1 декодер
+│  ├─ data atr                   ← поиск ATR
+│  ├─ data bitsamples            ← битовые сэмплы
+│  ├─ data bmap                  ← hex по шаблону
+│  ├─ data crypto                ← шифрование данных
+│  ├─ data diff                  ← разница файлов
+│  ├─ data hexsamples            ← hex-дамп
+│  ├─ data qrcode                ← QR-код
+│  ├─ data test_ss8              ← тест 8-бит
+│  ├─ data test_ss32             ← тест 32-бит
+│  └─ data test_ss32s            ← тест 32-бит знаковый
+│
+├─ emv                           ← EMV платёжные карты
+│  ├─ emv reader                 ← ридер EMV
+│  ├─ emv scan                   ← сканирование
+│  ├─ emv search                 ← поиск приложений
+│  ├─ emv select                 ← выбор приложения
+│  ├─ emv readrec                ← чтение файлов
+│  ├─ emv exec                   ← транзакция
+│  ├─ emv pse                    ← PPSE
+│  ├─ emv gpo                    ← Get Processing Options
+│  ├─ emv genac                  ← Application Cryptogram
+│  ├─ emv intauth                ← внутренняя аутентификация
+│  ├─ emv challenge              ← генерация challenge
+│  ├─ emv roca                   ← ROCA тест
+│  ├─ emv simulation             ← симуляция EMV
+│  ├─ emv smart2nfc              ← транзакция через NFC
+│  ├─ emv test                   ← самотесты
+│  └─ emv list                   ← история ISO7816
+│
+├─ hf                            ← высокая частота (13.56 МГц)
+│  ├─ hf search                  ← поиск HF-тегов
+│  ├─ hf tune                    ← настройка HF-антенны
+│  ├─ hf list                    ← разбор трейса
+│  ├─ hf plot                    ← построение сигнала
+│  ├─ hf sniff                   ← общий HF-снифинг
+│  │
+│  ├─ hf 14a                     ← ISO 14443A
+│  │  ├─ hf 14a reader           ← ридер
+│  │  ├─ hf 14a info             ← инфо о теге
+│  │  ├─ hf 14a cuids            ← сбор UID
+│  │  ├─ hf 14a raw              ← сырые hex
+│  │  ├─ hf 14a apdu             ← APDU
+│  │  ├─ hf 14a apdufind         ← перечисление APDU
+│  │  ├─ hf 14a sniff            ← снифинг
+│  │  ├─ hf 14a sim              ← симуляция
+│  │  ├─ hf 14a simaid           ← симуляция AID
+│  │  ├─ hf 14a antifuzz         ← фаззинг антиколлизии
+│  │  ├─ hf 14a config           ← конфигурация
+│  │  ├─ hf 14a chaining         ← входной чейнинг
+│  │  ├─ hf 14a ndefformat       ← форматирование NFC Type 4
+│  │  ├─ hf 14a ndefread         ← чтение NDEF
+│  │  ├─ hf 14a ndefwrite        ← запись NDEF
+│  │  └─ hf 14a list             ← история
+│  │
+│  ├─ hf 14b                     ← ISO 14443B
+│  │  ├─ hf 14b reader           ← ридер
+│  │  ├─ hf 14b info             ← инфо о теге
+│  │  ├─ hf 14b dump             ← дамп памяти
+│  │  ├─ hf 14b restore          ← восстановление
+│  │  ├─ hf 14b rdbl             ← чтение блока
+│  │  ├─ hf 14b wrbl             ← запись блока
+│  │  ├─ hf 14b raw              ← сырые hex
+│  │  ├─ hf 14b apdu             ← APDU
+│  │  ├─ hf 14b sniff            ← прослушивание
+│  │  ├─ hf 14b sim              ← подделка тега
+│  │  ├─ hf 14b tearoff          ← tear-off атака
+│  │  ├─ hf 14b view             ← просмотр дампа
+│  │  ├─ hf 14b valid            ← тест контрольной суммы
+│  │  ├─ hf 14b ctdump           ← дамп ASK CTS
+│  │  ├─ hf 14b ctrdbl           ← чтение ASK CTS
+│  │  ├─ hf 14b setuid           ← установка UID magic
+│  │  ├─ hf 14b ndefread         ← чтение NDEF
+│  │  ├─ hf 14b config           ← конфигурация
+│  │  └─ hf 14b list             ← история
+│  │
+│  ├─ hf 15                      ← ISO 15693
+│  │  ├─ hf 15 reader            ← ридер
+│  │  ├─ hf 15 info              ← инфо о теге
+│  │  ├─ hf 15 dump              ← дамп памяти
+│  │  ├─ hf 15 restore           ← восстановление
+│  │  ├─ hf 15 rdbl              ← чтение блока
+│  │  ├─ hf 15 rdmulti           ← чтение нескольких блоков
+│  │  ├─ hf 15 wrbl              ← запись блока
+│  │  ├─ hf 15 raw               ← сырые hex
+│  │  ├─ hf 15 sniff             ← снифинг
+│  │  ├─ hf 15 sim               ← подделка тега
+│  │  ├─ hf 15 view              ← просмотр дампа
+│  │  ├─ hf 15 wipe              ← очистка карты
+│  │  ├─ hf 15 samples           ← сэмплы как ридер
+│  │  ├─ hf 15 demod             ← демодуляция
+│  │  ├─ hf 15 eload             ← загрузка в эмулятор
+│  │  ├─ hf 15 esave             ← сохранение эмулятора
+│  │  ├─ hf 15 eview             ← просмотр эмулятора
+│  │  ├─ hf 15 slixwritepwd      ← запись пароля SLIX
+│  │  ├─ hf 15 slixeasdisable    ← отключение EAS
+│  │  ├─ hf 15 slixeasenable     ← включение EAS
+│  │  ├─ hf 15 slixprivacydisable← отключение privacy
+│  │  ├─ hf 15 slixprivacyenable ← включение privacy
+│  │  ├─ hf 15 slixprotectpage   ← защита страниц
+│  │  ├─ hf 15 passprotectafi    ← защита паролем AFI
+│  │  ├─ hf 15 passprotecteas    ← защита паролем EAS
+│  │  ├─ hf 15 findafi           ← брутфорс AFI
+│  │  ├─ hf 15 writeafi          ← запись AFI
+│  │  ├─ hf 15 writedsfid        ← запись DSFID
+│  │  ├─ hf 15 csetuid           ← установка UID magic
+│  │  ├─ hf 15 cfinalize         ← финализация magic V3
+│  │  └─ hf 15 list              ← история
+│  │
+│  ├─ hf mf                      ← Mifare Classic
+│  │  ├─ hf mf info              ← инфо о теге
+│  │  ├─ hf mf dump              ← дамп тега
+│  │  ├─ hf mf restore           ← восстановление
+│  │  ├─ hf mf rdbl              ← чтение блока
+│  │  ├─ hf mf rdsc              ← чтение сектора
+│  │  ├─ hf mf wrbl              ← запись блока
+│  │  ├─ hf mf value             ← value blocks
+│  │  ├─ hf mf acl               ← декодирование ACL
+│  │  ├─ hf mf mad               ← проверка MAD
+│  │  ├─ hf mf madread           ← чтение MAD AID
+│  │  ├─ hf mf madwrite          ← запись MAD AID
+│  │  ├─ hf mf madverify         ← проверка MAD AID
+│  │  ├─ hf mf view              ← просмотр дампа
+│  │  ├─ hf mf wipe              ← очистка карты
+│  │  ├─ hf mf personalize       ← персонализация UID
+│  │  ├─ hf mf setmod            ← мощность модуляции
+│  │  ├─ hf mf isen              ← Static Encrypted Nonces
+│  │  ├─ hf mf fchk              ← быстрая проверка ключей
+│  │  ├─ hf mf decrypt           ← дешифрование Crypto1
+│  │  ├─ hf mf supercard         ← super card
+│  │  ├─ hf mf keygen            ← генерация таблицы ключей
+│  │  ├─ hf mf auth4             ← ISO14443-4 AES аутентификация
+│  │  ├─ hf mf ndefformat        ← форматирование NFC
+│  │  ├─ hf mf ndefread          ← чтение NDEF
+│  │  ├─ hf mf ndefwrite         ← запись NDEF
+│  │  ├─ hf mf encodehid         ← HID Credential / NDEF
+│  │  ├─ hf mf sim               ← симуляция
+│  │  ├─ hf mf ecfill            ← заполнение эмулятора
+│  │  ├─ hf mf eclr              ← очистка эмулятора
+│  │  ├─ hf mf egetblk           ← получение блока эмулятора
+│  │  ├─ hf mf egetsc            ← получение сектора эмулятора
+│  │  ├─ hf mf ekeyprn           ← печать ключей эмулятора
+│  │  ├─ hf mf eload             ← загрузка в эмулятор
+│  │  ├─ hf mf esave             ← сохранение эмулятора
+│  │  ├─ hf mf esetblk           ← установка блока эмулятора
+│  │  ├─ hf mf eview             ← просмотр эмулятора
+│  │  ├─ hf mf cgetblk           ← чтение блока с карты
+│  │  ├─ hf mf cgetsc            ← чтение сектора с карты
+│  │  ├─ hf mf cload             ← загрузка дампа на карту
+│  │  ├─ hf mf csave             ← сохранение дампа
+│  │  ├─ hf mf csetblk           ← запись блока на карту
+│  │  ├─ hf mf csetuid           ← установка UID на карте
+│  │  ├─ hf mf cview             ← просмотр карты
+│  │  ├─ hf mf cwipe             ← очистка карты в дефолт
+│  │  ├─ hf mf gen3uid           ← установка UID без manufacturer
+│  │  ├─ hf mf gen3blk           ← перезапись manufacturer
+│  │  ├─ hf mf gen3freeze        ← блокировка UID
+│  │  ├─ hf mf ginfo             ← конфигурация карты
+│  │  ├─ hf mf ggetblk           ← чтение блока (Gen4)
+│  │  ├─ hf mf gload             ← загрузка дампа (Gen4)
+│  │  ├─ hf mf gsave             ← сохранение дампа (Gen4)
+│  │  ├─ hf mf gsetblk           ← запись блока (Gen4)
+│  │  ├─ hf mf gview             ← просмотр карты (Gen4)
+│  │  ├─ hf mf gchpwd            ← смена пароля (Gen4)
+│  │  ├─ hf mf gdmgetcfg         ← конфигурация GDM
+│  │  └─ hf mf list              ← история
+│  │
+│  ├─ hf mfu                     ← Mifare Ultralight
+│  │  ├─ hf mfu ndefread         ← чтение NDEF
+│  │  ├─ hf mfu rdbl             ← чтение блока
+│  │  ├─ hf mfu wrbl             ← запись блока
+│  │  ├─ hf mfu restore          ← восстановление дампа
+│  │  ├─ hf mfu tamper           ← настройка tamper NTAG 213TT
+│  │  ├─ hf mfu view             ← просмотр дампа
+│  │  ├─ hf mfu wipe             ← очистка карты
+│  │  ├─ hf mfu eload            ← загрузка в эмулятор
+│  │  ├─ hf mfu esave            ← сохранение эмулятора
+│  │  ├─ hf mfu eview            ← просмотр эмулятора
+│  │  ├─ hf mfu esetblk          ← установка блока эмулятора
+│  │  └─ hf mfu sim              ← симуляция
+│  │
+│  ├─ hf mfdes                   ← Mifare DESFire
+│  │  ├─ hf mfdes info           ← инфо о теге
+│  │  ├─ hf mfdes getversion     ← версия/тип
+│  │  ├─ hf mfdes getuid         ← UID карты
+│  │  ├─ hf mfdes pc             ← proximity check
+│  │  ├─ hf mfdes mad            ← MAD записи
+│  │  ├─ hf mfdes setconfig      ← конфигурация карты
+│  │  ├─ hf mfdes lsapp          ← все приложения с файлами
+│  │  ├─ hf mfdes getaids        ← список Application IDs
+│  │  ├─ hf mfdes getappnames    ← список приложений
+│  │  ├─ hf mfdes bruteaid       ← брутфорс AID
+│  │  ├─ hf mfdes brutedamslot   ← брутфорс DAM slots
+│  │  ├─ hf mfdes createapp      ← создание приложения
+│  │  ├─ hf mfdes createdelegateapp ← делегированное приложение
+│  │  ├─ hf mfdes getdelegateappinfo ← инфо делегированного
+│  │  ├─ hf mfdes deleteapp      ← удаление приложения
+│  │  ├─ hf mfdes selectapp      ← выбор Application ID
+│  │  ├─ hf mfdes selectisofid   ← выбор файла по ISO ID
+│  │  ├─ hf mfdes changekey      ← смена ключа
+│  │  ├─ hf mfdes chkeysettings  ← смена настроек ключей
+│  │  ├─ hf mfdes getkeysettings ← получение настроек ключей
+│  │  ├─ hf mfdes getkeyversions ← получение версий ключей
+│  │  ├─ hf mfdes bruteisofid    ← брутфорс ISO ID
+│  │  ├─ hf mfdes getfileids     ← список File IDs
+│  │  ├─ hf mfdes getfileisoids  ← список File ISO IDs
+│  │  ├─ hf mfdes lsfiles        ← все файлы
+│  │  ├─ hf mfdes dump           ← дамп всех файлов
+│  │  ├─ hf mfdes createfile     ← создание Standard/Backup File
+│  │  ├─ hf mfdes createvaluefile← создание Value File
+│  │  ├─ hf mfdes createrecordfile← создание Record File
+│  │  ├─ hf mfdes createmacfile  ← создание Transaction MAC File
+│  │  ├─ hf mfdes deletefile     ← удаление файла
+│  │  ├─ hf mfdes getfilesettings← получение настроек файла
+│  │  ├─ hf mfdes chfilesettings ← смена настроек файла
+│  │  ├─ hf mfdes read           ← чтение данных из файла
+│  │  ├─ hf mfdes write          ← запись данных в файл
+│  │  ├─ hf mfdes value          ← операции с value file
+│  │  ├─ hf mfdes clearrecfile   ← очистка record File
+│  │  ├─ hf mfdes makemfclicense ← Mifare Classic лицензия
+│  │  ├─ hf mfdes createmfcmapping← Mifare Classic mapping
+│  │  ├─ hf mfdes verifycert     ← проверка сертификата
+│  │  └─ hf mfdes intauth        ← ISO Internal Authenticate
+│  │
+│  ├─ hf mfp                     ← Mifare Plus
+│  │  ├─ hf mfp info             ← инфо о теге
+│  │  ├─ hf mfp dump             ← дамп тега
+│  │  ├─ hf mfp auth             ← аутентификация
+│  │  ├─ hf mfp chk              ← проверка ключей
+│  │  ├─ hf mfp acl              ← декодирование ACL
+│  │  ├─ hf mfp list             ← история
+│  │  └─ hf mfp help             ← справка
+│  │
+│  ├─ hf iclass                  ← iClass / PicoPass
+│  │  ├─ hf iclass reader        ← ридер
+│  │  ├─ hf iclass info          ← инфо о теге
+│  │  ├─ hf iclass rdbl          ← чтение блока
+│  │  ├─ hf iclass wrbl          ← запись блока
+│  │  ├─ hf iclass restore       ← восстановление дампа
+│  │  ├─ hf iclass sniff         ← подслушивание
+│  │  ├─ hf iclass view          ← просмотр дампа
+│  │  ├─ hf iclass creditepurse  ← кредит epurse
+│  │  ├─ hf iclass tear          ← tearoff атака
+│  │  ├─ hf iclass liberate      ← детект MKF / iCopy-X клонов
+│  │  ├─ hf iclass chk           ← проверка ключей
+│  │  ├─ hf iclass loclass       ← брутфорс через loclass
+│  │  ├─ hf iclass lookup        ← проверка ключа по trace
+│  │  ├─ hf iclass legrec        ← восстановление diversified key
+│  │  ├─ hf iclass legbrute      ← брутфорс partial diversified key
+│  │  ├─ hf iclass unhash        ← обратное преобразование diversified key
+│  │  ├─ hf iclass blacktears    ← автоматическая tearoff атака
+│  │  ├─ hf iclass sim           ← симуляция
+│  │  ├─ hf iclass tagsim        ← симуляция полного iCLASS 2K
+│  │  ├─ hf iclass eload         ← загрузка в эмулятор
+│  │  ├─ hf iclass esave         ← сохранение эмулятора
+│  │  ├─ hf iclass esetblk       ← установка блока эмулятора
+│  │  ├─ hf iclass eview         ← просмотр эмулятора
+│  │  ├─ hf iclass configcard    ← генератор configuration card
+│  │  └─ hf iclass calcnewkey    ← расчёт diversified keys
+│  │
+│  ├─ hf legic                   ← LEGIC
+│  │  ├─ hf legic reader         ← ридер UID и инфо
+│  │  ├─ hf legic info           ← деобфусцированные данные
+│  │  ├─ hf legic dump           ← дамп в файл
+│  │  ├─ hf legic rdbl           ← чтение байтов
+│  │  ├─ hf legic restore        ← восстановление дампа
+│  │  ├─ hf legic clone          ← клонирование на MCC
+│  │  ├─ hf legic migrate        ← клонирование с DCF
+│  │  ├─ hf legic wipe           ← очистка тега
+│  │  ├─ hf legic wrbl           ← запись данных
+│  │  ├─ hf legic sim            ← симуляция
+│  │  ├─ hf legic eload          ← загрузка в эмулятор
+│  │  ├─ hf legic esave          ← сохранение эмулятора
+│  │  ├─ hf legic eview          ← просмотр эмулятора
+│  │  ├─ hf legic einfo          ← деобфусцированная память эмулятора
+│  │  └─ hf legic list           ← история
+│  │
+│  ├─ hf felica                  ← FeliCa
+│  │  ├─ hf felica reader        ← ридер
+│  │  ├─ hf felica info          ← инфо о теге
+│  │  ├─ hf felica raw           ← сырые hex
+│  │  ├─ hf felica rdbl          ← чтение блока
+│  │  ├─ hf felica sniff         ← снифинг
+│  │  ├─ hf felica rqsyscode     ← System Code карты
+│  │  ├─ hf felica auth1         ← начало взаимной аутентификации
+│  │  ├─ hf felica auth2         ← завершение взаимной аутентификации
+│  │  ├─ hf felica rqspecver     ← версия card OS
+│  │  ├─ hf felica resetmode     ← сброс в Mode 0
+│  │  ├─ hf felica litesim       ← эмуляция FeliCa Lite
+│  │  ├─ hf felica liteauth      ← аутентификация карты
+│  │  ├─ hf felica litedump      ← дамп FeliCa Lite
+│  │  └─ hf felica list          ← история
+│  │
+│  ├─ hf fmcos                   ← FMCOS
+│  │  ├─ hf fmcos erase          ← стирание содержимого DF
+│  │  ├─ hf fmcos createdir      ← создание DIRECTORY (DF)
+│  │  ├─ hf fmcos createfile     ← создание EF
+│  │  ├─ hf fmcos createkeyfile  ← создание KEYFILE
+│  │  ├─ hf fmcos readbinary     ← чтение из transparent EF
+│  │  ├─ hf fmcos readrecord     ← чтение из record-based EF
+│  │  ├─ hf fmcos writebinary    ← обновление transparent EF
+│  │  ├─ hf fmcos writerecord    ← обновление record-based EF
+│  │  ├─ hf fmcos append         ← добавление записи
+│  │  ├─ hf fmcos authexternal   ← EXTERNAL AUTHENTICATE
+│  │  ├─ hf fmcos authinternal   ← INTERNAL AUTHENTICATE
+│  │  ├─ hf fmcos key            ← запись ключа в keyfile
+│  │  ├─ hf fmcos pinverify      ← VERIFY PIN
+│  │  ├─ hf fmcos pinchange      ← CHANGE PIN
+│  │  ├─ hf fmcos pinreset       ← RESET PIN
+│  │  ├─ hf fmcos pinunblock     ← UNBLOCK PIN
+│  │  ├─ hf fmcos balance        ← GET BALANCE
+│  │  ├─ hf fmcos credit         ← ADD CREDIT
+│  │  ├─ hf fmcos purchase       ← PURCHASE
+│  │  ├─ hf fmcos overdraft      ← UPDATE OVERDRAFT LIMIT
+│  │  ├─ hf fmcos history        ← история транзакций
+│  │  ├─ hf fmcos block          ← блокировка карты/приложения
+│  │  ├─ hf fmcos unblock        ← разблокировка приложения
+│  │  ├─ hf fmcos tidsetcard     ← SET CARD конфигурация
+│  │  ├─ hf fmcos tidsetuid      ← SET UID
+│  │  ├─ hf fmcos tidsetauth     ← SET INTERNAL AUTH ключ
+│  │  ├─ hf fmcos tiderase       ← ERASE TID файловой системы
+│  │  ├─ hf fmcos tidprovision   ← полная TID провизия
+│  │  ├─ hf fmcos tidcreatedf    ← создание sub-DF (TID)
+│  │  ├─ hf fmcos tidcreatebin   ← создание binary EF (TID)
+│  │  └─ hf fmcos tidcreaterec   ← создание record EF (TID)
+│  │
+│  ├─ hf saflok                  ← Saflok
+│  │  ├─ hf saflok test          ← самотест
+│  │  ├─ hf saflok cksum         ← контрольная сумма
+│  │  ├─ hf saflok encode        ← кодирование данных
+│  │  ├─ hf saflok encrypt       ← шифрование 17-байтового блока
+│  │  ├─ hf saflok decode        ← декодирование данных
+│  │  ├─ hf saflok decrypt       ← дешифрование 17-байтового блока
+│  │  ├─ hf saflok interrogate   ← опрос saflok карты
+│  │  ├─ hf saflok provision     ← провизия Saflok карты
+│  │  ├─ hf saflok modify        ← модификация данных карты
+│  │  └─ hf saflok read          ← чтение Saflok карты
+│  │
+│  ├─ hf seos                    ← SEOS
+│  │  ├─ hf seos info            ← инфо о теге
+│  │  ├─ hf seos pacs            ← извлечение PACS
+│  │  ├─ hf seos write           ← запись ADF на карту
+│  │  ├─ hf seos adf             ← чтение ADF с карты
+│  │  ├─ hf seos gdf             ← чтение GDF с карты
+│  │  ├─ hf seos sim             ← симуляция Seos тега
+│  │  ├─ hf seos managekeys      ← управление ключами SEOS
+│  │  ├─ hf seos sam             ← тесты SAM
+│  │  └─ hf seos list            ← история SEOS
+│  │
+│  ├─ hf st25ta                  ← ST25TA
+│  │  ├─ hf st25ta info          ← инфо о теге
+│  │  ├─ hf st25ta ndefread      ← чтение NDEF файла
+│  │  ├─ hf st25ta protect       ← смена защиты тега
+│  │  ├─ hf st25ta pwd           ← смена пароля тега
+│  │  ├─ hf st25ta sim           ← подделка ISO 14443A/ST тега
+│  │  └─ hf st25ta list          ← история
+│  │
+│  ├─ hf tesla                   ← TESLA Cards
+│  │  ├─ hf tesla info           ← инфо о теге
+│  │  └─ hf tesla list           ← история
+│  │
+│  ├─ hf texkom                  ← Texkom
+│  │  ├─ hf texkom reader        ← ридер Texkom
+│  │  └─ hf texkom sim           ← симуляция Texkom тега
+│  │
+│  ├─ hf thinfilm                ← Thinfilm
+│  │  ├─ hf thinfilm info        ← инфо о теге
+│  │  ├─ hf thinfilm sim         ← подделка Thinfilm тега
+│  │  └─ hf thinfilm list        ← история
+│  │
+│  ├─ hf topaz                   ← TOPAZ (NFC Type 1)
+│  │  ├─ hf topaz reader         ← ридер Topaz
+│  │  ├─ hf topaz info           ← инфо о теге
+│  │  ├─ hf topaz dump           ← дамп в файл
+│  │  ├─ hf topaz raw            ← сырые hex
+│  │  ├─ hf topaz rdbl           ← чтение блока
+│  │  ├─ hf topaz wrbl           ← запись блока
+│  │  ├─ hf topaz sim            ← симуляция Topaz
+│  │  ├─ hf topaz sniff          ← снифинг обмена Topaz
+│  │  ├─ hf topaz view           ← просмотр дампа
+│  │  └─ hf topaz list           ← история
+│  │
+│  ├─ hf vas                     ← Apple VAS
+│  │  ├─ hf vas info             ← инфо VAS апплета
+│  │  ├─ hf vas reader           ← чтение и дешифрование VAS
+│  │  └─ hf vas decrypt          ← дешифрование VAS cryptogram
+│  │
+│  ├─ hf xerox                   ← Xerox
+│  │  ├─ hf xerox reader         ← ридер Xerox
+│  │  ├─ hf xerox info           ← инфо о теге
+│  │  └─ hf xerox dump           ← дамп памяти
+│  │
+│  ├─ hf aliro                   ← ALIRO цифровые учётные данные
+│  │  ├─ hf aliro info           ← инфо об апплете Aliro
+│  │  ├─ hf aliro read           ← SELECT-AUTH0-AUTH1 + step-up
+│  │  └─ hf aliro list           ← история
+│  │
+│  ├─ hf calypso                 ← транспортные карты Calypso
+│  │  ├─ hf calypso info         ← инфо о теге
+│  │  ├─ hf calypso dump         ← дамп узлов
+│  │  ├─ hf calypso probecmdcompat ← проверка совместимости SELECT
+│  │  └─ hf calypso list         ← история Calypso
+│  │
+│  ├─ hf cipurse                 ← транспортные карты Cipurse
+│  │  ├─ hf cipurse info         ← инфо о теге
+│  │  ├─ hf cipurse auth         ← аутентификация тега
+│  │  ├─ hf cipurse aread        ← чтение атрибутов файла
+│  │  ├─ hf cipurse awrite       ← запись атрибутов файла
+│  │  ├─ hf cipurse create       ← создание файла/приложения/ключа
+│  │  ├─ hf cipurse delete       ← удаление файла
+│  │  ├─ hf cipurse default      ← ключ по умолчанию
+│  │  ├─ hf cipurse formatall    ← стирание всех данных
+│  │  ├─ hf cipurse read         ← чтение бинарного файла
+│  │  ├─ hf cipurse select       ← выбор приложения или файла
+│  │  └─ hf cipurse test         ← регрессионные самотесты
+│  │
+│  ├─ hf emrtd                   ← eMRTD
+│  │  ├─ hf emrtd info           ← инфо о теге
+│  │  └─ hf emrtd list           ← история
+│  │
+│  ├─ hf ict                     ← ICT
+│  │  ├─ hf ict reader           ← ридер IS14443-a
+│  │  └─ hf ict list             ← история ICT
+│  │
+│  ├─ hf jooki                   ← Jooki
+│  │  ├─ hf jooki clone          ← запись Jooki токена
+│  │  ├─ hf jooki decode         ← декодирование токена
+│  │  ├─ hf jooki encode         ← кодирование токена
+│  │  └─ hf jooki sim            ← симуляция токена
+│  │
+│  ├─ hf ksx6924                 ← KS X 6924 (T-Money)
+│  │  ├─ hf ksx6924 select       ← выбор приложения
+│  │  ├─ hf ksx6924 info         ← инфо о теге
+│  │  ├─ hf ksx6924 balance      ← текущий баланс кошелька
+│  │  ├─ hf ksx6924 init         ← инициализация транзакции
+│  │  └─ hf ksx6924 prec         ← проприетарная команда get record
+│  │
+│  └─ hf fudan                   ← Fudan
+│     └─ hf fudan reader         ← ридер Fudan
+│
+├─ lf                            ← низкая частота (125 кГц)
+│  ├─ lf search                  ← поиск известного тега
+│  ├─ lf read                    ← чтение LF тега
+│  ├─ lf sim                     ← симуляция LF тега
+│  ├─ lf sniff                   ← снифинг LF обмена
+│  ├─ lf snoop                   ← запись LF поля
+│  ├─ lf config                  ← настройка LF сэмплов
+│  ├─ lf cmdread                 ← модуляция поля ридера
+│  ├─ lf relay                   ← LF relay между двумя pm3
+│  │
+│  ├─ lf awid                    ← AWID
+│  │  ├─ lf awid reader          ← чтение тега
+│  │  ├─ lf awid sim             ← симуляция
+│  │  ├─ lf awid brute           ← брутфорс номера карты
+│  │  └─ lf awid watch           ← непрерывный мониторинг
+│  │
+│  ├─ lf cotag                   ← COTAG
+│  │  ├─ lf cotag demod          ← демодуляция COTAG
+│  │  └─ lf cotag reader         ← чтение тега
+│  │
+│  ├─ lf destron                 ← FDX-A Destron
+│  │  ├─ lf destron demod        ← демодуляция Destron
+│  │  ├─ lf destron reader       ← чтение тега
+│  │  ├─ lf destron clone        ← клонирование на T55x7
+│  │  └─ lf destron sim          ← симуляция
+│  │
+│  ├─ lf em                      ← семейство EM
+│  │  ├─ lf em 410x              ← EM 4102
+│  │  │  ├─ lf em 410x brute     ← брутфорс симуляцией
+│  │  │  ├─ lf em 410x watch     ← мониторинг тегов
+│  │  │  ├─ lf em 410x spoof     ← мониторинг и реплей
+│  │  │  └─ lf em 410x clone     ← клонирование на T55x7
+│  │  ├─ lf em 4x05              ← EM 4205/4305/4369/4469
+│  │  │  ├─ lf em 4x05 info      ← инфо о теге
+│  │  │  ├─ lf em 4x05 dump      ← дамп тега
+│  │  │  ├─ lf em 4x05 read      ← чтение слова данных
+│  │  │  ├─ lf em 4x05 write     ← запись слова данных
+│  │  │  ├─ lf em 4x05 brute     ← брутфорс пароля
+│  │  │  ├─ lf em 4x05 chk       ← проверка паролей
+│  │  │  ├─ lf em 4x05 config    ← конфигурационные слова
+│  │  │  ├─ lf em 4x05 demod     ← демодуляция из GraphBuffer
+│  │  │  ├─ lf em 4x05 sniff     ← восстановление команд em4x05
+│  │  │  ├─ lf em 4x05 unlock    ← tear off атака
+│  │  │  ├─ lf em 4x05 view      ← просмотр дампа
+│  │  │  ├─ lf em 4x05 wipe      ← очистка тега
+│  │  │  └─ lf em 4x05 clonehelp ← доступные команды клонирования
+│  │  ├─ lf em 4x50              ← EM 4350/4450
+│  │  │  ├─ lf em 4x50 info      ← инфо о теге
+│  │  │  ├─ lf em 4x50 dump      ← дамп тега
+│  │  │  ├─ lf em 4x50 login     ← логин в тег
+│  │  │  ├─ lf em 4x50 rdbl      ← чтение слова данных
+│  │  │  ├─ lf em 4x50 wrbl      ← запись слова данных
+│  │  │  ├─ lf em 4x50 wrpwd     ← смена пароля
+│  │  │  ├─ lf em 4x50 brute     ← брутфорс пароля
+│  │  │  ├─ lf em 4x50 chk       ← проверка паролей
+│  │  │  ├─ lf em 4x50 reader    ← стандартный режим чтения
+│  │  │  ├─ lf em 4x50 restore   ← восстановление дампа
+│  │  │  ├─ lf em 4x50 view      ← просмотр дампа
+│  │  │  ├─ lf em 4x50 wipe      ← очистка тега
+│  │  │  ├─ lf em 4x50 eload     ← загрузка в эмулятор
+│  │  │  ├─ lf em 4x50 esave     ← сохранение эмулятора
+│  │  │  ├─ lf em 4x50 eview     ← просмотр эмулятора
+│  │  │  └─ lf em 4x50 sim       ← симуляция
+│  │  └─ lf em 4x70              ← EM 4070/4170
+│  │     ├─ lf em 4x70 info      ← инфо о теге
+│  │     ├─ lf em 4x70 write     ← запись EM4x70
+│  │     ├─ lf em 4x70 unlock    ← разблокировка для записи
+│  │     ├─ lf em 4x70 auth      ← аутентификация EM4x70
+│  │     ├─ lf em 4x70 setpin    ← запись PIN
+│  │     ├─ lf em 4x70 setkey    ← запись ключа
+│  │     ├─ lf em 4x70 calc      ← расчёт challenge и response
+│  │     ├─ lf em 4x70 recover   ← восстановление оставшегося ключа
+│  │     ├─ lf em 4x70 autorecover ← восстановление всего ключа
+│  │     └─ lf em 4x70 brute     ← брутфорс partial key
+│  │
+│  ├─ lf fdxb                    ← FDX-B (чипы животных)
+│  │  ├─ lf fdxb demod           ← демодуляция FDX-B
+│  │  ├─ lf fdxb reader          ← чтение на 134 кГц
+│  │  ├─ lf fdxb clone           ← клонирование animal ID
+│  │  └─ lf fdxb sim             ← симуляция Animal ID
+│  │
+│  ├─ lf gallagher               ← GALLAGHER
+│  │  ├─ lf gallagher demod      ← демодуляция GALLAGHER
+│  │  ├─ lf gallagher reader     ← чтение тега
+│  │  ├─ lf gallagher clone      ← клонирование на T55x7
+│  │  └─ lf gallagher sim        ← симуляция
+│  │
+│  ├─ lf gproxii                 ← Guardall Prox II
+│  │  ├─ lf gproxii demod        ← демодуляция
+│  │  ├─ lf gproxii reader       ← чтение тега
+│  │  ├─ lf gproxii clone        ← клонирование на T55x7
+│  │  └─ lf gproxii sim          ← симуляция
+│  │
+│  ├─ lf hid                     ← HID ProxCard
+│  │  ├─ lf hid brute            ← брутфорс facility code
+│  │  └─ lf hid watch            ← непрерывный мониторинг
+│  │
+│  ├─ lf hitag                   ← Hitag
+│  │  ├─ lf hitag info           ← инфо о теге
+│  │  ├─ lf hitag reader         ← ридер Hitag 2
+│  │  ├─ lf hitag dump           ← дамп Hitag 2 тега
+│  │  ├─ lf hitag read           ← чтение памяти Hitag
+│  │  ├─ lf hitag wrbl           ← запись блока в память Hitag
+│  │  ├─ lf hitag sniff          ← подслушивание обмена Hitag
+│  │  ├─ lf hitag view           ← просмотр дампа
+│  │  ├─ lf hitag eload          ← загрузка в эмулятор
+│  │  ├─ lf hitag eview          ← просмотр эмулятора
+│  │  ├─ lf hitag sim            ← симуляция Hitag
+│  │  ├─ lf hitag cc             ← тест всех challenge
+│  │  ├─ lf hitag crack2         ← восстановление 2048 бит
+│  │  ├─ lf hitag chk            ← проверка ключей
+│  │  ├─ lf hitag lookup         ← проверка ключа по trace
+│  │  ├─ lf hitag ta             ← тест всех записанных аутентификаций
+│  │  ├─ lf hitag test           ← самотесты
+│  │  ├─ lf hitag list           ← история Hitag trace
+│  │  ├─ lf hitag hts            ← Hitag S/8211
+│  │  │  ├─ lf hitag hts reader  ← ридер Hitag S
+│  │  │  ├─ lf hitag hts rdbl    ← чтение страницы Hitag S
+│  │  │  ├─ lf hitag hts dump    ← дамп страниц Hitag S
+│  │  │  ├─ lf hitag hts restore ← восстановление памяти Hitag S
+│  │  │  ├─ lf hitag hts wrbl    ← запись страницы Hitag S
+│  │  │  ├─ lf hitag hts sim     ← симуляция Hitag S
+│  │  │  └─ lf hitag hts list    ← история Hitag S trace
+│  │  └─ lf hitag htu            ← Hitag µ/8265
+│  │     ├─ lf hitag htu reader  ← ридер Hitag µ
+│  │     ├─ lf hitag htu rdbl    ← чтение блока Hitag µ
+│  │     ├─ lf hitag htu dump    ← дамп блоков Hitag µ
+│  │     ├─ lf hitag htu wrbl    ← запись блока Hitag µ
+│  │     ├─ lf hitag htu sim     ← симуляция Hitag µ
+│  │     └─ lf hitag htu list    ← история Hitag µ trace
+│  │
+│  ├─ lf idteck                  ← Idteck
+│  │  ├─ lf idteck demod         ← демодуляция Idteck
+│  │  ├─ lf idteck reader        ← чтение тега
+│  │  ├─ lf idteck clone         ← клонирование на T55x7
+│  │  └─ lf idteck sim           ← симуляция
+│  │
+│  ├─ lf indala                  ← Indala
+│  │  ├─ lf indala demod         ← демодуляция Indala
+│  │  ├─ lf indala reader        ← чтение тега
+│  │  ├─ lf indala clone         ← клонирование на T55x7
+│  │  └─ lf indala sim           ← симуляция
+│  │
+│  ├─ lf io                      ← IO Prox
+│  │  ├─ lf io demod             ← демодуляция IO Prox
+│  │  ├─ lf io reader            ← чтение тега
+│  │  ├─ lf io clone             ← клонирование на T55x7
+│  │  └─ lf io sim               ← симуляция
+│  │
+│  ├─ lf jablotron               ← Jablotron
+│  │  ├─ lf jablotron clone      ← клонирование на T55x7
+│  │  └─ lf jablotron sim        ← симуляция
+│  │
+│  ├─ lf keri                    ← KERI
+│  │  ├─ lf keri demod           ← демодуляция KERI
+│  │  ├─ lf keri reader          ← чтение тега
+│  │  ├─ lf keri clone           ← клонирование на T55x7
+│  │  └─ lf keri sim             ← симуляция
+│  │
+│  ├─ lf motorola                ← Motorola Flexpass
+│  │  ├─ lf motorola demod       ← демодуляция MOTOROLA
+│  │  ├─ lf motorola reader      ← чтение тега
+│  │  ├─ lf motorola clone       ← клонирование на T55x7
+│  │  └─ lf motorola sim         ← симуляция
+│  │
+│  ├─ lf nedap                   ← Nedap
+│  │  ├─ lf nedap demod          ← демодуляция Nedap
+│  │  ├─ lf nedap reader         ← чтение тега
+│  │  ├─ lf nedap clone          ← клонирование на T55x7
+│  │  └─ lf nedap sim            ← симуляция
+│  │
+│  ├─ lf nexwatch                ← NexWatch
+│  │  ├─ lf nexwatch demod       ← демодуляция NexWatch
+│  │  ├─ lf nexwatch reader      ← чтение тега
+│  │  ├─ lf nexwatch clone       ← клонирование на T55x7
+│  │  └─ lf nexwatch sim         ← симуляция
+│  │
+│  ├─ lf noralsy                 ← Noralsy
+│  │  ├─ lf noralsy demod        ← демодуляция Noralsy
+│  │  ├─ lf noralsy reader       ← чтение тега
+│  │  ├─ lf noralsy clone        ← клонирование на T55x7
+│  │  └─ lf noralsy sim          ← симуляция
+│  │
+│  ├─ lf pac                     ← PAC
+│  │  ├─ lf pac demod            ← демодуляция PAC
+│  │  ├─ lf pac reader           ← чтение тега
+│  │  ├─ lf pac clone            ← клонирование на T55x7
+│  │  └─ lf pac sim              ← симуляция
+│  │
+│  ├─ lf paradox                 ← Paradox
+│  │  ├─ lf paradox demod        ← демодуляция Paradox
+│  │  ├─ lf paradox reader       ← чтение тега
+│  │  ├─ lf paradox clone        ← клонирование на T55x7
+│  │  └─ lf paradox sim          ← симуляция
+│  │
+│  ├─ lf pcf7931                 ← PCF7931
+│  │  ├─ lf pcf7931 reader       ← чтение содержимого PCF7931
+│  │  ├─ lf pcf7931 write        ← запись данных на PCF7931
+│  │  └─ lf pcf7931 config       ← настройка пароля и задержки
+│  │
+│  ├─ lf presco                  ← Presco
+│  │  ├─ lf presco demod         ← демодуляция Presco
+│  │  ├─ lf presco reader        ← чтение тега
+│  │  ├─ lf presco clone         ← клонирование на T55x7
+│  │  └─ lf presco sim           ← симуляция
+│  │
+│  ├─ lf pyramid                 ← Pyramid
+│  │  ├─ lf pyramid demod        ← демодуляция Pyramid
+│  │  ├─ lf pyramid reader       ← чтение тега
+│  │  ├─ lf pyramid clone        ← клонирование на T55x7
+│  │  └─ lf pyramid sim          ← симуляция
+│  │
+│  ├─ lf securakey               ← Securakey
+│  │  ├─ lf securakey demod      ← демодуляция Securakey
+│  │  ├─ lf securakey reader     ← чтение тега
+│  │  ├─ lf securakey clone      ← клонирование на T55x7
+│  │  └─ lf securakey sim        ← симуляция
+│  │
+│  ├─ lf ti                      ← TI
+│  │  ├─ lf ti demod             ← демодуляция TI
+│  │  ├─ lf ti reader            ← чтение тега
+│  │  ├─ lf ti clone             ← клонирование на T55x7
+│  │  └─ lf ti sim               ← симуляция
+│  │
+│  ├─ lf t55xx                   ← T55xx/T5577
+│  │  ├─ lf t55xx detect         ← детект T55xx в буфере
+│  │  ├─ lf t55xx info           ← подробная инфо о T55xx
+│  │  ├─ lf t55xx read           ← чтение блоков
+│  │  ├─ lf t55xx write          ← запись блоков
+│  │  ├─ lf t55xx dump           ← полный дамп
+│  │  ├─ lf t55xx wipe           ← сброс
+│  │  ├─ lf t55xx bruteforce     ← брутфорс пароля
+│  │  ├─ lf t55xx chk            ← проверка известных паролей
+│  │  ├─ lf t55xx config         ← конфигурация
+│  │  ├─ lf t55xx protect        ← lock-биты
+│  │  ├─ lf t55xx recoverpw      ← восстановление пароля
+│  │  ├─ lf t55xx p1detect       ← детект P1-режима
+│  │  ├─ lf t55xx resetread      ← reset + чтение
+│  │  ├─ lf t55xx special        ← спец. режимы
+│  │  └─ lf t55xx wakeup         ← wake-up sequence
+│  │
+│  ├─ lf trovan                  ← Trovan
+│  │  ├─ lf trovan demod         ← демодуляция Trovan
+│  │  ├─ lf trovan reader        ← чтение тега
+│  │  ├─ lf trovan clone         ← клонирование на T55x7
+│  │  └─ lf trovan sim           ← симуляция
+│  │
+│  ├─ lf viking                  ← Viking
+│  │  ├─ lf viking demod         ← демодуляция Viking
+│  │  ├─ lf viking reader        ← чтение тега
+│  │  ├─ lf viking clone         ← клонирование на T55x7
+│  │  └─ lf viking sim           ← симуляция
+│  │
+│  ├─ lf visa2000                ← VISA2000
+│  │  ├─ lf visa2000 demod       ← демодуляция VISA2000
+│  │  ├─ lf visa2000 reader      ← чтение тега
+│  │  ├─ lf visa2000 clone       ← клонирование на T55x7
+│  │  └─ lf visa2000 sim         ← симуляция
+│  │
+│  └─ lf zx8211                  ← ZX8211
+│     ├─ lf zx8211 demod         ← демодуляция ZX8211
+│     ├─ lf zx8211 reader        ← чтение тега
+│     ├─ lf zx8211 clone         ← клонирование на T55x7
+│     └─ lf zx8211 sim           ← симуляция
+│
+├─ hw                            ← железо
+│  ├─ hw status                  ← статус прибора
+│  ├─ hw version                 ← версии клиента/бутрома/прошивки
+│  ├─ hw tune                    ← настройка антенн LF/HF
+│  ├─ hw readmem                 ← чтение памяти ARM
+│  ├─ hw ping                    ← проверка связи
+│  ├─ hw reset                   ← перезагрузка Proxmark3
+│  ├─ hw standalone              ← запуск standalone-режима
+│  ├─ hw setmux                  ← переключение мультиплексора
+│  ├─ hw break                   ← прервать текущую операцию
+│  ├─ hw kick                    ← вкл/выкл антенну
+│  ├─ hw lcd                     ← работа с LCD (RDV4)
+│  ├─ hw teardown                ← проверка цепей питания
+│  ├─ hw bootloader              ← режим загрузчика
+│  └─ hw decay                   ← измерение затухания HF антенны
+│
+├─ mad                           ← Mifare Application Directory
+│  ├─ mad read                   ← чтение данных из MAD AID
+│  ├─ mad write                  ← запись данных в MAD AID
+│  ├─ mad verify                 ← проверка данных в MAD AID
+│  ├─ mad decode                 ← декодирование MAD байтового массива
+│  ├─ mad encode                 ← кодирование MAD байтового массива
+│  └─ mad test                   ← регрессионные самотесты MAD
+│
+├─ mem                           ← внешняя память (SPI Flash)
+│  ├─ mem info                   ← информация о Flash памяти
+│  ├─ mem dump                   ← дамп данных из flash
+│  ├─ mem load                   ← загрузка данных в flash
+│  ├─ mem wipe                   ← очистка данных из flash
+│  ├─ mem baudrate               ← установка SPI baudrate
+│  └─ mem spiffs                 ← SPI File System
+│     ├─ mem spiffs rename       ← переименование файла
+│     ├─ mem spiffs tree         ← дерево файловой системы
+│     ├─ mem spiffs unmount      ← размонтирование SPIFFS
+│     ├─ mem spiffs upload       ← загрузка файла в SPIFFS
+│     ├─ mem spiffs view         ← просмотр файла в SPIFFS
+│     └─ mem spiffs wipe         ← очистка всех файлов SPIFFS
+│
+├─ mqtt                          ← MQTT
+│  ├─ mqtt send                  ← отправка сообщений через MQTT
+│  └─ mqtt receive               ← получение сообщений через MQTT
+│
+├─ nfc                           ← NFC
+│  ├─ nfc decode                 ← декодирование NDEF записей
+│  ├─ nfc type1                  ← NFC Forum Tag Type 1
+│  │  └─ nfc type1 read          ← чтение NFC Forum Tag Type 1
+│  ├─ nfc type2                  ← NFC Forum Tag Type 2
+│  │  └─ nfc type2 read          ← чтение NFC Forum Tag Type 2
+│  ├─ nfc type4a                 ← NFC Forum Tag Type 4 ISO14443A
+│  │  ├─ nfc type4a format       ← форматирование как NFC Tag
+│  │  ├─ nfc type4a read         ← чтение NFC Forum Tag Type 4 A
+│  │  ├─ nfc type4a write        ← запись NFC Forum Tag Type 4 A
+│  │  └─ nfc type4a st25taread   ← чтение ST25TA как NFC Type 4
+│  ├─ nfc type4b                 ← NFC Forum Tag Type 4 ISO14443B
+│  │  └─ nfc type4b read         ← чтение NFC Forum Tag Type 4 B
+│  ├─ nfc mf                     ← NFC Type MIFARE Classic/Plus Tag
+│  │  ├─ nfc mf cformat          ← форматирование MIFARE Classic
+│  │  ├─ nfc mf cread            ← чтение NFC Type MIFARE Classic
+│  │  ├─ nfc mf cwrite           ← запись NFC Type MIFARE Classic
+│  │  └─ nfc mf pread            ← чтение NFC Type MIFARE Plus
+│  └─ nfc barcode                ← NFC Barcode Tag
+│     ├─ nfc barcode read        ← чтение NFC Barcode
+│     └─ nfc barcode sim         ← симуляция NFC Barcode
+│
+├─ piv                           ← PIV
+│  ├─ piv select                 ← выбор приложения PIV
+│  ├─ piv getdata                ← получение данных
+│  ├─ piv authsign               ← аутентификация и подпись
+│  ├─ piv scan                   ← сканирование PIV карты
+│  └─ piv list                   ← список данных PIV
+│
+├─ reveng                        ← CRC (Reverse Engineering)
+│  ├─ reveng calc                ← расчёт CRC
+│  ├─ reveng search              ← поиск CRC модели
+│  ├─ reveng info                ← информация о CRC модели
+│  └─ reveng list                ← список CRC моделей
+│
+├─ smart                         ← ISO 7816 (контактные)
+│  ├─ smart info                 ← ATR и параметры
+│  ├─ smart raw                  ← сырые APDU
+│  ├─ smart list                 ← список AID
+│  ├─ smart brute                ← брутфорс
+│  ├─ smart pcsc                 ← PCSC режим
+│  ├─ smart reader               ← ридер
+│  ├─ smart upgrade              ← обновление SAM
+│  └─ smart setclock             ← установка частоты
+│
+├─ script                        ← скрипты
+│  ├─ script list                ← список доступных скриптов
+│  └─ script run                 ← выполнение скрипта
+│
+├─ trace                         ← разбор трейсов
+│  ├─ trace list                 ← список данных протокола в trace buffer
+│  ├─ trace load                 ← загрузка трейса из файла
+│  ├─ trace save                 ← сохранение trace buffer в файл
+│  └─ trace extract              ← извлечение authentication challenges
+│
+├─ usart                         ← USART (BT-адаптер RDV4)
+│  ├─ usart tx                   ← отправка строки через USART
+│  ├─ usart rx                   ← получение строки через USART
+│  ├─ usart txrx                 ← отправка строки и ожидание ответа
+│  ├─ usart txhex                ← отправка байтов через USART
+│  ├─ usart rxhex                ← получение байтов через USART
+│  ├─ usart config               ← конфигурация USART
+│  ├─ usart btpin                ← смена PIN BT add-on
+│  └─ usart btfactory            ← сброс BT add-on к заводским настройкам
+│
+└─ wiegand                       ← Wiegand-форматы
+   ├─ wiegand list               ← список Wiegand-форматов
+   ├─ wiegand encode             ← кодирование Wiegand-формата
+   └─ wiegand decode             ← декодирование Wiegand-формата

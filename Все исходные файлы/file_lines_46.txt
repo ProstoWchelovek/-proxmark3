@@ -1,0 +1,95 @@
+ operator<=>(const QCborArray &other) const
+    {
+        int c = compare(other);
+        if (c > 0) return std::strong_ordering::greater;
+        if (c == 0) return std::strong_ordering::equivalent;
+        return std::strong_ordering::less;
+    }
+#else
+    bool operator==(const QCborArray &other) const noexcept
+    { return compare(other) == 0; }
+    bool operator!=(const QCborArray &other) const noexcept
+    { return !(*this == other); }
+    bool operator<(const QCborArray &other) const
+    { return compare(other) < 0; }
+#endif
+
+    typedef Iterator iterator;
+    typedef ConstIterator const_iterator;
+    iterator begin() { detach(); return iterator{d.data(), 0}; }
+    const_iterator constBegin() const { return const_iterator{d.data(), 0}; }
+    const_iterator begin() const { return constBegin(); }
+    const_iterator cbegin() const { return constBegin(); }
+    iterator end() { detach(); return iterator{d.data(), size()}; }
+    const_iterator constEnd() const { return const_iterator{d.data(), size()}; }
+    const_iterator end() const { return constEnd(); }
+    const_iterator cend() const { return constEnd(); }
+    iterator insert(iterator before, const QCborValue &value)
+    { insert(before.item.i, value); return iterator{d.data(), before.item.i}; }
+    iterator insert(const_iterator before, const QCborValue &value)
+    { insert(before.item.i, value); return iterator{d.data(), before.item.i}; }
+    iterator erase(iterator it) { removeAt(it.item.i); return iterator{d.data(), it.item.i}; }
+    iterator erase(const_iterator it) { removeAt(it.item.i); return iterator{d.data(), it.item.i}; }
+
+    void push_back(const QCborValue &t) { append(t); }
+    void push_front(const QCborValue &t) { prepend(t); }
+    void pop_front() { removeFirst(); }
+    void pop_back() { removeLast(); }
+    bool empty() const { return isEmpty(); }
+
+    // convenience
+    QCborArray operator+(const QCborValue &v) const
+    { QCborArray n = *this; n += v; return n; }
+    QCborArray &operator+=(const QCborValue &v)
+    { append(v); return *this; }
+    QCborArray &operator<<(const QCborValue &v)
+    { append(v); return *this; }
+
+    static QCborArray fromStringList(const QStringList &list);
+    static QCborArray fromVariantList(const QVariantList &list);
+    static QCborArray fromJsonArray(const QJsonArray &array);
+    QVariantList toVariantList() const;
+    QJsonArray toJsonArray() const;
+
+private:
+    void detach(qsizetype reserve = 0);
+
+    friend QCborValue;
+    friend QCborValueRef;
+    friend class QJsonPrivate::Variant;
+    friend class QCborContainerPrivate;
+    explicit QCborArray(QCborContainerPrivate &dd) noexcept;
+    QExplicitlySharedDataPointer<QCborContainerPrivate> d;
+};
+
+Q_DECLARE_SHARED(QCborArray)
+
+inline QCborValue::QCborValue(QCborArray &&a)
+    : n(-1), container(a.d.take()), t(Array)
+{
+}
+
+inline QCborArray QCborValueRef::toArray() const
+{
+    return concrete().toArray();
+}
+
+inline QCborArray QCborValueRef::toArray(const QCborArray &a) const
+{
+    return concrete().toArray(a);
+}
+
+Q_CORE_EXPORT uint qHash(const QCborArray &array, uint seed = 0);
+
+#if !defined(QT_NO_DEBUG_STREAM)
+Q_CORE_EXPORT QDebug operator<<(QDebug, const QCborArray &a);
+#endif
+
+#ifndef QT_NO_DATASTREAM
+Q_CORE_EXPORT QDataStream &operator<<(QDataStream &, const QCborArray &);
+Q_CORE_EXPORT QDataStream &operator>>(QDataStream &, QCborArray &);
+#endif
+
+QT_END_NAMESPACE
+
+#endif // QCBORARRAY_H
