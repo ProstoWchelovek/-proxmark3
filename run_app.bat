@@ -1,5 +1,7 @@
 @echo off
 chcp 65001 >nul
+title Proxmark3 Easy GUI
+
 echo ========================================
 echo   Proxmark3 Easy GUI - Запуск
 echo ========================================
@@ -8,25 +10,40 @@ echo.
 REM Проверка наличия Python
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo [!] Ошибка: Python не найден!
-    echo Пожалуйста, установите Python 3.10+ с https://www.python.org/
+    echo [!] Python не найден! Пожалуйста, установите Python 3.8+
+    echo [!] Скачайте с https://www.python.org/downloads/
     pause
     exit /b 1
 )
 
-echo [+] Python найден.
-echo.
+echo [+] Python найден
+python --version
 
 REM Проверка и установка зависимостей
-echo [=] Проверка зависимостей...
-pip install -r requirements.txt >nul 2>&1
+echo.
+echo [*] Проверка зависимостей...
+pip show customtkinter >nul 2>&1
 if %errorlevel% neq 0 (
-    echo [!] Не удалось установить зависимости автоматически.
-    echo Попробуйте выполнить вручную: pip install -r requirements.txt
-    pause
+    echo [*] Установка customtkinter...
+    pip install customtkinter
 )
 
-echo [=] Запуск приложения...
+pip show matplotlib >nul 2>&1
+if %errorlevel% neq 0 (
+    echo [*] Установка matplotlib...
+    pip install matplotlib
+)
+
+pip show pyserial >nul 2>&1
+if %errorlevel% neq 0 (
+    echo [*] Установка pyserial...
+    pip install pyserial
+)
+
+echo.
+echo [+] Все зависимости установлены
+echo.
+echo [*] Запуск приложения...
 echo.
 
 REM Запуск приложения
@@ -34,6 +51,7 @@ python proxmark3_easy_gui.py
 
 if %errorlevel% neq 0 (
     echo.
-    echo [!] Приложение завершилось с ошибкой.
+    echo [!] Ошибка при запуске приложения
+    echo [!] Убедитесь, что все зависимости установлены: pip install -r requirements.txt
     pause
 )
