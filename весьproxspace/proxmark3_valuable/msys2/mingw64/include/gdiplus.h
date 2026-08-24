@@ -1,0 +1,2 @@
+#include "gdiplus/gdiplus.h"
+
