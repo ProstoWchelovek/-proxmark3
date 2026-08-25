@@ -1,0 +1,39 @@
+Структура проекта
+proxmark3_easy_gui_full/
+├── proxmark3_easy_gui.py      # Основное приложение (1855 строк)
+├── requirements.txt           # Зависимости Python
+├── run_app.bat               # Скрипт запуска для Windows
+├── README.md                 # Полная документация (243 строки)
+├── src/
+│   └── __init__.py           # База данных команд (1064 строки)
+├── dumps/                    # Для дампов карт
+├── keys/                     # Для файлов ключей
+├── scripts/                  # Для Lua скриптов
+├── logs/                     # Для логов
+├── resources/                # Для ресурсов
+└── installers/               # Для установщиков ProxSpace
+ Основные компоненты
+1. Основное приложение (proxmark3_easy_gui.py)
+9 функциональных вкладок
+Интеграция с CustomTkinter, Matplotlib, Pillow
+Менеджер процессов Proxmark3
+Обработка вывода в реальном времени
+2. База данных команд (src/__init__.py)
+Все команды LF (EM4100, EM4x05, EM4x50, EM4x70, T55xx)
+Категории, уровни риска, параметры
+Функции поиска и фильтрации
+3. Hex редактор (HexEditorFrame)
+Просмотр и редактирование дампов
+ASCII превью
+Настройка байт/строка
+4. Node Editor (NodeEditorFrame)
+Визуальное создание скриптов
+Разные типы нод (Команда, Задержка, Условие, Цикл)
+Сохранение/загрузка в JSON
+5. Установщик ProxSpace (ProxSpaceInstaller)
+Автоматическая загрузка с GitHub
+Распаковка и компиляция
+Настройка путей
+cd /workspace/proxmark3_easy_gui_full
+pip install -r requirements.txt
+python proxmark3_easy_gui.py
