@@ -1436,3 +1436,4 @@ void            __RPC_USER BSTR_UserFree     (ULONG *, BSTR *);
 
 #endif /* __xamlom_h__ */
 
+

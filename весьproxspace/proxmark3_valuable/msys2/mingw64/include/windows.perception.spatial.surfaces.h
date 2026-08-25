@@ -2866,3 +2866,4 @@ static __WIDL_INLINE HRESULT __FITypedEventHandler_2_Windows__CPerception__CSpat
 
 #endif /* __windows_perception_spatial_surfaces_h__ */
 
+

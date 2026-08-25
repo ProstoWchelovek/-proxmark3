@@ -1596,3 +1596,4 @@ static inline DXVA2_Fixed32 DXVA2FloatToFixed(float f) {
 
 #endif /* __dxva2api_h__ */
 
+

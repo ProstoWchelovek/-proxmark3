@@ -1267,3 +1267,4 @@ ENABLE_IF_INTEGRAL(T) ALWAYS_INLINE Decimal operator% (const T& other, const Dec
 
 #endif  // LIBMPDECXX_DECIMAL_HH_
 
+

@@ -241,3 +241,4 @@ enum TIMINGFUNCTIONPARTS {
 
 #endif /* __VSANIMATION_H__ */
 
+

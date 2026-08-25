@@ -201,3 +201,4 @@ typedef struct _USBC_DEVICE_CONFIGURATION_INTERFACE_V1 {
 #endif /* (NTDDI_VERSION >= NTDDI_VISTA) */
 
 
+

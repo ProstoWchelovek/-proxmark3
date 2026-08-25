@@ -247,3 +247,4 @@ static __WIDL_INLINE HRESULT IDesktopWindowXamlSourceNative2_PreTranslateMessage
 
 #endif /* __windows_ui_xaml_hosting_desktopwindowxamlsource_h__ */
 
+

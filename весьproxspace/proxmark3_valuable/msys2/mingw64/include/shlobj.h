@@ -2769,3 +2769,4 @@ DECLARE_INTERFACE_IID_ (INamedPropertyBag, IUnknown, "FB700430-952C-11d1-946F-00
 #endif
 #endif
 
+

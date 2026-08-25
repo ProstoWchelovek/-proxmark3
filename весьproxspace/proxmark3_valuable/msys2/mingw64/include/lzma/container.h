@@ -967,3 +967,4 @@ extern LZMA_API(lzma_ret) lzma_microlzma_decoder(
 		uint64_t uncomp_size, lzma_bool uncomp_size_is_exact,
 		uint32_t dict_size) lzma_nothrow;
 
+

@@ -339,3 +339,4 @@ static __WIDL_INLINE HRESULT ICodecAPI_SetAllSettingsWithNotify(ICodecAPI* This,
 
 #endif /* __icodecapi_h__ */
 
+

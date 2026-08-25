@@ -694,3 +694,4 @@ extern LZMA_API(lzma_ret) lzma_block_buffer_decode(
 		uint8_t *out, size_t *out_pos, size_t out_size)
 		lzma_nothrow;
 
+

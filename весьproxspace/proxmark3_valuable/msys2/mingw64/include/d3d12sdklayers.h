@@ -1593,3 +1593,4 @@ static __WIDL_INLINE WINBOOL ID3D12InfoQueue_GetMuteDebugOutput(ID3D12InfoQueue*
 
 #endif /* __d3d12sdklayers_h__ */
 
+

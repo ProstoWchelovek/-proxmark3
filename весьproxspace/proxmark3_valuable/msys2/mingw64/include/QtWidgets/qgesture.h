@@ -327,3 +327,4 @@ Q_DECLARE_METATYPE(QGesture::GestureCancelPolicy)
 
 #endif // QGESTURE_H
 
+

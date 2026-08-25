@@ -95,3 +95,4 @@ typedef struct SmartCardApplication {
 #endif
 #endif
 
+

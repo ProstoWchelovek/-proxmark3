@@ -279,3 +279,4 @@ WINMMAPI MMRESULT WINAPI joyConfigChanged(DWORD dwFlags);
 
 #endif /* _JOYSTICKAPI_H_ */
 
+

@@ -272,3 +272,4 @@ void            __RPC_USER BSTR_UserFree     (ULONG *, BSTR *);
 
 #endif /* __docobjectservice_h__ */
 
+

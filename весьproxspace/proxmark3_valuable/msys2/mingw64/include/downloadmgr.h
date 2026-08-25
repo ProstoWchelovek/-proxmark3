@@ -147,3 +147,4 @@ static __WIDL_INLINE HRESULT IDownloadManager_Download(IDownloadManager* This,IM
 
 #endif /* __downloadmgr_h__ */
 
+

@@ -73,3 +73,4 @@ typedef struct _RIP_MIB_SET_INPUT_DATA {
 } RIP_MIB_SET_INPUT_DATA,*PRIP_MIB_SET_INPUT_DATA;
 #endif
 
+

@@ -46,3 +46,4 @@
 
 #endif /* LZ4FRAME_STATIC_H_0398209384 */
 
+

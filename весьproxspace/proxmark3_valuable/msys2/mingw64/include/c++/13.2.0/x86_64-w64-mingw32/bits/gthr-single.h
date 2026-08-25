@@ -297,3 +297,4 @@ __gthread_recursive_mutex_destroy (__gthread_recursive_mutex_t *__mutex)
 
 #endif /* ! _GLIBCXX_GCC_GTHR_SINGLE_H */
 
+

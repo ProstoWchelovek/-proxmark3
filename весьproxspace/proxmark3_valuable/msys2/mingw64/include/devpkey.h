@@ -229,3 +229,4 @@ DEFINE_DEVPROPKEY(DEVPKEY_DevQuery_ObjectType, 0x13673f42,0xa3d6,0x49f6,0xb4,0xd
 #define DEVPKEY_DeviceDisplay_RequiresUninstallElevation DEVPKEY_DeviceContainer_RequiresUninstallElevation
 #define DEVPKEY_DeviceDisplay_AlwaysShowDeviceAsConnected DEVPKEY_DeviceContainer_AlwaysShowDeviceAsConnected
 
+

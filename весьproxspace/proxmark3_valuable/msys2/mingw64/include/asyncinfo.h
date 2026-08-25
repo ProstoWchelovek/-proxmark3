@@ -207,3 +207,4 @@ static __WIDL_INLINE HRESULT IAsyncInfo_Close(IAsyncInfo* This) {
 
 #endif /* __asyncinfo_h__ */
 
+

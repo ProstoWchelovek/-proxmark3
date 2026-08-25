@@ -54,3 +54,4 @@ typedef struct _WSD_ENDPOINT_REFERENCE_LIST WSD_ENDPOINT_REFERENCE_LIST;
 #endif /*(_WIN32_WINNT >= 0x0600)*/
 #endif /*_INC_WSDAPI*/
 
+

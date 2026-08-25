@@ -316,3 +316,4 @@ __writeeflags (unsigned int __X)
 #define _rotl(a,b)		__rold((a), (b))
 #define _rotr(a,b)		__rord((a), (b))
 
+

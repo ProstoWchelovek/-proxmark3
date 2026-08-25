@@ -112,3 +112,4 @@ enum __x_ABI_CWindows_CMedia_CCapture_CMediaCategory {
 
 #endif /* __windows_media_capture_h__ */
 
+

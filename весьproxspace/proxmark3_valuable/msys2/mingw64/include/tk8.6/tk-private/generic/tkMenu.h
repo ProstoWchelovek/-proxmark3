@@ -547,3 +547,4 @@ MODULE_SCOPE void	TkpSetWindowMenuBar(Tk_Window tkwin, TkMenu *menuPtr);
 
 #endif /* _TKMENU */
 
+

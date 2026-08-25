@@ -58,3 +58,4 @@ G_END_DECLS
 
 #endif /* __G_STRING_H__ */
 
+

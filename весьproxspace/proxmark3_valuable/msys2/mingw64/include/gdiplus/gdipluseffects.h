@@ -115,3 +115,4 @@ extern const GUID TintEffectGuid;                    /* ? */
 
 #endif /* __GDIPLUS_EFFECTS_H */
 
+

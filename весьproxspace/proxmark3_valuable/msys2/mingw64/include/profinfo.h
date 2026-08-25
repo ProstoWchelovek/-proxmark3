@@ -37,3 +37,4 @@ __MINGW_TYPEDEF_AW(LPPROFILEINFO)
 
 #endif
 
+

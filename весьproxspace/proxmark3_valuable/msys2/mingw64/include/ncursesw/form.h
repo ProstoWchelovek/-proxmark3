@@ -459,3 +459,4 @@ extern FORM_EXPORT(FORM *)	NCURSES_SP_NAME(new_form) (SCREEN*, FIELD **);
 
 #endif /* FORM_H */
 
+

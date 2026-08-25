@@ -84,3 +84,4 @@ G_END_DECLS
 
 #endif /* __G_WIN32_OUTPUT_STREAM_H__ */
 
+

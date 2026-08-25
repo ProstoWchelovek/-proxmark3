@@ -81,3 +81,4 @@ extern NCURSES_EXPORT(void) _nc_set_term_driver(void* term);
 #endif /* _NC_MINGWH */
 #endif /* _WIN32 */
 
+

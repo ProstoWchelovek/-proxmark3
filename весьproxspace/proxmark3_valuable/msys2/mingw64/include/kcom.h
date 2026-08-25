@@ -256,3 +256,4 @@ __inline WINBOOL operator!=(const GUID& guidOne, const GUID& guidOther) {
 
 #endif /* _KCOM_ */
 
+

@@ -364,3 +364,4 @@ EXTERN_C const CLSID CLSID_NapSoHProcessor;
 
 #endif /* __napprotocol_h__ */
 
+

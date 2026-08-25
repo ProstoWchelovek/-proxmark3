@@ -1568,3 +1568,4 @@ DECLARE_INTERFACE_(IDirect3DVertexBuffer7,IUnknown)
 
 #endif /* __WINE_D3D_H */
 
+

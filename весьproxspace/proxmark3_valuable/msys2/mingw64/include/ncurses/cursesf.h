@@ -967,3 +967,4 @@ public:
 
 #endif /* NCURSES_CURSESF_H_incl */
 
+

@@ -59,3 +59,4 @@ G_END_DECLS
 
 #endif /* __G_TRASH_STACK_H_ */
 
+

@@ -418,3 +418,4 @@ typedef struct _DTBGOPTS {
 THEMEAPI DrawThemeBackgroundEx(HTHEME hTheme,HDC hdc,int iPartId,int iStateId,const RECT *pRect,const DTBGOPTS *pOptions);
 #endif
 
+

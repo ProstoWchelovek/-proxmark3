@@ -84,3 +84,4 @@ typedef struct pqStubDefs {
 #define PQtty (pqStubs->PQttyPtr)
 MODULE_SCOPE const pqStubDefs *pqStubs;
 
+

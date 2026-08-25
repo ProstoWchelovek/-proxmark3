@@ -2690,3 +2690,4 @@ static __WIDL_INLINE WINBOOL IDXGIFactory1_IsCurrent(IDXGIFactory1* This) {
 
 #endif /* __dxgi_h__ */
 
+

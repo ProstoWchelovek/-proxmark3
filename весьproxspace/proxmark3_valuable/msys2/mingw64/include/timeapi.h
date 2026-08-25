@@ -55,3 +55,4 @@ WINMMAPI MMRESULT WINAPI timeEndPeriod(UINT uPeriod);
 
 #endif /* _TIMERAPI_H_ */
 
+

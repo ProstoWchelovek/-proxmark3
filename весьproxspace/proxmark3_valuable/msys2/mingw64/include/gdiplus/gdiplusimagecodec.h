@@ -66,3 +66,4 @@ static __inline__ GpStatus GetImageEncodersSize(UINT *numEncoders, UINT *size)
 
 #endif /* __GDIPLUS_IMAGECODEC_H */
 
+

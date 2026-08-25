@@ -963,3 +963,4 @@ private:
 
 #endif /* __GDIPLUS_PATH_H */
 
+

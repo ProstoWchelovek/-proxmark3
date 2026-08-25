@@ -120,3 +120,4 @@ DECLARE_INTERFACE_(ICommonQuery,IUnknown) {
 #endif
 #endif
 
+

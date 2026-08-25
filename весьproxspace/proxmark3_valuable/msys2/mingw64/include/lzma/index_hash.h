@@ -123,3 +123,4 @@ extern LZMA_API(lzma_vli) lzma_index_hash_size(
 		const lzma_index_hash *index_hash)
 		lzma_nothrow lzma_attr_pure;
 
+

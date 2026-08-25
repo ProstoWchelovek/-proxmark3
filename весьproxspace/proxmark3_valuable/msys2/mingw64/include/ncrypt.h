@@ -407,3 +407,4 @@ SECURITY_STATUS WINAPI NCryptVerifyClaim (NCRYPT_KEY_HANDLE hSubjectKey, NCRYPT_
 #endif
 #endif
 
+

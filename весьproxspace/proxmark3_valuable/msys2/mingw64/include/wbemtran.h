@@ -1001,3 +1001,4 @@ static __WIDL_INLINE HRESULT IWbemClientConnectionTransport_Cancel(IWbemClientCo
 
 #endif /* __wbemtran_h__ */
 
+

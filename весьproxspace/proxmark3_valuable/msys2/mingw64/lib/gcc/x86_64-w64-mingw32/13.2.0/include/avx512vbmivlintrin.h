@@ -272,3 +272,4 @@ _mm_maskz_permutex2var_epi8 (__mmask16 __U, __m128i __A, __m128i __I,
 
 #endif /* _AVX512VBMIVLINTRIN_H_INCLUDED */
 
+

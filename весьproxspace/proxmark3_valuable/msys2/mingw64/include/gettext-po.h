@@ -356,3 +356,4 @@ extern void po_message_check_format (po_message_t message, po_xerror_handler_t h
 
 #endif /* _GETTEXT_PO_H */
 
+

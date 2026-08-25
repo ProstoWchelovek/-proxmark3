@@ -164,3 +164,4 @@ struct QGlobalStatic
 QT_END_NAMESPACE
 #endif // QGLOBALSTATIC_H
 
+

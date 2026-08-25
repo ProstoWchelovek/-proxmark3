@@ -410,3 +410,4 @@ extern const GUID FrameDimensionTime;        /* 6aedbd6d-3fb5-418a-83a6-7f45229d
 
 #endif /* __GDIPLUS_IMAGING_H */
 
+

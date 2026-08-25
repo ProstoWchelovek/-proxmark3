@@ -2155,3 +2155,4 @@ void            __RPC_USER CLIPFORMAT_UserFree     (ULONG *, CLIPFORMAT *);
 
 #endif /* __wincodecsdk_h__ */
 
+

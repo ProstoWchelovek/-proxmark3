@@ -9804,3 +9804,4 @@ void            __RPC_USER BSTR_UserFree     (ULONG *, BSTR *);
 
 #endif /* __activdbg_h__ */
 
+

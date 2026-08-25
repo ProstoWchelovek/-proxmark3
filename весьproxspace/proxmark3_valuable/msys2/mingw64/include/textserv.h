@@ -130,3 +130,4 @@ STDAPI CreateTextServices(IUnknown *punkOuter,ITextHost *pITextHost,IUnknown **p
 typedef HRESULT (WINAPI *PCreateTextServices)(IUnknown *punkOuter,ITextHost *pITextHost,IUnknown **ppUnk);
 #endif
 
+

@@ -39,3 +39,4 @@ HRESULT WINAPI HcsSetupBaseOSVolume (PCWSTR layerPath, PCWSTR volumePath, PCWSTR
 
 #endif /* _HYPERV_COMPUTESTORAGE_H_ */
 
+

@@ -119,3 +119,4 @@ static __inline__ BOOL IsIndexedPixelFormat(PixelFormat pixfmt)
 
 #endif /* __GDIPLUS_PIXELFORMATS_H */
 
+

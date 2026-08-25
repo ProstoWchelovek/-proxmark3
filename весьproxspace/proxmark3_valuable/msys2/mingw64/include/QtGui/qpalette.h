@@ -221,3 +221,4 @@ QT_END_NAMESPACE
 
 #endif // QPALETTE_H
 
+

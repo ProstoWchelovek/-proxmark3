@@ -439,3 +439,4 @@ static inline cl_float cl_half_to_float(cl_half h)
 
 #endif  /* OPENCL_CL_HALF_H */
 
+

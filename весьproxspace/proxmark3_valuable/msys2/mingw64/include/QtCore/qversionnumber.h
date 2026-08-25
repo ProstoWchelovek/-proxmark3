@@ -315,3 +315,4 @@ Q_DECLARE_METATYPE(QVersionNumber)
 
 #endif //QVERSIONNUMBER_H
 
+

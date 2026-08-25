@@ -527,3 +527,4 @@ HRESULT WINAPI WSDCreateDeviceHostAdvanced(LPCWSTR pszLocalId, IWSDXMLContext *p
 
 #endif /* __wsdhost_h__ */
 
+

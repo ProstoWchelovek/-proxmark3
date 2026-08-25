@@ -1612,3 +1612,4 @@ __inline__ VOID PathData::FreeArrays()
 
 #endif /* __GDIPLUS_IMPL_H */
 
+

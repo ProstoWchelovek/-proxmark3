@@ -99,3 +99,4 @@ extern PANEL_EXPORT(void)    NCURSES_SP_NAME(update_panels) (SCREEN*);
 
 /* end of panel.h */
 
+

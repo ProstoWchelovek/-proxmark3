@@ -859,3 +859,4 @@ HRESULT WINAPI D3D10StateBlockMaskUnion(D3D10_STATE_BLOCK_MASK *mask_x,
 
 #endif /* __WINE_D3D10EFFECT_H */
 
+

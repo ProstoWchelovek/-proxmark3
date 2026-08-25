@@ -565,3 +565,4 @@ HRESULT WINAPI UiaEventRemoveWindow(HUIAEVENT huiaevent, HWND hwnd);
 
 #endif /* _INC_UIAUTOMATIONCOREAPI */
 
+

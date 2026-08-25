@@ -83,3 +83,4 @@ HRESULT WINAPI HcsRevokeVmGroupAccess (PCWSTR filePath);
 
 #endif /* _HYPERV_COMPUTECORE_H_ */
 
+

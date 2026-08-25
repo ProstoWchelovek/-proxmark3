@@ -40,3 +40,4 @@ int is_cygpty_used(void);
 
 #endif /* _ISCYGPTY_H */
 
+

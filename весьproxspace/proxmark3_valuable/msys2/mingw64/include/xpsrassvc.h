@@ -474,3 +474,4 @@ static __WIDL_INLINE HRESULT IXpsRasterizationFactory1_CreateRasterizer(IXpsRast
 
 #endif /* __xpsrassvc_h__ */
 
+

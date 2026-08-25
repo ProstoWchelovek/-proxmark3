@@ -617,3 +617,4 @@ void WINAPI WintrustSetDefaultIncludePEPageHashes(WINBOOL fIncludePEPageHashes);
 #endif
 #endif
 
+

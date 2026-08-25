@@ -1830,3 +1830,4 @@ static __WIDL_INLINE HRESULT __FIReference_1_SpatialBoundingOrientedBox_get_Valu
 
 #endif /* __windows_perception_spatial_h__ */
 
+

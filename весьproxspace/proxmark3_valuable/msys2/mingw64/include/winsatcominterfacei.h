@@ -32,3 +32,4 @@ typedef enum _WINSAT_BITMAP_SIZE {
 
 #endif /*_INC_WINSATCOMINTERFACEI*/
 
+

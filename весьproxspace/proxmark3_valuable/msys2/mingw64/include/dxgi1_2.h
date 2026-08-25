@@ -2211,3 +2211,4 @@ static __WIDL_INLINE HRESULT IDXGIOutput1_DuplicateOutput(IDXGIOutput1* This,IUn
 
 #endif /* __dxgi1_2_h__ */
 
+

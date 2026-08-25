@@ -409,3 +409,4 @@ HRESULT WINAPI D3DXCreateAnimationController(UINT max_animation_output_count, UI
 
 #endif /* __WINE_D3DX9ANIM_H */
 
+

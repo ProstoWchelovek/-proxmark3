@@ -166,3 +166,4 @@ inline int acc_on_device (acc_device_t __arg) __GOACC_NOTHROW
 
 #endif /* _OPENACC_H */
 
+

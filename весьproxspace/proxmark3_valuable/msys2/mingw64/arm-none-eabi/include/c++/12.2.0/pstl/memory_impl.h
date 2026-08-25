@@ -106,3 +106,4 @@ __brick_uninitialized_copy(_ForwardIterator __first, _ForwardIterator __last, _O
 
 #endif /* _PSTL_MEMORY_IMPL_H */
 
+

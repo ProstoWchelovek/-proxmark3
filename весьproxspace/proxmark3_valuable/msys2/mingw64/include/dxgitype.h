@@ -103,3 +103,4 @@ typedef struct DXGI_GAMMA_CONTROL {
 
 #endif /* __dxgitype_h__ */
 
+

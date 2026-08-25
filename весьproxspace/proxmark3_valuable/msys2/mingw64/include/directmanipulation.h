@@ -2422,3 +2422,4 @@ __CRT_UUID_DECL(DirectManipulationViewport, 0x34e211b6, 0x3650, 0x4f75, 0x83,0x3
 
 #endif /* __directmanipulation_h__ */
 
+

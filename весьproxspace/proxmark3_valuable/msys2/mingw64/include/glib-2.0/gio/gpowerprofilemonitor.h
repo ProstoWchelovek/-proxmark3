@@ -64,3 +64,4 @@ G_END_DECLS
 
 #endif /* __G_POWER_PROFILE_MONITOR_H__ */
 
+

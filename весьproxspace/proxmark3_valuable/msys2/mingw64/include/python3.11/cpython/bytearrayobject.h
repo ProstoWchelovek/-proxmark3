@@ -37,3 +37,4 @@ static inline Py_ssize_t PyByteArray_GET_SIZE(PyObject *op) {
 #  define PyByteArray_GET_SIZE(self) PyByteArray_GET_SIZE(_PyObject_CAST(self))
 #endif
 
+

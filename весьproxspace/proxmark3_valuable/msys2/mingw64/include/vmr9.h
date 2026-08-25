@@ -2448,3 +2448,4 @@ static __WIDL_INLINE HRESULT IVMRImageCompositor9_CompositeImage(IVMRImageCompos
 
 #endif /* __vmr9_h__ */
 
+

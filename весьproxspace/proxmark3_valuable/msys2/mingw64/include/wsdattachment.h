@@ -362,3 +362,4 @@ HRESULT WINAPI WSDCreateOutboundAttachment(IWSDOutboundAttachment **ppAttachment
 
 #endif /* __wsdattachment_h__ */
 
+

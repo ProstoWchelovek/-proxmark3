@@ -63,3 +63,4 @@ inline Vector<const char> TrimTrailingZeros(Vector<const char> buffer) {
 
 #endif  // DOUBLE_CONVERSION_STRTOD_H_
 
+

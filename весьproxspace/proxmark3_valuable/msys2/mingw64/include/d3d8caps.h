@@ -295,3 +295,4 @@ typedef struct _D3DCAPS8 {
 
 #endif  /* __WINE_D3D8CAPS_H */
 
+

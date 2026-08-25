@@ -408,3 +408,4 @@ BROTLI_DEC_API void BrotliDecoderSetMetadataCallbacks(
 
 #endif  /* BROTLI_DEC_DECODE_H_ */
 
+

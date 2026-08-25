@@ -2603,3 +2603,4 @@ static __WIDL_INLINE void ID3D11VideoContext2_VideoProcessorGetStreamHDRMetaData
 
 #endif /* __d3d11_4_h__ */
 
+

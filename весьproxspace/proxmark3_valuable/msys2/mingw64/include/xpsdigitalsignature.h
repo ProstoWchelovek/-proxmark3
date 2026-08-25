@@ -1521,3 +1521,4 @@ __CRT_UUID_DECL(XpsSignatureManager, 0xb0c43320, 0x2315, 0x44a2, 0xb7,0x0a, 0x09
 
 #endif /* __xpsdigitalsignature_h__ */
 
+

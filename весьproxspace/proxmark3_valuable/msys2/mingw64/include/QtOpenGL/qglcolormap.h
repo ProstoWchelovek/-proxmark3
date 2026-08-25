@@ -98,3 +98,4 @@ QT_END_NAMESPACE
 
 #endif // QGLCOLORMAP_H
 
+

@@ -1077,3 +1077,4 @@ typedef ERROR_RECORD_HEADER INIT_EXCEPTION, *PINIT_EXCEPTION;
 
 #endif /* defined(_X86_) || defined(_IA64_) || defined(_AMD64_) */
 
+

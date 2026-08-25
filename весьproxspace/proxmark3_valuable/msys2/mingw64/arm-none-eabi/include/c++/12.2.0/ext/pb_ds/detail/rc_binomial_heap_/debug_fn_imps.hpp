@@ -123,3 +123,4 @@ next_after_0_pointer(node_const_pointer p_nd)
 #endif 
 #endif
 
+

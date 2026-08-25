@@ -875,3 +875,4 @@ WINHTTPAPI DWORD       WINAPI WinHttpWriteProxySettings(HINTERNET,WINBOOL,WINHTT
 
 #endif  /* __WINE_WINHTTP_H */
 
+

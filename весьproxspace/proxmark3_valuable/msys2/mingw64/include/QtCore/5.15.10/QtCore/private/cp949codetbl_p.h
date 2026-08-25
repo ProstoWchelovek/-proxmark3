@@ -647,3 +647,4 @@ static const unsigned short cp949_icode_to_unicode[] = {
 
 #endif // CP949CODETBL_P_H
 
+

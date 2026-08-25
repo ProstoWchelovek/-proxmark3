@@ -3302,3 +3302,4 @@ static __WIDL_INLINE HRESULT IDWriteFactory2_CreateGlyphRunAnalysis(IDWriteFacto
 
 #endif /* __dwrite_2_h__ */
 
+

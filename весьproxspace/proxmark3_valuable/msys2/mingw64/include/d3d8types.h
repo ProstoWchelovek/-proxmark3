@@ -1219,3 +1219,4 @@ typedef struct _D3DVOLUME_DESC {
 
 #endif  /* __WINE_D3D8TYPES_H */
 
+

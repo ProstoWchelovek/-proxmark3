@@ -226,3 +226,4 @@ typedef struct tagNapComponentRegistrationInfo {
 
 #endif /* __naptypes_h__ */
 
+

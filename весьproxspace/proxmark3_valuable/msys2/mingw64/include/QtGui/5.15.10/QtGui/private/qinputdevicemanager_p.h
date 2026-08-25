@@ -94,3 +94,4 @@ Q_DECLARE_METATYPE(QInputDeviceManager::DeviceType)
 
 #endif // QINPUTDEVICEMANAGER_P_H
 
+

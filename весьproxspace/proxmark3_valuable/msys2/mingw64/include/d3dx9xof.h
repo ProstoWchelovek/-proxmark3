@@ -186,3 +186,4 @@ DECLARE_INTERFACE_IID_(ID3DXFileData,IUnknown,"cef08cfd-7b4f-4429-9624-2a690a933
 
 #endif /* __WINE_D3DX9XOF_H */
 
+

@@ -1220,3 +1220,4 @@ ClassScanForSpecial(
   CLASSPNP_SCAN_FOR_SPECIAL_INFO DeviceList[],
   PCLASS_SCAN_FOR_SPECIAL_HANDLER Function);
 
+

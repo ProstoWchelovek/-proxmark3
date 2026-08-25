@@ -260,3 +260,4 @@ void            __RPC_USER HSTRING_UserFree     (ULONG *, HSTRING *);
 
 #endif /* __windows_system_profile_systemmanufacturers_h__ */
 
+

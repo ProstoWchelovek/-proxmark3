@@ -2190,3 +2190,4 @@ void            __RPC_USER HSTRING_UserFree     (ULONG *, HSTRING *);
 
 #endif /* __windows_globalization_h__ */
 
+

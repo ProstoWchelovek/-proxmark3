@@ -3130,3 +3130,4 @@ static __WIDL_INLINE HRESULT IDWriteBitmapRenderTarget1_SetTextAntialiasMode(IDW
 
 #endif /* __dwrite_1_h__ */
 
+

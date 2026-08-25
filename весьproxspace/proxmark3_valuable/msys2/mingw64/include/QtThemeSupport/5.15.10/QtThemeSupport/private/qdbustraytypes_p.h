@@ -108,3 +108,4 @@ Q_DECLARE_METATYPE(QXdgDBusToolTipStruct)
 
 #endif // QDBUSTRAYTYPES_P_H
 
+

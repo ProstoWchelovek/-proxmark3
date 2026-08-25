@@ -52,3 +52,4 @@ HRESULT WINAPI DXTraceW(const char* strFile, DWORD dwLine, HRESULT hr, const WCH
 
 #endif /* __WINE_DXERR9_H */
 
+

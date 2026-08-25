@@ -1031,3 +1031,4 @@ FLAC_API FLAC__bool FLAC__format_picture_is_legal(const FLAC__StreamMetadata_Pic
 
 #endif
 
+

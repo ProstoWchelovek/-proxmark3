@@ -163,3 +163,4 @@ typedef struct _HID_XFER_PACKET {
 
 #endif /* __HIDCLASS_H */
 
+

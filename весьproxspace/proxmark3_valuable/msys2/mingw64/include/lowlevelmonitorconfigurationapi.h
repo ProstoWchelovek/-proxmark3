@@ -47,3 +47,4 @@ _BOOL WINAPI GetTimingReport(HANDLE hMonitor, LPMC_TIMING_REPORT pmtrMonitorTimi
 
 #endif /* LowLevelMonitorConfigurationAPI_h */
 
+

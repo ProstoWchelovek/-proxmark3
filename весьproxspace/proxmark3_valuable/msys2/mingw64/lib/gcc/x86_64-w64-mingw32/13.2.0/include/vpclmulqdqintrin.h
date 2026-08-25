@@ -80,3 +80,4 @@ _mm256_clmulepi64_epi128 (__m256i __A, __m256i __B, const int __C)
 
 #endif /* _VPCLMULQDQINTRIN_H_INCLUDED */
 
+

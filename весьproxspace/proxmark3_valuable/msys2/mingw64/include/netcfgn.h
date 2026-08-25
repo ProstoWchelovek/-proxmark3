@@ -1222,3 +1222,4 @@ static __WIDL_INLINE HRESULT INetCfgComponentSysPrep_RestoreAdapterParameters(IN
 
 #endif /* __netcfgn_h__ */
 
+

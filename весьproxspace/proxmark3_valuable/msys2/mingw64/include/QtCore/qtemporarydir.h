@@ -79,3 +79,4 @@ QT_END_NAMESPACE
 
 #endif // QTEMPORARYDIR_H
 
+

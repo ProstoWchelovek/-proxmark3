@@ -670,3 +670,4 @@ DECLARE_INTERFACE_(IEnumSyncChangeUnits,IUnknown)
 #endif /*(_WIN32_WINNT >= 0x0601)*/
 #endif /* __WINSYNC_H__ */
 
+

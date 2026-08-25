@@ -52,3 +52,4 @@ inline HRESULT CAudioCaptureTerminal::CreateFiltersIfRequired() {
 
 #endif
 
+

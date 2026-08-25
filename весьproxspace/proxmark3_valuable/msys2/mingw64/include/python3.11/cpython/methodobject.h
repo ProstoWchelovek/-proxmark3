@@ -73,3 +73,4 @@ static inline PyTypeObject* PyCFunction_GET_CLASS(PyObject *func_obj) {
 #  define PyCFunction_GET_CLASS(func) PyCFunction_GET_CLASS(_PyObject_CAST(func))
 #endif
 
+

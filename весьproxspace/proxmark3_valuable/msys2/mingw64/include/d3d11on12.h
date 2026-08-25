@@ -178,3 +178,4 @@ typedef HRESULT (__stdcall *PFN_D3D11ON12_CREATE_DEVICE)(IUnknown *device,UINT f
 
 #endif /* __d3d11on12_h__ */
 
+

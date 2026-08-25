@@ -73,3 +73,4 @@ HRESULT WINAPI PowerUnregisterFromEffectivePowerModeNotifications(VOID *Registra
 
 #endif /* _POWERSETTING_H_ */
 
+

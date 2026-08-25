@@ -67,3 +67,4 @@ int md_html(const MD_CHAR* input, MD_SIZE input_size,
 
 #endif  /* MD4C_HTML_H */
 
+

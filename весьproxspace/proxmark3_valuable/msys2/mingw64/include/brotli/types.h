@@ -82,3 +82,4 @@ typedef void (*brotli_free_func)(void* opaque, void* address);
 
 #endif  /* BROTLI_COMMON_TYPES_H_ */
 
+

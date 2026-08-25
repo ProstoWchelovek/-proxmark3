@@ -98,3 +98,4 @@ Q_DECLARE_METATYPE(QShaderGraphLoader::Status)
 
 #endif // QSHADERGRAPHLOADER_P_H
 
+

@@ -297,3 +297,4 @@ MODULE_SCOPE int	TkpDrawSpinboxButtons(Spinbox *sbPtr, Drawable d);
 
 #endif /* _TKENTRY */
 
+

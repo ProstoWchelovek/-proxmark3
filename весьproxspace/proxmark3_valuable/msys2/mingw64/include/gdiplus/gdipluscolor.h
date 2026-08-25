@@ -261,3 +261,4 @@ typedef struct Color
 
 #endif /* __GDIPLUS_COLOR_H */
 
+

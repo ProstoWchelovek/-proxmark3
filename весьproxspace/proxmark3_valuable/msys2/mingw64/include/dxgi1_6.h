@@ -1389,3 +1389,4 @@ static __WIDL_INLINE HRESULT IDXGIFactory7_UnregisterAdaptersChangedEvent(IDXGIF
 
 #endif /* __dxgi1_6_h__ */
 
+

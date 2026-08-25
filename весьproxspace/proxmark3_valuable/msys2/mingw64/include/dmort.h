@@ -28,3 +28,4 @@ HRESULT WINAPI MoInitMediaType(DMO_MEDIA_TYPE*,DWORD);
 
 #endif /* __DMORT_H__ */
 
+

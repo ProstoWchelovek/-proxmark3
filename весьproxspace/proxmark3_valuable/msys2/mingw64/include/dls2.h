@@ -106,3 +106,4 @@ DEFINE_GUID(DLSID_XGInHardware,       0x178f2f26,0xc364,0x11d1,0xa7,0x60,0x00,0x
 
 #endif	/* __WINE_INCLUDE_DLS2_H */
 
+

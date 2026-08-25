@@ -307,3 +307,4 @@ extern const DECLSPEC_SELECTANY WCHAR RuntimeClass_Windows_Networking_Connectivi
 
 #endif /* __windows_networking_connectivity_h__ */
 
+

@@ -722,3 +722,4 @@ __LA_DECL struct archive_entry *archive_entry_partial_links(
 
 #endif /* !ARCHIVE_ENTRY_H_INCLUDED */
 
+

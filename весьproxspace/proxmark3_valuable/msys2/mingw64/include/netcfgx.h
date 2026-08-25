@@ -2041,3 +2041,4 @@ static __WIDL_INLINE HRESULT INetCfgSysPrep_HrSetupSetFirstMultiSzField(INetCfgS
 
 #endif /* __netcfgx_h__ */
 
+

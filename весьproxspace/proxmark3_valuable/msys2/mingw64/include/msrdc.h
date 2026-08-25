@@ -349,3 +349,4 @@ DECLARE_INTERFACE_(ISimilarity,IUnknown)
 #endif /* _INC_MSRDC */
 
 
+

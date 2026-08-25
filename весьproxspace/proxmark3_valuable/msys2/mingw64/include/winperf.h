@@ -192,3 +192,4 @@ typedef DWORD (WINAPI PM_QUERY_PROC)(LPDWORD,LPVOID *,LPDWORD,LPDWORD);
 #include <poppack.h>
 #endif
 
+

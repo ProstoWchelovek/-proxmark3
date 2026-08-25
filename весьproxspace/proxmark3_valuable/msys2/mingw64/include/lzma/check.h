@@ -163,3 +163,4 @@ extern LZMA_API(uint64_t) lzma_crc64(
 extern LZMA_API(lzma_check) lzma_get_check(const lzma_stream *strm)
 		lzma_nothrow;
 
+

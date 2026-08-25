@@ -77,3 +77,4 @@ Q_DECLARE_METATYPE(QEGLNativeContext)
 
 #endif // QEGLNATIVECONTEXT_H
 
+

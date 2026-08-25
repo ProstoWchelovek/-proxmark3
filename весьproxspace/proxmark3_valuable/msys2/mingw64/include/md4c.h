@@ -404,3 +404,4 @@ int md_parse(const MD_CHAR* text, MD_SIZE size, const MD_PARSER* parser, void* u
 
 #endif  /* MD4C_H */
 
+

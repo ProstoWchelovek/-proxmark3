@@ -1064,3 +1064,4 @@ typedef struct _DDRAWI_DDRAWPALETTE_LCL {
 
 #endif /* __DDRAWI_INCLUDED__ */
 
+

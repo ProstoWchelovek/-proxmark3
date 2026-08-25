@@ -475,3 +475,4 @@ HRESULT WINAPI D3DXCreateMatrixStack(DWORD flags, ID3DXMatrixStack **stack);
 
 #endif /* __D3DX9MATH_H__ */
 
+

@@ -1414,3 +1414,4 @@ static __WIDL_INLINE HRESULT IDXGIFactory5_CheckFeatureSupport(IDXGIFactory5* Th
 
 #endif /* __dxgi1_5_h__ */
 
+

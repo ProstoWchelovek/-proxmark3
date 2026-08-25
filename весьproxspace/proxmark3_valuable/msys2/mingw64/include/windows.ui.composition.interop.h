@@ -236,3 +236,4 @@ static __WIDL_INLINE HRESULT __x_ABI_CWindows_CUI_CComposition_CICompositorInter
 
 #endif /* __windows_ui_composition_interop_h__ */
 
+

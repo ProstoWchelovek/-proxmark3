@@ -43,3 +43,4 @@ DeRegisterOpRegionHandler (IN PDEVICE_OBJECT DeviceObject,
 #define ACPI_OPREGION_ACCESS_AT_HIGH_LEVEL     0x1
 
 
+

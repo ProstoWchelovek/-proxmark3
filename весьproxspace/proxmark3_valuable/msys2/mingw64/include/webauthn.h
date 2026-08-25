@@ -368,3 +368,4 @@ HRESULT WINAPI WebAuthNGetW3CExceptionDOMError(HRESULT hr);
 
 #endif /* _WEBAUTHN_H_ */
 
+

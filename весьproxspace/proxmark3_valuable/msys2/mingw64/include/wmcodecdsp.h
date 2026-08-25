@@ -1939,3 +1939,4 @@ __CRT_UUID_DECL(CMSVideoDSPMFT, 0x51571744, 0x7fe4, 0x4ff2, 0xa4,0x98, 0x2d,0xc3
 
 #endif /* __wmcodecdsp_h__ */
 
+

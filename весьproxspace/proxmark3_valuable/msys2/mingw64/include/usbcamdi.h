@@ -383,3 +383,4 @@ USBCAMD_InitializeNewInterface(
 
 #endif /* !defined(__USB_H) && !defined(__USBDI_H) */
 
+

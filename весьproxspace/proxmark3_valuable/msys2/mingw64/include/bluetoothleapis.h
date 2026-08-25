@@ -42,3 +42,4 @@ HRESULT WINAPI BluetoothGATTUnregisterEvent(BLUETOOTH_GATT_EVENT_HANDLE EventHan
 
 #endif /* __BLUETOOTHLEAPIS_H__ */
 
+

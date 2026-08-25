@@ -127,3 +127,4 @@ Q_DECLARE_METATYPE(QShaderNode::Rule)
 
 #endif // QSHADERNODE_P_H
 
+

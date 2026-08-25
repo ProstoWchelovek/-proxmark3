@@ -710,3 +710,4 @@ SECURITY_STATUS WINAPI SslGetExtensions(const BYTE *clientHello, DWORD clientHel
 
 #endif /* __SCHANNEL_H__ */
 
+

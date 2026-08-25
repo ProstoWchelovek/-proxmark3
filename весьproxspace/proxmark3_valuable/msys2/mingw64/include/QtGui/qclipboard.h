@@ -111,3 +111,4 @@ QT_END_NAMESPACE
 
 #endif // QCLIPBOARD_H
 
+

@@ -1015,3 +1015,4 @@ inline ULONG CorSigUncompressPointer (PCCOR_SIGNATURE d, void **pptr) {
 
 #endif
 
+

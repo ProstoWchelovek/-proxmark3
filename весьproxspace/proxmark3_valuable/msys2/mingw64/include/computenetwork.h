@@ -143,3 +143,4 @@ HRESULT WINAPI HcnQueryEndpointAddresses (HCN_ENDPOINT Endpoint, PCWSTR Query, P
 
 #endif /* HCN_CLIENT_H */
 
+

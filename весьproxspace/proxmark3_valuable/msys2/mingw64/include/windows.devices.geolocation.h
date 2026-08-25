@@ -2043,3 +2043,4 @@ void            __RPC_USER HSTRING_UserFree     (ULONG *, HSTRING *);
 
 #endif /* __windows_devices_geolocation_h__ */
 
+

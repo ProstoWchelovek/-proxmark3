@@ -351,3 +351,4 @@ HRESULT WINAPI D3DXComputeNormalMap(IDirect3DTexture9 *texture, IDirect3DTexture
 
 #endif /* __WINE_D3DX9TEX_H */
 
+

@@ -52,3 +52,4 @@ DECLARE_INTERFACE_(ID3D10ShaderReflection1, IUnknown)
 
 #endif
 
+

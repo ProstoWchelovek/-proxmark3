@@ -125,3 +125,4 @@ Q_DECLARE_METATYPE(QStorageInfo)
 
 #endif // QSTORAGEINFO_H
 
+

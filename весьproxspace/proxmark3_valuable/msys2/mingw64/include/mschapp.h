@@ -36,3 +36,4 @@ extern WINADVAPI DWORD WINAPI MSChapSrvChangePassword(LPWSTR ServerName,LPWSTR U
 extern WINADVAPI DWORD WINAPI MSChapSrvChangePassword2(LPWSTR ServerName,LPWSTR UserName,PSAMPR_ENCRYPTED_USER_PASSWORD NewPasswordEncryptedWithOldNt,PENCRYPTED_NT_OWF_PASSWORD OldNtOwfPasswordEncryptedWithNewNt,BOOLEAN LmPresent,PSAMPR_ENCRYPTED_USER_PASSWORD NewPasswordEncryptedWithOldLm,PENCRYPTED_LM_OWF_PASSWORD OldLmOwfPasswordEncryptedWithNewLmOrNt);
 #endif
 
+

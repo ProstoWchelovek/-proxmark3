@@ -57,3 +57,4 @@ _mm512_2intersect_epi64 (__m512i __A, __m512i __B, __mmask8 *__U,
 
 #endif /* _AVX512VP2INTERSECTINTRIN_H_INCLUDED */
 
+

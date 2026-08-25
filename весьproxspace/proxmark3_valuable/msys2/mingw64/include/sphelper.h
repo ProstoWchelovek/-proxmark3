@@ -77,3 +77,4 @@ inline HRESULT SpGetDescription(ISpObjectToken *obj_token, WCHAR **description, 
 #endif
 #endif
 
+

@@ -907,3 +907,4 @@ struct _DSOUND_IO_DXDMO_DATA {
 
 #endif /* __WINE_DMUSIC_FILEFORMATS_H */
 
+

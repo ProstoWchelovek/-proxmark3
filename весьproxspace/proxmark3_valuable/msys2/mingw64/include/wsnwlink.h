@@ -67,3 +67,4 @@ typedef struct _IPX_SPXCONNSTATUS_DATA {
 #define IPX_IMMEDIATESPXACK 0x4010
 #endif
 
+

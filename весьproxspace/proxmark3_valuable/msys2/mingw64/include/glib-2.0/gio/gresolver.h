@@ -298,3 +298,4 @@ G_END_DECLS
 
 #endif /* __G_RESOLVER_H__ */
 
+

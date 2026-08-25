@@ -395,3 +395,4 @@ DECLARE_INTERFACE_(DAOMFCDCollection,_DAODynaCollection) {
 
 #endif
 
+

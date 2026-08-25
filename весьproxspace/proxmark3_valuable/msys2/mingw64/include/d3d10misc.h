@@ -48,3 +48,4 @@ HRESULT WINAPI D3D10CreateBlob(SIZE_T data_size, ID3D10Blob **blob);
 
 #endif /* __D3D10MISC_H__ */
 
+

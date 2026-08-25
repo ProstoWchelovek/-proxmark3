@@ -199,3 +199,4 @@ BdaValidateNodeProperty(
 
 #endif /* (NTDDI_VERSION >= NTDDI_WINXP) */
 
+

@@ -1477,3 +1477,4 @@ __CRT_UUID_DECL(Dot11AdHocManager, 0xdd06a84f, 0x83bd, 0x4d01, 0x8a,0xb9, 0x23,0
 
 #endif /* __adhoc_h__ */
 
+

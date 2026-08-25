@@ -1146,3 +1146,4 @@ HRESULT WINAPI WSDCreateDiscoveryPublisher2(IWSDXMLContext *pContext, WSD_CONFIG
 
 #endif /* __wsddisco_h__ */
 
+

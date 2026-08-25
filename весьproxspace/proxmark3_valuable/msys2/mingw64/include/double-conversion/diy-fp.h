@@ -136,3 +136,4 @@ class DiyFp {
 
 #endif  // DOUBLE_CONVERSION_DIY_FP_H_
 
+

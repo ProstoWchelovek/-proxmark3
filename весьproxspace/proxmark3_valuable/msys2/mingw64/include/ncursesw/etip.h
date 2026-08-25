@@ -405,3 +405,4 @@ inline void THROW(const NCursesException *e) {
 
 #endif /* NCURSES_ETIP_H_incl */
 
+

@@ -137,3 +137,4 @@ typedef struct _SDP_STRING_TYPE_DATA {
 #endif
 #endif /*_INC_BTHSDPDEF*/
 
+

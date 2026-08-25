@@ -273,3 +273,4 @@ template <class T> HRESULT ShutdownMSPCallHelper(IUnknown *pUnknown,T **ppCMSPCa
 }
 #endif
 
+

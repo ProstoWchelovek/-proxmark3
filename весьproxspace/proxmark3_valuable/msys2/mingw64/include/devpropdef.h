@@ -112,3 +112,4 @@ typedef struct _DEVPROPKEY {
 
 #endif /* WINAPI_PARTION_DESKTOP.  */
 
+

@@ -100,3 +100,4 @@ Q_DECLARE_METATYPE(QNetworkConfigurationPrivatePointer)
 #endif
 #endif // QNETWORKCONFIGURATIONPRIVATE_H
 
+

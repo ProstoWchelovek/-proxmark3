@@ -53,3 +53,4 @@ public:
 
 #endif /* __GDIPLUS_BASE_H */
 
+

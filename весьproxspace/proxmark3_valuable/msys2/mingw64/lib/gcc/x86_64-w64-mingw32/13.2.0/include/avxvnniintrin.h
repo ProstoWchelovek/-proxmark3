@@ -112,3 +112,4 @@ _mm_dpwssds_avx_epi32(__m128i __A,__m128i __B,__m128i __C)
 #endif /* __DISABLE_AVXVNNIVL__ */
 #endif /* _AVXVNNIINTRIN_H_INCLUDED */
 
+

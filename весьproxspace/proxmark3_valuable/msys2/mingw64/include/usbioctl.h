@@ -596,3 +596,4 @@ typedef struct _USB_NODE_CONNECTION_INFORMATION_EX_V2 {
 #endif
 #endif
 
+

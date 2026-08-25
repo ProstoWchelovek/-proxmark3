@@ -489,3 +489,4 @@ static __WIDL_INLINE HRESULT INSSBuffer3_GetProperty(INSSBuffer3* This,GUID id,v
 
 #endif /* __wmsbuffer_h__ */
 
+

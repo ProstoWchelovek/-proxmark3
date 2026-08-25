@@ -922,3 +922,4 @@ typedef struct _DXVA_ExtendedFormat
 
 #endif /* __WINE_DXVA_H */
 
+

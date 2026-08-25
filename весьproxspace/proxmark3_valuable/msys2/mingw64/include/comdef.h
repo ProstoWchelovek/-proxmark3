@@ -236,3 +236,4 @@ _COM_SMARTPTR_TYPEDEF(Picture,__uuidof(IDispatch));
 
 #endif
 
+

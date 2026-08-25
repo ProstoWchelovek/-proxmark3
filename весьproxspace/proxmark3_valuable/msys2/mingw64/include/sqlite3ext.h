@@ -712,3 +712,4 @@ typedef int (*sqlite3_loadext_entry)(
 
 #endif /* SQLITE3EXT_H */
 
+

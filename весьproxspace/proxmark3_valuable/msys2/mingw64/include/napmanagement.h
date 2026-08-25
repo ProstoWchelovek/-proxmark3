@@ -385,3 +385,4 @@ static __WIDL_INLINE HRESULT INapClientManagement2_GetSystemIsolationInfoEx(INap
 
 #endif /* __napmanagement_h__ */
 
+

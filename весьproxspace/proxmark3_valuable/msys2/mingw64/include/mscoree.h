@@ -1275,3 +1275,4 @@ static __WIDL_INLINE HRESULT IManagedObject_GetObjectIdentity(IManagedObject* Th
 
 #endif /* __mscoree_h__ */
 
+

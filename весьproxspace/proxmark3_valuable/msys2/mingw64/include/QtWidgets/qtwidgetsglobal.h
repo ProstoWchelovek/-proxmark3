@@ -59,3 +59,4 @@ QT_END_NAMESPACE
 
 #endif // QTGUIGLOBAL_H
 
+

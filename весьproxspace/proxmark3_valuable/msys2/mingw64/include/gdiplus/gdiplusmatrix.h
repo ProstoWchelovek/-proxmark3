@@ -239,3 +239,4 @@ private:
 
 #endif /* __GDIPLUS_MATRIX_H */
 
+

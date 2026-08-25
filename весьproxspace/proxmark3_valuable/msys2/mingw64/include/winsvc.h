@@ -589,3 +589,4 @@ DWORD WINAPI NotifyServiceStatusChangeW(
 
 #endif /* _WINSVC_ */
 
+

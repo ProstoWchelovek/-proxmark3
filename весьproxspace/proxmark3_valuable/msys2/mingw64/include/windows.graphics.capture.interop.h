@@ -160,3 +160,4 @@ void            __RPC_USER HMONITOR_UserFree     (ULONG *, HMONITOR *);
 
 #endif /* __windows_graphics_capture_interop_h__ */
 
+

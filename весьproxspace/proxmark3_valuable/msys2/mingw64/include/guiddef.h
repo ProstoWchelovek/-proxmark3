@@ -186,3 +186,4 @@ __inline bool operator!= (REFGUID guidOne, REFGUID guidOther) { return ! (guidOn
 #endif
 #endif
 
+

@@ -123,3 +123,4 @@ typedef struct _SCSISCAN_INFO {
 
 #endif /* __SCSISCAN_H */
 
+

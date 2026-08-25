@@ -1059,3 +1059,4 @@ DEFINE_GUID(DXFILEOBJ_CompressedAnimationSet,   0x7f9b00b3, 0xf125, 0x4890, 0x87
 
 #endif /* __WINE_D3DX9MESH_H */
 
+

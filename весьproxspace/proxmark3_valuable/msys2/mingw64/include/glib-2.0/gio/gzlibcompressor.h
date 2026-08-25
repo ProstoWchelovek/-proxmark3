@@ -63,3 +63,4 @@ G_END_DECLS
 
 #endif /* __G_ZLIB_COMPRESSOR_H__ */
 
+

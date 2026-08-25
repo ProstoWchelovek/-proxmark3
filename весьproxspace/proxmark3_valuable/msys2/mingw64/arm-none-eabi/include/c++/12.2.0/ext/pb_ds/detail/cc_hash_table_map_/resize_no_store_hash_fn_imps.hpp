@@ -56,3 +56,4 @@ resize_imp_no_exceptions_reassign_pointer(entry_pointer p_e, entry_pointer_array
 }
 #endif
 
+

@@ -775,3 +775,4 @@ uidna_compare(  const UChar *s1, int32_t length1,
 
 #endif
 
+

@@ -223,3 +223,4 @@ typedef struct _FILTER_REPLY_HEADER {
 
 #endif /* __FLT_USER_STRUCTURES_H__ */
 
+

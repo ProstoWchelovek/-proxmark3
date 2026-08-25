@@ -382,3 +382,4 @@ static __WIDL_INLINE HRESULT IMediaParamInfo_GetCurrentTimeFormat(IMediaParamInf
 
 #endif /* __medparam_h__ */
 
+

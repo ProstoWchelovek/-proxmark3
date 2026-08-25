@@ -78,3 +78,4 @@ GMK_EXPORT void gmk_add_function (const char *name, gmk_func_ptr func,
 
 #endif  /* _GNUMAKE_H_ */
 
+

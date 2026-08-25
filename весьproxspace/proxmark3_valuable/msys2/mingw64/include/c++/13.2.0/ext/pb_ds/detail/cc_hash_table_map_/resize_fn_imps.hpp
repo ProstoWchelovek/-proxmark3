@@ -136,3 +136,4 @@ resize_imp_no_exceptions(size_type new_size, entry_pointer_array a_p_entries_res
 
 #endif
 
+

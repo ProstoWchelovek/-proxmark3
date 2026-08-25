@@ -87,3 +87,4 @@ G_END_DECLS
 
 #endif /* __G_BUFFERED_OUTPUT_STREAM_H__ */
 
+

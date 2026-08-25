@@ -62,3 +62,4 @@ G_END_DECLS
 
 #endif /* __G_EMBLEM_H__ */
 
+

@@ -408,3 +408,4 @@ atomic_flag_clear(volatile atomic_flag *__object)
 
 #endif /* !_STDATOMIC_H_ */
 
+

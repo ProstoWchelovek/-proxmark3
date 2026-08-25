@@ -46,3 +46,4 @@ G_END_DECLS
 
 #endif /* __G_SIMPLE_PERMISSION_H__ */
 
+

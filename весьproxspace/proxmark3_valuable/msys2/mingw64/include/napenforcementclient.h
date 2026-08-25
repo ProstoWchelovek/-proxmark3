@@ -921,3 +921,4 @@ EXTERN_C const CLSID CLSID_NapEnforcementClientBinding;
 
 #endif /* __napenforcementclient_h__ */
 
+

@@ -80,3 +80,4 @@ QT_END_NAMESPACE
 
 #endif // QBEARERPLUGIN_P_H
 
+

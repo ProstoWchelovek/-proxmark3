@@ -81,3 +81,4 @@ HRESULT WINAPI WHvEmulatorTryMmioEmulation(WHV_EMULATOR_HANDLE Emulator, VOID *C
 
 #endif
 
+

@@ -135,3 +135,4 @@ __pattern_adjacent_difference(_ExecutionPolicy&&, _ForwardIterator, _ForwardIter
 } // namespace __pstl
 #endif /* _PSTL_NUMERIC_FWD_H */
 
+

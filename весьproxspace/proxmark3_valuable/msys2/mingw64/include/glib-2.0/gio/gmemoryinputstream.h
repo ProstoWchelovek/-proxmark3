@@ -91,3 +91,4 @@ G_END_DECLS
 
 #endif /* __G_MEMORY_INPUT_STREAM_H__ */
 
+

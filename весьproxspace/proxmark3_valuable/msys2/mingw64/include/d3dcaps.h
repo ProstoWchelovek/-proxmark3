@@ -438,3 +438,4 @@ typedef struct _D3DDEVINFO_TEXTURING {
 
 #endif
 
+

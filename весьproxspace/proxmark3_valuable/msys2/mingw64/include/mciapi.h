@@ -875,3 +875,4 @@ WINBOOL APIENTRY mciFreeCommandResource(UINT wTable);
 
 #endif /* _MCIAPI_H_ */
 
+

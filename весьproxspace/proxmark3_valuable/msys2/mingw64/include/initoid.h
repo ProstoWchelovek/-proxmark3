@@ -22,3 +22,4 @@
 #define DEFINE_OID_4(name,b0,b1,b2,b3,b4) const BYTE __based(__segname("_CODE")) name[] = { MAPI_PREFIX,b0,b1,b2,b3,b4 }
 #endif
 
+

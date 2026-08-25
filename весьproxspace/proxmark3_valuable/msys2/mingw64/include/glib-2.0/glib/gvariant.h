@@ -540,3 +540,4 @@ G_END_DECLS
 
 #endif /* __G_VARIANT_H__ */
 
+

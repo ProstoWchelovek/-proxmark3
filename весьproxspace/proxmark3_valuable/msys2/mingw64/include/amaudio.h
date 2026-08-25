@@ -47,3 +47,4 @@ DECLARE_INTERFACE_(IAMDirectSound,IUnknown)
 
 #endif
 
+

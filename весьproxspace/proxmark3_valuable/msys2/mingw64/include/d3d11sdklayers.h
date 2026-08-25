@@ -1976,3 +1976,4 @@ static __WIDL_INLINE WINBOOL ID3D11InfoQueue_GetMuteDebugOutput(ID3D11InfoQueue*
 
 #endif /* __d3d11sdklayers_h__ */
 
+

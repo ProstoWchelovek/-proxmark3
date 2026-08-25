@@ -708,3 +708,4 @@ void            __RPC_USER HBITMAP_UserFree     (ULONG *, HBITMAP *);
 
 #endif /* __thumbcache_h__ */
 
+

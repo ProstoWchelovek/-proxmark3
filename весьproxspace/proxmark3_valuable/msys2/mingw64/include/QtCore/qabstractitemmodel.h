@@ -471,3 +471,4 @@ Q_DECLARE_METATYPE(QModelIndexList)
 
 #endif // QABSTRACTITEMMODEL_H
 
+

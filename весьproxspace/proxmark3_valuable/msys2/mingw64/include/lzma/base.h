@@ -747,3 +747,4 @@ extern LZMA_API(uint64_t) lzma_memlimit_get(const lzma_stream *strm)
 extern LZMA_API(lzma_ret) lzma_memlimit_set(
 		lzma_stream *strm, uint64_t memlimit) lzma_nothrow;
 
+

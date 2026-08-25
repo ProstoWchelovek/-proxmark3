@@ -213,3 +213,4 @@ Q_DECLARE_METATYPE(QSharedPointer<char>)
 
 #endif
 
+

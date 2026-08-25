@@ -273,3 +273,4 @@ WINBASEAPI LONG WINAPI AppPolicyGetCreateFileAccess(HANDLE processToken, AppPoli
 
 #endif /* _APPMODEL_H_ */
 
+

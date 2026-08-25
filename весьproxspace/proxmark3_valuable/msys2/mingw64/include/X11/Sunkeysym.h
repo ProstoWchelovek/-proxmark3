@@ -105,3 +105,4 @@ in this Software without prior written authorization from The Open Group.
 #define SunXK_VideoRaiseBrightness	0x1005FF7C
 #define SunXK_PowerSwitchShift		0x1005FF7D
 
+

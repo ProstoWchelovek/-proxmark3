@@ -15,3 +15,4 @@ error_t envz_merge (char **envz, size_t *envz_len, const char *envz2, size_t env
 void envz_remove(char **envz, size_t *envz_len, const char *name);
 void envz_strip (char **envz, size_t *envz_len);
 
+

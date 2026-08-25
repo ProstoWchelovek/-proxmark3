@@ -73,3 +73,4 @@ VOID WINGDIPAPI GdiplusNotificationUnhook(ULONG_PTR);
 
 #endif /* __GDIPLUS_INIT_H */
 
+

@@ -84,3 +84,4 @@ QT_END_NAMESPACE
 
 #endif // QLOCKFILE_H
 
+

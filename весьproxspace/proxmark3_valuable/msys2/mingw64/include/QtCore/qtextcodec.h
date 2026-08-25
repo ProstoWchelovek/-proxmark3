@@ -171,3 +171,4 @@ QT_END_NAMESPACE
 
 #endif // QTEXTCODEC_H
 
+

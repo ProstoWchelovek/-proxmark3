@@ -889,3 +889,4 @@ extern GCC_NORETURN NCURSES_EXPORT(void)    exit_terminfo(int);
 
 #endif /* NCURSES_TERM_H_incl */
 
+

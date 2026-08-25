@@ -77,3 +77,4 @@ DEFINE_GUID(DMOCATEGORY_AGC,
 
 #endif /* __DMOREG_H__ */
 
+

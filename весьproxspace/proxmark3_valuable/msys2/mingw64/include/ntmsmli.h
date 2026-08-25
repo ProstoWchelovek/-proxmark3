@@ -25,3 +25,4 @@ typedef DWORD (WINAPI *CLAIMMEDIALABEL)(const BYTE *const pBuffer,const DWORD nB
 typedef DWORD (WINAPI *CLAIMMEDIALABELEX)(const BYTE *const pBuffer,const DWORD nBufferSize,MediaLabelInfo *const pLabelInfo,GUID *LabelGuid);
 #endif
 
+

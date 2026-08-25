@@ -221,3 +221,4 @@ QT_END_NAMESPACE
 
 #endif // QSIMD_X86_P_H
 
+

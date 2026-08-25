@@ -2756,3 +2756,4 @@ HRESULT WINAPI DirectDrawCreateClipper(DWORD,LPDIRECTDRAWCLIPPER*,IUnknown*);
 
 #endif /* __DDRAW_INCLUDED__ */
 
+

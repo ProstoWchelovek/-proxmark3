@@ -45,3 +45,4 @@ DWORD WINAPI AMGetErrorTextW(HRESULT,LPWSTR,DWORD);
 
 #endif /* __ERRORS__ */
 
+

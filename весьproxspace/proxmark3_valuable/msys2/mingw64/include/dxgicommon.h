@@ -87,3 +87,4 @@ typedef struct DXGI_RATIONAL {
 
 #endif /* __dxgicommon_h__ */
 
+

@@ -83,3 +83,4 @@ RPMUnloadAlternateDriverForDevice(
   ULONG64 HubID,
   ULONG ConnectionIndex);
 
+

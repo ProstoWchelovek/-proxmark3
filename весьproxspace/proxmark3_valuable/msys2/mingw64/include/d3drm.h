@@ -524,3 +524,4 @@ DECLARE_INTERFACE_(IDirect3DRM3,IUnknown)
 
 #endif /* __D3DRM_H__ */
 
+

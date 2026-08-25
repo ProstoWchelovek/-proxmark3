@@ -1185,3 +1185,4 @@ namespace DirectX {
 #  pragma pop_macro("max")
 #endif
 
+

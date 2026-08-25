@@ -42,3 +42,4 @@ DECLARE_INTERFACE_(IConnectionRequestCallback,IUnknown)
 #endif /*(_WIN32_WINNT >= 0x0601)*/
 #endif /*__INC_PORTABLEDEVICECONNECTAPI__*/
 
+

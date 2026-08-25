@@ -401,3 +401,4 @@ void            __RPC_USER BSTR_UserFree     (ULONG *, BSTR *);
 
 #endif /* __inputscope_h__ */
 
+

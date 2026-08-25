@@ -635,3 +635,4 @@ WINBOOL WINAPI WcsTranslateColors(
 #endif
 #endif
 
+

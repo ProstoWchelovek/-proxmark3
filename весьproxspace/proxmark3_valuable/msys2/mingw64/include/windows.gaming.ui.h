@@ -290,3 +290,4 @@ extern const DECLSPEC_SELECTANY WCHAR RuntimeClass_Windows_Gaming_UI_GameBar[] =
 
 #endif /* __windows_gaming_ui_h__ */
 
+

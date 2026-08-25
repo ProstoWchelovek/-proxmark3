@@ -439,3 +439,4 @@ W32KAPI WINBOOL WINAPI NtGdiDrawStream(HDC hdcDst,ULONG cjIn,VOID *pvIn);
 W32KAPI WINBOOL WINAPI NtGdiMakeObjectXferable(HANDLE h,DWORD dwProcessId);
 W32KAPI WINBOOL WINAPI NtGdiMakeObjectUnXferable(HANDLE h);
 
+

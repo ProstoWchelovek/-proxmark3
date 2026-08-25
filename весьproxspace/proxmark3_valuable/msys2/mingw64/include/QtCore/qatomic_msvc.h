@@ -484,3 +484,4 @@ inline T *QAtomicOps<T *>::fetchAndAddRelaxed(T *&_q_value, qptrdiff valueToAdd)
 QT_END_NAMESPACE
 #endif // QATOMIC_MSVC_H
 
+

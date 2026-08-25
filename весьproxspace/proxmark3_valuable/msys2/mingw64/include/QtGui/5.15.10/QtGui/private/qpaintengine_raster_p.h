@@ -482,3 +482,4 @@ inline const QClipData *QRasterPaintEngine::clipData() const {
 QT_END_NAMESPACE
 #endif // QPAINTENGINE_RASTER_P_H
 
+

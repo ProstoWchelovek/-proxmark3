@@ -244,3 +244,4 @@ typedef struct _IO_RESOURCE_DESCRIPTOR {
 
 #endif /* __MINIPORT_H */
 
+

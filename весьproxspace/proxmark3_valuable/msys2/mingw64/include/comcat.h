@@ -799,3 +799,4 @@ HRESULT __RPC_STUB ICatInformation_IsClassOfCategories_Stub(
 
 #endif /* __comcat_h__ */
 
+

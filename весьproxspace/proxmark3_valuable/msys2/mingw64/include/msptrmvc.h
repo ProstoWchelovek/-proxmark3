@@ -28,3 +28,4 @@ inline CVideoCaptureTerminal::CVideoCaptureTerminal() {
 
 #endif
 
+

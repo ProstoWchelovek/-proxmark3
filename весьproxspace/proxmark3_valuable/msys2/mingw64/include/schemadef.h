@@ -76,3 +76,4 @@ struct TMSCHEMAINFO {
 #define END_TM_SCHEMA(name) }; static const TMSCHEMAINFO *GetSchemaInfo() { static TMSCHEMAINFO si = {sizeof(si)}; si.iSchemaDefVersion = SCHEMADEF_VERSION; si.iThemeMgrVersion = THEMEMGR_VERSION; si.iPropCount = sizeof(name)/sizeof(name[0]); si.pPropTable = name; return &si; }
 #endif
 
+

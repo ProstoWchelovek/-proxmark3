@@ -28,3 +28,4 @@ POGOAUTOSWEEPPROCA PogoAutoSweepA;
 
 #define PgoAutoSweep __MINGW_NAME_AW(PogoAutoSweep)
 
+

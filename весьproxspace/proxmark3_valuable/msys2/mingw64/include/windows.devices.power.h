@@ -290,3 +290,4 @@ extern const DECLSPEC_SELECTANY WCHAR RuntimeClass_Windows_Devices_Power_Battery
 
 #endif /* __windows_devices_power_h__ */
 
+

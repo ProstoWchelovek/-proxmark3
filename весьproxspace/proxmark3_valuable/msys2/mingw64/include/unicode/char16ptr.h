@@ -312,3 +312,4 @@ U_NAMESPACE_END
 
 #endif  // __CHAR16PTR_H__
 
+

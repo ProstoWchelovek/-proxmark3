@@ -188,3 +188,4 @@ struct QDBusWriteLocker: QDBusLockerBase
 #endif // QT_NO_DBUS
 #endif
 
+

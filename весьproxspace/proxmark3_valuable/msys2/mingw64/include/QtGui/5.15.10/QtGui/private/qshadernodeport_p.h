@@ -87,3 +87,4 @@ Q_DECLARE_METATYPE(QShaderNodePort)
 
 #endif // QSHADERNODEPORT_P_H
 
+

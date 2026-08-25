@@ -94,3 +94,4 @@ HRESULT WINAPI WHvAcceptPartitionMigration(HANDLE MigrationHandle, WHV_PARTITION
 
 #endif /* _WINHVAPI_H_ */
 
+

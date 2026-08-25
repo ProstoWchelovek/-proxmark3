@@ -112,3 +112,4 @@ QT_END_NAMESPACE
 
 #endif // QJISCODEC_P_H
 
+

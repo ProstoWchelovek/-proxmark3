@@ -638,3 +638,4 @@ extern "C"
 
 #endif /* __libftdi_h__ */
 
+

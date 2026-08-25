@@ -240,3 +240,4 @@ WINMMAPI MMRESULT WINAPI mmioCreateChunk(HMMIO hmmio, LPMMCKINFO pmmcki, UINT fu
 
 #endif /* _MMISCAPI_H_ */
 
+

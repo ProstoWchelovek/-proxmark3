@@ -281,3 +281,4 @@ sframe_encoder_write (sframe_encoder_ctx *encoder,
 
 #endif				/* _SFRAME_API_H */
 
+

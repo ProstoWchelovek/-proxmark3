@@ -412,3 +412,4 @@ LZ4LIB_STATIC_API void LZ4_attach_HC_dictionary(
 #endif   /* LZ4_HC_SLO_098092834 */
 #endif   /* LZ4_HC_STATIC_LINKING_ONLY */
 
+

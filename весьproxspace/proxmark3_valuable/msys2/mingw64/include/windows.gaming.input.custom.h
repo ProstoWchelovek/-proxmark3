@@ -1999,3 +1999,4 @@ extern const DECLSPEC_SELECTANY WCHAR RuntimeClass_Windows_Gaming_Input_Custom_X
 
 #endif /* __windows_gaming_input_custom_h__ */
 
+

@@ -411,3 +411,4 @@ static __WIDL_INLINE HRESULT IMFVideoProcessor_SetBackgroundColor(IMFVideoProces
 
 #endif /* __evr9_h__ */
 
+

@@ -991,3 +991,4 @@ __CRT_UUID_DECL(MMDeviceEnumerator, 0xbcde0395, 0xe52f, 0x467c, 0x8e,0x3d, 0xc4,
 
 #endif /* __mmdeviceapi_h__ */
 
+

@@ -163,3 +163,4 @@ Q_DECLARE_METATYPE(QCborTag)
 
 #endif // QCBORSTREAM_H
 
+

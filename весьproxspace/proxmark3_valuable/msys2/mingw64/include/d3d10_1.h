@@ -1449,3 +1449,4 @@ HRESULT __stdcall  D3D10CreateDeviceAndSwapChain1(IDXGIAdapter *adapter,enum D3D
 
 #endif /* __d3d10_1_h__ */
 
+

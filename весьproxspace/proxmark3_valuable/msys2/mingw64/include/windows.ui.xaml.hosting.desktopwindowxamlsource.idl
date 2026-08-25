@@ -41,3 +41,4 @@ interface IDesktopWindowXamlSourceNative2 : IDesktopWindowXamlSourceNative
     HRESULT PreTranslateMessage([in] const MSG *message, [out, retval] BOOL *result);
 }
 
+

@@ -382,3 +382,4 @@ HRESULT WINAPI DismRemoveCapability (DismSession Session, PCWSTR Name, HANDLE Ca
 
 #endif /* _DISMAPI_H_ */
 
+

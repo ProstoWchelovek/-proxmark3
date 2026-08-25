@@ -51,3 +51,4 @@ struct _DMUS_EVENTHEADER {
 
 #endif /* __WINE_DMUSIC_BUFFER_H */
 
+

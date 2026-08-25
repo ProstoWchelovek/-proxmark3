@@ -588,3 +588,4 @@ typedef struct _D3DHAL_DP2SETTEXLOD {
 
 #endif /* __WINE_D3DHAL_H */
 
+

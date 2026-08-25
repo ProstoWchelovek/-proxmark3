@@ -1205,3 +1205,4 @@ static __WIDL_INLINE HRESULT IDirectInputJoyConfig8_OpenAppStatusKey(IDirectInpu
 
 #endif /* __dinputd_h__ */
 
+

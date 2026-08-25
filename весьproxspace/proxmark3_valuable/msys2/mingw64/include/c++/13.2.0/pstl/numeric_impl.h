@@ -353,3 +353,4 @@ __pattern_adjacent_difference(_ExecutionPolicy&& __exec, _ForwardIterator1 __fir
 
 #endif /* _PSTL_NUMERIC_IMPL_H */
 
+

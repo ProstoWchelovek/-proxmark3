@@ -282,3 +282,4 @@ EXTERN_GUID(MF_SA_D3D12_CLEAR_VALUE, 0x86ba9a39, 0x526, 0x495d, 0x9a, 0xb5, 0x54
 
 #endif /* __mfd3d12_h__ */
 
+

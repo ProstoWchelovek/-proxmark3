@@ -78,3 +78,4 @@ typedef struct _VIDEOPARAMETERS {
 #define VP_CP_CMD_CHANGE 0x0004
 #endif
 
+

@@ -235,3 +235,4 @@ private:
 
 #endif /* __GDIPLUS_IMAGEATTRIBUTES_H */
 
+

@@ -19,3 +19,4 @@
 { REG_ETOOBIG,	"REG_ETOOBIG",	"regular expression is too complex" },
 { REG_ECOLORS,	"REG_ECOLORS",	"too many colors" },
 
+

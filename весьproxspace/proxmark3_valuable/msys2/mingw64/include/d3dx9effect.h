@@ -446,3 +446,4 @@ HRESULT WINAPI D3DXDisassembleEffect(ID3DXEffect *effect, WINBOOL enable_color_c
 
 #endif /* __D3DX9EFFECT_H__ */
 
+

@@ -83,3 +83,4 @@ QT_END_NAMESPACE
 
 #endif // QSIMPLECODEC_P_H
 
+

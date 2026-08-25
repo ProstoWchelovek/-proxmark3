@@ -198,3 +198,4 @@ clEnqueueReleaseVA_APIMediaSurfacesINTEL(
 
 #endif /* OPENCL_CL_VA_API_MEDIA_SHARING_INTEL_H_ */
 
+

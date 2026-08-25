@@ -61,3 +61,4 @@ HRESULT CALLBACK ValueGetter(const IUnknown *effect, BYTE *data, UINT32 dataSize
 
 #endif /* _D2D1_EFFECT_HELPERS_H_ */
 
+

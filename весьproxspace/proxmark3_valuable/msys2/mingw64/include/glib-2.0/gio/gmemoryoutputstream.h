@@ -108,3 +108,4 @@ G_END_DECLS
 
 #endif /* __G_MEMORY_OUTPUT_STREAM_H__ */
 
+

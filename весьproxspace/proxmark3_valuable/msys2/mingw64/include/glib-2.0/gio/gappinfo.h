@@ -368,3 +368,4 @@ G_END_DECLS
 
 #endif /* __G_APP_INFO_H__ */
 
+

@@ -482,3 +482,4 @@ DWORD WINAPI PowerWriteValueUnitsSpecifier(
 
 #endif /* _POWRPROF_H_ */
 
+

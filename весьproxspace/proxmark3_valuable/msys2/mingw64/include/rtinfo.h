@@ -35,3 +35,4 @@ typedef struct _RTR_INFO_BLOCK_HEADER {
 #define GetInfoFromTocEntry(hdr,toc) (((toc)->Offset < (hdr)->Size) ? ((PVOID)(((PBYTE)(hdr)) + (toc)->Offset)) : NULL)
 #endif
 
+

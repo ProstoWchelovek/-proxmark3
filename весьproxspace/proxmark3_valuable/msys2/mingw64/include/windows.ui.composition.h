@@ -11603,3 +11603,4 @@ void            __RPC_USER HSTRING_UserFree     (ULONG *, HSTRING *);
 
 #endif /* __windows_ui_composition_h__ */
 
+

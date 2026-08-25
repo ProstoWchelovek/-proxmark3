@@ -228,3 +228,4 @@ private:
 QT_END_NAMESPACE
 #endif // QFILEINFOGATHERER_H
 
+

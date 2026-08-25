@@ -580,3 +580,4 @@ void            __RPC_USER PIDLIST_ABSOLUTE_UserFree     (ULONG *, PIDLIST_ABSOL
 
 #endif /* __tlogstg_h__ */
 
+

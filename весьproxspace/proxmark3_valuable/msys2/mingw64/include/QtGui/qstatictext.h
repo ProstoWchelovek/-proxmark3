@@ -107,3 +107,4 @@ Q_DECLARE_METATYPE(QStaticText)
 
 #endif // QSTATICTEXT_H
 
+

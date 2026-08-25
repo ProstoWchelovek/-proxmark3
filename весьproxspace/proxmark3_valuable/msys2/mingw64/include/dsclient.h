@@ -273,3 +273,4 @@ STDAPI DsGetFriendlyClassName(LPWSTR pszObjectClass,LPWSTR pszBuffer,UINT cchBuf
 #endif
 #endif
 
+

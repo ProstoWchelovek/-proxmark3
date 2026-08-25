@@ -939,3 +939,4 @@ ScsiPortMoveMemory(
 
 #endif /* _NTSRB_ */
 
+

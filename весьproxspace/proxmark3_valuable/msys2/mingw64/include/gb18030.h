@@ -16,3 +16,4 @@ STDAPI_(DWORD) UnicodeToBytes(LPWSTR lpWideCharStr,UINT cchWideChar,LPSTR lpMult
 
 #endif /* _GB18030_H_ */
 
+

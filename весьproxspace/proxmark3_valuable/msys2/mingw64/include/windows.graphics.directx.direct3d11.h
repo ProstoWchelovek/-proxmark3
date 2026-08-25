@@ -311,3 +311,4 @@ static __WIDL_INLINE HRESULT __x_ABI_CWindows_CGraphics_CDirectX_CDirect3D11_CID
 
 #endif /* __windows_graphics_directx_direct3d11_h__ */
 
+

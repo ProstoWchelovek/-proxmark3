@@ -72,3 +72,4 @@ extern NCURSES_EXPORT(int) tputs (const char *, int, int (*)(int));
 
 #endif /* NCURSES_TERMCAP_H_incl */
 
+

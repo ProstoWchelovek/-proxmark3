@@ -75,3 +75,4 @@ static __inline HWND DisplayDibWindowCreateEx(HWND hwndParent,HINSTANCE hInstanc
 #endif
 #endif
 
+

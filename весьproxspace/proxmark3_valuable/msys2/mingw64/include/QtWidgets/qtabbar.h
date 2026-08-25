@@ -227,3 +227,4 @@ QT_END_NAMESPACE
 
 #endif // QTABBAR_H
 
+

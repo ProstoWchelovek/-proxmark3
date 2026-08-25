@@ -50,3 +50,4 @@
 #define QT_VERSION_MINOR 15
 #define QT_VERSION_PATCH 10
 
+

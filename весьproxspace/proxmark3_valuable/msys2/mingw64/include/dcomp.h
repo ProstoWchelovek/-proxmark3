@@ -616,3 +616,4 @@ STDAPI DCompositionAttachMouseDragToHwnd(IDCompositionVisual* visual, HWND hwnd,
 #endif
 #endif /* _DCOMP_H_ */
 
+

@@ -52,3 +52,4 @@ DECLARE_INTERFACE_(IAssociatedIdentityProvider,IUnknown)
 #endif /*(_WIN32_WINNT >= 0x0601)*/
 #endif /* __IDENTITYSTORE_H__ */
 
+

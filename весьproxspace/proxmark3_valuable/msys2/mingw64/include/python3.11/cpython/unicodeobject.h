@@ -1152,3 +1152,4 @@ PyAPI_FUNC(int) _PyUnicode_WideCharString_Opt_Converter(PyObject *, void *);
 
 PyAPI_FUNC(Py_ssize_t) _PyUnicode_ScanIdentifier(PyObject *);
 
+

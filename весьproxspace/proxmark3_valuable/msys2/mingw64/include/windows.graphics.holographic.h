@@ -1530,3 +1530,4 @@ static __WIDL_INLINE HRESULT __FITypedEventHandler_2_Windows__CGraphics__CHologr
 
 #endif /* __windows_graphics_holographic_h__ */
 
+

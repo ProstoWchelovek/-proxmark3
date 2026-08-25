@@ -30,3 +30,4 @@ DECLARE_MAPI_INTERFACE_PTR(IAddrBook,LPADRBOOK);
 #endif
 #endif
 
+

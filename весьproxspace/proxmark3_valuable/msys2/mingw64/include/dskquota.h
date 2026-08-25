@@ -143,3 +143,4 @@ DECLARE_INTERFACE_(IDiskQuotaEvents,IUnknown) {
 typedef IDiskQuotaEvents DISKQUOTA_EVENTS,*PDISKQUOTA_EVENTS;
 #endif
 
+

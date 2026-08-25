@@ -168,3 +168,4 @@ Q_DECLARE_METATYPE( QTextOption::Tab )
 
 #endif // QTEXTOPTION_H
 
+

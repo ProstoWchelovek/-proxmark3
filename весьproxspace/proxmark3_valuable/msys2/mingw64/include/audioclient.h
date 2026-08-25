@@ -1900,3 +1900,4 @@ static __WIDL_INLINE HRESULT IChannelAudioVolume_GetAllVolumes(IChannelAudioVolu
 
 #endif /* __audioclient_h__ */
 
+

@@ -242,3 +242,4 @@ Q_DECLARE_METATYPE(WinRTSocketEngine::ErrorString)
 
 #endif // QNATIVESOCKETENGINE_WINRT_P_H
 
+

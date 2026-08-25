@@ -12842,3 +12842,4 @@ void            __RPC_USER HDC_UserFree     (ULONG *, HDC *);
 
 #endif /* __objidl_h__ */
 
+

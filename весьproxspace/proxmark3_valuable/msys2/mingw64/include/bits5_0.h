@@ -588,3 +588,4 @@ static __WIDL_INLINE HRESULT IBackgroundCopyJob5_GetProperty(IBackgroundCopyJob5
 
 #endif /* __bits5_0_h__ */
 
+

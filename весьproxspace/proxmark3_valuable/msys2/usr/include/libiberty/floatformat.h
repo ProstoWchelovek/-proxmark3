@@ -161,3 +161,4 @@ floatformat_is_valid (const struct floatformat *fmt, const void *from);
 
 #endif	/* defined (FLOATFORMAT_H) */
 
+

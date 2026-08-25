@@ -230,3 +230,4 @@ EXTERN(void) jcopy_markers_execute(j_decompress_ptr srcinfo,
                                    j_compress_ptr dstinfo,
                                    JCOPY_OPTION option);
 
+

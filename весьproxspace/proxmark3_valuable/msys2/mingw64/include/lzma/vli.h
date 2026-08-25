@@ -167,3 +167,4 @@ extern LZMA_API(lzma_ret) lzma_vli_decode(lzma_vli *vli, size_t *vli_pos,
 extern LZMA_API(uint32_t) lzma_vli_size(lzma_vli vli)
 		lzma_nothrow lzma_attr_pure;
 
+

@@ -270,3 +270,4 @@ public:
 
 #endif /* NCURSES_CURSESP_H_incl */
 
+

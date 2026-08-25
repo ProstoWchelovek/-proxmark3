@@ -473,3 +473,4 @@ D2D1FORCEINLINE D2D1_MATRIX_3X2_F operator*(const D2D1_MATRIX_3X2_F &matrix1, co
 
 #endif /*_INC_D2D1HELPER*/
 
+

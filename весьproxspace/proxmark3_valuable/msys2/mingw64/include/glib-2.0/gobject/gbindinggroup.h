@@ -84,3 +84,4 @@ G_END_DECLS
 
 #endif /* __G_BINDING_GROUP_H__ */
 
+

@@ -32,3 +32,4 @@ MODULE_SCOPE int Itcl_InvokeEnsembleMethod(Tcl_Interp *interp, Tcl_Namespace *ns
 MODULE_SCOPE int Itcl_InvokeProcedureMethod(ClientData clientData, Tcl_Interp *interp,
 	int objc, Tcl_Obj *const *objv);
 
+

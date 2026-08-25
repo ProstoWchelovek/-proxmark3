@@ -238,3 +238,4 @@ static __WIDL_INLINE HRESULT __x_ABI_CWindows_CFoundation_CCollections_CIVectorC
 
 #endif /* __ivectorchangedeventargs_h__ */
 
+

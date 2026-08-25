@@ -1315,3 +1315,4 @@ _COM_SMARTPTR_TYPEDEF(XMLHTTPRequest,__uuidof(XMLHTTPRequest));
 #endif
 #endif
 
+

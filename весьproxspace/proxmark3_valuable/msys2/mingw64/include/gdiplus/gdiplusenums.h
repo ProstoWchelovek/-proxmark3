@@ -754,3 +754,4 @@ static __inline__ BOOL ObjectTypeIsValid(ObjectType type)
 
 #endif /* __GDIPLUS_ENUMS_H */
 
+

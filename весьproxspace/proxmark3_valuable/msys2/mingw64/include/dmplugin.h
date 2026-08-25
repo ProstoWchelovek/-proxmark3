@@ -296,3 +296,4 @@ DECLARE_INTERFACE_(IDirectMusicTrack8,IDirectMusicTrack)
 
 #endif /* __WINE_DMUSIC_PLUGIN_H */
 
+

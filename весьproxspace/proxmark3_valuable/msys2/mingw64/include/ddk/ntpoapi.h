@@ -418,3 +418,4 @@ typedef struct _POWER_ACTION_POLICY {
 #endif /* __NTPOAPI_H */
 
 
+

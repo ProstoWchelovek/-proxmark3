@@ -23,3 +23,4 @@ static const GUID ELS_GUID_TRANSLITERATION_HANGUL_DECOMPOSITION = { 0x4ba2a721, 
 
 #endif /* __ELS_SRVC__ */
 
+

@@ -479,3 +479,4 @@ static __WIDL_INLINE HRESULT IWMGetSecureChannel_GetPeerSecureChannelInterface(I
 
 #endif /* __wmsecure_h__ */
 
+

@@ -506,3 +506,4 @@ UINT WINAPI D3DXGetDriverLevel(struct IDirect3DDevice9 *device);
 
 #endif /* __WINE_D3DX9CORE_H */
 
+

@@ -94,3 +94,4 @@ QT_END_NAMESPACE
 
 #endif // QSIGNALMAPPER_H
 
+

@@ -47,3 +47,4 @@ VKAPI_ATTR VkResult VKAPI_CALL vkCreateViSurfaceNN(
 
 #endif
 
+

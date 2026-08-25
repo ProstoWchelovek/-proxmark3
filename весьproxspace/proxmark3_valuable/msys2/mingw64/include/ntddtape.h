@@ -73,3 +73,4 @@ typedef enum _TAPE_DRIVE_PROBLEM_TYPE {
 
 #endif /* _NTDDTAPE_ */
 
+

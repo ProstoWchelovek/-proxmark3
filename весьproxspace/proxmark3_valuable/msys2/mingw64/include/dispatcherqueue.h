@@ -37,3 +37,4 @@ EXTERN_C HRESULT WINAPI CreateDispatcherQueueController(DispatcherQueueOptions o
 
 #endif /* _DISPATCHERQUEUE_H_ */
 
+

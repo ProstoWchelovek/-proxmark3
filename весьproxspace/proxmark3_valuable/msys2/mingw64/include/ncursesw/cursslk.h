@@ -239,3 +239,4 @@ public:
 
 #endif /* NCURSES_CURSSLK_H_incl */
 
+

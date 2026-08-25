@@ -237,3 +237,4 @@ DECLARE_INTERFACE_(IDirectMusicSynthSink,IUnknown)
 
 #endif /* __WINE_DMUSIC_SOFTWARESYNTH_H */
 
+

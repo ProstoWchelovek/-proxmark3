@@ -85,3 +85,4 @@ LONG WINAPI TTIsEmbeddingEnabled(HDC hdc, WINBOOL *enabled);
 
 #endif
 
+

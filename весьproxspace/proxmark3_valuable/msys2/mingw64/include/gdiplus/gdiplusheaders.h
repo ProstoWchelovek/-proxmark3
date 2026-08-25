@@ -580,3 +580,4 @@ private:
 
 #endif /* __GDIPLUS_HEADERS_H */
 
+

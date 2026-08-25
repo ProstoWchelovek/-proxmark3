@@ -74,3 +74,4 @@ MODULE_SCOPE TkColor *	TkpGetColorByValue(Tk_Window tkwin, XColor *colorPtr);
 
 #endif /* _TKCOLOR */
 
+

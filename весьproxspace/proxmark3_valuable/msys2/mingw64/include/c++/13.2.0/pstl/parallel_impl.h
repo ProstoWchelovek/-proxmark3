@@ -80,3 +80,4 @@ __parallel_or(_ExecutionPolicy&& __exec, _Index __first, _Index __last, _Brick _
 
 #endif /* _PSTL_PARALLEL_IMPL_H */
 
+

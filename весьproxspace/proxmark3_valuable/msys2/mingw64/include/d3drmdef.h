@@ -465,3 +465,4 @@ D3DVALUE WINAPI D3DRMColorGetRed(D3DCOLOR);
 
 #endif
 
+

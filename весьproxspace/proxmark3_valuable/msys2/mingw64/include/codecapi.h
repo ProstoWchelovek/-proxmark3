@@ -1527,3 +1527,4 @@ DEFINE_CODECAPI_GUID(AVEncChromaEncodeMode, "8a47ab5a-4798-4c93-b5a5-554f9a3b9f5
 
 #endif /*_INC_CODECAPI*/
 
+

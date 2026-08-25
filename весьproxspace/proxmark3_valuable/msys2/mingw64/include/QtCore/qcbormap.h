@@ -370,3 +370,4 @@ QT_END_NAMESPACE
 
 #endif // QCBORMAP_H
 
+

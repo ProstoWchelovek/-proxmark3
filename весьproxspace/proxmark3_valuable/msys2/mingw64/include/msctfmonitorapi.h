@@ -25,3 +25,4 @@ HRESULT CALLBACK InitLocalMsCtfMonitor(
 
 #endif /* _INC_MSCTFMONITORAPI */
 
+

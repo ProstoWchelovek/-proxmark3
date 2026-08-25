@@ -95,3 +95,4 @@ QT_END_NAMESPACE
 
 #endif // QBIG5CODEC_P_H
 
+

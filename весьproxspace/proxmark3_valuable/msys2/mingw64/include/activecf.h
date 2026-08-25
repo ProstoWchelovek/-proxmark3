@@ -15,3 +15,4 @@ typedef struct tagVFW_FILTERLIST {
 
 #endif
 
+

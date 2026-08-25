@@ -243,3 +243,4 @@ typedef struct {
 } VkIcdSurfaceImagePipe;
 #endif // VK_USE_PLATFORM_FUCHSIA
 
+

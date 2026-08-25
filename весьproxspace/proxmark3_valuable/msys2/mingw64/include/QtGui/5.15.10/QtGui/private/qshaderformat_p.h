@@ -122,3 +122,4 @@ Q_DECLARE_METATYPE(QShaderFormat)
 
 #endif // QSHADERFORMAT_P_H
 
+

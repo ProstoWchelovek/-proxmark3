@@ -815,3 +815,4 @@ int mpd_resize_zero(mpd_t *result, mpd_ssize_t nwords, mpd_context_t *ctx);
 
 #endif /* LIBMPDEC_MPDECIMAL_H_ */
 
+

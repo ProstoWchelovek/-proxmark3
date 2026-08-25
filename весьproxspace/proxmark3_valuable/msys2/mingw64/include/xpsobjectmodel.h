@@ -11674,3 +11674,4 @@ __CRT_UUID_DECL(XpsOMThumbnailGenerator, 0x7e4a23e2, 0xb969, 0x4761, 0xbe,0x35, 
 
 #endif /* __xpsobjectmodel_h__ */
 
+

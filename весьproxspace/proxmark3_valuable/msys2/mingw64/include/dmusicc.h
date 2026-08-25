@@ -766,3 +766,4 @@ DECLARE_INTERFACE_(IReferenceClock,IUnknown)
 
 #endif /* __WINE_DMUSIC_CORE_H */
 
+

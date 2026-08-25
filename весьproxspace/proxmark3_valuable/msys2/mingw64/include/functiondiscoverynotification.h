@@ -44,3 +44,4 @@ DECLARE_INTERFACE_(IFunctionDiscoveryNotification,IUnknown)
 
 #endif /* _INC_FUNCTIONDISCOVERYNOTIFICATION */
 
+

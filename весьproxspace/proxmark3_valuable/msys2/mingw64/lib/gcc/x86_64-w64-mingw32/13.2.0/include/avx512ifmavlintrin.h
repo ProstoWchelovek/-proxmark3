@@ -144,3 +144,4 @@ _mm256_maskz_madd52hi_epu64 (__mmask8 __M, __m256i __X, __m256i __Y, __m256i __Z
 
 #endif /* _AVX512IFMAVLINTRIN_H_INCLUDED */
 
+

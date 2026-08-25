@@ -95,3 +95,4 @@ Q_DECLARE_METATYPE(QSslPreSharedKeyAuthenticator*)
 
 #endif // QSSLPRESHAREDKEYAUTHENTICATOR_H
 
+

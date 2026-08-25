@@ -400,3 +400,4 @@
 #define REGSTR_VAL_PRIVCONVERTER_TYPE REG_SZ
 #endif
 
+

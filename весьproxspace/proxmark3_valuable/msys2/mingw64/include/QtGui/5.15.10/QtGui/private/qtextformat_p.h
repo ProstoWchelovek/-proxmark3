@@ -111,3 +111,4 @@ QT_END_NAMESPACE
 
 #endif // QTEXTFORMAT_P_H
 
+

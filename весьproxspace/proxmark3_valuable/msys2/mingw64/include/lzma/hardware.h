@@ -62,3 +62,4 @@ extern LZMA_API(uint64_t) lzma_physmem(void) lzma_nothrow;
  */
 extern LZMA_API(uint32_t) lzma_cputhreads(void) lzma_nothrow;
 
+

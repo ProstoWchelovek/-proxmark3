@@ -796,3 +796,4 @@ static __WIDL_INLINE HRESULT __FIReference_1_Vector3_get_Value(__FIReference_1_V
 
 #endif /* __windows_foundation_numerics_h__ */
 
+

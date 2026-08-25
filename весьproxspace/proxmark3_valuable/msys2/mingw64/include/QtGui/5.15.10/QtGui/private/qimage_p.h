@@ -380,3 +380,4 @@ QT_END_NAMESPACE
 
 #endif // QIMAGE_P_H
 
+

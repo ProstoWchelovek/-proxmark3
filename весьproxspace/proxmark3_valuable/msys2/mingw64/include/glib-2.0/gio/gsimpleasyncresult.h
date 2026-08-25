@@ -163,3 +163,4 @@ G_END_DECLS
 
 #endif /* __G_SIMPLE_ASYNC_RESULT_H__ */
 
+

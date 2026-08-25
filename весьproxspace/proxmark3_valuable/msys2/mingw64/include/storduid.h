@@ -33,3 +33,4 @@ typedef struct _STORAGE_DEVICE_LAYOUT_SIGNATURE {
 #endif
 #endif /*_INC_STORDUID*/
 
+

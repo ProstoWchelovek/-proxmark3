@@ -705,3 +705,4 @@ enum MENUBANDSTATES {
 
 #endif /* __VSSYM32_H__ */
 
+

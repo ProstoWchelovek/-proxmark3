@@ -1001,3 +1001,4 @@ HRESULT WINAPI DirectPlay8Create(const CLSID* pcIID, LPVOID* ppvInterface, IUnkn
 
 #endif
 
+

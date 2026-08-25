@@ -3341,3 +3341,4 @@ PNG_EXPORT(269, void, png_write_frame_tail, (png_structp png_ptr,
 /* Do not put anything past this line */
 #endif /* PNG_H */
 
+

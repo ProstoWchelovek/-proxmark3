@@ -7,3 +7,4 @@ PyAPI_FUNC(FILE*) _Py_fopen_obj(
     PyObject *path,
     const char *mode);
 
+

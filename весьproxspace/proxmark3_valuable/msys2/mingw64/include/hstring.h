@@ -62,3 +62,4 @@ DECLARE_HANDLE(HSTRING_BUFFER);
 
 #endif /* __hstring_h__ */
 
+

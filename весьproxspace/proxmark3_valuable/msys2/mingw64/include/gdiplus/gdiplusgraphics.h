@@ -1539,3 +1539,4 @@ private:
 
 #endif /* __GDIPLUS_GRAPHICS_H */
 
+

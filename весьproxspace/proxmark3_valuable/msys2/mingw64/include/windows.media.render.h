@@ -120,3 +120,4 @@ enum __x_ABI_CWindows_CMedia_CRender_CAudioRenderCategory {
 
 #endif /* __windows_media_render_h__ */
 
+

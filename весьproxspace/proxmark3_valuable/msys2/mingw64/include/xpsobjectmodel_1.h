@@ -1495,3 +1495,4 @@ static __WIDL_INLINE HRESULT IXpsOMRemoteDictionaryResource1_Write1(IXpsOMRemote
 
 #endif /* __xpsobjectmodel_1_h__ */
 
+

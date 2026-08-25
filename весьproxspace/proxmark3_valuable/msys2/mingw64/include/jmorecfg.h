@@ -392,3 +392,4 @@ static const int rgb_pixelsize[JPEG_NUMCS] = {
 
 #endif /* JPEG_INTERNAL_OPTIONS */
 
+

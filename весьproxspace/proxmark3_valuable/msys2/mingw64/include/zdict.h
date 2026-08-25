@@ -473,3 +473,4 @@ size_t ZDICT_addEntropyTablesFromBuffer(void* dictBuffer, size_t dictContentSize
 }
 #endif
 
+

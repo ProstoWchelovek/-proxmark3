@@ -174,3 +174,4 @@ Q_DECLARE_METATYPE(QFileInfo)
 
 #endif // QFILEINFO_H
 
+

@@ -637,3 +637,4 @@ WINBOOL WINAPI WTSFreeMemoryExW(WTS_TYPE_CLASS WTSTypeClass,PVOID pMemory,ULONG 
 #endif
 #endif
 
+

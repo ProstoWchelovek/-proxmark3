@@ -274,3 +274,4 @@ _ptwrite32 (unsigned __B)
 
 #endif /* _X86GPRINTRIN_H_INCLUDED.  */
 
+

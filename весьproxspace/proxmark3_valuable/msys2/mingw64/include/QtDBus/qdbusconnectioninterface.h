@@ -129,3 +129,4 @@ Q_DECLARE_BUILTIN_METATYPE(UInt, QMetaType::UInt, QDBusConnectionInterface::Regi
 #endif // QT_NO_DBUS
 #endif
 
+

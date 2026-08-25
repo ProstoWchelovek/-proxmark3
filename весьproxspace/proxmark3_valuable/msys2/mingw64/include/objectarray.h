@@ -284,3 +284,4 @@ static __WIDL_INLINE HRESULT IObjectCollection_Clear(IObjectCollection* This) {
 
 #endif /* __objectarray_h__ */
 
+

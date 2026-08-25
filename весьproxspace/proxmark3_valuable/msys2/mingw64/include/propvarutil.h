@@ -215,3 +215,4 @@ HRESULT WINAPI StgDeserializePropVariant(const SERIALIZEDPROPERTYVALUE *pprop, U
 
 #endif /* __WINE_PROPVARUTIL_H */
 
+

@@ -6542,3 +6542,4 @@ EXTERN_C const GUID  IID_ICallbackWithNoReentrancyToApplicationSTA;
 
 #endif /* __objidlbase_h__ */
 
+

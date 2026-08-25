@@ -265,3 +265,4 @@ extern LZMA_API(lzma_ret) lzma_stream_flags_compare(
 		const lzma_stream_flags *a, const lzma_stream_flags *b)
 		lzma_nothrow lzma_attr_pure;
 
+

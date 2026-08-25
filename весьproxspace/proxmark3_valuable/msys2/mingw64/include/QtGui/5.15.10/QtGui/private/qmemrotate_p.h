@@ -73,3 +73,4 @@ QT_END_NAMESPACE
 
 #endif // QMEMROTATE_P_H
 
+

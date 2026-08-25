@@ -673,3 +673,4 @@ public:
 
 #endif /* NCURSES_CURSESM_H_incl */
 
+

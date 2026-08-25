@@ -370,3 +370,4 @@ LIBSSH2_API int libssh2_sftp_symlink_ex(LIBSSH2_SFTP *sftp,
 
 #endif /* LIBSSH2_SFTP_H */
 
+

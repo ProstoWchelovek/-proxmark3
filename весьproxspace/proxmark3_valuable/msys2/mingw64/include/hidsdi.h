@@ -71,3 +71,4 @@ BOOLEAN NTAPI HidD_SetOutputReport (HANDLE HidDeviceObject, PVOID ReportBuffer, 
 #endif
 #endif
 
+

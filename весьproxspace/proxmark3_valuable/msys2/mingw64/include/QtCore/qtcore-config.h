@@ -47,3 +47,4 @@
 #define QT_FEATURE_xmlstreamreader 1
 #define QT_FEATURE_xmlstreamwriter 1
 
+

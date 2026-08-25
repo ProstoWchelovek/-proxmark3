@@ -19,3 +19,4 @@ PyAPI_FUNC(PyObject *) _PyNamespace_New(PyObject *kwds);
 #endif
 #endif  // !Py_INTERNAL_NAMESPACE_H
 
+

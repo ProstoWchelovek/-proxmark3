@@ -434,3 +434,4 @@ DEFINE_PROPERTYKEY(PKEY_Volume_IsRoot, 0x9b174b35,0x40ff,0x11d2,0xa2,0x7e,0x00,0
 
 #endif /*_INC_PROPKEY*/
 
+

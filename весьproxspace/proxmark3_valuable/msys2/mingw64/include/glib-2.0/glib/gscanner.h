@@ -300,3 +300,4 @@ G_END_DECLS
 
 #endif /* __G_SCANNER_H__ */
 
+

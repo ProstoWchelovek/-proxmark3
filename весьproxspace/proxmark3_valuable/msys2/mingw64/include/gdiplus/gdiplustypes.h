@@ -458,3 +458,4 @@ typedef void *GetThumbnailImageAbort;
 
 #endif /* __GDIPLUS_TYPES_H */
 
+

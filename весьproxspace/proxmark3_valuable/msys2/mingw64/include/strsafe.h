@@ -2076,3 +2076,4 @@ STRSAFE_INLINE_API StringGetsExWorkerW(STRSAFE_LPWSTR pszDest,size_t cchDest,siz
 #endif
 #endif
 
+

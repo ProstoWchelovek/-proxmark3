@@ -366,3 +366,4 @@ typedef enum DEVICE_SCALE_FACTOR {
 
 #endif /* __shtypes_h__ */
 
+

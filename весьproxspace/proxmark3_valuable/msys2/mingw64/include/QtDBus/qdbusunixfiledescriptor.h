@@ -90,3 +90,4 @@ Q_DECLARE_METATYPE(QDBusUnixFileDescriptor)
 #endif // QT_NO_DBUS
 #endif // QDBUSUNIXFILEDESCRIPTOR_H
 
+

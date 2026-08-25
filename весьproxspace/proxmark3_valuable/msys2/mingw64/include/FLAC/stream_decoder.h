@@ -1583,3 +1583,4 @@ FLAC_API FLAC__bool FLAC__stream_decoder_seek_absolute(FLAC__StreamDecoder *deco
 
 #endif
 
+

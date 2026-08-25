@@ -205,3 +205,4 @@ static __WIDL_INLINE HRESULT IDCompositionAnimation_End(IDCompositionAnimation* 
 
 #endif /* __dcompanimation_h__ */
 
+

@@ -423,3 +423,4 @@ WINBASEAPI VOID WINAPI ClosePseudoConsole(HPCON hPC);
 #endif
 #endif
 
+

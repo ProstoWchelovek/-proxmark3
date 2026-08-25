@@ -147,3 +147,4 @@ WINBOOL     WINAPI InternetGetSecurityInfoByURLW(LPCWSTR,PCCERT_CHAIN_CONTEXT*,D
 
 #endif /* _WINE_WININETI_H_ */
 
+

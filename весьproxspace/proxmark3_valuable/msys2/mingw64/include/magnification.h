@@ -36,3 +36,4 @@ typedef struct tagMAGCOLOREFFECT {
 #endif
 #endif
 
+

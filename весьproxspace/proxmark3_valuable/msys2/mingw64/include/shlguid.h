@@ -414,3 +414,4 @@ DEFINE_GUID (CATID_SearchableApplication, 0x366c292a, 0xd9b3, 0x4dbf, 0xbb, 0x70
 
 #endif
 
+

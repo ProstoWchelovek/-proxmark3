@@ -31,3 +31,4 @@ GSettingsBackend *      g_registry_settings_backend_new     (const gchar     *re
 
 #endif /* __G_REGISTRY_SETTINGS_BACKEND_H__ */
 
+

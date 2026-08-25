@@ -13209,3 +13209,4 @@ static __WIDL_INLINE HRESULT IDWriteFactory7_GetSystemFontCollection(IDWriteFact
 
 #endif /* __dwrite_3_h__ */
 
+

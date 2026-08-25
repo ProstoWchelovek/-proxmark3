@@ -81,3 +81,4 @@ enum __x_ABI_CWindows_CSystem_CPower_CBatteryStatus {
 
 #endif /* __windows_system_power_h__ */
 
+

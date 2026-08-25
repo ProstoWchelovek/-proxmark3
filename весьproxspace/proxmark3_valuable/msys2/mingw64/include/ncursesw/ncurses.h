@@ -2120,3 +2120,4 @@ extern GCC_NORETURN NCURSES_EXPORT(void) exit_curses (int);
 
 #endif /* __NCURSES_H */
 
+

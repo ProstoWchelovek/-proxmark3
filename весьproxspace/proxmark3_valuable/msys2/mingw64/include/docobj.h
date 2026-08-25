@@ -1747,3 +1747,4 @@ void            __RPC_USER HMENU_UserFree     (ULONG *, HMENU *);
 
 #endif /* __docobj_h__ */
 
+

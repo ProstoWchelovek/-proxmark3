@@ -19,3 +19,4 @@ HRESULT WINAPI ReleaseExclusiveCpuSets(VOID);
 
 #endif /* __EXPANDEDRESOURCES_H__ */
 
+

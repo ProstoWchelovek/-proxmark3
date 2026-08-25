@@ -49,3 +49,4 @@ HRESULT __stdcall  CreateAudioVolumeMeter(IUnknown **out);
 
 #endif /* __xaudio2fx_h__ */
 
+

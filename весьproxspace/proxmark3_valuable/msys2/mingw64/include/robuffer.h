@@ -156,3 +156,4 @@ STDAPI RoGetBufferMarshaler(IMarshal **bufferMarshaler);
 
 #endif /* __robuffer_h__ */
 
+

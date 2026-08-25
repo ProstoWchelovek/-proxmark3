@@ -16,3 +16,4 @@ typedef enum _IDENTITY_TYPE {
 #endif /*(_WIN32_WINNT >= 0x0601)*/
 #endif /*__IDENTIYCOMMON_H__*/
 
+

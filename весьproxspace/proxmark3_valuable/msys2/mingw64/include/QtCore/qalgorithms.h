@@ -874,3 +874,4 @@ QT_END_NAMESPACE
 
 #endif // QALGORITHMS_H
 
+

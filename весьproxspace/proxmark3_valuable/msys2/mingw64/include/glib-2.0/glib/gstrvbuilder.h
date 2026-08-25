@@ -68,3 +68,4 @@ G_END_DECLS
 
 #endif /* __G_STRVBUILDER_H__ */
 
+

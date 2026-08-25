@@ -82,3 +82,4 @@ int		 setpassent (int);
 #endif
 #endif /* _PWD_H_ */
 
+

@@ -248,3 +248,4 @@ DWORD WINAPI XInputGetStateEx(DWORD, XINPUT_STATE*);
 
 #endif /* __WINE_XINPUT_H */
 
+

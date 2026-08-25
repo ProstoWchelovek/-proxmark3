@@ -127,3 +127,4 @@ DECLARE_MAPI_INTERFACE_(IMsgServiceAdmin2, IUnknown)
 
 #endif /* MAPIAUX_H */
 
+

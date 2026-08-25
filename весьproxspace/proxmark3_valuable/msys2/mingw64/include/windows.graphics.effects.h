@@ -374,3 +374,4 @@ void            __RPC_USER HSTRING_UserFree     (ULONG *, HSTRING *);
 
 #endif /* __windows_graphics_effects_h__ */
 
+

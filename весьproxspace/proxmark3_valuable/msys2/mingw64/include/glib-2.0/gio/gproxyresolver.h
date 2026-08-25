@@ -96,3 +96,4 @@ G_END_DECLS
 
 #endif /* __G_PROXY_RESOLVER_H__ */
 
+

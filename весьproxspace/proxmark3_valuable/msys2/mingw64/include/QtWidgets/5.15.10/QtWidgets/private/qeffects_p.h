@@ -80,3 +80,4 @@ QT_END_NAMESPACE
 
 #endif // QEFFECTS_P_H
 
+

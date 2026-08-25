@@ -475,3 +475,4 @@ unorm_concatenate(const UChar *left, int32_t leftLength,
 #endif /* #if !UCONFIG_NO_NORMALIZATION */
 #endif
 
+

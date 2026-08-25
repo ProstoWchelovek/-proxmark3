@@ -1718,3 +1718,4 @@ DECLARE_INTERFACE_(IDirectMusicContainer,IUnknown)
 
 #endif /* __WINE_DMUSIC_PERFORMANCE_H */
 
+

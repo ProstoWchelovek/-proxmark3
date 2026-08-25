@@ -1696,3 +1696,4 @@ HRESULT WINAPI WSDCreateHttpMessageParameters(IWSDHttpMessageParameters **ppTxPa
 
 #endif /* __wsdbase_h__ */
 
+

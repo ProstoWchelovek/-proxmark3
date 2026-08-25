@@ -46,3 +46,4 @@ G_END_DECLS
 
 #endif /* __G_SIMPLE_IO_STREAM_H__ */
 
+

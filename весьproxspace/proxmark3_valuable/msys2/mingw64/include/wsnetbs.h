@@ -22,3 +22,4 @@ typedef struct sockaddr_nb {
 #define SET_NETBIOS_SOCKADDR(_snb,_type,_name,_port) { int _i; (_snb)->snb_family = AF_NETBIOS; (_snb)->snb_type = (_type); for (_i=0; _i<NETBIOS_NAME_LENGTH-1; _i++) { (_snb)->snb_name[_i] = ' '; } for (_i=0; *((_name)+_i)!='\0' && _i<NETBIOS_NAME_LENGTH-1; _i++) { (_snb)->snb_name[_i] = *((_name)+_i); } (_snb)->snb_name[NETBIOS_NAME_LENGTH-1] = (_port); }
 #endif
 
+

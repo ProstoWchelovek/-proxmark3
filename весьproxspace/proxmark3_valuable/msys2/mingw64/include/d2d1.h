@@ -2530,3 +2530,4 @@ HRESULT D2D1CreateFactory(D2D1_FACTORY_TYPE factoryType, const D2D1_FACTORY_OPTI
 
 #endif /* _D2D1_H */
 
+

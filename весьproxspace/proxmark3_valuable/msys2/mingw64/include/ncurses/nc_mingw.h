@@ -87,3 +87,4 @@ NCURSES_EXPORT(int) _nc_wcwidth(wchar_t);
 
 #endif /* NC_MINGW_H */
 
+

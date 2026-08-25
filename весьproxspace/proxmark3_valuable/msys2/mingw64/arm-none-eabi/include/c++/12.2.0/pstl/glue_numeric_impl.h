@@ -235,3 +235,4 @@ adjacent_difference(_ExecutionPolicy&& __exec, _ForwardIterator1 __first, _Forwa
 
 #endif /* _PSTL_GLUE_NUMERIC_IMPL_H_ */
 
+

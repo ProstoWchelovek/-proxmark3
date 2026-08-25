@@ -199,3 +199,4 @@ cmse_check_address_range (void *, size_t, int);
 
 #endif /* _GCC_ARM_CMSE_H */
 
+

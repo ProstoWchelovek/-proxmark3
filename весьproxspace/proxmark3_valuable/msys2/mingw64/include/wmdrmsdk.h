@@ -105,3 +105,4 @@ __CRT_UUID_DECL(WMDRMContentEnablerActivate, 0x82435bdf, 0xf7c1, 0x4df9, 0x81,0x
 
 #endif /* __wmdrmsdk_h__ */
 
+

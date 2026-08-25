@@ -590,3 +590,4 @@ WINBOOL WINAPI EvtUpdateBookmark(
 #endif /* WINAPI_PARTITION_DESKTOP */
 #endif /*__WINEVT_H__ */
 
+

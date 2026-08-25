@@ -568,3 +568,4 @@ do { \
 extern LZMA_API(lzma_bool) lzma_lzma_preset(
 		lzma_options_lzma *options, uint32_t preset) lzma_nothrow;
 
+

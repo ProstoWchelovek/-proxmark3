@@ -138,3 +138,4 @@ typedef void GpTexture;
 
 #endif /* __GDIPLUS_GPSTUBS_H */
 
+

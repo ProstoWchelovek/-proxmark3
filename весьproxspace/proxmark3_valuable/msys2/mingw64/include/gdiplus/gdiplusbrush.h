@@ -605,3 +605,4 @@ private:
 
 #endif /* __GDIPLUS_BRUSH_H */
 
+

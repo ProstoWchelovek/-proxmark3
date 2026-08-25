@@ -68,3 +68,4 @@ namespace ABI {
 
 #endif /* __windows_storage_search_h__ */
 
+

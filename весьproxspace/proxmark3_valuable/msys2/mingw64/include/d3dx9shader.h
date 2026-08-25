@@ -464,3 +464,4 @@ typedef struct _D3DXSHADER_STRUCTMEMBERINFO
 
 #endif /* __D3DX9SHADER_H__ */
 
+

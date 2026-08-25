@@ -112,3 +112,4 @@ typedef struct _PARCLASS_NEGOTIATION_MASK {
 
 #endif /* _NTDDPAR_ */
 
+

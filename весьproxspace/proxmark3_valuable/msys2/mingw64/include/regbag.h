@@ -146,3 +146,4 @@ static __WIDL_INLINE HRESULT ICreatePropBagOnRegKey_Create(ICreatePropBagOnRegKe
 
 #endif /* __regbag_h__ */
 
+

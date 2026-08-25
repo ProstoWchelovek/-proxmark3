@@ -78,3 +78,4 @@ Q_DECLARE_METATYPE(QShaderGenerator)
 
 #endif // QSHADERGENERATOR_P_H
 
+

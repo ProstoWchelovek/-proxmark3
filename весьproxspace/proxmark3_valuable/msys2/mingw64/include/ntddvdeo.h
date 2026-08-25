@@ -490,3 +490,4 @@ typedef struct _DISPLAY_BRIGHTNESS {
 
 #endif /* _NTDDVDEO_ */
 
+

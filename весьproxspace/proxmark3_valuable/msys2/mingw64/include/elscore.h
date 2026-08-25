@@ -160,3 +160,4 @@ ELSCOREAPI HRESULT WINAPI MappingGetServices(
 
 #endif /*__INC_ELSCORE__*/
 
+

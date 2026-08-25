@@ -240,3 +240,4 @@ QT_END_NAMESPACE
 
 #endif // QTEXTCURSOR_H
 
+

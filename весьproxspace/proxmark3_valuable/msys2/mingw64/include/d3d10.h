@@ -5802,3 +5802,4 @@ static __WIDL_INLINE WINBOOL ID3D10Multithread_GetMultithreadProtected(ID3D10Mul
 
 #endif /* __d3d10_h__ */
 
+

@@ -98,3 +98,4 @@ G_END_DECLS
 
 #endif /* __G_SIMPLE_ACTION_GROUP_H__ */
 
+

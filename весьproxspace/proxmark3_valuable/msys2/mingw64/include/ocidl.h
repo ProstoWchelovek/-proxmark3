@@ -7047,3 +7047,4 @@ void            __RPC_USER HPALETTE_UserFree     (ULONG *, HPALETTE *);
 
 #endif /* __ocidl_h__ */
 
+

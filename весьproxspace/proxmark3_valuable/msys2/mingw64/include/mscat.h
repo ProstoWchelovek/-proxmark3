@@ -151,3 +151,4 @@ CRYPTCATMEMBER    * WINAPI CryptCATPutMemberInfo(HANDLE catalog, WCHAR *filename
 
 #endif
 
+

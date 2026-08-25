@@ -809,3 +809,4 @@ UINT WINAPI MsiJoinTransaction(MSIHANDLE hTransactionHandle, DWORD dwTransaction
 
 #endif
 
+

@@ -145,3 +145,4 @@ DECLARE_INTERFACE_(IDsObjectPicker,IUnknown) {
 };
 #endif
 
+

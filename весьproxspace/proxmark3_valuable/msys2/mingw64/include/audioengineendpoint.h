@@ -355,3 +355,4 @@ DECLARE_INTERFACE_(IAudioOutputEndpointRT,IUnknown)
 #endif /*(_WIN32_WINNT >= 0x0601)*/
 #endif /*_INC_AUDIOENGINEENDPOINT*/
 
+

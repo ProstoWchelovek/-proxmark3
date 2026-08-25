@@ -324,3 +324,4 @@ HRESULT WINAPI DirectPlay8AddressCreate(const GUID* pcIID, LPVOID* ppvInterface,
 
 #endif
 
+

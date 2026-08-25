@@ -139,3 +139,4 @@ Q_DECLARE_METATYPE(QSocketDescriptor)
 
 #endif // QSOCKETNOTIFIER_H
 
+

@@ -48,3 +48,4 @@ is_effectively_black(const node_pointer p_nd)
 
 #endif
 
+

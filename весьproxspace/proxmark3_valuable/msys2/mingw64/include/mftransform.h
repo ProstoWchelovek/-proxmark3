@@ -567,3 +567,4 @@ DEFINE_PROPERTYKEY(MFPKEY_MULTICHANNEL_CHANNEL_MASK, 0x58bdaf8c, 0x3224, 0x4692,
 
 #endif /* __mftransform_h__ */
 
+

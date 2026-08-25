@@ -99,3 +99,4 @@ BROTLI_COMMON_API BROTLI_BOOL BrotliSharedDictionaryAttach(
 
 #endif  /* BROTLI_COMMON_SHARED_DICTIONARY_H_ */
 
+

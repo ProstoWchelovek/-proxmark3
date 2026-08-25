@@ -86,3 +86,4 @@ QT_END_NAMESPACE
 
 #endif // QTOUCHDEVICE_P_H
 
+

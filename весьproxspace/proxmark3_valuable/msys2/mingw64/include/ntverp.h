@@ -64,3 +64,4 @@
 #endif
 #define VER_LEGALTRADEMARKS_STR "Microsoft\256 is a registered trademark of Microsoft Corporation. Windows\256 is a registered trademark of Microsoft Corporation."
 
+

@@ -246,3 +246,4 @@ QT_END_NAMESPACE
 
 #endif // QWidgetTextControl_P_H
 
+

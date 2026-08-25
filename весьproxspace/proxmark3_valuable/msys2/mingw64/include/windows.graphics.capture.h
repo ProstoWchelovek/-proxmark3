@@ -443,3 +443,4 @@ extern const DECLSPEC_SELECTANY WCHAR RuntimeClass_Windows_Graphics_Capture_Grap
 
 #endif /* __windows_graphics_capture_h__ */
 
+

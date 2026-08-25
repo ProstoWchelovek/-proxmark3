@@ -240,3 +240,4 @@ clGetSupportedD3D10TextureFormatsINTEL(
 
 #endif /* OPENCL_CL_D3D10_H_ */
 
+

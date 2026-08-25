@@ -62,3 +62,4 @@ typedef struct D2D_RECT_U
 
 #endif /* _D2DBASETYPES_INCLUDED */
 
+

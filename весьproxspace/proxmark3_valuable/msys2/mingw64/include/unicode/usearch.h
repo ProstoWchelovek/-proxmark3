@@ -910,3 +910,4 @@ U_CAPI UBool U_EXPORT2 usearch_searchBackwards(UStringSearch *strsrch,
 
 #endif
 
+

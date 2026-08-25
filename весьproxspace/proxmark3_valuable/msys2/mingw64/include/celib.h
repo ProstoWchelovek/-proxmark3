@@ -160,3 +160,4 @@ int celstrcmpiL(WCHAR const *pwsz1,WCHAR const *pwsz2);
 HRESULT ceIsConfigLocal(WCHAR const *pwszConfig,WCHAR **ppwszMachine,WINBOOL *pfLocal);
 #endif
 
+

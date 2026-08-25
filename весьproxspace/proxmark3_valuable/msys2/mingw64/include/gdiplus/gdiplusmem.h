@@ -41,3 +41,4 @@ VOID WINGDIPAPI GdipFree(VOID*);
 
 #endif /* __GDIPLUS_MEM_H */
 
+

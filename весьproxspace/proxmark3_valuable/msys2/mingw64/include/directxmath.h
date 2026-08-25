@@ -325,3 +325,4 @@ struct __attribute__ ((__aligned__ (16))) XMFLOAT4X4A : public XMFLOAT4X4 {
 
 #endif /* DIRECTXMATH_H */
 
+

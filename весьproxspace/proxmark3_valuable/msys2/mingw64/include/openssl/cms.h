@@ -492,3 +492,4 @@ int CMS_SharedInfo_encode(unsigned char **pder, X509_ALGOR *kekalg,
 # endif
 #endif
 
+

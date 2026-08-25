@@ -1012,3 +1012,4 @@ static __WIDL_INLINE HRESULT ISpatialAudioObjectRenderStream_ActivateSpatialAudi
 
 #endif /* __spatialaudioclient_h__ */
 
+

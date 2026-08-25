@@ -1363,3 +1363,4 @@ static __WIDL_INLINE void IDXGIAdapter3_UnregisterVideoMemoryBudgetChangeNotific
 
 #endif /* __dxgi1_4_h__ */
 
+

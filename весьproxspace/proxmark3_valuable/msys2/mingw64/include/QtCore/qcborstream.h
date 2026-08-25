@@ -56,3 +56,4 @@ QT_END_NAMESPACE
 
 #endif // QCBORSTREAM_H
 
+

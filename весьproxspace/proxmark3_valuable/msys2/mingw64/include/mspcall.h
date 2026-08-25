@@ -80,3 +80,4 @@ struct MULTI_GRAPH_EVENT_DATA {
 DWORD WINAPI AsyncMultiGraphEvent(LPVOID pVoid);
 #endif
 
+

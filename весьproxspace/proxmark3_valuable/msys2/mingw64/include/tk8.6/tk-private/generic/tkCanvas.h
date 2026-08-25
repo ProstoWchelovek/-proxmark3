@@ -311,3 +311,4 @@ MODULE_SCOPE Tk_ItemType tkRectangleType, tkTextType, tkWindowType;
 
 #endif /* _TKCANVAS */
 
+

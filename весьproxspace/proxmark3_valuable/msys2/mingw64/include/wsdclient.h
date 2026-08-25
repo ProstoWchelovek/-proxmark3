@@ -1491,3 +1491,4 @@ HRESULT WINAPI WSDCreateDeviceProxy2(LPCWSTR pszDeviceId, LPCWSTR pszLocalId, IW
 
 #endif /* __wsdclient_h__ */
 
+

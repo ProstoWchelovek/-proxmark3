@@ -98,3 +98,4 @@ QT_END_NAMESPACE
 
 #endif // QICONVCODEC_P_H
 
+

@@ -242,3 +242,4 @@ MODULE_SCOPE int	TkScaleValueToPixel(TkScale *scalePtr, double value);
 
 #endif /* _TKSCALE */
 
+

@@ -101,3 +101,4 @@ DECLARE_INTERFACE_(ICDAORecordset,IDispatch) {
 #define errVtoColumnMissing -30034
 #endif
 
+

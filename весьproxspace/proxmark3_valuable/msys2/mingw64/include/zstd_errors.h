@@ -113,3 +113,4 @@ ZSTDERRORLIB_API const char* ZSTD_getErrorString(ZSTD_ErrorCode code);   /**< Sa
 
 #endif /* ZSTD_ERRORS_H_398273423 */
 
+

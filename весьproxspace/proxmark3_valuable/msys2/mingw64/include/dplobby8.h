@@ -259,3 +259,4 @@ HRESULT WINAPI DirectPlay8LobbyCreate(const GUID* pcIID, LPVOID* ppvInterface, I
 
 #endif 
 
+

@@ -130,3 +130,4 @@ private:
 
 #endif /* __GDIPLUS_LINECAPS_H */
 
+

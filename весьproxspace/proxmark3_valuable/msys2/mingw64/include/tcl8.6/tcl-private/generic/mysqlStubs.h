@@ -100,3 +100,4 @@ typedef struct mysqlStubDefs {
 #define mysql_store_result (mysqlStubs->mysql_store_resultPtr)
 MODULE_SCOPE const mysqlStubDefs *mysqlStubs;
 
+

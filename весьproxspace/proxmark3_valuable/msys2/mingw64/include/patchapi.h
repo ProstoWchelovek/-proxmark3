@@ -191,3 +191,4 @@ WINBOOL PATCHAPI TestApplyPatchToFileByBuffers(PBYTE PatchFileBuffer, ULONG Patc
 #endif
 #endif
 
+

@@ -76,3 +76,4 @@ G_END_DECLS
 
 #endif /* __G_REMOTE_ACTION_GROUP_H__ */
 
+

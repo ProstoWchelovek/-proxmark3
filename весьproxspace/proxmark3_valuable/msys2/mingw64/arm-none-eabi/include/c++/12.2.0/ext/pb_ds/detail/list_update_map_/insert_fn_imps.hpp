@@ -108,3 +108,4 @@ init_entry_metadata(entry_pointer, type_to_type<null_type>)
 
 #endif
 
+

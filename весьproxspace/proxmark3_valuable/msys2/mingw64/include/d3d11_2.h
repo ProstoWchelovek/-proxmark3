@@ -2256,3 +2256,4 @@ static __WIDL_INLINE HRESULT ID3D11Device2_CheckMultisampleQualityLevels1(ID3D11
 
 #endif /* __d3d11_2_h__ */
 
+

@@ -884,3 +884,4 @@ sf_get_chunk_data (const SF_CHUNK_ITERATOR * it, SF_CHUNK_INFO * chunk_info) ;
 
 #endif	/* SNDFILE_H */
 
+

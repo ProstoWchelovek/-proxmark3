@@ -574,3 +574,4 @@ PDH_FUNCTION PdhValidatePathExA(PDH_HLOG hDataSource,LPCSTR szFullPathBuffer);
 #endif
 #endif
 
+

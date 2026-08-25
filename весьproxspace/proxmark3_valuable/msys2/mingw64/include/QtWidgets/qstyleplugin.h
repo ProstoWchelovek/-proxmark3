@@ -65,3 +65,4 @@ QT_END_NAMESPACE
 
 #endif // QSTYLEPLUGIN_H
 
+

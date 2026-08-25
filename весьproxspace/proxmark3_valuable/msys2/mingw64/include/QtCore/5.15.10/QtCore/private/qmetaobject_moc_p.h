@@ -218,3 +218,4 @@ static QByteArray normalizeTypeInternal(const char *t, const char *e, bool fixSc
 
 QT_END_NAMESPACE
 
+

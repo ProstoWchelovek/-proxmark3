@@ -77,3 +77,4 @@ G_END_DECLS
 
 #endif /* __G_BITLOCK_H_ */
 
+

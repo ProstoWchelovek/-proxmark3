@@ -262,3 +262,4 @@ MODULE_SCOPE void	TkImgResetDither(PhotoInstance *instancePtr);
  * End:
  */
 
+

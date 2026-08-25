@@ -3056,3 +3056,4 @@ static __WIDL_INLINE HRESULT __FIVector_1_Windows__CGaming__CInput__CForceFeedba
 
 #endif /* __windows_gaming_input_forcefeedback_h__ */
 
+

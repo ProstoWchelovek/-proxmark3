@@ -165,3 +165,4 @@ Q_DECLARE_METATYPE(QtAndroidPrivate::PermissionsHash)
 
 #endif // QJNIHELPERS_H
 
+

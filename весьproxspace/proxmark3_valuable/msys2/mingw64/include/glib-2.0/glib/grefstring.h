@@ -58,3 +58,4 @@ typedef char GRefString;
 
 G_END_DECLS
 
+

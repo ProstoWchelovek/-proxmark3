@@ -87,3 +87,4 @@ UPSWaitForStateChange(
 
 #endif /* __UPSSVC_H */
 
+

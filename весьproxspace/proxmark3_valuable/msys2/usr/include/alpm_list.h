@@ -378,3 +378,4 @@ void *alpm_list_to_array(const alpm_list_t *list, size_t n, size_t size);
 #endif
 #endif /* ALPM_LIST_H */
 
+

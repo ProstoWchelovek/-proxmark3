@@ -95,3 +95,4 @@ Q_DECLARE_METATYPE(QShaderNodesLoader::Status)
 
 #endif // QSHADERNODESLOADER_P_H
 
+

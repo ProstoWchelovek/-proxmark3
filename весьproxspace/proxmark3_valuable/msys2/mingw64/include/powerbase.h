@@ -57,3 +57,4 @@ DWORD WINAPI PowerUnregisterSuspendResumeNotification(HPOWERNOTIFY RegistrationH
 
 #endif /* _POWERBASE_H_ */
 
+

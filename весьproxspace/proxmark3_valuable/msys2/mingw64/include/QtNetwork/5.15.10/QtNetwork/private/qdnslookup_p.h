@@ -222,3 +222,4 @@ Q_DECLARE_METATYPE(QDnsLookupReply)
 
 #endif // QDNSLOOKUP_P_H
 
+

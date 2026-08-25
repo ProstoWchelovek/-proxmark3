@@ -67,3 +67,4 @@ MSOAPI_(int) MsoMsoslSetSL(DWORD msorid,HMSOINST hmsoinst);
 
 #endif
 
+

@@ -36,3 +36,4 @@ HRESULT WPPFUNC WINAPI WppDeleteSiteW(LPCWSTR sSiteName);
 #define EP_WPPDELETESITEA "WppDeleteSiteA"
 #endif
 
+

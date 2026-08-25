@@ -67,3 +67,4 @@ namespace gnu
 
 #endif /* _AUTOSPRINTF_H */
 
+

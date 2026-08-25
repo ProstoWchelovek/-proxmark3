@@ -959,3 +959,4 @@ Status glXGetTransparentIndexSUN (Display *dpy, Window overlay, Window underlay,
 
 #endif
 
+

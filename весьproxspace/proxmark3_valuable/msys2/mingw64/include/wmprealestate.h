@@ -228,3 +228,4 @@ static __WIDL_INLINE HRESULT IWMPRenderConfig_get_inProcOnly(IWMPRenderConfig* T
 
 #endif /* __wmprealestate_h__ */
 
+

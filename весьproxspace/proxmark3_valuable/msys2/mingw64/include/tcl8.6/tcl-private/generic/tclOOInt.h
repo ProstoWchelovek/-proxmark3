@@ -606,3 +606,4 @@ MODULE_SCOPE void	TclOOSetupVariableResolver(Tcl_Namespace *nsPtr);
  * End:
  */
 
+

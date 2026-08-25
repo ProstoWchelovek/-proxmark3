@@ -337,3 +337,4 @@ private:
 
 #endif /* __GDIPLUS_PEN_H */
 
+

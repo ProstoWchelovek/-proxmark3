@@ -1779,3 +1779,4 @@ enum CLOSEBUTTONSTATES {
 
 #endif /* __VSSTYLE_H__ */
 
+

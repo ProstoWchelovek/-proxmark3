@@ -122,3 +122,4 @@ private:
 QT_END_NAMESPACE
 #endif // QFILESYSTEMWATCHER_P_H
 
+

@@ -78,3 +78,4 @@ HRESULT WINAPI FilterVolumeInstanceFindNext(HANDLE hVolumeInstanceFind, INSTANCE
 
 #endif
 
+

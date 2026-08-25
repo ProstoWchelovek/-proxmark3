@@ -290,3 +290,4 @@ extern rl_linebuf_func_t *history_inhibit_expansion_function;
 
 #endif /* !_HISTORY_H_ */
 
+

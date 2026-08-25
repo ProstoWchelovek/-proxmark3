@@ -54,3 +54,4 @@ __ssp_redirect0(void, explicit_bzero, (void *__buf, size_t __len), \
 #endif /* __SSP_FORTIFY_LEVEL > 0 */
 #endif /* _SSP_STRINGS_H_ */
 
+

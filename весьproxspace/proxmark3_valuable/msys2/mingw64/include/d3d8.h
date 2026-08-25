@@ -1153,3 +1153,4 @@ IDirect3D8* WINAPI Direct3DCreate8(UINT SDKVersion);
 
 #endif /* __WINE_D3D8_H */
 
+

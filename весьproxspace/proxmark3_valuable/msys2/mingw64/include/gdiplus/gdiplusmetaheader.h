@@ -192,3 +192,4 @@ typedef struct MetafileHeader {
 
 #endif /* __GDIPLUS_METAHEADER_H */
 
+

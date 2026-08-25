@@ -174,3 +174,4 @@ VOID WINAPI UMERenameA(HWND hwndParent,PUMS_GETSELA pumsSelection,LPSTR pchNewNa
 VOID WINAPI UMERenameW(HWND hwndParent,PUMS_GETSELW pumsSelection,LPWSTR pchNewName);
 #endif
 
+

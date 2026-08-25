@@ -625,3 +625,4 @@ static __WIDL_INLINE HRESULT IAudioData_SetFormat(IAudioData* This,const WAVEFOR
 
 #endif /* __austream_h__ */
 
+

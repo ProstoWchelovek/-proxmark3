@@ -945,3 +945,4 @@ HRESULT WINAPI GetCachePath(ASM_CACHE_FLAGS,LPWSTR,PDWORD);
 
 #endif /* __fusion_h__ */
 
+

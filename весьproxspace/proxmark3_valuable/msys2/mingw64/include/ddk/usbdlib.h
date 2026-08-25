@@ -232,3 +232,4 @@ USBD_ValidateConfigurationDescriptor(
 #endif /* ! _USBD_ */
 
 
+

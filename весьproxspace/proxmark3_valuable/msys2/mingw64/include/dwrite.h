@@ -5521,3 +5521,4 @@ HRESULT WINAPI DWriteCreateFactory(DWRITE_FACTORY_TYPE,REFIID,IUnknown**);
 
 #endif /* __dwrite_h__ */
 
+

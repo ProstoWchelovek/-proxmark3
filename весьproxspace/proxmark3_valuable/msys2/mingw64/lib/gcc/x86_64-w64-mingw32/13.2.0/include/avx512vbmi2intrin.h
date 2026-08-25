@@ -556,3 +556,4 @@ _mm512_maskz_shldv_epi16 (__mmask32 __A, __m512i __B, __m512i __C, __m512i __D)
 
 #endif /* __AVX512VBMI2INTRIN_H_INCLUDED */
 
+

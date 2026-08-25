@@ -134,3 +134,4 @@ typedef struct _VOLUME_FAILOVER_SET {
 
 #endif /* _NTDDVOL_ */
 
+

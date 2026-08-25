@@ -49,3 +49,4 @@ typedef struct _NDK_ADAPTER_INFO {
 #endif
 #endif
 
+

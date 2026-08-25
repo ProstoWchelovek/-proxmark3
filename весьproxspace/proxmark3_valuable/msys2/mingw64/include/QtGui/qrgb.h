@@ -111,3 +111,4 @@ QT_END_NAMESPACE
 
 #endif // QRGB_H
 
+

@@ -32,3 +32,4 @@ STDAPI CreateStreamOverRandomAccessStream(IUnknown *randomAccessStream, REFIID r
 
 #endif
 
+

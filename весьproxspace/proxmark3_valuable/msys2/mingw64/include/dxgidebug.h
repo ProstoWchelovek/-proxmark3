@@ -840,3 +840,4 @@ static __WIDL_INLINE WINBOOL IDXGIDebug1_IsLeakTrackingEnabledForThread(IDXGIDeb
 
 #endif /* __dxgidebug_h__ */
 
+

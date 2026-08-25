@@ -578,3 +578,4 @@ extern const DECLSPEC_SELECTANY WCHAR RuntimeClass_Windows_Media_ClosedCaptionin
 
 #endif /* __windows_media_closedcaptioning_h__ */
 
+

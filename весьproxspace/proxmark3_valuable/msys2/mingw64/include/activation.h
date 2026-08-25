@@ -158,3 +158,4 @@ static __WIDL_INLINE HRESULT IActivationFactory_ActivateInstance(IActivationFact
 
 #endif /* __activation_h__ */
 
+

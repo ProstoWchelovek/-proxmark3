@@ -573,3 +573,4 @@ extern ctf_dict_t *ctf_arc_open_by_name_sections (const ctf_archive_t *,
 
 #endif				/* _CTF_API_H */
 
+

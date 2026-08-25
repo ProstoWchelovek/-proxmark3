@@ -349,3 +349,4 @@ clGetSupportedDX9MediaSurfaceFormatsINTEL(
 
 #endif /* OPENCL_CL_DX9_MEDIA_SHARING_H_ */
 
+

@@ -45,3 +45,4 @@ typedef enum _NDIS_DEVICE_PNP_EVENT {
   NdisDevicePnPEventMaximum
 } NDIS_DEVICE_PNP_EVENT, *PNDIS_DEVICE_PNP_EVENT;
 
+

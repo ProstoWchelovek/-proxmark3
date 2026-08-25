@@ -165,3 +165,4 @@ int magic_getparam(magic_t, int, void *);
 
 #endif /* _MAGIC_H */
 
+

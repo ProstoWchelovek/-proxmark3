@@ -54,3 +54,4 @@ __gcov_info_to_gcda (const struct gcov_info *__info,
 
 #endif /* GCC_GCOV_H */
 
+

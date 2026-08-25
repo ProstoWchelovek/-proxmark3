@@ -196,3 +196,4 @@ Q_DECLARE_METATYPE(QHttpNetworkRequest)
 
 #endif // QHTTPNETWORKREQUEST_H
 
+

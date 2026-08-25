@@ -960,3 +960,4 @@ static __WIDL_INLINE HRESULT IAccessible_put_accValue(IAccessible* This,VARIANT 
 
 #endif /* __oleacc_h__ */
 
+

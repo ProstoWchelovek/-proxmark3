@@ -275,3 +275,4 @@ Q_DECLARE_METATYPE(QItemSelection)
 
 #endif // QITEMSELECTIONMODEL_H
 
+

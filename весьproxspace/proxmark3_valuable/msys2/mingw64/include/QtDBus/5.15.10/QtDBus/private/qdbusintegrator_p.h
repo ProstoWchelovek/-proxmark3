@@ -168,3 +168,4 @@ Q_DECLARE_METATYPE(QDBusSlotCache)
 #endif // QT_NO_DBUS
 #endif
 
+

@@ -1934,3 +1934,4 @@ static __WIDL_INLINE HRESULT IKsNodeControl_put_KsControl(IKsNodeControl* This,P
 
 #endif /* __vidcap_h__ */
 
+

@@ -2532,3 +2532,4 @@ void            __RPC_USER HSTRING_UserFree     (ULONG *, HSTRING *);
 
 #endif /* __windows_applicationmodel_h__ */
 
+

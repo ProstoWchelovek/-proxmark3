@@ -169,3 +169,4 @@ QT_END_NAMESPACE
 
 #endif // QSTATICTEXT_P_H
 
+

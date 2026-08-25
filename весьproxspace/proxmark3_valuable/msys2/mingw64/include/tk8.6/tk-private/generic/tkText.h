@@ -1172,3 +1172,4 @@ MODULE_SCOPE int        TkTextIndexAdjustToStartEnd(TkText *textPtr,
  * End:
  */
 
+

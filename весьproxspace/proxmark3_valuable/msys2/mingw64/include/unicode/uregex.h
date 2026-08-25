@@ -1616,3 +1616,4 @@ uregex_getFindProgressCallback(const URegularExpression          *regexp,
 #endif   /*  !UCONFIG_NO_REGULAR_EXPRESSIONS  */
 #endif   /*  UREGEX_H  */
 
+

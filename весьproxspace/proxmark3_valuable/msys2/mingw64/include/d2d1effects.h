@@ -385,3 +385,4 @@ typedef enum D2D1_TILE_PROP {
 #endif
 #endif /* _D2D1_EFFECTS_ */
 
+

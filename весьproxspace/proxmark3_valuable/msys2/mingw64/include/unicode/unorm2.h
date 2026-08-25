@@ -605,3 +605,4 @@ unorm_compare(const UChar *s1, int32_t length1,
 #endif  /* !UCONFIG_NO_NORMALIZATION */
 #endif  /* __UNORM2_H__ */
 
+

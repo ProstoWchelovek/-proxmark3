@@ -80,3 +80,4 @@ trace_entry(const entry& r_e, true_type) const
 #endif // #ifdef PB_DS_BINARY_HEAP_TRACE_
 #endif
 
+

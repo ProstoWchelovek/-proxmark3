@@ -1107,3 +1107,4 @@ WINMMAPI MMRESULT WINAPI mixerSetControlDetails(HMIXEROBJ hmxobj, LPMIXERCONTROL
 
 #endif /* _MMEAPI_H_ */
 
+

@@ -48,3 +48,4 @@ WINBOOL WINAPI SfcIsKeyProtected(
 #endif
 #endif
 
+

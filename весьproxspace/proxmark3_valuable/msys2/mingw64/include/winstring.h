@@ -81,3 +81,4 @@ HRESULT WINAPI WindowsTrimStringStart(HSTRING string, HSTRING trimString, HSTRIN
 
 #endif
 
+

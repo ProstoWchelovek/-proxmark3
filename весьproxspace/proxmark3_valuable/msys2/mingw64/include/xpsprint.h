@@ -272,3 +272,4 @@ HRESULT WINAPI StartXpsPrintJob1 (LPCWSTR printerName, LPCWSTR jobName, LPCWSTR 
 
 #endif /* __xpsprint_h__ */
 
+

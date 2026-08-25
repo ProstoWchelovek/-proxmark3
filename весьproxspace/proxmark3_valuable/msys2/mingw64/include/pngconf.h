@@ -622,3 +622,4 @@ typedef char            * * * png_charppp;
 
 #endif /* PNGCONF_H */
 
+

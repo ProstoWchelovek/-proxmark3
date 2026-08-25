@@ -13,3 +13,4 @@ DEFINE_DEVPROPKEY(DEVPKEY_DeviceInterface_Autoplay_Silent,0x434dd28f,0x9e75,0x45
 
 #endif /* WINAPI_PARTITION_DESKTOP.  */
 
+

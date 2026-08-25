@@ -102,3 +102,4 @@ namespace D2D1 {
 
 #endif /* _D2D1_1HELPER_H_ */
 
+

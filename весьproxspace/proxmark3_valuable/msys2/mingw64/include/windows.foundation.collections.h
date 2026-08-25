@@ -980,3 +980,4 @@ extern "C" {
 
 #endif /* __windows_foundation_collections_h__ */
 
+

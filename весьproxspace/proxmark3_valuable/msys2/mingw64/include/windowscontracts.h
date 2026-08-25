@@ -56,3 +56,4 @@ extern "C" {
 
 #endif /* __windowscontracts_h__ */
 
+

@@ -116,3 +116,4 @@ typedef struct _USBSCAN_TIMEOUT {
 
 #endif
 
+

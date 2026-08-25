@@ -452,3 +452,4 @@ static __WIDL_INLINE HRESULT IDirectDrawStreamSample_SetRect(IDirectDrawStreamSa
 
 #endif /* __ddstream_h__ */
 
+

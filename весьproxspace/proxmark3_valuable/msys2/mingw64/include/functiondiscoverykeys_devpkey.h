@@ -119,3 +119,4 @@ DEFINE_PROPERTYKEY(PKEY_DeviceInterfaceClass_DefaultInterface, 0x14c83a99, 0x0b3
 
 #endif /* _INC_FUNCTIONDISCOVERYKEYS */
 
+

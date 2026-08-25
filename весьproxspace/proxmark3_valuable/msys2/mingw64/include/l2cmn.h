@@ -68,3 +68,4 @@ typedef struct _L2_NOTIFICATION_DATA {
 
 #endif /* _L2CMN_H */
 
+

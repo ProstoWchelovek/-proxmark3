@@ -1776,3 +1776,4 @@ static __WIDL_INLINE HRESULT IMFCaptureSink2_SetOutputMediaType(IMFCaptureSink2*
 
 #endif /* __mfcaptureengine_h__ */
 
+

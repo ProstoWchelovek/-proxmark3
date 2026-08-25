@@ -82,3 +82,4 @@ MODULE_SCOPE Tcl_Obj * const * Itcl_GetCallVarFrameObjv(Tcl_Interp *interp);
 MODULE_SCOPE int _Tcl_SetNamespaceResolver(Tcl_Namespace *nsPtr,
         struct Tcl_Resolve *resolvePtr);
 
+

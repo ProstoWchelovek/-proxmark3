@@ -50,3 +50,4 @@ HRESULT WINAPI D3DXCreateTorus(struct IDirect3DDevice9 *device,
 
 #endif /* __D3DX9SHAPE_H__ */
 
+

@@ -387,3 +387,4 @@ ucasemap_utf8FoldCase(const UCaseMap *csm,
 
 #endif
 
+

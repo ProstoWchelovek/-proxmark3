@@ -468,3 +468,4 @@ Q_DECLARE_METATYPE(QSystemLocale::CurrencyToStringArgument)
 
 #endif // QLOCALE_P_H
 
+

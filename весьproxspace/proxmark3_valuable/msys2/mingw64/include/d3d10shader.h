@@ -233,3 +233,4 @@ HRESULT WINAPI D3D10GetShaderDebugInfo(const void *data, SIZE_T data_size, ID3D1
 
 #endif /* __WINE_D3D10SHADER_H */
 
+

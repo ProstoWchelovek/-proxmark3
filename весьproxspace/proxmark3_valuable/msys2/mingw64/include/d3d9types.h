@@ -1637,3 +1637,4 @@ typedef enum _D3DSHADER_COMPARISON
 
 #endif /* __WINE_D3D9TYPES_H */
 
+

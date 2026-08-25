@@ -490,3 +490,4 @@ QT_END_NAMESPACE
 
 #endif // QATOMIC_CXX0X_H
 
+

@@ -7579,3 +7579,4 @@ static __WIDL_INLINE HRESULT ISWbemRefresher_DeleteAll(ISWbemRefresher* This) {
 
 #endif /* __wbemdisp_h__ */
 
+

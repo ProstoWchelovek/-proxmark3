@@ -1580,3 +1580,4 @@ public:
 
 #endif /* NCURSES_CURSESW_H_incl */
 
+

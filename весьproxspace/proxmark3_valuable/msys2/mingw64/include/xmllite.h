@@ -1069,3 +1069,4 @@ STDAPI CreateXmlWriterOutputWithEncodingCodePage(IUnknown *stream, IMalloc *pMal
 
 #endif /* __xmllite_h__ */
 
+

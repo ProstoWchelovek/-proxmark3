@@ -1032,3 +1032,4 @@ static __WIDL_INLINE HRESULT IDMOVideoOutputOptimizations_GetCurrentSampleRequir
 
 #endif /* __mediaobj_h__ */
 
+

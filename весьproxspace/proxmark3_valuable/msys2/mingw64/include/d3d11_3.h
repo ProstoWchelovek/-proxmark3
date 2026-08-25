@@ -5245,3 +5245,4 @@ static __WIDL_INLINE void ID3D11Device3_ReadFromSubresource(ID3D11Device3* This,
 
 #endif /* __d3d11_3_h__ */
 
+

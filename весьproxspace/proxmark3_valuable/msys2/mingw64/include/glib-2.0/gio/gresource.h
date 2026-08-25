@@ -131,3 +131,4 @@ G_END_DECLS
 
 #endif /* __G_RESOURCE_H__ */
 
+

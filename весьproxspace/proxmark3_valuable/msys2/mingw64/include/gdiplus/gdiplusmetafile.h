@@ -304,3 +304,4 @@ private:
 
 #endif /* __GDIPLUS_METAFILE_H */
 
+

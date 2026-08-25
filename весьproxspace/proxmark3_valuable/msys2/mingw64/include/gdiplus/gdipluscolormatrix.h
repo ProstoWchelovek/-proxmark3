@@ -66,3 +66,4 @@ typedef BYTE ColorChannelLUT[256];
 
 #endif /* __GDIPLUS_COLORMATRIX_H */
 
+

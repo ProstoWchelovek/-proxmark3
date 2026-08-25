@@ -88,3 +88,4 @@ QT_END_NAMESPACE
 
 #endif // QWINREGISTRY_H
 
+

@@ -55,3 +55,4 @@ bool FastFixedDtoa(double v, int fractional_count,
 
 #endif  // DOUBLE_CONVERSION_FIXED_DTOA_H_
 
+

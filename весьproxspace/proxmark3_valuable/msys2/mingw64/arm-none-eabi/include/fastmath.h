@@ -12,3 +12,4 @@ extern "C" {
 #endif
 #endif /* _FASTMATH_H_ */
 
+

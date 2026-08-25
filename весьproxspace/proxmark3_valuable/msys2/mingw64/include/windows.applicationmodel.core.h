@@ -255,3 +255,4 @@ extern const DECLSPEC_SELECTANY WCHAR RuntimeClass_Windows_ApplicationModel_Core
 
 #endif /* __windows_applicationmodel_core_h__ */
 
+

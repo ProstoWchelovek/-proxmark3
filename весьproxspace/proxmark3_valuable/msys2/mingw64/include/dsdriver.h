@@ -366,3 +366,4 @@ DECLARE_INTERFACE_(IDsCaptureDriverBuffer,IUnknown)
 
 #endif /* __WINE_DSDRIVER_H */
 
+

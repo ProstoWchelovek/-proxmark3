@@ -141,3 +141,4 @@ static __WIDL_INLINE HRESULT IAudioEndpointFormatControl_ResetToDefault(IAudioEn
 
 #endif /* __audioendpoints_h__ */
 
+

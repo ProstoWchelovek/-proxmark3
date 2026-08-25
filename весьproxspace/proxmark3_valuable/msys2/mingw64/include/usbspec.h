@@ -838,3 +838,4 @@ typedef struct _USB_INTERFACE_POWER_DESCRIPTOR {
 #endif
 #endif
 
+

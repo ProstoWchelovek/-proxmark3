@@ -345,3 +345,4 @@ QT_END_NAMESPACE
 
 #endif // QTEXTEDIT_H
 
+

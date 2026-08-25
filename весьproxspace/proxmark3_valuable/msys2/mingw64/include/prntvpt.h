@@ -58,3 +58,4 @@ HRESULT WINAPI PTConvertDevModeToPrintTicket(HPTPROVIDER hProvider, ULONG cbDevm
 
 #endif /* _PRNPTNTV_H_ */
 
+

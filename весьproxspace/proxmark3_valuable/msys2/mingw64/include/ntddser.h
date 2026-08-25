@@ -449,3 +449,4 @@ typedef struct _SERIALCONFIG {
 
 #endif /* _NTDDSER_ */
 
+

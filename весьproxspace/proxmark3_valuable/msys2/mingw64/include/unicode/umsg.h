@@ -627,3 +627,4 @@ umsg_autoQuoteApostrophe(const UChar* pattern,
 
 #endif
 
+

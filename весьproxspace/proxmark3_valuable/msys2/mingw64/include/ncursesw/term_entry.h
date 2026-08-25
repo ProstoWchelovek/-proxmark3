@@ -219,3 +219,4 @@ extern NCURSES_EXPORT(void) _nc_trace_xnames (TERMTYPE *);
 
 #endif /* NCURSES_TERM_ENTRY_H_incl */
 
+

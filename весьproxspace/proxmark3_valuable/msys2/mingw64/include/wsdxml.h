@@ -321,3 +321,4 @@ HRESULT WINAPI WSDXMLCreateContext(IWSDXMLContext **ppContext);
 
 #endif /* __wsdxml_h__ */
 
+

@@ -26,3 +26,4 @@ typedef EFaultRepRetVal (WINAPI *pfn_ADDEREXCLUDEDAPPLICATIONW)(LPCWSTR);
 
 #endif
 
+

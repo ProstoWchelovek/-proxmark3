@@ -1172,3 +1172,4 @@ __CRT_UUID_DECL(SpellCheckerFactory, 0x7ab36653, 0x1796, 0x484b, 0xbd,0xfa, 0xe7
 
 #endif /* __spellcheck_h__ */
 
+

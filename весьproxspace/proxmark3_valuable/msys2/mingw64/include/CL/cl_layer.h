@@ -123,3 +123,4 @@ clInitLayer(
 
 #endif /* OPENCL_CL_LAYER_H_ */
 
+

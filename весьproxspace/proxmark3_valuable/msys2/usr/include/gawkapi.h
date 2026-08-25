@@ -1218,3 +1218,4 @@ int dl_load(const gawk_api_t *const api_p, awk_ext_id_t id)  \
 
 #endif /* _GAWK_API_H */
 
+

@@ -505,3 +505,4 @@ QT_END_NAMESPACE
 
 #endif // QBRUSH_H
 
+

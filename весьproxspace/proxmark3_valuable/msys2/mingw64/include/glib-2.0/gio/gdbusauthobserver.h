@@ -52,3 +52,4 @@ G_END_DECLS
 
 #endif /* _G_DBUS_AUTH_OBSERVER_H__ */
 
+

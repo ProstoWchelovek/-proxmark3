@@ -36,3 +36,4 @@ extern WINBOOL g_bMSPBaseTracingOn;
 #define CMSPComObject CComObject
 #endif
 
+

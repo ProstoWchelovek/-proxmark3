@@ -792,3 +792,4 @@ typedef struct _USB_DEVICE_PERFORMANCE_INFO_0 {
 #endif /* NTDDI_VERSION >= NTDDI_WINXP */
 
 
+

@@ -82,3 +82,4 @@ G_END_DECLS
 
 #endif /* __G_EMBLEMED_ICON_H__ */
 
+

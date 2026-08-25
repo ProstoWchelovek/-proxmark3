@@ -296,3 +296,4 @@ static __WIDL_INLINE HRESULT INapServerInfo_GetFailureCategoryMappings(INapServe
 
 #endif /* __napservermanagement_h__ */
 
+

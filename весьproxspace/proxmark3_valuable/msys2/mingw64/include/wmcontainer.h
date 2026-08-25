@@ -2674,3 +2674,4 @@ void            __RPC_USER BSTR_UserFree     (ULONG *, BSTR *);
 
 #endif /* __wmcontainer_h__ */
 
+

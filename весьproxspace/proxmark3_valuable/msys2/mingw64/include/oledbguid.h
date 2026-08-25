@@ -401,3 +401,4 @@ extern const GUID DBGUID_LIKE_MAPI;
 #include <poppack.h>
 #endif
 
+

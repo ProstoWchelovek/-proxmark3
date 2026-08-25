@@ -377,3 +377,4 @@ typedef struct _CDROM_SET_SPEED {
 
 #endif /* _NTDDCDRM_ */
 
+

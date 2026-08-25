@@ -274,3 +274,4 @@ inline void qAtomicDetach(T *&d)
 QT_END_NAMESPACE
 #endif // QATOMIC_H
 
+

@@ -4237,3 +4237,4 @@ static __WIDL_INLINE HRESULT ID3D11Device1_OpenSharedResourceByName(ID3D11Device
 
 #endif /* __d3d11_1_h__ */
 
+

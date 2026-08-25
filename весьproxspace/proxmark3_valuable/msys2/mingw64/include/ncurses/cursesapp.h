@@ -190,3 +190,4 @@ public:
 
 #endif /* NCURSES_CURSESAPP_H_incl */
 
+

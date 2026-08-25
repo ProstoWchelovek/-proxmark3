@@ -143,3 +143,4 @@ _mm512_maskz_dpwssds_epi32 (__mmask16 __A, __m512i __B, __m512i __C,
 
 #endif /* __AVX512VNNIINTRIN_H_INCLUDED */
 
+

@@ -140,3 +140,4 @@ NTSTATUS BATTERYCLASSAPI BatteryClassStatusNotify (PVOID ClassData);
 
 #endif
 
+

@@ -85,3 +85,4 @@ typedef WORD UINT16;
 
 #endif /* __GDIPLUS_H */
 
+

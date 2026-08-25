@@ -8642,3 +8642,4 @@ void            __RPC_USER HSTRING_UserFree     (ULONG *, HSTRING *);
 
 #endif /* __windows_foundation_h__ */
 
+

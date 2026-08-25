@@ -39,3 +39,4 @@ typedef struct _SecPkgContext_ClientCreds {
 
 #endif /*_INC_CREDSSP*/
 
+

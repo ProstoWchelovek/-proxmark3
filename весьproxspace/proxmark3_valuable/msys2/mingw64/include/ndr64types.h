@@ -573,3 +573,4 @@ typedef struct _NDR64_RANGE_PIPE_FORMAT {
 
 #endif
 
+

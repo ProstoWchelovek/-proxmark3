@@ -122,3 +122,4 @@ Q_DECLARE_METATYPE(QShaderGraph::Statement)
 
 #endif // QSHADERGRAPH_P_H
 
+

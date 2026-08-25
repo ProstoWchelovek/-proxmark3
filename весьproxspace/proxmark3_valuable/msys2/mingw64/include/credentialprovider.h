@@ -2616,3 +2616,4 @@ void            __RPC_USER HWND_UserFree     (ULONG *, HWND *);
 
 #endif /* __credentialprovider_h__ */
 
+

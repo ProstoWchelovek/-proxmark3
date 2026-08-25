@@ -554,3 +554,4 @@ CRYPTXMLAPI HRESULT WINAPI CryptXmlVerifySignature(
 #endif
 #endif /*_INC_CRYPTXML*/
 
+

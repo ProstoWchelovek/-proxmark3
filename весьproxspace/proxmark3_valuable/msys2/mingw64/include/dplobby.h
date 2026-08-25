@@ -510,3 +510,4 @@ DECLARE_INTERFACE_(IDirectPlayLobby3,IDirectPlayLobby2)
 
 #endif /* __WINE_DPLOBBY_H */
 
+

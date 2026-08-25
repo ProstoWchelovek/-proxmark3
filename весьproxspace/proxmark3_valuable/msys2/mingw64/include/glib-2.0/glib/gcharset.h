@@ -48,3 +48,4 @@ G_END_DECLS
 
 #endif  /* __G_CHARSET_H__ */
 
+

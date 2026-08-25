@@ -305,3 +305,4 @@ static __WIDL_INLINE HRESULT IAdvancedMediaCapture_GetAdvancedMediaCaptureSettin
 
 #endif /* __mfmediacapture_h__ */
 
+

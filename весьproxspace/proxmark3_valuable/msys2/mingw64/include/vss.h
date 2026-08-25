@@ -545,3 +545,4 @@ static __WIDL_INLINE HRESULT IVssAsync_QueryStatus(IVssAsync* This,HRESULT *pHrR
 
 #endif /* __vss_h__ */
 
+

@@ -67,3 +67,4 @@ DECLARE_INTERFACE_(IObtainRating,IUnknown) {
 #endif
 #endif
 
+

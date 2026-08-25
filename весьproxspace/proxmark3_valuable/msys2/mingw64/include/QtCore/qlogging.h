@@ -203,3 +203,4 @@ Q_CORE_EXPORT QString qFormatLogMessage(QtMsgType type, const QMessageLogContext
 QT_END_NAMESPACE
 #endif // QLOGGING_H
 
+

@@ -135,3 +135,4 @@ Q_DECLARE_METATYPE(QScrollerProperties::FrameRates)
 
 #endif // QSCROLLERPROPERTIES_H
 
+

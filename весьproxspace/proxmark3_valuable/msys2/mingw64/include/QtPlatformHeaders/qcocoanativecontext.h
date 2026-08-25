@@ -71,3 +71,4 @@ Q_DECLARE_METATYPE(QCocoaNativeContext)
 
 #endif // QCOCOANATIVECONTEXT_H
 
+

@@ -796,3 +796,4 @@ typedef struct _DD_GETDDIVERSIONDATA {
 
 #endif /* _D3DHAL_H_ */
 
+

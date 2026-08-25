@@ -587,3 +587,4 @@ static __WIDL_INLINE HRESULT IStreamSample_CompletionStatus(IStreamSample* This,
 
 #endif /* __mmstream_h__ */
 
+

@@ -250,3 +250,4 @@ __inline__ const StringFormat* StringFormat::GenericTypographic()
 
 #endif /* __GDIPLUS_STRINGFORMAT_H */
 
+

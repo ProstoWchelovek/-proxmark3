@@ -503,3 +503,4 @@ G_END_DECLS
 
 #endif /* __G_STRFUNCS_H__ */
 
+

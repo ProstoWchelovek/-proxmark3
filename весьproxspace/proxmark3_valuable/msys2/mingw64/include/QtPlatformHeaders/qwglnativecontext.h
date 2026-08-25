@@ -78,3 +78,4 @@ Q_DECLARE_METATYPE(QWGLNativeContext)
 
 #endif // QWGLNATIVECONTEXT_H
 
+

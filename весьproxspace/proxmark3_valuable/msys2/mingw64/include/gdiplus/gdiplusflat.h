@@ -721,3 +721,4 @@ GpStatus WINGDIPAPI GdipTestControl(GpTestControlEnum,void*);
 
 #endif /* __GDIPLUS_FLAT_H */
 
+

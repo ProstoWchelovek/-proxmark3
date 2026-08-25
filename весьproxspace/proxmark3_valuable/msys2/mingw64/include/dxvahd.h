@@ -769,3 +769,4 @@ static __WIDL_INLINE HRESULT IDXVAHD_VideoProcessor_VideoProcessBltHD(IDXVAHD_Vi
 
 #endif /* __dxvahd_h__ */
 
+

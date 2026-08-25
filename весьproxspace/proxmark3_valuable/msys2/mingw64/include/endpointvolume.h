@@ -720,3 +720,4 @@ static __WIDL_INLINE HRESULT IAudioEndpointVolumeEx_GetVolumeRangeChannel(IAudio
 
 #endif /* __endpointvolume_h__ */
 
+

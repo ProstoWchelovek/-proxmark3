@@ -67,3 +67,4 @@ NCURSES_EXPORT(NCURSES_CONST char *) NCURSES_SP_NAME(unctrl) (SCREEN*, chtype);
 
 #endif /* NCURSES_UNCTRL_H_incl */
 
+

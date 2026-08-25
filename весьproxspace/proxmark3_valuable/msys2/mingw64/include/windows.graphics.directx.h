@@ -843,3 +843,4 @@ static __WIDL_INLINE HRESULT __FIVectorView_1_DirectXPixelFormat_GetMany(__FIVec
 
 #endif /* __windows_graphics_directx_h__ */
 
+

@@ -39,3 +39,4 @@ G_END_DECLS
 
 #endif /* __G_SOURCECLOSURE_H__ */
 
+

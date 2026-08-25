@@ -526,3 +526,4 @@ static __WIDL_INLINE HRESULT __FIAsyncOperation_1_Windows__CStorage__CFileProper
 
 #endif /* __windows_storage_fileproperties_h__ */
 
+

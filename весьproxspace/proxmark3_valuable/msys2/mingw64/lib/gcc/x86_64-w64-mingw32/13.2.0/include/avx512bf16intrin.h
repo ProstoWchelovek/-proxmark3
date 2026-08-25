@@ -151,3 +151,4 @@ _mm512_mask_cvtpbh_ps (__m512 __S, __mmask16 __U, __m256bh __A)
 
 #endif /* _AVX512BF16INTRIN_H_INCLUDED */
 
+

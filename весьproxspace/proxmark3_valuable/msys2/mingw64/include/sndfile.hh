@@ -483,3 +483,4 @@ SndfileHandle::SndfileHandle (const wchar_t *wpath, int mode, int fmt, int chans
 #endif	/* SNDFILE_HH */
 
 
+
