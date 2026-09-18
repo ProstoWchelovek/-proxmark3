@@ -1,17 +1,19 @@
 """
-ProxMaster Ultimate - Core Module
-Основной модуль ядра приложения для управления Proxmark3
+ProxMaster Ultimate - Ядро приложения
+Полноценное GUI приложение для управления Proxmark3 Easy/Iceman
+Версия: 1.0.0
 """
 
 import json
-import logging
-import threading
+import os
+import re
 import time
-from pathlib import Path
-from typing import Optional, Dict, List, Any, Callable
+import logging
+from datetime import datetime
+from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass, field
 from enum import Enum
-from datetime import datetime
+from pathlib import Path
 
 
 class RiskLevel(Enum):
@@ -20,525 +22,569 @@ class RiskLevel(Enum):
     MEDIUM = "medium"
     HIGH = "high"
     DANGEROUS = "dangerous"
-    VARIABLE = "variable"
 
 
-class ConnectionStatus(Enum):
-    """Статусы подключения к устройству"""
-    DISCONNECTED = "disconnected"
-    CONNECTING = "connecting"
-    CONNECTED = "connected"
+class LogLevel(Enum):
+    """Уровни логирования"""
+    DEBUG = "debug"
+    INFO = "info"
+    SUCCESS = "success"
+    WARNING = "warning"
     ERROR = "error"
-    RECONNECTING = "reconnecting"
 
 
 @dataclass
 class CommandParameter:
     """Параметр команды"""
     name: str
-    type: str
-    description: str
-    default: Any = None
-    required: bool = False
-    min: Optional[float] = None
-    max: Optional[float] = None
-    options: Optional[List[str]] = None
-    pattern: Optional[str] = None
+    param_type: str  # string, integer, hex, choice, boolean, float
+    required: bool = True
+    min_value: Optional[Any] = None
+    max_value: Optional[Any] = None
+    choices: Optional[List[str]] = None
+    default: Optional[Any] = None
+    description: str = ""
+    length: Optional[int] = None  # Для hex строк
 
 
 @dataclass
-class CommandDefinition:
-    """Определение команды из JSON"""
+class Command:
+    """Команда Proxmark3"""
     id: str
     category: str
     name: str
     description: str
-    command_template: str
+    template: str
     risk_level: RiskLevel
     timeout: int
-    icon: str
-    parameters: List[CommandParameter]
-    output_format: str
-    help_text: str
-
-
-@dataclass
-class DeviceInfo:
-    """Информация об устройстве"""
-    model: str = ""
-    firmware_version: str = ""
-    fpga_version: str = ""
-    serial_number: str = ""
-    build_date: str = ""
-    is_connected: bool = False
-    connection_type: str = ""
+    parameters: List[CommandParameter] = field(default_factory=list)
+    examples: List[str] = field(default_factory=list)
+    tips: List[str] = field(default_factory=list)
+    output_format: str = ""
+    deprecated: bool = False
+    aliases: List[str] = field(default_factory=list)
 
 
 @dataclass
 class LogEntry:
-    """Запись в логе"""
+    """Запись лога"""
     timestamp: datetime
-    level: str
+    level: LogLevel
     message: str
     source: str = ""
-    data: Optional[Dict] = None
+    data: Optional[Any] = None
 
 
 class CommandManager:
-    """Менеджер команд - загрузка и управление командами из JSON"""
+    """Менеджер команд Proxmark3"""
     
-    def __init__(self, commands_file: Path):
-        self.commands_file = commands_file
-        self.commands: Dict[str, CommandDefinition] = {}
-        self.categories: Dict[str, Dict] = {}
-        self.risk_levels: Dict[str, Dict] = {}
-        self._load_commands()
+    def __init__(self, commands_file: str):
+        self.commands: Dict[str, Command] = {}
+        self.categories: Dict[str, dict] = {}
+        self.metadata: dict = {}
+        self.load_commands(commands_file)
     
-    def _load_commands(self):
+    def load_commands(self, filepath: str) -> bool:
         """Загрузка команд из JSON файла"""
         try:
-            with open(self.commands_file, 'r', encoding='utf-8') as f:
+            with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
             
-            # Загрузка категорий
-            for cat_id, cat_data in data.get('categories', {}).items():
-                self.categories[cat_id] = cat_data
+            self.metadata = data.get('metadata', {})
             
-            # Загрузка уровней риска
-            for risk_id, risk_data in data.get('risk_levels', {}).items():
-                self.risk_levels[risk_id] = risk_data
+            # Загрузка категорий
+            for cat in data.get('categories', []):
+                self.categories[cat['id']] = cat
             
             # Загрузка команд
             for cmd_data in data.get('commands', []):
-                params = []
-                for p in cmd_data.get('parameters', []):
-                    param = CommandParameter(
-                        name=p['name'],
-                        type=p['type'],
-                        description=p['description'],
-                        default=p.get('default'),
-                        required=p.get('required', False),
-                        min=p.get('min'),
-                        max=p.get('max'),
-                        options=p.get('options'),
-                        pattern=p.get('pattern')
-                    )
-                    params.append(param)
-                
-                cmd = CommandDefinition(
-                    id=cmd_data['id'],
-                    category=cmd_data['category'],
-                    name=cmd_data['name'],
-                    description=cmd_data['description'],
-                    command_template=cmd_data['command_template'],
-                    risk_level=RiskLevel(cmd_data['risk_level']),
-                    timeout=cmd_data['timeout'],
-                    icon=cmd_data['icon'],
-                    parameters=params,
-                    output_format=cmd_data['output_format'],
-                    help_text=cmd_data['help_text']
-                )
-                self.commands[cmd.id] = cmd
+                cmd = self._parse_command(cmd_data)
+                if cmd:
+                    self.commands[cmd.id] = cmd
+                    # Добавляем алиасы
+                    for alias in cmd.aliases:
+                        self.commands[alias] = cmd
             
-            logging.info(f"Загружено {len(self.commands)} команд из {self.commands_file}")
+            logging.info(f"Загружено {len(self.commands)} команд из {len(self.categories)} категорий")
+            return True
         except Exception as e:
             logging.error(f"Ошибка загрузки команд: {e}")
-            raise
+            return False
     
-    def get_command(self, cmd_id: str) -> Optional[CommandDefinition]:
-        """Получить команду по ID"""
+    def _parse_command(self, data: dict) -> Optional[Command]:
+        """Парсинг данных команды"""
+        try:
+            params = []
+            for p in data.get('parameters', []):
+                param = CommandParameter(
+                    name=p.get('name', ''),
+                    param_type=p.get('type', 'string'),
+                    required=p.get('required', True),
+                    min_value=p.get('min'),
+                    max_value=p.get('max'),
+                    choices=p.get('choices'),
+                    default=p.get('default'),
+                    description=p.get('description', ''),
+                    length=p.get('length')
+                )
+                params.append(param)
+            
+            risk = RiskLevel(data.get('risk_level', 'safe'))
+            
+            return Command(
+                id=data.get('id', ''),
+                category=data.get('category', ''),
+                name=data.get('name', ''),
+                description=data.get('description', ''),
+                template=data.get('template', ''),
+                risk_level=risk,
+                timeout=data.get('timeout', 5000),
+                parameters=params,
+                examples=data.get('examples', []),
+                tips=data.get('tips', []),
+                output_format=data.get('output_format', ''),
+                deprecated=data.get('deprecated', False),
+                aliases=data.get('aliases', [])
+            )
+        except Exception as e:
+            logging.error(f"Ошибка парсинга команды: {e}")
+            return None
+    
+    def get_command(self, cmd_id: str) -> Optional[Command]:
+        """Получение команды по ID"""
         return self.commands.get(cmd_id)
     
-    def get_commands_by_category(self, category: str) -> List[CommandDefinition]:
-        """Получить все команды категории"""
-        return [cmd for cmd in self.commands.values() if cmd.category == category]
+    def get_commands_by_category(self, category: str) -> List[Command]:
+        """Получение всех команд категории"""
+        return [cmd for cmd in self.commands.values() 
+                if cmd.category == category and not cmd.deprecated]
     
-    def build_command(self, cmd_id: str, **kwargs) -> Optional[str]:
-        """Построить полную команду из шаблона"""
+    def search_commands(self, query: str) -> List[Command]:
+        """Поиск команд по запросу"""
+        query = query.lower()
+        results = []
+        for cmd in self.commands.values():
+            if (query in cmd.id.lower() or 
+                query in cmd.name.lower() or 
+                query in cmd.description.lower()):
+                results.append(cmd)
+        return results
+    
+    def build_command(self, cmd_id: str, **kwargs) -> Tuple[Optional[str], Optional[str]]:
+        """Построение команды для выполнения
+        
+        Returns:
+            Tuple[команда, ошибка]
+        """
         cmd = self.get_command(cmd_id)
         if not cmd:
-            return None
+            return None, f"Команда {cmd_id} не найдена"
         
-        command_str = cmd.command_template
-        for key, value in kwargs.items():
-            command_str = command_str.replace(f"{{{key}}}", str(value))
+        command_str = cmd.template
         
-        return command_str
-    
-    def validate_parameters(self, cmd_id: str, params: Dict) -> tuple[bool, str]:
-        """Валидация параметров команды"""
-        cmd = self.get_command(cmd_id)
-        if not cmd:
-            return False, "Команда не найдена"
-        
+        # Проверка и подстановка параметров
         for param in cmd.parameters:
-            if param.required and param.name not in params:
-                return False, f"Обязательный параметр '{param.name}' отсутствует"
+            value = kwargs.get(param.name)
             
-            if param.name in params:
-                value = params[param.name]
-                
-                # Проверка типа
-                if param.type == "integer":
-                    try:
-                        value = int(value)
-                        if param.min is not None and value < param.min:
-                            return False, f"Значение меньше минимума ({param.min})"
-                        if param.max is not None and value > param.max:
-                            return False, f"Значение больше максимума ({param.max})"
-                    except ValueError:
-                        return False, f"Параметр '{param.name}' должен быть числом"
-                
-                elif param.type == "hex_string":
-                    import re
-                    if param.pattern and not re.match(param.pattern, str(value)):
-                        return False, f"Параметр '{param.name}' не соответствует формату"
-                
-                elif param.type == "select":
-                    if value not in param.options:
-                        return False, f"Недопустимое значение для '{param.name}'"
+            # Проверка обязательности
+            if value is None:
+                if param.required:
+                    return None, f"Обязательный параметр '{param.name}' не указан"
+                value = param.default
+            
+            # Валидация типа
+            if not self._validate_param(value, param):
+                return None, f"Неверное значение параметра '{param.name}'"
+            
+            # Подстановка в шаблон
+            command_str = command_str.replace(f"<{param.name}>", str(value))
         
-        return True, "OK"
+        return command_str, None
+    
+    def _validate_param(self, value: Any, param: CommandParameter) -> bool:
+        """Валидация параметра"""
+        if value is None:
+            return not param.required
+        
+        try:
+            if param.param_type == 'integer':
+                val = int(value)
+                if param.min_value is not None and val < param.min_value:
+                    return False
+                if param.max_value is not None and val > param.max_value:
+                    return False
+            elif param.param_type == 'float':
+                float(value)
+            elif param.param_type == 'hex':
+                # Удаление пробелов и 0x префикса
+                hex_str = str(value).replace(' ', '').lower()
+                if hex_str.startswith('0x'):
+                    hex_str = hex_str[2:]
+                # Проверка на valid hex
+                int(hex_str, 16)
+                # Проверка длины
+                if param.length and len(hex_str) != param.length:
+                    return False
+            elif param.param_type == 'choice':
+                if param.choices and str(value) not in param.choices:
+                    return False
+            elif param.param_type == 'boolean':
+                if str(value).lower() not in ['true', 'false', '1', '0', 'yes', 'no']:
+                    return False
+        except (ValueError, TypeError):
+            return False
+        
+        return True
+    
+    def get_all_categories(self) -> List[dict]:
+        """Получение всех категорий"""
+        return list(self.categories.values())
+    
+    def get_statistics(self) -> dict:
+        """Статистика по командам"""
+        stats = {
+            'total': len(self.commands),
+            'by_category': {},
+            'by_risk': {level.value: 0 for level in RiskLevel}
+        }
+        
+        for cmd in self.commands.values():
+            # По категориям
+            cat_count = stats['by_category'].get(cmd.category, 0)
+            stats['by_category'][cmd.category] = cat_count + 1
+            
+            # По риску
+            stats['by_risk'][cmd.risk_level.value] += 1
+        
+        return stats
 
 
 class CommunicationLayer:
-    """Слой коммуникации с устройством Proxmark3"""
+    """Слой связи с устройством Proxmark3"""
     
     def __init__(self):
-        self.status = ConnectionStatus.DISCONNECTED
-        self.device_info = DeviceInfo()
+        self.connected = False
+        self.device_info = {}
         self.serial_port = None
-        self.read_thread = None
-        self.write_lock = threading.Lock()
-        self.callbacks: List[Callable] = []
-        self._stop_reading = False
-        self.buffer = ""
-        self.timeout = 30
-        self.retry_attempts = 3
+        self.timeout = 5000
+        self._buffer = bytearray()
     
-    def connect(self, port: str = None, baudrate: int = 115200) -> bool:
+    def connect(self, port: str = None) -> Tuple[bool, str]:
         """Подключение к устройству"""
         try:
-            self.status = ConnectionStatus.CONNECTING
-            logging.info(f"Попытка подключения к порту {port}...")
+            # Попытка автоопределения порта
+            if not port:
+                port = self._auto_detect_port()
             
-            # Здесь будет реальная реализация подключения через pyserial
-            # Для демонстрации создаем фиктивное подключение
-            self.device_info.is_connected = True
-            self.device_info.connection_type = "usb"
-            self.device_info.model = "Proxmark3 Easy"
-            self.device_info.firmware_version = "v4.0+1"
-            self.device_info.fpga_version = "FPGA test mode"
-            self.device_info.build_date = "2024-01-01"
+            if not port:
+                return False, "Устройство Proxmark3 не найдено"
             
-            self.status = ConnectionStatus.CONNECTED
-            self._start_read_thread()
-            logging.info("Успешное подключение к Proxmark3")
-            return True
+            # Здесь будет реальная реализация через pyserial
+            # Для демонстрации просто эмулируем подключение
+            self.connected = True
+            self.serial_port = port
+            self.device_info = {
+                'port': port,
+                'firmware': 'Proxmark3 Easy v1.0',
+                'hardware': 'RDV4.0',
+                'bootloader': 'v1.5'
+            }
             
+            return True, f"Подключено к {port}"
         except Exception as e:
-            logging.error(f"Ошибка подключения: {e}")
-            self.status = ConnectionStatus.ERROR
-            return False
+            return False, f"Ошибка подключения: {e}"
     
-    def disconnect(self):
+    def disconnect(self) -> bool:
         """Отключение от устройства"""
         try:
-            self._stop_reading = True
-            if self.read_thread:
-                self.read_thread.join(timeout=2)
-            
-            if self.serial_port:
-                self.serial_port.close()
-                self.serial_port = None
-            
-            self.status = ConnectionStatus.DISCONNECTED
-            self.device_info.is_connected = False
-            logging.info("Отключено от устройства")
-        except Exception as e:
-            logging.error(f"Ошибка отключения: {e}")
+            self.connected = False
+            self.serial_port = None
+            self.device_info = {}
+            return True
+        except Exception:
+            return False
     
-    def _start_read_thread(self):
-        """Запуск потока чтения"""
-        self._stop_reading = False
-        self.read_thread = threading.Thread(target=self._read_loop, daemon=True)
-        self.read_thread.start()
+    def _auto_detect_port(self) -> Optional[str]:
+        """Автоопределение порта Proxmark3"""
+        # В реальной реализации сканируем COM порты
+        # Для Windows: COM3, COM4, etc.
+        # Для Linux: /dev/ttyACM0, /dev/ttyUSB0, etc.
+        return "COM3"  # Заглушка для демонстрации
     
-    def _read_loop(self):
-        """Цикл чтения данных из устройства"""
-        while not self._stop_reading:
-            try:
-                if self.serial_port and self.serial_port.is_open:
-                    if self.serial_port.in_waiting > 0:
-                        data = self.serial_port.read(self.serial_port.in_waiting).decode('utf-8', errors='ignore')
-                        self.buffer += data
-                        
-                        # Обработка полных строк
-                        while '\n' in self.buffer:
-                            line, self.buffer = self.buffer.split('\n', 1)
-                            self._notify_callbacks(line.strip())
-                    
-                    time.sleep(0.01)
-                else:
-                    time.sleep(0.1)
-            except Exception as e:
-                logging.error(f"Ошибка чтения: {e}")
-                time.sleep(0.1)
-    
-    def send_command(self, command: str, timeout: int = None) -> str:
+    def send_command(self, command: str, timeout: int = None) -> Tuple[bool, str]:
         """Отправка команды устройству"""
-        if self.status != ConnectionStatus.CONNECTED:
-            return "Ошибка: Устройство не подключено"
+        if not self.connected:
+            return False, "Устройство не подключено"
         
-        timeout = timeout or self.timeout
-        result_lines = []
+        try:
+            if timeout is None:
+                timeout = self.timeout
+            
+            # Эмуляция отправки команды
+            # В реальности: self.serial.write((command + '\n').encode())
+            
+            start_time = time.time()
+            
+            # Эмуляция ответа (в реальности читаем из serial)
+            response = self._simulate_response(command)
+            
+            elapsed = (time.time() - start_time) * 1000
+            
+            if elapsed > timeout:
+                return False, "Превышен таймаут ожидания ответа"
+            
+            return True, response
+        except Exception as e:
+            return False, f"Ошибка отправки команды: {e}"
+    
+    def _simulate_response(self, command: str) -> str:
+        """Эмуляция ответа устройства (для демонстрации)"""
+        # В реальной реализации читаем ответ из serial порта
+        cmd_lower = command.lower()
         
-        with self.write_lock:
-            try:
-                # Отправка команды
-                full_command = command + "\n"
-                if self.serial_port:
-                    self.serial_port.write(full_command.encode('utf-8'))
-                
-                # Ожидание ответа
-                start_time = time.time()
-                while time.time() - start_time < timeout:
-                    if self.serial_port and self.serial_port.in_waiting > 0:
-                        line = self.serial_port.readline().decode('utf-8', errors='ignore').strip()
-                        result_lines.append(line)
-                        
-                        # Проверка окончания вывода
-                        if line.endswith("(pm3) >") or line.startswith("proxmark3>"):
-                            break
-                    
-                    time.sleep(0.05)
-                
-                return "\n".join(result_lines)
-                
-            except Exception as e:
-                logging.error(f"Ошибка отправки команды: {e}")
-                return f"Ошибка: {str(e)}"
+        if 'search' in cmd_lower or 'scan' in cmd_lower:
+            return """
+[+] Searching for ISO14443-A cards...
+[+] Found card:
+    UID: 12:34:56:78
+   ATQA: 0044
+    SAK: 08
+    Type: Mifare Classic 1K
+[+] Done in 1.2s
+"""
+        elif 'version' in cmd_lower or 'hw version' in cmd_lower:
+            return """
+[+] Proxmark3 Easy
+    Firmware: Iceman v4.12345
+    Hardware: RDV4.0
+    Bootloader: v1.5
+    FPGA: bitstream loaded
+    Chip: AT91SAM7S512
+"""
+        elif 'read' in cmd_lower or 'dump' in cmd_lower:
+            return """
+[+] Reading sector 0...
+[+] Key A: ffffffffffff
+[+] Key B: ffffffffffff
+[+] Block 0:  12 34 56 78 00 00 00 00 00 00 00 00 00 00 00 00
+[+] Block 1:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[+] Block 2:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[+] Block 3:  ff ff ff ff ff ff ff 07 80 69 ff ff ff ff ff ff
+[+] Done
+"""
+        elif 'ping' in cmd_lower:
+            return "[+] Pong! Device is alive"
+        elif 'status' in cmd_lower:
+            return """
+[+] Device Status:
+    USB: connected
+    Button: not pressed
+    LED: green
+    Antenna: HF on
+    Temperature: 35C
+"""
+        else:
+            return f"[+] Executed: {command}\n[+] Done"
     
-    def register_callback(self, callback: Callable):
-        """Регистрация callback для получения данных"""
-        self.callbacks.append(callback)
+    def read_data(self, timeout: int = None) -> str:
+        """Чтение данных из устройства"""
+        if not self.connected:
+            return ""
+        
+        try:
+            # В реальности читаем из serial
+            # data = self.serial.read_all()
+            return ""
+        except Exception:
+            return ""
     
-    def unregister_callback(self, callback: Callable):
-        """Удаление callback"""
-        if callback in self.callbacks:
-            self.callbacks.remove(callback)
-    
-    def _notify_callbacks(self, data: str):
-        """Уведомление всех callback"""
-        for callback in self.callbacks:
-            try:
-                callback(data)
-            except Exception as e:
-                logging.error(f"Ошибка в callback: {e}")
-    
-    def heartbeat(self) -> bool:
-        """Проверка живости соединения"""
-        if self.status != ConnectionStatus.CONNECTED:
+    def write_data(self, data: bytes) -> bool:
+        """Запись данных в устройство"""
+        if not self.connected:
             return False
         
         try:
-            response = self.send_command("hw version", timeout=5)
-            return len(response) > 0
-        except:
+            # В реальности пишем в serial
+            # self.serial.write(data)
+            return True
+        except Exception:
             return False
+    
+    def get_device_info(self) -> dict:
+        """Получение информации об устройстве"""
+        return self.device_info.copy()
+    
+    def is_connected(self) -> bool:
+        """Проверка подключения"""
+        return self.connected
 
 
 class DataManager:
-    """Менеджер данных - работа с дампами, ключами, файлами"""
+    """Менеджер данных приложения"""
     
-    def __init__(self, data_dir: Path):
-        self.data_dir = data_dir
-        self.dumps_dir = data_dir / "dumps"
-        self.keys_dir = data_dir / "keys"
-        self.logs_dir = data_dir / "logs"
-        self.traces_dir = data_dir / "traces"
+    def __init__(self, base_path: str = None):
+        if base_path is None:
+            base_path = os.path.dirname(os.path.abspath(__file__))
         
-        # Создание директорий
-        for dir_path in [self.dumps_dir, self.keys_dir, self.logs_dir, self.traces_dir]:
-            dir_path.mkdir(parents=True, exist_ok=True)
+        self.base_path = Path(base_path)
+        self.data_path = self.base_path / 'data'
+        self.user_data_path = self.data_path / 'user_data'
+        self.dumps_path = self.user_data_path / 'dumps'
+        self.keys_path = self.user_data_path / 'keys'
+        self.logs_path = self.user_data_path / 'logs'
+        self.nodes_path = self.base_path / 'nodes'
         
-        self.current_dump: Optional[bytes] = None
-        self.current_keys: Dict[int, Dict[str, bytes]] = {}
+        self._ensure_directories()
     
-    def save_dump(self, data: bytes, name: str = None) -> Path:
-        """Сохранение дампа памяти"""
-        if name is None:
-            name = f"dump_{datetime.now().strftime('%Y%m%d_%H%M%S')}.bin"
-        
-        dump_path = self.dumps_dir / name
-        with open(dump_path, 'wb') as f:
-            f.write(data)
-        
-        logging.info(f"Дамп сохранен: {dump_path}")
-        return dump_path
+    def _ensure_directories(self):
+        """Создание необходимых директорий"""
+        for path in [self.data_path, self.user_data_path, 
+                     self.dumps_path, self.keys_path, 
+                     self.logs_path, self.nodes_path]:
+            path.mkdir(parents=True, exist_ok=True)
     
-    def load_dump(self, path: Path) -> Optional[bytes]:
-        """Загрузка дампа из файла"""
+    def save_dump(self, filename: str, data: bytes) -> bool:
+        """Сохранение дампа карты"""
         try:
-            with open(path, 'rb') as f:
-                data = f.read()
-            self.current_dump = data
-            logging.info(f"Дамп загружен: {path} ({len(data)} байт)")
-            return data
+            filepath = self.dumps_path / filename
+            with open(filepath, 'wb') as f:
+                f.write(data)
+            return True
+        except Exception as e:
+            logging.error(f"Ошибка сохранения дампа: {e}")
+            return False
+    
+    def load_dump(self, filename: str) -> Optional[bytes]:
+        """Загрузка дампа карты"""
+        try:
+            filepath = self.dumps_path / filename
+            if filepath.exists():
+                with open(filepath, 'rb') as f:
+                    return f.read()
+            return None
         except Exception as e:
             logging.error(f"Ошибка загрузки дампа: {e}")
             return None
     
-    def save_keys(self, keys: Dict, name: str = None) -> Path:
-        """Сохранение ключей"""
-        if name is None:
-            name = f"keys_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-        
-        keys_path = self.keys_dir / name
-        
-        # Конвертация байтов в hex строки для JSON
-        keys_serializable = {}
-        for block, key_data in keys.items():
-            keys_serializable[str(block)] = {
-                'key_a': key_data.get('key_a', b'').hex(),
-                'key_b': key_data.get('key_b', b'').hex()
-            }
-        
-        with open(keys_path, 'w', encoding='utf-8') as f:
-            json.dump(keys_serializable, f, indent=2)
-        
-        logging.info(f"Ключи сохранены: {keys_path}")
-        return keys_path
+    def list_dumps(self) -> List[str]:
+        """Список сохраненных дампов"""
+        return [f.name for f in self.dumps_path.iterdir() if f.is_file()]
     
-    def load_keys(self, path: Path) -> Optional[Dict]:
-        """Загрузка ключей из файла"""
+    def save_keys(self, filename: str, keys: List[bytes]) -> bool:
+        """Сохранение ключей"""
         try:
-            with open(path, 'r', encoding='utf-8') as f:
-                keys_serializable = json.load(f)
-            
-            # Конвертация hex строк обратно в байты
-            keys = {}
-            for block, key_data in keys_serializable.items():
-                keys[int(block)] = {
-                    'key_a': bytes.fromhex(key_data['key_a']) if key_data.get('key_a') else None,
-                    'key_b': bytes.fromhex(key_data['key_b']) if key_data.get('key_b') else None
-                }
-            
-            self.current_keys = keys
-            logging.info(f"Ключи загружены: {path}")
-            return keys
+            filepath = self.keys_path / filename
+            with open(filepath, 'wb') as f:
+                for key in keys:
+                    f.write(key)
+            return True
+        except Exception as e:
+            logging.error(f"Ошибка сохранения ключей: {e}")
+            return False
+    
+    def load_keys(self, filename: str) -> Optional[List[bytes]]:
+        """Загрузка ключей"""
+        try:
+            filepath = self.keys_path / filename
+            if filepath.exists():
+                with open(filepath, 'rb') as f:
+                    data = f.read()
+                # Разбиваем на ключи по 6 байт
+                return [data[i:i+6] for i in range(0, len(data), 6)]
+            return None
         except Exception as e:
             logging.error(f"Ошибка загрузки ключей: {e}")
             return None
     
-    def add_log_entry(self, entry: LogEntry):
-        """Добавление записи в лог"""
-        log_file = self.logs_dir / f"log_{datetime.now().strftime('%Y%m%d')}.txt"
-        
-        with open(log_file, 'a', encoding='utf-8') as f:
-            timestamp = entry.timestamp.strftime('%Y-%m-%d %H:%M:%S')
-            f.write(f"[{timestamp}] [{entry.level}] {entry.source}: {entry.message}\n")
-    
-    def export_trace(self, trace_data: List[Dict], name: str = None) -> Path:
-        """Экспорт трассировки"""
-        if name is None:
-            name = f"trace_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-        
-        trace_path = self.traces_dir / name
-        with open(trace_path, 'w', encoding='utf-8') as f:
-            json.dump(trace_data, f, indent=2)
-        
-        logging.info(f"Трассировка экспортирована: {trace_path}")
-        return trace_path
-
-
-class UpdateManager:
-    """Менеджер обновлений приложения и прошивки"""
-    
-    def __init__(self, config: Dict):
-        self.config = config
-        self.current_version = config.get('app_info', {}).get('version', '1.0.0')
-        self.update_channel = config.get('update_settings', {}).get('current_channel', 'stable')
-        self.available_updates: Dict = {}
-        self.download_progress = 0
-        self.is_downloading = False
-    
-    def check_for_updates(self) -> Dict:
-        """Проверка доступных обновлений"""
-        # Здесь будет реальная проверка на сервере
-        updates = {
-            'app_update_available': False,
-            'firmware_update_available': False,
-            'commands_update_available': False,
-            'details': {}
-        }
-        
-        # Симуляция проверки
-        logging.info("Проверка обновлений...")
-        
-        return updates
-    
-    def download_update(self, update_type: str, callback: Callable = None) -> bool:
-        """Загрузка обновления"""
-        self.is_downloading = True
-        self.download_progress = 0
+    def save_log(self, log_entries: List[LogEntry], filename: str = None) -> str:
+        """Сохранение лога в файл"""
+        if filename is None:
+            filename = f"log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
         
         try:
-            # Симуляция загрузки
-            for i in range(100):
-                self.download_progress = i + 1
-                if callback:
-                    callback(self.download_progress)
-                time.sleep(0.05)
-            
-            self.is_downloading = False
-            return True
+            filepath = self.logs_path / filename
+            with open(filepath, 'w', encoding='utf-8') as f:
+                for entry in log_entries:
+                    f.write(f"[{entry.timestamp.strftime('%H:%M:%S')}] ")
+                    f.write(f"[{entry.level.value.upper()}] ")
+                    f.write(f"{entry.message}\n")
+            return str(filepath)
         except Exception as e:
-            logging.error(f"Ошибка загрузки обновления: {e}")
-            self.is_downloading = False
-            return False
+            logging.error(f"Ошибка сохранения лога: {e}")
+            return ""
     
-    def install_update(self, update_type: str) -> bool:
-        """Установка обновления"""
+    def save_node_graph(self, name: str, graph_data: dict) -> bool:
+        """Сохранение графа нод"""
         try:
-            logging.info(f"Установка обновления {update_type}...")
-            # Здесь будет реальная логика установки
+            filepath = self.nodes_path / f"{name}.json"
+            with open(filepath, 'w', encoding='utf-8') as f:
+                json.dump(graph_data, f, indent=2, ensure_ascii=False)
             return True
         except Exception as e:
-            logging.error(f"Ошибка установки обновления: {e}")
+            logging.error(f"Ошибка сохранения графа: {e}")
             return False
     
-    def check_firmware_version(self, device_info: DeviceInfo) -> Dict:
-        """Проверка версии прошивки устройства"""
-        latest_versions = {
-            'Proxmark3 Easy': 'v4.0+1',
-            'Proxmark3 Iceman': 'v4.0+2',
-            'Proxmark3 RDV4': 'v4.0+3'
-        }
-        
-        model = device_info.model
-        current = device_info.firmware_version
-        latest = latest_versions.get(model, 'unknown')
-        
-        return {
-            'current_version': current,
-            'latest_version': latest,
-            'update_available': current < latest,
-            'model': model
-        }
+    def load_node_graph(self, name: str) -> Optional[dict]:
+        """Загрузка графа нод"""
+        try:
+            filepath = self.nodes_path / f"{name}.json"
+            if filepath.exists():
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            return None
+        except Exception as e:
+            logging.error(f"Ошибка загрузки графа: {e}")
+            return None
+    
+    def list_node_graphs(self) -> List[str]:
+        """Список сохраненных графов"""
+        return [f.stem for f in self.nodes_path.iterdir() 
+                if f.is_file() and f.suffix == '.json']
+    
+    def get_config_path(self) -> Path:
+        """Путь к файлу конфигурации"""
+        return self.base_path / 'config.json'
+    
+    def save_config(self, config: dict) -> bool:
+        """Сохранение конфигурации"""
+        try:
+            with open(self.get_config_path(), 'w', encoding='utf-8') as f:
+                json.dump(config, f, indent=2, ensure_ascii=False)
+            return True
+        except Exception as e:
+            logging.error(f"Ошибка сохранения конфига: {e}")
+            return False
+    
+    def load_config(self) -> dict:
+        """Загрузка конфигурации"""
+        try:
+            if self.get_config_path().exists():
+                with open(self.get_config_path(), 'r', encoding='utf-8') as f:
+                    return json.load(f)
+        except Exception as e:
+            logging.error(f"Ошибка загрузки конфига: {e}")
+        return {}
 
 
 class Logger:
     """Система логирования приложения"""
     
-    def __init__(self, max_entries: int = 10000):
+    def __init__(self):
         self.entries: List[LogEntry] = []
-        self.max_entries = max_entries
-        self.listeners: List[Callable] = []
-        self._lock = threading.Lock()
+        self.callbacks: List[callable] = []
+        self.max_entries = 10000
     
-    def log(self, level: str, message: str, source: str = "", data: Dict = None):
-        """Добавление записи в лог"""
+    def add_callback(self, callback: callable):
+        """Добавление колбэка для новых записей лога"""
+        self.callbacks.append(callback)
+    
+    def remove_callback(self, callback: callable):
+        """Удаление колбэка"""
+        if callback in self.callbacks:
+            self.callbacks.remove(callback)
+    
+    def log(self, level: LogLevel, message: str, source: str = "", data: Any = None):
+        """Добавление записи лога"""
         entry = LogEntry(
             timestamp=datetime.now(),
             level=level,
@@ -547,188 +593,115 @@ class Logger:
             data=data
         )
         
-        with self._lock:
-            self.entries.append(entry)
-            
-            # Удаление старых записей при превышении лимита
-            if len(self.entries) > self.max_entries:
-                self.entries = self.entries[-self.max_entries:]
+        self.entries.append(entry)
         
-        # Уведомление слушателей
-        for listener in self.listeners:
+        # Ограничение размера лога
+        if len(self.entries) > self.max_entries:
+            self.entries = self.entries[-self.max_entries:]
+        
+        # Уведомление колбэков
+        for callback in self.callbacks:
             try:
-                listener(entry)
-            except Exception as e:
+                callback(entry)
+            except Exception:
                 pass
     
+    def debug(self, message: str, source: str = ""):
+        self.log(LogLevel.DEBUG, message, source)
+    
     def info(self, message: str, source: str = ""):
-        self.log("INFO", message, source)
-    
-    def warning(self, message: str, source: str = ""):
-        self.log("WARNING", message, source)
-    
-    def error(self, message: str, source: str = ""):
-        self.log("ERROR", message, source)
+        self.log(LogLevel.INFO, message, source)
     
     def success(self, message: str, source: str = ""):
-        self.log("SUCCESS", message, source)
+        self.log(LogLevel.SUCCESS, message, source)
     
-    def debug(self, message: str, source: str = ""):
-        self.log("DEBUG", message, source)
+    def warning(self, message: str, source: str = ""):
+        self.log(LogLevel.WARNING, message, source)
+    
+    def error(self, message: str, source: str = ""):
+        self.log(LogLevel.ERROR, message, source)
     
     def clear(self):
         """Очистка лога"""
-        with self._lock:
-            self.entries.clear()
+        self.entries.clear()
     
-    def get_entries(self, limit: int = None) -> List[LogEntry]:
+    def get_entries(self, level: LogLevel = None, limit: int = None) -> List[LogEntry]:
         """Получение записей лога"""
-        with self._lock:
-            if limit:
-                return self.entries[-limit:]
-            return self.entries.copy()
-    
-    def add_listener(self, listener: Callable):
-        """Добавление слушателя логов"""
-        self.listeners.append(listener)
-    
-    def remove_listener(self, listener: Callable):
-        """Удаление слушателя"""
-        if listener in self.listeners:
-            self.listeners.remove(listener)
-
-
-# Глобальный экземпляр ядра
-class ProxMasterCore:
-    """Основной класс ядра приложения"""
-    
-    _instance = None
-    
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-        return cls._instance
-    
-    def __init__(self):
-        if hasattr(self, '_initialized'):
-            return
+        entries = self.entries
         
-        self._initialized = True
+        if level:
+            entries = [e for e in entries if e.level == level]
         
-        # Определение путей
-        self.base_dir = Path(__file__).parent
-        self.data_dir = self.base_dir / "data"
-        self.config_file = self.base_dir / "config.json"
+        if limit:
+            entries = entries[-limit:]
         
-        # Загрузка конфигурации
-        self.config = self._load_config()
-        
-        # Инициализация компонентов
-        self.command_manager = CommandManager(self.data_dir / "commands.json")
-        self.comm_layer = CommunicationLayer()
-        self.data_manager = DataManager(self.data_dir.parent / "user_data")
-        self.update_manager = UpdateManager(self.config)
-        self.logger = Logger()
-        
-        # Состояние приложения
-        self.is_running = False
-        self.current_operation = None
-        
-        logging.info("ProxMaster Core инициализирован")
+        return entries
     
-    def _load_config(self) -> Dict:
-        """Загрузка конфигурации"""
+    def export_to_file(self, filepath: str) -> bool:
+        """Экспорт лога в файл"""
         try:
-            with open(self.config_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
+            with open(filepath, 'w', encoding='utf-8') as f:
+                for entry in self.entries:
+                    f.write(f"[{entry.timestamp.strftime('%Y-%m-%d %H:%M:%S')}] ")
+                    f.write(f"[{entry.level.value.upper():7}] ")
+                    if entry.source:
+                        f.write(f"[{entry.source}] ")
+                    f.write(f"{entry.message}\n")
+            return True
         except Exception as e:
-            logging.warning(f"Не удалось загрузить конфиг, используем значения по умолчанию: {e}")
-            return {
-                'app_info': {'name': 'ProxMaster Ultimate', 'version': '1.0.0'},
-                'device_settings': {'timeout_seconds': 30, 'baud_rate': 115200},
-                'interface_settings': {'language': 'ru', 'theme': 'dark'}
-            }
-    
-    def connect_device(self, port: str = None) -> bool:
-        """Подключение к устройству"""
-        baudrate = self.config.get('device_settings', {}).get('baud_rate', 115200)
-        success = self.comm_layer.connect(port, baudrate)
-        
-        if success:
-            self.logger.info("Устройство подключено", "Core")
-        else:
-            self.logger.error("Не удалось подключить устройство", "Core")
-        
-        return success
-    
-    def disconnect_device(self):
-        """Отключение от устройства"""
-        self.comm_layer.disconnect()
-        self.logger.info("Устройство отключено", "Core")
-    
-    def execute_command(self, cmd_id: str, **params) -> str:
-        """Выполнение команды"""
-        cmd = self.command_manager.get_command(cmd_id)
-        if not cmd:
-            return f"Ошибка: Команда '{cmd_id}' не найдена"
-        
-        # Валидация параметров
-        is_valid, msg = self.command_manager.validate_parameters(cmd_id, params)
-        if not is_valid:
-            return f"Ошибка валидации: {msg}"
-        
-        # Построение команды
-        command_str = self.command_manager.build_command(cmd_id, **params)
-        if not command_str:
-            return "Ошибка построения команды"
-        
-        # Проверка уровня риска
-        if cmd.risk_level == RiskLevel.DANGEROUS:
-            self.logger.warning(f"Выполняется опасная операция: {cmd.name}", "Core")
-        
-        # Выполнение
-        self.current_operation = cmd_id
-        self.logger.info(f"Выполнение команды: {command_str}", "Core")
-        
-        timeout = cmd.timeout if cmd.timeout > 0 else self.config.get('device_settings', {}).get('timeout_seconds', 30)
-        result = self.comm_layer.send_command(command_str, timeout)
-        
-        self.current_operation = None
-        return result
-    
-    def execute_custom_command(self, command: str, timeout: int = 60) -> str:
-        """Выполнение пользовательской команды"""
-        self.logger.info(f"Пользовательская команда: {command}", "Core")
-        return self.comm_layer.send_command(command, timeout)
-    
-    def get_device_info(self) -> DeviceInfo:
-        """Получение информации об устройстве"""
-        return self.comm_layer.device_info
-    
-    def get_connection_status(self) -> ConnectionStatus:
-        """Получение статуса подключения"""
-        return self.comm_layer.status
-    
-    def start(self):
-        """Запуск ядра"""
-        self.is_running = True
-        self.logger.info("Ядро запущено", "Core")
-    
-    def stop(self):
-        """Остановка ядра"""
-        self.is_running = False
-        self.disconnect_device()
-        self.logger.info("Ядро остановлено", "Core")
+            logging.error(f"Ошибка экспорта лога: {e}")
+            return False
 
 
-if __name__ == "__main__":
-    # Тестирование ядра
-    logging.basicConfig(level=logging.INFO)
+# Глобальные экземпляры
+_command_manager: Optional[CommandManager] = None
+_communication: Optional[CommunicationLayer] = None
+_data_manager: Optional[DataManager] = None
+_logger: Optional[Logger] = None
+
+
+def initialize_app(base_path: str = None) -> bool:
+    """Инициализация приложения"""
+    global _command_manager, _communication, _data_manager, _logger
     
-    core = ProxMasterCore()
-    core.start()
-    
-    print("Команды загружены:", len(core.command_manager.commands))
-    print("Категории:", list(core.command_manager.categories.keys()))
-    
-    core.stop()
+    try:
+        # Инициализация менеджера данных
+        _data_manager = DataManager(base_path)
+        
+        # Инициализация логгера
+        _logger = Logger()
+        _logger.info("Приложение запущено", "System")
+        
+        # Инициализация менеджера команд
+        commands_file = _data_manager.data_path / 'commands.json'
+        _command_manager = CommandManager(str(commands_file))
+        
+        # Инициализация слоя связи
+        _communication = CommunicationLayer()
+        
+        _logger.success("Все компоненты инициализированы", "System")
+        return True
+    except Exception as e:
+        if _logger:
+            _logger.error(f"Ошибка инициализации: {e}", "System")
+        return False
+
+
+def get_command_manager() -> CommandManager:
+    """Получение менеджера команд"""
+    return _command_manager
+
+
+def get_communication() -> CommunicationLayer:
+    """Получение слоя связи"""
+    return _communication
+
+
+def get_data_manager() -> DataManager:
+    """Получение менеджера данных"""
+    return _data_manager
+
+
+def get_logger() -> Logger:
+    """Получение логгера"""
+    return _logger
