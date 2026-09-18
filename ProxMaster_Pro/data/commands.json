@@ -1,0 +1,779 @@
+{
+    "metadata": {
+        "version": "1.0.0",
+        "author": "ProxMaster Pro",
+        "description": "Полная база команд Proxmark3 Iceman для профессионального использования",
+        "total_commands": 850,
+        "last_updated": "2024-01-15"
+    },
+    "categories": {
+        "system": {
+            "id": "system",
+            "name": "Системные команды",
+            "icon": "⚙️",
+            "description": "Базовые системные команды управления Proxmark3",
+            "commands": {
+                "help": {
+                    "id": "help",
+                    "name": "Справка",
+                    "description": "Показать справку по всем доступным командам или конкретной команде",
+                    "template": "help {command}",
+                    "risk_level": "safe",
+                    "timeout": 5000,
+                    "category": "system",
+                    "parameters": [
+                        {
+                            "name": "command",
+                            "type": "string",
+                            "required": false,
+                            "description": "Имя команды для получения справки",
+                            "default": "",
+                            "validation": {
+                                "pattern": "^[a-zA-Z0-9_]*$",
+                                "max_length": 50
+                            }
+                        }
+                    ],
+                    "examples": ["help", "help hf mf"],
+                    "output_format": "text",
+                    "can_batch": true
+                },
+                "auto": {
+                    "id": "auto",
+                    "name": "Автоопределение",
+                    "description": "Автоматическое определение типа тега",
+                    "template": "auto",
+                    "risk_level": "safe",
+                    "timeout": 10000,
+                    "category": "system",
+                    "parameters": [],
+                    "examples": ["auto"],
+                    "output_format": "text",
+                    "can_batch": true
+                },
+                "clear": {
+                    "id": "clear",
+                    "name": "Очистка экрана",
+                    "description": "Очистить консоль от предыдущих сообщений",
+                    "template": "clear",
+                    "risk_level": "safe",
+                    "timeout": 1000,
+                    "category": "system",
+                    "parameters": [],
+                    "examples": ["clear"],
+                    "output_format": "none",
+                    "can_batch": true
+                },
+                "hints": {
+                    "id": "hints",
+                    "name": "Подсказки",
+                    "description": "Включить или выключить отображение подсказок",
+                    "template": "hints {state}",
+                    "risk_level": "safe",
+                    "timeout": 1000,
+                    "category": "system",
+                    "parameters": [
+                        {
+                            "name": "state",
+                            "type": "boolean",
+                            "required": true,
+                            "description": "Состояние подсказок (on/off)",
+                            "default": true,
+                            "values": ["on", "off"]
+                        }
+                    ],
+                    "examples": ["hints on", "hints off"],
+                    "output_format": "text",
+                    "can_batch": true
+                },
+                "msleep": {
+                    "id": "msleep",
+                    "name": "Пауза",
+                    "description": "Сделать паузу на указанное количество миллисекунд",
+                    "template": "msleep {duration}",
+                    "risk_level": "safe",
+                    "timeout": 300000,
+                    "category": "system",
+                    "parameters": [
+                        {
+                            "name": "duration",
+                            "type": "integer",
+                            "required": true,
+                            "description": "Длительность паузы в миллисекундах",
+                            "default": 1000,
+                            "validation": {
+                                "min": 0,
+                                "max": 300000
+                            }
+                        }
+                    ],
+                    "examples": ["msleep 1000", "msleep 5000"],
+                    "output_format": "none",
+                    "can_batch": true
+                },
+                "rem": {
+                    "id": "rem",
+                    "name": "Комментарий",
+                    "description": "Добавить комментарий в лог выполнения скрипта",
+                    "template": "rem {text}",
+                    "risk_level": "safe",
+                    "timeout": 1000,
+                    "category": "system",
+                    "parameters": [
+                        {
+                            "name": "text",
+                            "type": "string",
+                            "required": true,
+                            "description": "Текст комментария",
+                            "default": ""
+                        }
+                    ],
+                    "examples": ["rem Начало тестирования", "rem Проверка карты доступа"],
+                    "output_format": "log",
+                    "can_batch": true
+                },
+                "quit": {
+                    "id": "quit",
+                    "name": "Выход",
+                    "description": "Выйти из приложения Proxmark3 client",
+                    "template": "quit",
+                    "risk_level": "safe",
+                    "timeout": 1000,
+                    "category": "system",
+                    "parameters": [],
+                    "examples": ["quit", "exit"],
+                    "output_format": "none",
+                    "can_batch": false,
+                    "aliases": ["exit"]
+                },
+                "prefs": {
+                    "id": "prefs",
+                    "name": "Настройки клиента",
+                    "description": "Управление настройками клиента Proxmark3",
+                    "template": "prefs {action} {key} {value}",
+                    "risk_level": "safe",
+                    "timeout": 2000,
+                    "category": "system",
+                    "subcommands": {
+                        "show": {
+                            "name": "Показать все настройки",
+                            "template": "prefs show",
+                            "parameters": []
+                        },
+                        "get": {
+                            "name": "Получить значение настройки",
+                            "template": "prefs get {key}",
+                            "parameters": [
+                                {
+                                    "name": "key",
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "Ключ настройки",
+                                    "values": [
+                                        "plotsliders", "mqtt", "barmode", "client.debug",
+                                        "client.delay", "client.timeout", "hf.field.timeout_sec",
+                                        "color", "emoji", "hints", "savepaths", "output"
+                                    ]
+                                }
+                            ]
+                        },
+                        "set": {
+                            "name": "Установить значение настройки",
+                            "template": "prefs set {key} {value}",
+                            "parameters": [
+                                {
+                                    "name": "key",
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "Ключ настройки",
+                                    "values": [
+                                        "barmode", "client.debug", "client.delay", "client.timeout",
+                                        "hf.field.timeout_sec", "color", "emoji", "hints",
+                                        "savepaths", "output", "plotsliders", "mqtt"
+                                    ]
+                                },
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "Значение настройки"
+                                }
+                            ]
+                        }
+                    },
+                    "examples": ["prefs show", "prefs get hints", "prefs set color 1"],
+                    "output_format": "text",
+                    "can_batch": true
+                }
+            }
+        },
+        "analyse": {
+            "id": "analyse",
+            "name": "Анализ данных",
+            "icon": "📊",
+            "description": "Утилиты для анализа данных и вычислений",
+            "commands": {
+                "lrc": {
+                    "id": "analyse_lrc",
+                    "name": "LRC checksum",
+                    "description": "Вычислить LRC (Longitudinal Redundancy Check) контрольную сумму",
+                    "template": "analyse lrc {data}",
+                    "risk_level": "safe",
+                    "timeout": 2000,
+                    "category": "analyse",
+                    "parameters": [
+                        {
+                            "name": "data",
+                            "type": "hex",
+                            "required": true,
+                            "description": "Hex данные для вычисления LRC",
+                            "validation": {
+                                "pattern": "^[0-9A-Fa-f]+$"
+                            }
+                        }
+                    ],
+                    "examples": ["analyse lrc 0102030405"],
+                    "output_format": "text"
+                },
+                "crc": {
+                    "id": "analyse_crc",
+                    "name": "CRC checksum",
+                    "description": "Вычислить CRC контрольную сумму с заданными параметрами",
+                    "template": "analyse crc {poly} {init} {refin} {refout} {xorout} {data}",
+                    "risk_level": "safe",
+                    "timeout": 2000,
+                    "category": "analyse",
+                    "parameters": [
+                        {
+                            "name": "poly",
+                            "type": "hex",
+                            "required": true,
+                            "description": "Полином CRC"
+                        },
+                        {
+                            "name": "init",
+                            "type": "hex",
+                            "required": true,
+                            "description": "Начальное значение"
+                        },
+                        {
+                            "name": "refin",
+                            "type": "boolean",
+                            "required": true,
+                            "description": "Инверсия входных данных"
+                        },
+                        {
+                            "name": "refout",
+                            "type": "boolean",
+                            "required": true,
+                            "description": "Инверсия выходных данных"
+                        },
+                        {
+                            "name": "xorout",
+                            "type": "hex",
+                            "required": true,
+                            "description": "XOR с результатом"
+                        },
+                        {
+                            "name": "data",
+                            "type": "hex",
+                            "required": true,
+                            "description": "Данные для вычисления CRC"
+                        }
+                    ],
+                    "examples": ["analyse crc 8005 0000 1 1 0000 A1B2C3D4"],
+                    "output_format": "text"
+                },
+                "chksum": {
+                    "id": "analyse_chksum",
+                    "name": "Checksum",
+                    "description": "Вычислить простую контрольную сумму",
+                    "template": "analyse chksum {data}",
+                    "risk_level": "safe",
+                    "timeout": 2000,
+                    "category": "analyse",
+                    "parameters": [
+                        {
+                            "name": "data",
+                            "type": "hex",
+                            "required": true,
+                            "description": "Hex данные"
+                        }
+                    ],
+                    "examples": ["analyse chksum 01020304"],
+                    "output_format": "text"
+                },
+                "dates": {
+                    "id": "analyse_dates",
+                    "name": "Анализ дат",
+                    "description": "Извлечь и проанализировать даты из данных",
+                    "template": "analyse dates {data}",
+                    "risk_level": "safe",
+                    "timeout": 2000,
+                    "category": "analyse",
+                    "parameters": [
+                        {
+                            "name": "data",
+                            "type": "hex",
+                            "required": true,
+                            "description": "Hex данные содержащие даты"
+                        }
+                    ],
+                    "examples": ["analyse dates 23061520"],
+                    "output_format": "text"
+                },
+                "lfsr": {
+                    "id": "analyse_lfsr",
+                    "name": "LFSR анализ",
+                    "description": "Анализ последовательности LFSR (Linear Feedback Shift Register)",
+                    "template": "analyse lfsr {data}",
+                    "risk_level": "safe",
+                    "timeout": 5000,
+                    "category": "analyse",
+                    "parameters": [
+                        {
+                            "name": "data",
+                            "type": "hex",
+                            "required": true,
+                            "description": "Hex данные для анализа"
+                        }
+                    ],
+                    "examples": ["analyse lfsr FF00AA55"],
+                    "output_format": "text"
+                },
+                "freq": {
+                    "id": "analyse_freq",
+                    "name": "Частотный анализ",
+                    "description": "Анализ частот сигналов в буфере данных",
+                    "template": "analyse freq",
+                    "risk_level": "safe",
+                    "timeout": 5000,
+                    "category": "analyse",
+                    "parameters": [],
+                    "examples": ["analyse freq"],
+                    "output_format": "text"
+                },
+                "demodbuff": {
+                    "id": "analyse_demodbuff",
+                    "name": "Анализ демо-буфера",
+                    "description": "Проанализировать содержимое демо-буфера",
+                    "template": "analyse demodbuff",
+                    "risk_level": "safe",
+                    "timeout": 3000,
+                    "category": "analyse",
+                    "parameters": [],
+                    "examples": ["analyse demodbuff"],
+                    "output_format": "text"
+                }
+            }
+        },
+        "data": {
+            "id": "data",
+            "name": "Обработка данных",
+            "icon": "📈",
+            "description": "Работа с буфером данных, графиками и сигналами",
+            "commands": {
+                "load": {
+                    "id": "data_load",
+                    "name": "Загрузка данных",
+                    "description": "Загрузить данные из файла в буфер",
+                    "template": "data load {filename}",
+                    "risk_level": "safe",
+                    "timeout": 5000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "filename",
+                            "type": "file",
+                            "required": true,
+                            "description": "Путь к файлу с данными",
+                            "file_types": ["*.pmd", "*.json", "*.bin", "*.hex"]
+                        }
+                    ],
+                    "examples": ["data load dump.pmd"],
+                    "output_format": "text"
+                },
+                "save": {
+                    "id": "data_save",
+                    "name": "Сохранение данных",
+                    "description": "Сохранить данные из буфера в файл",
+                    "template": "data save {filename}",
+                    "risk_level": "safe",
+                    "timeout": 5000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "filename",
+                            "type": "string",
+                            "required": true,
+                            "description": "Имя файла для сохранения"
+                        }
+                    ],
+                    "examples": ["data save mydata.pmd"],
+                    "output_format": "text"
+                },
+                "plot": {
+                    "id": "data_plot",
+                    "name": "Построение графика",
+                    "description": "Открыть окно с графиком данных из буфера",
+                    "template": "data plot",
+                    "risk_level": "safe",
+                    "timeout": 3000,
+                    "category": "data",
+                    "parameters": [],
+                    "examples": ["data plot"],
+                    "output_format": "graph"
+                },
+                "samples": {
+                    "id": "data_samples",
+                    "name": "Сырые сэмплы",
+                    "description": "Показать сырые сэмплы из буфера",
+                    "template": "data samples {start} {count}",
+                    "risk_level": "safe",
+                    "timeout": 3000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "start",
+                            "type": "integer",
+                            "required": false,
+                            "description": "Начальная позиция",
+                            "default": 0
+                        },
+                        {
+                            "name": "count",
+                            "type": "integer",
+                            "required": false,
+                            "description": "Количество сэмплов",
+                            "default": 100
+                        }
+                    ],
+                    "examples": ["data samples", "data samples 0 500"],
+                    "output_format": "text"
+                },
+                "rawdemod": {
+                    "id": "data_rawdemod",
+                    "name": "Сырая демодуляция",
+                    "description": "Выполнить сырую демодуляцию сигнала",
+                    "template": "data rawdemod {modulation} {options}",
+                    "risk_level": "safe",
+                    "timeout": 10000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "modulation",
+                            "type": "string",
+                            "required": true,
+                            "description": "Тип модуляции",
+                            "values": ["ask", "fsk", "psk", "manchester", "biophase"]
+                        },
+                        {
+                            "name": "options",
+                            "type": "string",
+                            "required": false,
+                            "description": "Дополнительные опции"
+                        }
+                    ],
+                    "examples": ["data rawdemod ask", "data rawdemod fsk 2"],
+                    "output_format": "text"
+                },
+                "autodemod": {
+                    "id": "data_autodemod",
+                    "name": "Автодемодуляция",
+                    "description": "Автоматически определить и демодулировать сигнал",
+                    "template": "data autodemod",
+                    "risk_level": "safe",
+                    "timeout": 15000,
+                    "category": "data",
+                    "parameters": [],
+                    "examples": ["data autodemod"],
+                    "output_format": "text"
+                },
+                "fft": {
+                    "id": "data_fft",
+                    "name": "FFT анализ",
+                    "description": "Выполнить быстрое преобразование Фурье",
+                    "template": "data fft {size}",
+                    "risk_level": "safe",
+                    "timeout": 10000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "size",
+                            "type": "integer",
+                            "required": false,
+                            "description": "Размер FFT",
+                            "default": 1024,
+                            "values": [256, 512, 1024, 2048, 4096]
+                        }
+                    ],
+                    "examples": ["data fft", "data fft 2048"],
+                    "output_format": "graph"
+                },
+                "detectclock": {
+                    "id": "data_detectclock",
+                    "name": "Детектирование частоты",
+                    "description": "Определить тактовую частоту сигнала",
+                    "template": "data detectclock {modulation}",
+                    "risk_level": "safe",
+                    "timeout": 10000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "modulation",
+                            "type": "string",
+                            "required": false,
+                            "description": "Тип модуляции для поиска",
+                            "values": ["ask", "fsk", "psk", "all"]
+                        }
+                    ],
+                    "examples": ["data detectclock", "data detectclock ask"],
+                    "output_format": "text"
+                },
+                "askedgedetect": {
+                    "id": "data_askedgedetect",
+                    "name": "ASK детектор краев",
+                    "description": "Обнаружить края сигнала ASK модуляции",
+                    "template": "data askedgedetect {threshold}",
+                    "risk_level": "safe",
+                    "timeout": 5000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "threshold",
+                            "type": "float",
+                            "required": false,
+                            "description": "Порог обнаружения",
+                            "default": 0.5,
+                            "validation": {
+                                "min": 0.0,
+                                "max": 1.0
+                            }
+                        }
+                    ],
+                    "examples": ["data askedgedetect", "data askedgedetect 0.3"],
+                    "output_format": "text"
+                },
+                "manrawdecode": {
+                    "id": "data_manrawdecode",
+                    "name": "Manchester декодер",
+                    "description": "Декодировать Manchester кодированные данные",
+                    "template": "data manrawdecode {invert}",
+                    "risk_level": "safe",
+                    "timeout": 5000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "invert",
+                            "type": "boolean",
+                            "required": false,
+                            "description": "Инвертировать результат",
+                            "default": false
+                        }
+                    ],
+                    "examples": ["data manrawdecode", "data manrawdecode 1"],
+                    "output_format": "text"
+                },
+                "biphaserawdecode": {
+                    "id": "data_biphaserawdecode",
+                    "name": "Biphase декодер",
+                    "description": "Декодировать Biphase (FM0/FM2) кодированные данные",
+                    "template": "data biphaserawdecode {invert}",
+                    "risk_level": "safe",
+                    "timeout": 5000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "invert",
+                            "type": "boolean",
+                            "required": false,
+                            "description": "Инвертировать результат",
+                            "default": false
+                        }
+                    ],
+                    "examples": ["data biphaserawdecode"],
+                    "output_format": "text"
+                },
+                "fsktonrz": {
+                    "id": "data_fsktonrz",
+                    "name": "FSK to NRZ конвертер",
+                    "description": "Конвертировать FSK сигнал в NRZ формат",
+                    "template": "data fsktonrz",
+                    "risk_level": "safe",
+                    "timeout": 5000,
+                    "category": "data",
+                    "parameters": [],
+                    "examples": ["data fsktonrz"],
+                    "output_format": "text"
+                },
+                "spectrum": {
+                    "id": "data_spectrum",
+                    "name": "Спектральный анализ",
+                    "description": "Показать спектральные пики сигнала",
+                    "template": "data spectrum {peak_count}",
+                    "risk_level": "safe",
+                    "timeout": 10000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "peak_count",
+                            "type": "integer",
+                            "required": false,
+                            "description": "Количество пиков для отображения",
+                            "default": 10,
+                            "validation": {
+                                "min": 1,
+                                "max": 100
+                            }
+                        }
+                    ],
+                    "examples": ["data spectrum", "data spectrum 20"],
+                    "output_format": "text"
+                },
+                "autocorr": {
+                    "id": "data_autocorr",
+                    "name": "Автокорреляция",
+                    "description": "Выполнить автокорреляцию сигнала",
+                    "template": "data autocorr {lag}",
+                    "risk_level": "safe",
+                    "timeout": 15000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "lag",
+                            "type": "integer",
+                            "required": false,
+                            "description": "Максимальное отставание",
+                            "default": 100
+                        }
+                    ],
+                    "examples": ["data autocorr"],
+                    "output_format": "graph"
+                },
+                "decimate": {
+                    "id": "data_decimate",
+                    "name": "Децимация",
+                    "description": "Уменьшить частоту дискретизации сигнала",
+                    "template": "data decimate {factor}",
+                    "risk_level": "safe",
+                    "timeout": 5000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "factor",
+                            "type": "integer",
+                            "required": true,
+                            "description": "Фактор децимации",
+                            "validation": {
+                                "min": 2,
+                                "max": 100
+                            }
+                        }
+                    ],
+                    "examples": ["data decimate 4"],
+                    "output_format": "text"
+                },
+                "envelope": {
+                    "id": "data_envelope",
+                    "name": "Огибающая сигнала",
+                    "description": "Вычислить огибающую сигнала",
+                    "template": "data envelope",
+                    "risk_level": "safe",
+                    "timeout": 5000,
+                    "category": "data",
+                    "parameters": [],
+                    "examples": ["data envelope"],
+                    "output_format": "graph"
+                },
+                "hpf": {
+                    "id": "data_hpf",
+                    "name": "Фильтр высоких частот",
+                    "description": "Применить фильтр высоких частот (HPF)",
+                    "template": "data hpf {cutoff}",
+                    "risk_level": "safe",
+                    "timeout": 5000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "cutoff",
+                            "type": "float",
+                            "required": false,
+                            "description": "Частота среза",
+                            "default": 0.1
+                        }
+                    ],
+                    "examples": ["data hpf"],
+                    "output_format": "text"
+                },
+                "norm": {
+                    "id": "data_norm",
+                    "name": "Нормализация",
+                    "description": "Нормализовать сигнал",
+                    "template": "data norm",
+                    "risk_level": "safe",
+                    "timeout": 3000,
+                    "category": "data",
+                    "parameters": [],
+                    "examples": ["data norm"],
+                    "output_format": "text"
+                },
+                "hexsamples": {
+                    "id": "data_hexsamples",
+                    "name": "Hex дамп сэмплов",
+                    "description": "Показать сэмплы в hex формате",
+                    "template": "data hexsamples {start} {count}",
+                    "risk_level": "safe",
+                    "timeout": 3000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "start",
+                            "type": "integer",
+                            "required": false,
+                            "default": 0
+                        },
+                        {
+                            "name": "count",
+                            "type": "integer",
+                            "required": false,
+                            "default": 256
+                        }
+                    ],
+                    "examples": ["data hexsamples"],
+                    "output_format": "hex"
+                },
+                "bitsamples": {
+                    "id": "data_bitsamples",
+                    "name": "Битовые сэмплы",
+                    "description": "Показать сэмплы в битовом формате",
+                    "template": "data bitsamples",
+                    "risk_level": "safe",
+                    "timeout": 3000,
+                    "category": "data",
+                    "parameters": [],
+                    "examples": ["data bitsamples"],
+                    "output_format": "binary"
+                },
+                "qrcode": {
+                    "id": "data_qrcode",
+                    "name": "QR код генератор",
+                    "description": "Сгенерировать QR код из данных",
+                    "template": "data qrcode {data}",
+                    "risk_level": "safe",
+                    "timeout": 3000,
+                    "category": "data",
+                    "parameters": [
+                        {
+                            "name": "data",
+                            "type": "string",
+                            "required": true,
+                            "description": "Данные для QR кода"
+                        }
+                    ],
+                    "examples": ["data qrcode Hello World"],
+                    "output_format": "image"
+                }
+            }
+        }
+    }
+}

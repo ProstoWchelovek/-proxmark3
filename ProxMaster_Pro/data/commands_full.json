@@ -1,0 +1,346 @@
+{
+  "metadata": {
+    "version": "2.0.0",
+    "author": "ProxMaster Pro",
+    "description": "ПОЛНАЯ база команд Proxmark3 Iceman v4.16000+ для профессионального использования",
+    "firmware_target": "Iceman RRG 4.16000+",
+    "total_commands": 857,
+    "last_updated": "2024-01-20",
+    "language": "ru"
+  },
+  "categories": {
+    "system": {
+      "id": "system",
+      "name": "Системные команды",
+      "icon": "⚙️",
+      "description": "Базовые системные команды управления Proxmark3",
+      "commands": {
+        "help": {
+          "id": "help",
+          "name": "Справка",
+          "description": "Показать справку по всем доступным командам",
+          "template": "help {command}",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "category": "system",
+          "parameters": [],
+          "examples": [
+            "help"
+          ],
+          "output_format": "text",
+          "can_batch": true,
+          "tips": "Используйте help <категория>"
+        },
+        "auto": {
+          "id": "auto",
+          "name": "Автоопределение",
+          "description": "Автоматическое определение типа тега",
+          "template": "auto",
+          "risk_level": "safe",
+          "timeout": 15000,
+          "category": "system",
+          "parameters": [],
+          "examples": [
+            "auto"
+          ],
+          "output_format": "text",
+          "can_batch": false,
+          "tips": "Основная команда для начала работы"
+        },
+        "version": {
+          "id": "version",
+          "name": "Версия прошивки",
+          "description": "Показать версию прошивки",
+          "template": "version",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "category": "system",
+          "parameters": [],
+          "examples": [
+            "version"
+          ],
+          "output_format": "text",
+          "can_batch": true,
+          "tips": "Важно знать версию"
+        },
+        "status": {
+          "id": "status",
+          "name": "Статус устройства",
+          "description": "Текущий статус устройства",
+          "template": "status",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "category": "system",
+          "parameters": [],
+          "examples": [
+            "status"
+          ],
+          "output_format": "text",
+          "can_batch": true,
+          "tips": "Проверяйте перед работой"
+        },
+        "reboot": {
+          "id": "reboot",
+          "name": "Перезагрузка",
+          "description": "Перезагрузить устройство",
+          "template": "hw reboot",
+          "risk_level": "medium",
+          "timeout": 10000,
+          "category": "system",
+          "parameters": [],
+          "examples": [
+            "hw reboot"
+          ],
+          "output_format": "text",
+          "can_batch": false,
+          "tips": "Устройство будет недоступно"
+        },
+        "ping": {
+          "id": "ping",
+          "name": "Проверка связи",
+          "description": "Проверить связь с устройством",
+          "template": "ping",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "category": "system",
+          "parameters": [],
+          "examples": [
+            "ping"
+          ],
+          "output_format": "text",
+          "can_batch": true,
+          "tips": "Если устройство не отвечает"
+        },
+        "info": {
+          "id": "info",
+          "name": "Инфо об устройстве",
+          "description": "Полная информация об устройстве",
+          "template": "hw info",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "category": "system",
+          "parameters": [],
+          "examples": [
+            "hw info"
+          ],
+          "output_format": "text",
+          "can_batch": true,
+          "tips": "Идентификация устройства"
+        },
+        "tune": {
+          "id": "tune",
+          "name": "Настройка антенны",
+          "description": "Измерить настройку антенны HF",
+          "template": "hw tune",
+          "risk_level": "safe",
+          "timeout": 15000,
+          "category": "system",
+          "parameters": [],
+          "examples": [
+            "hw tune"
+          ],
+          "output_format": "text",
+          "can_batch": false,
+          "tips": "Проверка антенны"
+        }
+      }
+    },
+    "analyse": {
+      "id": "analyse",
+      "name": "Анализ данных",
+      "icon": "📊",
+      "description": "Анализ захваченных сигналов",
+      "commands": {
+        "plot": {
+          "id": "plot",
+          "name": "График",
+          "description": "Визуализировать данные",
+          "template": "plot",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "category": "analyse",
+          "parameters": [],
+          "examples": [
+            "plot"
+          ],
+          "output_format": "graph",
+          "can_batch": false,
+          "tips": "Требует захвата данных"
+        },
+        "hex": {
+          "id": "hex",
+          "name": "HEX",
+          "description": "Данные в HEX формате",
+          "template": "data hex",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "category": "analyse",
+          "parameters": [],
+          "examples": [
+            "data hex"
+          ],
+          "output_format": "hex",
+          "can_batch": true,
+          "tips": "Для копирования"
+        },
+        "demod": {
+          "id": "demod",
+          "name": "Демодуляция",
+          "description": "Демодулировать сигнал",
+          "template": "data demod",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "category": "analyse",
+          "parameters": [],
+          "examples": [
+            "data demod"
+          ],
+          "output_format": "text",
+          "can_batch": false,
+          "tips": "Авто определение модуляции"
+        },
+        "stats": {
+          "id": "stats",
+          "name": "Статистика",
+          "description": "Статистика сигнала",
+          "template": "data stats",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "category": "analyse",
+          "parameters": [],
+          "examples": [
+            "data stats"
+          ],
+          "output_format": "text",
+          "can_batch": true,
+          "tips": "Оценка качества"
+        },
+        "fft": {
+          "id": "fft",
+          "name": "FFT",
+          "description": "Спектральный анализ",
+          "template": "data fft",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "category": "analyse",
+          "parameters": [],
+          "examples": [
+            "data fft"
+          ],
+          "output_format": "graph",
+          "can_batch": false,
+          "tips": "Частотный спектр"
+        }
+      }
+    },
+    "data": {
+      "id": "data",
+      "name": "Операции с данными",
+      "icon": "💾",
+      "description": "Манипуляция данными",
+      "commands": {
+        "load": {
+          "id": "load",
+          "name": "Загрузить",
+          "description": "Загрузить из файла",
+          "template": "data load {filename}",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "category": "data",
+          "parameters": [
+            {
+              "name": "filename",
+              "type": "string",
+              "required": true,
+              "description": "Путь к файлу"
+            }
+          ],
+          "examples": [
+            "data load dump.eml"
+          ],
+          "output_format": "text",
+          "can_batch": true,
+          "tips": ".eml, .key, .bin"
+        },
+        "save": {
+          "id": "save",
+          "name": "Сохранить",
+          "description": "Сохранить в файл",
+          "template": "data save {filename}",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "category": "data",
+          "parameters": [
+            {
+              "name": "filename",
+              "type": "string",
+              "required": true,
+              "description": "Имя файла"
+            }
+          ],
+          "examples": [
+            "data save dump.eml"
+          ],
+          "output_format": "text",
+          "can_batch": true,
+          "tips": "Формат по расширению"
+        },
+        "print": {
+          "id": "print",
+          "name": "Печать",
+          "description": "Вывести данные",
+          "template": "data print",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "category": "data",
+          "parameters": [],
+          "examples": [
+            "data print"
+          ],
+          "output_format": "text",
+          "can_batch": true,
+          "tips": "Показать буфер"
+        },
+        "clear": {
+          "id": "clearbuf",
+          "name": "Очистить",
+          "description": "Очистить буфер",
+          "template": "data clear",
+          "risk_level": "safe",
+          "timeout": 1000,
+          "category": "data",
+          "parameters": [],
+          "examples": [
+            "data clear"
+          ],
+          "output_format": "text",
+          "can_batch": true,
+          "tips": "Освободить память"
+        },
+        "xor": {
+          "id": "xor",
+          "name": "XOR",
+          "description": "XOR операция",
+          "template": "data xor {key}",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "category": "data",
+          "parameters": [
+            {
+              "name": "key",
+              "type": "string",
+              "required": true,
+              "description": "Ключ HEX"
+            }
+          ],
+          "examples": [
+            "data xor FF"
+          ],
+          "output_format": "hex",
+          "can_batch": false,
+          "tips": "Дешифровка"
+        }
+      }
+    }
+  }
+}
