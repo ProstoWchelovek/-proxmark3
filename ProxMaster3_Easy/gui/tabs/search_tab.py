@@ -2,140 +2,283 @@
 # -*- coding: utf-8 -*-
 """
 ProxMaster3 Easy - Вкладка ПОИСК
-Поиск и чтение карт LF/HF
+Поиск и чтение RFID карт с раскрывающимися меню и подсказками
 """
 
-from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QPushButton, 
-                             QTextEdit, QGroupBox, QHBoxLayout, QComboBox,
-                             QLineEdit, QCheckBox, QScrollArea, QFrame)
+from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
+                             QPushButton, QGroupBox, QTextEdit, QGridLayout,
+                             QToolButton, QMenu, QScrollArea)
 from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QFont
 import logging
 
 logger = logging.getLogger(__name__)
 
 class SearchTab(QWidget):
-    """Вкладка поиска карт"""
-    
+    """Вкладка Поиск - поиск и чтение карт"""
+
     def __init__(self, device_manager, command_executor, data_manager):
         super().__init__()
         self.device_manager = device_manager
         self.command_executor = command_executor
         self.data_manager = data_manager
         
-        self.init_ui()
-        
-    def init_ui(self):
-        layout = QVBoxLayout(self)
-        layout.setContentsMargins(20, 20, 20, 20)
-        
-        title = QLabel("<h1>🔍 Поиск карт (LF/HF)</h1>")
-        layout.addWidget(title)
-        
-        info = QLabel("Поиск и чтение RFID/NFC карт различных протоколов")
-        info.setWordWrap(True)
-        layout.addWidget(info)
-        
-        # Выбор типа поиска
-        search_group = QGroupBox("Тип поиска")
-        search_layout = QHBoxLayout()
-        
-        self.search_type = QComboBox()
-        self.search_type.addItems(["LF (Низкая частота)", "HF (Высокая частота)", "Автопоиск"])
-        search_layout.addWidget(QLabel("Режим:"))
-        search_layout.addWidget(self.search_type)
-        
-        self.quick_scan = QCheckBox("Быстрое сканирование")
-        search_layout.addWidget(self.quick_scan)
-        
-        search_layout.addStretch()
-        search_group.setLayout(search_layout)
-        layout.addWidget(search_group)
-        
-        # Кнопки действий
-        btn_group = QGroupBox("Действия")
-        btn_layout = QHBoxLayout()
-        
-        self.btn_search_lf = QPushButton("📡 Поиск LF")
-        self.btn_search_hf = QPushButton("📡 Поиск HF")
-        self.btn_read_card = QPushButton("💳 Прочитать карту")
-        self.btn_detect = QPushButton("🔎 Детектировать тип")
-        
-        for btn in [self.btn_search_lf, self.btn_search_hf, self.btn_read_card, self.btn_detect]:
-            btn.setMinimumHeight(40)
-            btn.clicked.connect(self.on_button_click)
-            btn_layout.addWidget(btn)
-        
-        btn_group.setLayout(btn_layout)
-        layout.addWidget(btn_group)
-        
-        # Лог вывода
-        log_group = QGroupBox("📋 Журнал операций")
-        log_layout = QVBoxLayout()
-        self.log_text = QTextEdit()
-        self.log_text.setReadOnly(True)
-        self.log_text.setStyleSheet("""
-            QTextEdit {
-                font-family: 'Consolas', 'Monaco', monospace;
-                font-size: 11px;
-                background-color: #1a1a1a;
-                color: #44ff44;
-            }
-        """)
-        log_layout.addWidget(self.log_text)
-        log_group.setLayout(log_layout)
-        layout.addWidget(log_group, 1)
-        
-        self.log_message("Вкладка поиска инициализирована")
-        
-    def on_button_click(self):
-        sender = self.sender()
-        if sender == self.btn_search_lf:
-            self.execute_command("search_lf")
-        elif sender == self.btn_search_hf:
-            self.execute_command("search_hf")
-        elif sender == self.btn_read_card:
-            self.execute_command("read_card")
-        elif sender == self.btn_detect:
-            self.execute_command("detect_type")
-    
-    def execute_command(self, cmd_type):
-        """Выполнение команды поиска/чтения карт"""
-        commands = {
-            "search_lf": "lf search",
-            "search_hf": "hf search",
-            "read_card": "hf read",
-            "detect_type": "hf detect"
+        # Подсказки для команд поиска
+        self.search_hints = {
+            "lf search": "🔍 Поиск LF карт (125 kHz) - EM410x, T55xx, HID и др.",
+            "hf search": "🔍 Поиск HF карт (13.56 MHz) - Mifare, ISO14443A/B",
+            "hf read": "📖 Прочитать данные HF карты",
+            "hf detect": "🎯 Автоматическое определение типа карты",
+            "lf em410x read": "📖 Читать EM410x (стандартные 125 kHz карты)",
+            "lf hid read": "📖 Читать HID Prox (корпоративные карты)",
+            "lf indala read": "📖 Читать Indala (карты контроля доступа)",
+            "hf 14a reader": "📡 Режим читателя ISO14443-A",
+            "hf 14b reader": "📡 Режим читателя ISO14443-B"
         }
         
-        cmd = commands.get(cmd_type, "")
-        if not cmd:
-            self.log_message(f"❌ Неизвестная команда: {cmd_type}")
-            return
+        self._init_ui()
+
+    def _init_ui(self):
+        """Инициализация интерфейса"""
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(20, 20, 20, 20)
+        layout.setSpacing(15)
         
+        # Панель быстрого поиска
+        quick_search_group = self._create_quick_search_panel()
+        layout.addWidget(quick_search_group)
+        
+        # Панель протоколов LF
+        lf_group = self._create_lf_protocols_panel()
+        layout.addWidget(lf_group)
+        
+        # Панель протоколов HF
+        hf_group = self._create_hf_protocols_panel()
+        layout.addWidget(hf_group)
+        
+        # Лог
+        log_group = self._create_log_panel()
+        layout.addWidget(log_group, 1)
+
+    def _create_quick_search_panel(self) -> QGroupBox:
+        """Панель быстрого поиска с раскрывающимися кнопками"""
+        group = QGroupBox("⚡ Быстрый поиск")
+        layout = QGridLayout()
+        layout.setSpacing(10)
+        
+        # Кнопка LF поиск
+        btn_lf = self._create_dropdown_button(
+            "📡 LF Поиск",
+            ["lf search", "lf em410x read", "lf hid read", "lf indala read"],
+            ["Поиск всех LF карт", "Читать EM410x", "Читать HID", "Читать Indala"],
+            "🔍 Поиск LF карт на частоте 125 kHz"
+        )
+        layout.addWidget(btn_lf, 0, 0)
+        
+        # Кнопка HF поиск
+        btn_hf = self._create_dropdown_button(
+            "📡 HF Поиск",
+            ["hf search", "hf read", "hf detect", "hf 14a reader"],
+            ["Поиск всех HF карт", "Прочитать карту", "Определить тип", "Режим 14A"],
+            "🔍 Поиск HF карт на частоте 13.56 MHz"
+        )
+        layout.addWidget(btn_hf, 0, 1)
+        
+        # Кнопка Полный скан
+        btn_full = self._create_dropdown_button(
+            "🔍 Полный скан",
+            ["lf search u", "hf search", "hf 14a s"],
+            ["LF с UID", "HF полный", "14A с серийником"],
+            "🔍 Полное сканирование всех частот"
+        )
+        layout.addWidget(btn_full, 0, 2)
+        
+        group.setLayout(layout)
+        return group
+
+    def _create_lf_protocols_panel(self) -> QGroupBox:
+        """Панель LF протоколов"""
+        group = QGroupBox("📻 LF Протоколы (125 kHz)")
+        layout = QGridLayout()
+        layout.setSpacing(8)
+        
+        protocols = [
+            ("EM410x", "lf em410x read", "Стандартные карты 125 kHz"),
+            ("T55xx", "lf t55xx read", "Перезаписываемые карты"),
+            ("HID Prox", "lf hid read", "Корпоративные карты HID"),
+            ("Indala", "lf indala read", "Карты Motorola Indala"),
+            ("AWID", "lf awid read", "Системы контроля AWID"),
+            ("Viking", "lf viking read", "Карты Viking"),
+            ("Cerberus", "lf cerberus read", "Системы Cerberus"),
+            ("Fudan", "lf fudan read", "Китайские карты Fudan"),
+            ("Hitag2", "lf hitag2 read", "Автомобильные ключи"),
+            ("PCF7930", "lf pcf7930 read", "Чипы NXP PCF7930"),
+            ("EM4200", "lf em4200 read", "Карты EM4200"),
+            ("Keri", "lf keri read", "Системы Keri"),
+            ("PAC/Stanley", "lf pac read", "Карты Stanley"),
+            ("NexWatch", "lf nexwatch read", "Браслеты NexWatch"),
+            ("IOProx", "lf ioprox read", "Карты IOProx"),
+            ("Visa2000", "lf visa2000 read", "Карты Visa2000"),
+            ("Cotag", "lf cotag read", "Системы Cotag"),
+            ("Linear", "lf linear read", "Системы Linear"),
+            ("GProx", "lf gprox read", "Карты GProx"),
+            ("Farpointe", "lf farpointe read", "Карты Farpointe")
+        ]
+        
+        row = 0
+        col = 0
+        for name, cmd, hint in protocols:
+            btn = QPushButton(name)
+            btn.setToolTip(f"{hint}\nКоманда: {cmd}")
+            btn.clicked.connect(lambda checked, c=cmd: self.execute_command(c))
+            layout.addWidget(btn, row, col)
+            col += 1
+            if col > 4:
+                col = 0
+                row += 1
+        
+        group.setLayout(layout)
+        return group
+
+    def _create_hf_protocols_panel(self) -> QGroupBox:
+        """Панель HF протоколов"""
+        group = QGroupBox("📶 HF Протоколы (13.56 MHz)")
+        layout = QGridLayout()
+        layout.setSpacing(8)
+        
+        protocols = [
+            ("ISO14443A", "hf 14a reader", "Стандарт ISO14443-A"),
+            ("ISO14443B", "hf 14b reader", "Стандарт ISO14443-B"),
+            ("Mifare Classic", "hf mf reader", "Карты Mifare Classic 1K/4K"),
+            ("Mifare Ultralight", "hf mfu reader", "Карты Ultralight"),
+            ("Mifare DESFire", "hf df reader", "Карты DESFire"),
+            ("iClass", "hf iclass reader", "Карты HID iClass"),
+            ("LEGIC", "hf legic reader", "Карты LEGIC"),
+            ("FeliCa", "hf felica reader", "Японские карты FeliCa"),
+            ("ISO15693", "hf 15 reader", "Стандарт ISO15693"),
+            ("Tag-it", "hf tagit reader", "Карты Tag-it"),
+            ("My-d", "hf myd reader", "Карты My-d"),
+            ("SR", "hf sr reader", "Карты ST SR"),
+            ("SRI", "hf sri reader", "Карты SRI"),
+            ("EMV", "hf emv scan", "Банковские карты EMV"),
+            ("NFC", "hf nfc scan", "NFC устройства")
+        ]
+        
+        row = 0
+        col = 0
+        for name, cmd, hint in protocols:
+            btn = QPushButton(name)
+            btn.setToolTip(f"{hint}\nКоманда: {cmd}")
+            btn.clicked.connect(lambda checked, c=cmd: self.execute_command(c))
+            layout.addWidget(btn, row, col)
+            col += 1
+            if col > 4:
+                col = 0
+                row += 1
+        
+        group.setLayout(layout)
+        return group
+
+    def _create_log_panel(self) -> QGroupBox:
+        """Панель лога"""
+        group = QGroupBox("📝 Результаты поиска")
+        layout = QVBoxLayout()
+        
+        self.log_output = QTextEdit()
+        self.log_output.setReadOnly(True)
+        self.log_output.setFont(QFont("Consolas", 10))
+        self.log_output.setStyleSheet("""
+            QTextEdit {
+                background-color: #1e1e1e;
+                color: #d4d4d4;
+                border: 1px solid #3c3c3c;
+                border-radius: 5px;
+                padding: 5px;
+            }
+        """)
+        layout.addWidget(self.log_output)
+        
+        group.setLayout(layout)
+        return group
+
+    def _create_dropdown_button(self, text, commands, descriptions, tooltip) -> QToolButton:
+        """Создать кнопку с раскрывающимся меню"""
+        btn = QToolButton()
+        btn.setText(text)
+        btn.setToolTip(tooltip)
+        btn.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
+        btn.setStyleSheet("""
+            QToolButton {
+                padding: 10px 20px;
+                font-size: 13px;
+                font-weight: bold;
+                background-color: #2196F3;
+                color: white;
+                border: none;
+                border-radius: 5px;
+            }
+            QToolButton:hover {
+                background-color: #1976D2;
+            }
+            QToolButton::menu-indicator {
+                image: none;
+            }
+        """)
+        
+        menu = QMenu(btn)
+        menu.setStyleSheet("""
+            QMenu {
+                background-color: white;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 5px;
+            }
+            QMenu::item {
+                padding: 8px 20px;
+                margin: 2px;
+                border-radius: 3px;
+            }
+            QMenu::item:selected {
+                background-color: #2196F3;
+                color: white;
+            }
+            QMenu::separator {
+                height: 1px;
+                background: #ddd;
+                margin: 5px;
+            }
+        """)
+        
+        for cmd, desc in zip(commands, descriptions):
+            action = menu.addAction(desc)
+            action.setToolTip(self.search_hints.get(cmd, f"Команда: {cmd}"))
+            action.triggered.connect(lambda checked, c=cmd: self.execute_command(c))
+        
+        btn.setMenu(menu)
+        return btn
+
+    def execute_command(self, command):
+        """Выполнить команду поиска"""
         if not self.device_manager.is_connected():
-            self.log_message("❌ Ошибка: Устройство не подключено")
-            self.log_message("💡 Подключитесь к Proxmark3 на вкладке 'Главная'")
+            self.log_message("❌ Сначала подключитесь к устройству!")
             return
         
-        self.log_message(f"▶️ Выполнение: {cmd}")
+        hint = self.search_hints.get(command, "")
+        if hint:
+            self.log_message(f"ℹ️ {hint}")
         
-        # Выполняем команду через command_executor
-        try:
-            result = self.command_executor.execute(cmd)
+        self.log_message(f"▶️ Выполнение: {command}")
+        
+        if hasattr(self, 'command_executor') and self.command_executor:
+            result = self.command_executor.execute(command)
             if result:
-                self.log_message(f"✅ Успешно: {cmd}")
-                # Если есть данные в результате, показываем их
-                if hasattr(result, 'output') and result.output:
-                    self.log_message("📋 Результат:")
-                    for line in result.output.split('\n'):
-                        if line.strip():
-                            self.log_message(f"   {line}")
-            else:
-                self.log_message(f"⚠️ Команда выполнена без результата")
-        except Exception as e:
-            self.log_message(f"❌ Ошибка выполнения: {str(e)}")
-            logger.error(f"Ошибка при выполнении команды {cmd}: {e}", exc_info=True)
-            
-    def log_message(self, message: str):
-        timestamp = __import__('datetime').datetime.now().strftime("%H:%M:%S")
-        self.log_text.append(f"[{timestamp}] {message}")
+                self.log_message(f"✅ Результат:\n{result}")
+        else:
+            result = self.device_manager.send_command(command)
+            if result:
+                self.log_message(f"✅ Получен ответ:\n{result}")
+
+    def log_message(self, message):
+        """Добавить сообщение в лог"""
+        self.log_output.append(message)
+        self.log_output.verticalScrollBar().setValue(self.log_output.verticalScrollBar().maximum())
