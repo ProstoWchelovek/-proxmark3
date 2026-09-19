@@ -1,0 +1,420 @@
+{
+  "version": "1.0.0",
+  "firmware": "Iceman Proxmark3",
+  "total_commands": 857,
+  "tabs": {
+    "ГЛАВНАЯ": {
+      "icon": "🏠",
+      "description": "Основная работа с устройством - безопасные операции",
+      "commands": [
+        {
+          "id": "main_connect",
+          "name": "Подключить устройство",
+          "command": "hw status",
+          "description": "Проверка подключения и статуса устройства",
+          "icon": "🔌",
+          "warning": null,
+          "parameters": []
+        },
+        {
+          "id": "main_disconnect",
+          "name": "Отключить устройство",
+          "command": "",
+          "description": "Отключение от устройства",
+          "icon": "🔌",
+          "warning": null,
+          "parameters": []
+        },
+        {
+          "id": "main_status",
+          "name": "Статус устройства",
+          "command": "hw status",
+          "description": "Получение полного статуса устройства",
+          "icon": "📊",
+          "warning": null,
+          "parameters": []
+        },
+        {
+          "id": "main_version",
+          "name": "Версии прошивки",
+          "command": "hw version",
+          "description": "Информация о версиях прошивки и железа",
+          "icon": "ℹ️",
+          "warning": null,
+          "parameters": []
+        },
+        {
+          "id": "main_tune",
+          "name": "Настройка антенн",
+          "command": "hw tune",
+          "description": "Измерение параметров антенн LF/HF",
+          "icon": "📡",
+          "warning": null,
+          "parameters": []
+        },
+        {
+          "id": "main_auto",
+          "name": "Автопоиск карт",
+          "command": "auto",
+          "description": "Автоматический поиск всех типов карт",
+          "icon": "🔍",
+          "warning": null,
+          "parameters": []
+        },
+        {
+          "id": "main_reset",
+          "name": "Перезагрузка устройства",
+          "command": "hw reset",
+          "description": "Мягкая перезагрузка Proxmark3",
+          "icon": "🔄",
+          "warning": "Устройство будет перезапущено",
+          "parameters": []
+        },
+        {
+          "id": "main_break",
+          "name": "Прервать операцию",
+          "command": "hw break",
+          "description": "Экстренная остановка текущей операции",
+          "icon": "⏹️",
+          "warning": null,
+          "parameters": []
+        }
+      ]
+    },
+    "ПОИСК": {
+      "icon": "🔍",
+      "description": "Поиск и чтение карт всех протоколов",
+      "categories": {
+        "LF_PROTOCOLS": {
+          "name": "LF Протоколы (125 kHz)",
+          "commands": [
+            {"id": "lf_search", "name": "Общий поиск LF", "command": "lf search", "description": "Поиск всех LF карт", "icon": "📡", "warning": null, "parameters": []},
+            {"id": "lf_read", "name": "Чтение LF сигнала", "command": "lf read", "description": "Чтение LF сигнала с антенны", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_config", "name": "Настройка LF", "command": "lf config", "description": "Конфигурация параметров LF", "icon": "⚙️", "warning": null, "parameters": ["--read", "--field", "--divisor"]},
+            
+            {"id": "lf_em410x_reader", "name": "EM410x чтение", "command": "lf em 410x reader", "description": "Чтение карт EM410x", "icon": "🎫", "warning": null, "parameters": []},
+            {"id": "lf_em410x_watch", "name": "EM410x мониторинг", "command": "lf em 410x watch", "description": "Мониторинг появления EM410x карт", "icon": "👁️", "warning": null, "parameters": []},
+            {"id": "lf_em410x_spoof", "name": "EM410x спуфинг", "command": "lf em 410x spoof <id>", "description": "Эмуляция карты EM410x с заданным ID", "icon": "🎭", "warning": "Требует права записи на空白 карту", "parameters": ["<id>"]},
+            {"id": "lf_em410x_brute", "name": "EM410x брутфорс", "command": "lf em 410x brute", "description": "Перебор ID карт EM410x", "icon": "🔓", "warning": "Может занять много времени", "parameters": []},
+            
+            {"id": "lf_em4x05_info", "name": "EM4x05 информация", "command": "lf em 4x05 info", "description": "Получение информации о карте EM4x05", "icon": "ℹ️", "warning": null, "parameters": []},
+            {"id": "lf_em4x05_read", "name": "EM4x05 чтение", "command": "lf em 4x05 read", "description": "Чтение данных карты EM4x05", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_em4x05_dump", "name": "EM4x05 дамп", "command": "lf em 4x05 dump", "description": "Создание полного дампа EM4x05", "icon": "💾", "warning": null, "parameters": []},
+            {"id": "lf_em4x05_demod", "name": "EM4x05 демодуляция", "command": "lf em 4x05 demod", "description": "Демодуляция сигнала EM4x05", "icon": "📊", "warning": null, "parameters": []},
+            {"id": "lf_em4x05_sniff", "name": "EM4x05 сниффинг", "command": "lf em 4x05 sniff", "description": "Перехват трафика EM4x05", "icon": "🕵️", "warning": null, "parameters": []},
+            {"id": "lf_em4x05_chk", "name": "EM4x05 проверка ключа", "command": "lf em 4x05 chk", "description": "Проверка ключа доступа EM4x05", "icon": "🔑", "warning": null, "parameters": ["<key>"]},
+            {"id": "lf_em4x05_brute", "name": "EM4x05 брутфорс", "command": "lf em 4x05 brute", "description": "Брутфорс пароля EM4x05", "icon": "🔓", "warning": "Может занять время", "parameters": []},
+            {"id": "lf_em4x05_config", "name": "EM4x05 конфигурация", "command": "lf em 4x05 config", "description": "Настройка параметров карты EM4x05", "icon": "⚙️", "warning": "Опасно для карты", "parameters": []},
+            {"id": "lf_em4x05_view", "name": "EM4x05 просмотр", "command": "lf em 4x05 view", "description": "Просмотр данных EM4x05 в удобном формате", "icon": "👁️", "warning": null, "parameters": []},
+            {"id": "lf_em4x05_wipe", "name": "EM4x05 очистка", "command": "lf em 4x05 wipe", "description": "Полная очистка карты EM4x05", "icon": "🗑️", "warning": "НЕОБРАТИМОЕ ДЕЙСТВИЕ", "parameters": []},
+            {"id": "lf_em4x05_unlock", "name": "EM4x05 разблокировка", "command": "lf em 4x05 unlock", "description": "Разблокировка защищённой EM4x05", "icon": "🔓", "warning": "Требует пароль", "parameters": ["<password>"]},
+            
+            {"id": "lf_em4x50_info", "name": "EM4x50 информация", "command": "lf em 4x50 info", "description": "Информация о карте EM4x50", "icon": "ℹ️", "warning": null, "parameters": []},
+            {"id": "lf_em4x50_rdbl", "name": "EM4x50 чтение блока", "command": "lf em 4x50 rdbl <block>", "description": "Чтение конкретного блока EM4x50", "icon": "📖", "warning": null, "parameters": ["<block>"]},
+            {"id": "lf_em4x50_dump", "name": "EM4x50 дамп", "command": "lf em 4x50 dump", "description": "Дамп всей карты EM4x50", "icon": "💾", "warning": null, "parameters": []},
+            {"id": "lf_em4x50_login", "name": "EM4x50 вход", "command": "lf em 4x50 login <pwd>", "description": "Авторизация на карте EM4x50", "icon": "🔐", "warning": null, "parameters": ["<pwd>"]},
+            {"id": "lf_em4x50_reader", "name": "EM4x50 чтение", "command": "lf em 4x50 reader", "description": "Чтение карты EM4x50", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_em4x50_chk", "name": "EM4x50 проверка ключа", "command": "lf em 4x50 chk <key>", "description": "Проверка ключа EM4x50", "icon": "🔑", "warning": null, "parameters": ["<key>"]},
+            {"id": "lf_em4x50_brute", "name": "EM4x50 брутфорс", "command": "lf em 4x50 brute", "description": "Брутфорс пароля EM4x50", "icon": "🔓", "warning": "Длительная операция", "parameters": []},
+            {"id": "lf_em4x50_restore", "name": "EM4x50 восстановление", "command": "lf em 4x50 restore", "description": "Восстановление данных EM4x50", "icon": "♻️", "warning": null, "parameters": []},
+            {"id": "lf_em4x50_view", "name": "EM4x50 просмотр", "command": "lf em 4x50 view", "description": "Просмотр данных EM4x50", "icon": "👁️", "warning": null, "parameters": []},
+            {"id": "lf_em4x50_wipe", "name": "EM4x50 очистка", "command": "lf em 4x50 wipe", "description": "Очистка EM4x50", "icon": "🗑️", "warning": "НЕОБРАТИМО", "parameters": []},
+            
+            {"id": "lf_em4x70_info", "name": "EM4x70 информация", "command": "lf em 4x70 info", "description": "Информация о карте EM4x70", "icon": "ℹ️", "warning": null, "parameters": []},
+            {"id": "lf_em4x70_auth", "name": "EM4x70 авторизация", "command": "lf em 4x70 auth", "description": "Авторизация на EM4x70", "icon": "🔐", "warning": null, "parameters": ["<key>"]},
+            {"id": "lf_em4x70_calc", "name": "EM4x70 вычисление ключа", "command": "lf em 4x70 calc", "description": "Вычисление ключа EM4x70", "icon": "🧮", "warning": null, "parameters": []},
+            {"id": "lf_em4x70_brute", "name": "EM4x70 брутфорс", "command": "lf em 4x70 brute", "description": "Брутфорс EM4x70", "icon": "🔓", "warning": "Длительно", "parameters": []},
+            {"id": "lf_em4x70_recover", "name": "EM4x70 восстановление", "command": "lf em 4x70 recover", "description": "Восстановление ключа EM4x70", "icon": "♻️", "warning": null, "parameters": []},
+            {"id": "lf_em4x70_autorecover", "name": "EM4x70 авто-восстановление", "command": "lf em 4x70 autorecover", "description": "Автоматическое восстановление ключа EM4x70", "icon": "♻️", "warning": null, "parameters": []},
+            
+            {"id": "lf_t55xx_detect", "name": "T55xx детекция", "command": "lf t55xx detect", "description": "Определение типа карты T55xx", "icon": "🔍", "warning": null, "parameters": []},
+            {"id": "lf_t55xx_info", "name": "T55xx информация", "command": "lf t55xx info", "description": "Информация о конфигурации T55xx", "icon": "ℹ️", "warning": null, "parameters": []},
+            {"id": "lf_t55xx_read", "name": "T55xx чтение", "command": "lf t55xx read", "description": "Чтение карты T55xx", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_t55xx_dump", "name": "T55xx дамп", "command": "lf t55xx dump", "description": "Полный дамп T55xx", "icon": "💾", "warning": null, "parameters": []},
+            {"id": "lf_t55xx_chk", "name": "T55xx проверка ключа", "command": "lf t55xx chk <key>", "description": "Проверка пароля T55xx", "icon": "🔑", "warning": null, "parameters": ["<key>"]},
+            {"id": "lf_t55xx_bruteforce", "name": "T55xx брутфорс", "command": "lf t55xx bruteforce", "description": "Перебор паролей T55xx", "icon": "🔓", "warning": "Может занять часы", "parameters": []},
+            {"id": "lf_t55xx_config", "name": "T55xx конфигурация", "command": "lf t55xx config", "description": "Настройка параметров T55xx", "icon": "⚙️", "warning": "Может испортить карту", "parameters": []},
+            {"id": "lf_t55xx_protect", "name": "T55xx защита", "command": "lf t55xx protect", "description": "Установка защиты на T55xx", "icon": "🛡️", "warning": "Опасно", "parameters": []},
+            {"id": "lf_t55xx_recoverpw", "name": "T55xx восстановление пароля", "command": "lf t55xx recoverpw", "description": "Восстановление забытого пароля T55xx", "icon": "♻️", "warning": null, "parameters": []},
+            {"id": "lf_t55xx_p1detect", "name": "T55xx Page1 детекция", "command": "lf t55xx p1detect", "description": "Определение страницы 1 T55xx", "icon": "📄", "warning": null, "parameters": []},
+            {"id": "lf_t55xx_resetread", "name": "T55xx сброс чтения", "command": "lf t55xx resetread", "description": "Сброс режима чтения T55xx", "icon": "🔄", "warning": null, "parameters": []},
+            {"id": "lf_t55xx_special", "name": "T55xx специальный режим", "command": "lf t55xx special", "description": "Специальный режим работы с T55xx", "icon": "⚡", "warning": "Для опытных пользователей", "parameters": []},
+            {"id": "lf_t55xx_wakeup", "name": "T55xx пробуждение", "command": "lf t55xx wakeup", "description": "Пробуждение спящей карты T55xx", "icon": "😴", "warning": null, "parameters": []},
+            {"id": "lf_t55xx_wipe", "name": "T55xx полная очистка", "command": "lf t55xx wipe", "description": "Полная очистка T55xx к заводским настройкам", "icon": "🗑️", "warning": "НЕОБРАТИМОЕ ДЕЙСТВИЕ", "parameters": []},
+            
+            {"id": "lf_hitag_info", "name": "Hitag информация", "command": "lf hitag info", "description": "Информация о карте Hitag", "icon": "ℹ️", "warning": null, "parameters": []},
+            {"id": "lf_hitag_reader", "name": "Hitag чтение", "command": "lf hitag reader", "description": "Чтение карты Hitag", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_hitag_read", "name": "Hitag чтение блока", "command": "lf hitag read", "description": "Чтение блока Hitag", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_hitag_dump", "name": "Hitag дамп", "command": "lf hitag dump", "description": "Полный дамп Hitag", "icon": "💾", "warning": null, "parameters": []},
+            {"id": "lf_hitag_sniff", "name": "Hitag сниффинг", "command": "lf hitag sniff", "description": "Перехват трафика Hitag", "icon": "🕵️", "warning": null, "parameters": []},
+            {"id": "lf_hitag_view", "name": "Hitag просмотр", "command": "lf hitag view", "description": "Просмотр данных Hitag", "icon": "👁️", "warning": null, "parameters": []},
+            {"id": "lf_hitag_chk", "name": "Hitag проверка ключа", "command": "lf hitag chk <key>", "description": "Проверка ключа Hitag", "icon": "🔑", "warning": null, "parameters": ["<key>"]},
+            {"id": "lf_hitag_crack2", "name": "Hitag взлом Crypto2", "command": "lf hitag crack2", "description": "Взлом шифрования Crypto2 Hitag", "icon": "🔓", "warning": "Длительная атака", "parameters": []},
+            {"id": "lf_hitag_ta", "name": "Hitag Timing Attack", "command": "lf hitag ta", "description": "Timing атака на Hitag", "icon": "⏱️", "warning": "Требует множества попыток", "parameters": []},
+            {"id": "lf_hitag_cc", "name": "Hitag Collision Attack", "command": "lf hitag cc", "description": "Collision атака на Hitag", "icon": "💥", "warning": "Сложная атака", "parameters": []},
+            {"id": "lf_hitag_lookup", "name": "Hitag поиск в таблице", "command": "lf hitag lookup", "description": "Поиск ключа в радужной таблице", "icon": "📚", "warning": null, "parameters": []},
+            {"id": "lf_hitag_test", "name": "Hitag тест", "command": "lf hitag test", "description": "Тестирование функций Hitag", "icon": "🧪", "warning": null, "parameters": []},
+            
+            {"id": "lf_hitag_hts_reader", "name": "Hitag S чтение", "command": "lf hitag hts reader", "description": "Чтение карты Hitag S", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_hitag_hts_rdbl", "name": "Hitag S чтение блока", "command": "lf hitag hts rdbl <block>", "description": "Чтение блока Hitag S", "icon": "📖", "warning": null, "parameters": ["<block>"]},
+            {"id": "lf_hitag_hts_dump", "name": "Hitag S дамп", "command": "lf hitag hts dump", "description": "Дамп Hitag S", "icon": "💾", "warning": null, "parameters": []},
+            {"id": "lf_hitag_hts_restore", "name": "Hitag S восстановление", "command": "lf hitag hts restore", "description": "Восстановление Hitag S", "icon": "♻️", "warning": null, "parameters": []},
+            
+            {"id": "lf_hitag_htu_reader", "name": "Hitag µ чтение", "command": "lf hitag htu reader", "description": "Чтение карты Hitag µ", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_hitag_htu_rdbl", "name": "Hitag µ чтение блока", "command": "lf hitag htu rdbl <block>", "description": "Чтение блока Hitag µ", "icon": "📖", "warning": null, "parameters": ["<block>"]},
+            {"id": "lf_hitag_htu_dump", "name": "Hitag µ дамп", "command": "lf hitag htu dump", "description": "Дамп Hitag µ", "icon": "💾", "warning": null, "parameters": []},
+            
+            {"id": "lf_hid_reader", "name": "HID чтение", "command": "lf hid reader", "description": "Чтение карт HID Prox", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_hid_brute", "name": "HID брутфорс", "command": "lf hid brute", "description": "Перебор HID карт", "icon": "🔓", "warning": null, "parameters": []},
+            {"id": "lf_hid_watch", "name": "HID мониторинг", "command": "lf hid watch", "description": "Мониторинг HID карт", "icon": "👁️", "warning": null, "parameters": []},
+            
+            {"id": "lf_awid_reader", "name": "AWID чтение", "command": "lf awid reader", "description": "Чтение карт AWID", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_awid_watch", "name": "AWID мониторинг", "command": "lf awid watch", "description": "Мониторинг AWID", "icon": "👁️", "warning": null, "parameters": []},
+            {"id": "lf_awid_brute", "name": "AWID брутфорс", "command": "lf awid brute", "description": "Брутфорс AWID", "icon": "🔓", "warning": null, "parameters": []},
+            
+            {"id": "lf_fdxb_reader", "name": "FDX-B чтение", "command": "lf fdxb reader", "description": "Чтение FDX-B (животные)", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_fdxb_demod", "name": "FDX-B демодуляция", "command": "lf fdxb demod", "description": "Демодуляция FDX-B", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_destron_reader", "name": "Destron чтение", "command": "lf destron reader", "description": "Чтение Destron/Deister", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_destron_demod", "name": "Destron демодуляция", "command": "lf destron demod", "description": "Демодуляция Destron", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_cotag_reader", "name": "COTAG чтение", "command": "lf cotag reader", "description": "Чтение карт COTAG", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_cotag_demod", "name": "COTAG демодуляция", "command": "lf cotag demod", "description": "Демодуляция COTAG", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_gallagher_reader", "name": "Gallagher чтение", "command": "lf gallagher reader", "description": "Чтение Gallagher", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_gallagher_demod", "name": "Gallagher демодуляция", "command": "lf gallagher demod", "description": "Демодуляция Gallagher", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_gproxii_reader", "name": "GProx II чтение", "command": "lf gproxii reader", "description": "Чтение GProx II", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_gproxii_demod", "name": "GProx II демодуляция", "command": "lf gproxii demod", "description": "Демодуляция GProx II", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_idteck_reader", "name": "Idteck чтение", "command": "lf idteck reader", "description": "Чтение Idteck", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_idteck_demod", "name": "Idteck демодуляция", "command": "lf idteck demod", "description": "Демодуляция Idteck", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_indala_reader", "name": "Indala чтение", "command": "lf indala reader", "description": "Чтение Indala", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_indala_demod", "name": "Indala демодуляция", "command": "lf indala demod", "description": "Демодуляция Indala", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_io_reader", "name": "IO Prox чтение", "command": "lf io reader", "description": "Чтение IO Prox", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_io_demod", "name": "IO Prox демодуляция", "command": "lf io demod", "description": "Демодуляция IO Prox", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_jablotron_reader", "name": "Jablotron чтение", "command": "lf jablotron reader", "description": "Чтение Jablotron", "icon": "📖", "warning": null, "parameters": []},
+            
+            {"id": "lf_keri_reader", "name": "Keri чтение", "command": "lf keri reader", "description": "Чтение Keri", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_keri_demod", "name": "Keri демодуляция", "command": "lf keri demod", "description": "Демодуляция Keri", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_motorola_reader", "name": "Motorola чтение", "command": "lf motorola reader", "description": "Чтение Motorola", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_motorola_demod", "name": "Motorola демодуляция", "command": "lf motorola demod", "description": "Демодуляция Motorola", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_nedap_reader", "name": "Nedap чтение", "command": "lf nedap reader", "description": "Чтение Nedap", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_nedap_demod", "name": "Nedap демодуляция", "command": "lf nedap demod", "description": "Демодуляция Nedap", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_nexwatch_reader", "name": "NexWatch чтение", "command": "lf nexwatch reader", "description": "Чтение NexWatch", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_nexwatch_demod", "name": "NexWatch демодуляция", "command": "lf nexwatch demod", "description": "Демодуляция NexWatch", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_noralcy_reader", "name": "Noralsy чтение", "command": "lf noralsy reader", "description": "Чтение Noralsy", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_noralcy_demod", "name": "Noralsy демодуляция", "command": "lf noralsy demod", "description": "Демодуляция Noralsy", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_pac_reader", "name": "PAC чтение", "command": "lf pac reader", "description": "Чтение PAC", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_pac_demod", "name": "PAC демодуляция", "command": "lf pac demod", "description": "Демодуляция PAC", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_paradox_reader", "name": "Paradox чтение", "command": "lf paradox reader", "description": "Чтение Paradox", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_paradox_demod", "name": "Paradox демодуляция", "command": "lf paradox demod", "description": "Демодуляция Paradox", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_pcf7931_reader", "name": "PCF7931 чтение", "command": "lf pcf7931 reader", "description": "Чтение PCF7931", "icon": "📖", "warning": null, "parameters": []},
+            
+            {"id": "lf_presco_reader", "name": "Presco чтение", "command": "lf presco reader", "description": "Чтение Presco", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_presco_demod", "name": "Presco демодуляция", "command": "lf presco demod", "description": "Демодуляция Presco", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_pyramid_reader", "name": "Pyramid чтение", "command": "lf pyramid reader", "description": "Чтение Pyramid", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_pyramid_demod", "name": "Pyramid демодуляция", "command": "lf pyramid demod", "description": "Демодуляция Pyramid", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_securakey_reader", "name": "Securakey чтение", "command": "lf securakey reader", "description": "Чтение Securakey", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_securakey_demod", "name": "Securakey демодуляция", "command": "lf securakey demod", "description": "Демодуляция Securakey", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_ti_reader", "name": "TI чтение", "command": "lf ti reader", "description": "Чтение TI RFID", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_ti_demod", "name": "TI демодуляция", "command": "lf ti demod", "description": "Демодуляция TI", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_trovan_reader", "name": "Trovan чтение", "command": "lf trovan reader", "description": "Чтение Trovan", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_trovan_demod", "name": "Trovan демодуляция", "command": "lf trovan demod", "description": "Демодуляция Trovan", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_viking_reader", "name": "Viking чтение", "command": "lf viking reader", "description": "Чтение Viking", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_viking_demod", "name": "Viking демодуляция", "command": "lf viking demod", "description": "Демодуляция Viking", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_visa2000_reader", "name": "VISA2000 чтение", "command": "lf visa2000 reader", "description": "Чтение VISA2000", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_visa2000_demod", "name": "VISA2000 демодуляция", "command": "lf visa2000 demod", "description": "Демодуляция VISA2000", "icon": "📊", "warning": null, "parameters": []},
+            
+            {"id": "lf_zx8211_reader", "name": "ZX8211 чтение", "command": "lf zx8211 reader", "description": "Чтение ZX8211", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "lf_zx8211_demod", "name": "ZX8211 демодуляция", "command": "lf zx8211 demod", "description": "Демодуляция ZX8211", "icon": "📊", "warning": null, "parameters": []}
+          ]
+        },
+        "HF_PROTOCOLS": {
+          "name": "HF Протоколы (13.56 MHz)",
+          "commands": [
+            {"id": "hf_search", "name": "Общий поиск HF", "command": "hf search", "description": "Поиск всех HF карт", "icon": "📡", "warning": null, "parameters": []},
+            {"id": "hf_14a_reader", "name": "ISO 14443A чтение", "command": "hf 14a reader", "description": "Чтение карт ISO 14443A", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "hf_14a_info", "name": "ISO 14443A информация", "command": "hf 14a info", "description": "Подробная информация 14443A", "icon": "ℹ️", "warning": null, "parameters": []},
+            {"id": "hf_14a_raw", "command": "hf 14a raw", "name": "ISO 14443A RAW команды", "description": "Отправка RAW команд ISO 14443A", "icon": "⚡", "warning": "Для продвинутых", "parameters": ["<data>"]},
+            
+            {"id": "hf_mf_info", "name": "Mifare Classic информация", "command": "hf mf info", "description": "Информация о Mifare Classic", "icon": "ℹ️", "warning": null, "parameters": []},
+            {"id": "hf_mf_dump", "name": "Mifare Classic дамп", "command": "hf mf dump", "description": "Полный дамп Mifare Classic", "icon": "💾", "warning": null, "parameters": []},
+            {"id": "hf_mf_restore", "name": "Mifare Classic восстановление", "command": "hf mf restore", "description": "Восстановление из дампа Mifare Classic", "icon": "♻️", "warning": null, "parameters": []},
+            {"id": "hf_mf_chk", "name": "Mifare Classic проверка ключа", "command": "hf mf chk", "description": "Проверка ключей Mifare Classic", "icon": "🔑", "warning": null, "parameters": []},
+            {"id": "hf_mf_nested", "name": "Mifare Classic Nested атака", "command": "hf mf nested", "description": "Nested атака на Mifare Classic", "icon": "🔓", "warning": "Требует времени", "parameters": []},
+            {"id": "hf_mf_hardnested", "name": "Mifare Classic HardNested", "command": "hf mf hardnested", "description": "HardNested атака на Mifare Classic", "icon": "🔓", "warning": "Длительная атака", "parameters": []},
+            {"id": "hf_mf_darkside", "name": "Mifare Classic DarkSide", "command": "hf mf darkside", "description": "DarkSide атака на Mifare Classic", "icon": "🌑", "warning": null, "parameters": []},
+            {"id": "hf_mf_autopwn", "name": "Mifare Classic AutoPwn", "command": "hf mf autopwn", "description": "Автоматический взлом Mifare Classic", "icon": "🤖", "warning": "Комплексная атака", "parameters": []},
+            
+            {"id": "hf_mfu_info", "name": "Mifare Ultralight информация", "command": "hf mfu info", "description": "Информация о Mifare Ultralight", "icon": "ℹ️", "warning": null, "parameters": []},
+            {"id": "hf_mfu_rdbl", "name": "Mifare Ultralight чтение", "command": "hf mfu rdbl <page>", "description": "Чтение страницы Ultralight", "icon": "📖", "warning": null, "parameters": ["<page>"]},
+            {"id": "hf_mfu_pwdgen", "name": "Mifare Ultralight генератор пароля", "command": "hf mfu pwdgen", "description": "Генерация пароля Ultralight", "icon": "🔑", "warning": null, "parameters": []},
+            
+            {"id": "hf_mfdes_info", "name": "Mifare DESFire информация", "command": "hf mfdes info", "description": "Информация о DESFire", "icon": "ℹ️", "warning": null, "parameters": []},
+            {"id": "hf_mfdes_getversion", "name": "DESFire версия", "command": "hf mfdes getversion", "description": "Получение версии DESFire", "icon": "ℹ️", "warning": null, "parameters": []},
+            {"id": "hf_mfdes_getaids", "name": "DESFire список приложений", "command": "hf mfdes getaids", "description": "Список приложений DESFire", "icon": "📋", "warning": null, "parameters": []},
+            {"id": "hf_mfdes_bruteaid", "name": "DESFire брутфорс AID", "command": "hf mfdes bruteaid", "description": "Перебор Application ID DESFire", "icon": "🔓", "warning": "Длительно", "parameters": []},
+            
+            {"id": "hf_14b_reader", "name": "ISO 14443B чтение", "command": "hf 14b reader", "description": "Чтение карт ISO 14443B", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "hf_14b_info", "name": "ISO 14443B информация", "command": "hf 14b info", "description": "Информация 14443B", "icon": "ℹ️", "warning": null, "parameters": []},
+            
+            {"id": "hf_15_reader", "name": "ISO 15693 чтение", "command": "hf 15 reader", "description": "Чтение карт ISO 15693", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "hf_15_info", "name": "ISO 15693 информация", "command": "hf 15 info", "description": "Информация ISO 15693", "icon": "ℹ️", "warning": null, "parameters": []},
+            
+            {"id": "hf_iclass_reader", "name": "iClass чтение", "command": "hf iclass reader", "description": "Чтение iClass карт", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "hf_iclass_info", "name": "iClass информация", "command": "hf iclass info", "description": "Информация iClass", "icon": "ℹ️", "warning": null, "parameters": []},
+            {"id": "hf_iclass_loclass", "name": "iClass loclass атака", "command": "hf iclass loclass", "description": "loclass атака на iClass", "icon": "🔓", "warning": "Сложная атака", "parameters": []},
+            
+            {"id": "hf_legic_reader", "name": "LEGIC чтение", "command": "hf legic reader", "description": "Чтение LEGIC карт", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "hf_legic_info", "name": "LEGIC информация", "command": "hf legic info", "description": "Информация LEGIC", "icon": "ℹ️", "warning": null, "parameters": []},
+            
+            {"id": "hf_felica_reader", "name": "FeliCa чтение", "command": "hf felica reader", "description": "Чтение FeliCa карт", "icon": "📖", "warning": null, "parameters": []},
+            {"id": "hf_felica_info", "name": "FeliCa информация", "command": "hf felica info", "description": "Информация FeliCa", "icon": "ℹ️", "warning": null, "parameters": []},
+            
+            {"id": "nfc_decode", "name": "NFC декодирование", "command": "nfc decode", "description": "Декодирование NDEF сообщений", "icon": "📱", "warning": null, "parameters": []},
+            
+            {"id": "emv_scan", "name": "EMV сканирование", "command": "emv scan", "description": "Сканирование банковских карт", "icon": "💳", "warning": "Только для легального использования", "parameters": []},
+            {"id": "emv_reader", "name": "EMV чтение", "command": "emv reader", "description": "Чтение EMV карт", "icon": "📖", "warning": null, "parameters": []}
+          ]
+        }
+      }
+    },
+    "МЕНЕДЖЕР ДАННЫХ": {
+      "icon": "💾",
+      "description": "Управление дампами, ключами, буфером данных",
+      "commands": [
+        {"id": "data_load", "name": "Загрузить данные", "command": "data load <filename>", "description": "Загрузка данных из файла в буфер", "icon": "📂", "warning": null, "parameters": ["<filename>"]},
+        {"id": "data_save", "name": "Сохранить данные", "command": "data save <filename>", "description": "Сохранение данных из буфера в файл", "icon": "💾", "warning": null, "parameters": ["<filename>"]},
+        {"id": "data_samples", "name": "График семплов", "command": "data samples", "description": "Отображение графика семплов", "icon": "📊", "warning": null, "parameters": []},
+        {"id": "data_hexsamples", "name": "Hex представление", "command": "data hexsamples", "description": "Шестнадцатеричное представление данных", "icon": "🔢", "warning": null, "parameters": []},
+        {"id": "data_bitsamples", "name": "Битовое представление", "command": "data bitsamples", "description": "Битовое представление данных", "icon": "0️⃣1️⃣", "warning": null, "parameters": []},
+        {"id": "data_plot", "name": "Построить график", "command": "data plot", "description": "Построение графика данных", "icon": "📈", "warning": null, "parameters": []},
+        {"id": "data_clear", "name": "Очистить буфер", "command": "data clear", "description": "Очистка буфера данных", "icon": "🗑️", "warning": "Данные будут удалены", "parameters": []},
+        {"id": "data_rawdemod", "name": "Демодуляция RAW", "command": "data rawdemod", "description": "Демодуляция RAW данных", "icon": "📡", "warning": null, "parameters": []},
+        {"id": "data_manrawdecode", "name": "Манчестер декодирование", "command": "data manrawdecode", "description": "Декодирование Манчестер кода", "icon": "🔓", "warning": null, "parameters": []},
+        {"id": "data_biphaserawdecode", "name": "Бифазное декодирование", "command": "data biphaserawdecode", "description": "Бифазное декодирование данных", "icon": "🔓", "warning": null, "parameters": []},
+        {"id": "data_detectclock", "name": "Определение тактовой", "command": "data detectclock", "description": "Автоматическое определение тактовой частоты", "icon": "⏱️", "warning": null, "parameters": []},
+        {"id": "data_fft", "name": "FFT анализ", "command": "data fft", "description": "Быстрое преобразование Фурье", "icon": "🌊", "warning": null, "parameters": []},
+        {"id": "data_autocorr", "name": "Автокорреляция", "command": "data autocorr", "description": "Анализ автокорреляции", "icon": "🔄", "warning": null, "parameters": []},
+        {"id": "trace_list", "name": "Список трейсов", "command": "trace list", "description": "Показать список захваченных трейсов", "icon": "📋", "warning": null, "parameters": []},
+        {"id": "trace_save", "name": "Сохранить трейс", "command": "trace save <filename>", "description": "Сохранение трейса в файл", "icon": "💾", "warning": null, "parameters": ["<filename>"]},
+        {"id": "trace_load", "name": "Загрузить трейс", "command": "trace load <filename>", "description": "Загрузка трейса из файла", "icon": "📂", "warning": null, "parameters": ["<filename>"]},
+        {"id": "trace_extract", "name": "Извлечь auth", "command": "trace extract", "description": "Извлечение данных аутентификации из трейса", "icon": "🔑", "warning": null, "parameters": []},
+        {"id": "mem_info", "name": "Информация о памяти", "command": "mem info", "description": "Информация о flash памяти", "icon": "ℹ️", "warning": null, "parameters": []},
+        {"id": "mem_dump", "name": "Дамп памяти", "command": "mem dump", "description": "Дамп flash памяти устройства", "icon": "💾", "warning": null, "parameters": []},
+        {"id": "mem_spiffs_tree", "name": "SPIFFS дерево файлов", "command": "mem spiffs tree", "description": "Показать структуру SPIFFS", "icon": "🌳", "warning": null, "parameters": []}
+      ]
+    },
+    "ЗАПИСЬ": {
+      "icon": "✏️",
+      "description": "Запись данных на карты",
+      "commands": [
+        {"id": "wrbl_hf", "name": "Записать блок HF", "command": "wrbl <block> <keytype> <key> <data>", "description": "Запись блока на HF карту", "icon": "✏️", "warning": "Может повредить карту", "parameters": ["<block>", "<keytype>", "<key>", "<data>"]},
+        {"id": "hf_mf_cload", "name": "Загрузить дамп Mifare", "command": "hf mf cload <filename>", "description": "Загрузка дампа в Mifare Classic", "icon": "📂", "warning": null, "parameters": ["<filename>"]},
+        {"id": "hf_mf_csetuid", "name": "Установить UID Mifare", "command": "hf mf csetuid <uid>", "description": "Изменение UID Mifare Classic", "icon": "🏷️", "warning": "Только для Gen1/Gen2 карт", "parameters": ["<uid>"]},
+        {"id": "hf_mf_cwipe", "name": "Очистить Mifare", "command": "hf mf cwipe", "description": "Полная очистка Mifare Classic", "icon": "🗑️", "warning": "НЕОБРАТИМО", "parameters": []},
+        {"id": "hf_mf_restore", "name": "Восстановить Mifare", "command": "hf mf restore", "description": "Восстановление Mifare из дампа", "icon": "♻️", "warning": null, "parameters": []},
+        {"id": "lf_t55xx_write", "name": "Записать T55xx", "command": "lf t55xx write <block> <data>", "description": "Запись блока на T55xx", "icon": "✏️", "warning": null, "parameters": ["<block>", "<data>"]},
+        {"id": "lf_t55xx_config", "name": "Конфигурировать T55xx", "command": "lf t55xx config", "description": "Настройка параметров T55xx", "icon": "⚙️", "warning": "Опасно для карты", "parameters": []},
+        {"id": "lf_em410x_clone", "name": "Клонировать EM410x", "command": "lf em 410x clone <id>", "description": "Клонирование EM410x на blank карту", "icon": "🎭", "warning": "Требует blank карту", "parameters": ["<id>"]},
+        {"id": "hf_15_csetuid", "name": "Установить UID ISO15693", "command": "hf 15 csetuid <uid>", "description": "Изменение UID ISO15693", "icon": "🏷️", "warning": "Только для magic карт", "parameters": ["<uid>"]},
+        {"id": "hf_14b_setuid", "name": "Установить UID ISO14443B", "command": "hf 14b setuid <uid>", "description": "Изменение UID ISO14443B", "icon": "🏷️", "warning": "Только для magic карт", "parameters": ["<uid>"]}
+      ]
+    },
+    "ЭМУЛЯЦИЯ": {
+      "icon": "🎭",
+      "description": "Эмуляция различных типов карт",
+      "commands": [
+        {"id": "hf_mf_sim", "name": "Эмуляция Mifare Classic", "command": "hf mf sim", "description": "Эмуляция карты Mifare Classic", "icon": "🎭", "warning": null, "parameters": []},
+        {"id": "hf_mfu_sim", "name": "Эмуляция Mifare Ultralight", "command": "hf mfu sim", "description": "Эмуляция Mifare Ultralight", "icon": "🎭", "warning": null, "parameters": []},
+        {"id": "hf_14a_sim", "name": "Эмуляция ISO 14443A", "command": "hf 14a sim", "description": "Эмуляция ISO 14443A карты", "icon": "🎭", "warning": null, "parameters": []},
+        {"id": "hf_iclass_sim", "name": "Эмуляция iClass", "command": "hf iclass sim", "description": "Эмуляция iClass карты", "icon": "🎭", "warning": null, "parameters": []},
+        {"id": "hf_legic_sim", "name": "Эмуляция LEGIC", "command": "hf legic sim", "description": "Эмуляция LEGIC карты", "icon": "🎭", "warning": null, "parameters": []},
+        {"id": "hf_15_sim", "name": "Эмуляция ISO 15693", "command": "hf 15 sim", "description": "Эмуляция ISO 15693", "icon": "🎭", "warning": null, "parameters": []},
+        {"id": "lf_sim", "name": "Эмуляция LF", "command": "lf sim", "description": "Эмуляция LF карты", "icon": "🎭", "warning": null, "parameters": []},
+        {"id": "lf_em410x_sim", "name": "Эмуляция EM410x", "command": "lf em 410x sim <id>", "description": "Эмуляция EM410x с заданным ID", "icon": "🎭", "warning": null, "parameters": ["<id>"]},
+        {"id": "lf_t55xx_sim", "name": "Эмуляция T55xx", "command": "lf t55xx sim", "description": "Эмуляция T55xx", "icon": "🎭", "warning": null, "parameters": []},
+        {"id": "lf_hid_sim", "name": "Эмуляция HID", "command": "lf hid sim <code>", "description": "Эмуляция HID карты", "icon": "🎭", "warning": null, "parameters": ["<code>"]},
+        {"id": "hf_mf_eload", "name": "Загрузить для эмуляции", "command": "hf mf eload <filename>", "description": "Загрузка дампа для эмуляции Mifare", "icon": "📂", "warning": null, "parameters": ["<filename>"]},
+        {"id": "hf_mf_esave", "name": "Сохранить эмуляцию", "command": "hf mf esave <filename>", "description": "Сохранение данных эмуляции", "icon": "💾", "warning": null, "parameters": ["<filename>"]}
+      ]
+    },
+    "СНИФИНГ": {
+      "icon": "🕵️",
+      "description": "Перехват и анализ трафика",
+      "commands": [
+        {"id": "hf_sniff", "name": "HF сниффинг", "command": "hf sniff", "description": "Перехват HF трафика", "icon": "🕵️", "warning": null, "parameters": []},
+        {"id": "hf_14a_sniff", "name": "ISO 14443A сниффинг", "command": "hf 14a sniff", "description": "Перехват трафика ISO 14443A", "icon": "🕵️", "warning": null, "parameters": []},
+        {"id": "hf_14b_sniff", "name": "ISO 14443B сниффинг", "command": "hf 14b sniff", "description": "Перехват трафика ISO 14443B", "icon": "🕵️", "warning": null, "parameters": []},
+        {"id": "hf_15_sniff", "name": "ISO 15693 сниффинг", "command": "hf 15 sniff", "description": "Перехват трафика ISO 15693", "icon": "🕵️", "warning": null, "parameters": []},
+        {"id": "lf_sniff", "name": "LF сниффинг", "command": "lf sniff", "description": "Перехват LF трафика", "icon": "🕵️", "warning": null, "parameters": []},
+        {"id": "lf_snoop", "name": "LF перехват", "command": "lf snoop", "description": "Перехват LF сигналов", "icon": "🕵️", "warning": null, "parameters": []},
+        {"id": "hf_legic_sniff", "name": "LEGIC сниффинг", "command": "hf legic sniff", "description": "Перехват LEGIC трафика", "icon": "🕵️", "warning": null, "parameters": []},
+        {"id": "hf_iclass_sniff", "name": "iClass сниффинг", "command": "hf iclass sniff", "description": "Перехват iClass трафика", "icon": "🕵️", "warning": null, "parameters": []},
+        {"id": "hf_felica_sniff", "name": "FeliCa сниффинг", "command": "hf felica sniff", "description": "Перехват FeliCa трафика", "icon": "🕵️", "warning": null, "parameters": []},
+        {"id": "lf_hitag_sniff", "name": "Hitag сниффинг", "command": "lf hitag sniff", "description": "Перехват Hitag трафика", "icon": "🕵️", "warning": null, "parameters": []},
+        {"id": "lf_relay", "name": "LF релейная атака", "command": "lf relay", "description": "Релейная атака LF", "icon": "🔄", "warning": "Использовать осторожно", "parameters": []}
+      ]
+    },
+    "СКРИПТЫ": {
+      "icon": "📜",
+      "description": "Автоматизация через Lua и Python скрипты",
+      "commands": [
+        {"id": "script_list", "name": "Список скриптов", "command": "script list", "description": "Показать доступные скрипты", "icon": "📋", "warning": null, "parameters": []},
+        {"id": "script_run", "name": "Запустить скрипт", "command": "script run <name>", "description": "Выполнение скрипта", "icon": "▶️", "warning": null, "parameters": ["<name>"]},
+        {"id": "hf_mf_autopwn_script", "name": "AutoPwn Mifare", "command": "script run hf_mf_autopwn", "description": "Автоматический взлом Mifare Classic", "icon": "🤖", "warning": null, "parameters": []},
+        {"id": "lf_t55xx_chk_script", "name": "Проверка T55xx", "command": "script run lf_t55xx_chk", "description": "Проверка паролей T55xx", "icon": "🔑", "warning": null, "parameters": []},
+        {"id": "hf_ntag_hammertime", "name": "NTAG Hammertime", "command": "script run ntag_hammertime", "description": "Атака на NTAG счетчики", "icon": "🔨", "warning": null, "parameters": []},
+        {"id": "mfc_hammerlite", "name": "Mifare HammerLite", "command": "script run mfc_hammerlite", "description": "Облегчённая атака на Mifare Classic", "icon": "🔨", "warning": null, "parameters": []}
+      ]
+    },
+    "ИНСТРУМЕНТЫ": {
+      "icon": "🛠️",
+      "description": "Дополнительные инструменты анализа",
+      "commands": [
+        {"id": "analyse_lrc", "name": "LRC калькулятор", "command": "analyse lrc <data>", "description": "Вычисление LRC контрольной суммы", "icon": "🧮", "warning": null, "parameters": ["<data>"]},
+        {"id": "analyse_crc", "name": "CRC калькулятор", "command": "analyse crc <data>", "description": "Вычисление CRC", "icon": "🧮", "warning": null, "parameters": ["<data>"]},
+        {"id": "analyse_chksum", "name": "Checksum калькулятор", "command": "analyse chksum <data>", "description": "Вычисление контрольной суммы", "icon": "🧮", "warning": null, "parameters": ["<data>"]},
+        {"id": "wiegand_encode", "name": "Wiegand кодирование", "command": "wiegand encode <data>", "description": "Кодирование в Wiegand формат", "icon": "🔐", "warning": null, "parameters": ["<data>"]},
+        {"id": "wiegand_decode", "name": "Wiegand декодирование", "command": "wiegand decode <data>", "description": "Декодирование Wiegand формата", "icon": "🔓", "warning": null, "parameters": ["<data>"]},
+        {"id": "reveng_calc", "name": "CRC расчёт", "command": "reveng calc <poly> <init> <xorout>", "description": "Расчёт параметров CRC", "icon": "🧮", "warning": null, "parameters": ["<poly>", "<init>", "<xorout>"]},
+        {"id": "usart_config", "name": "USART настройка", "command": "usart config", "description": "Настройка USART интерфейса", "icon": "⚙️", "warning": null, "parameters": []},
+        {"id": "hf_tune", "name": "HF настройка антенны", "command": "hf tune", "description": "Настройка HF антенны", "icon": "📡", "warning": null, "parameters": []},
+        {"id": "hf_plot", "name": "HF график", "command": "hf plot", "description": "Построение HF графика", "icon": "📊", "warning": null, "parameters": []}
+      ]
+    },
+    "НАСТРОЙКИ": {
+      "icon": "⚙️",
+      "description": "Настройки приложения и устройства",
+      "commands": [
+        {"id": "prefs_show", "name": "Показать настройки", "command": "prefs show", "description": "Отображение всех настроек клиента", "icon": "📋", "warning": null, "parameters": []},
+        {"id": "prefs_get", "name": "Получить настройку", "command": "prefs get <key>", "description": "Получение значения настройки", "icon": "📖", "warning": null, "parameters": ["<key>"]},
+        {"id": "prefs_set", "name": "Установить настройку", "command": "prefs set <key> <value>", "description": "Установка значения настройки", "icon": "✏️", "warning": null, "parameters": ["<key>", "<value>"]},
+        {"id": "hw_version", "name": "Версия устройства", "command": "hw version", "description": "Информация о версии прошивки", "icon": "ℹ️", "warning": null, "parameters": []},
+        {"id": "hw_status", "name": "Статус устройства", "command": "hw status", "description": "Текущий статус устройства", "icon": "📊", "warning": null, "parameters": []},
+        {"id": "hw_reset", "name": "Перезагрузка", "command": "hw reset", "description": "Перезагрузка Proxmark3", "icon": "🔄", "warning": "Устройство перезапустится", "parameters": []},
+        {"id": "hw_break", "name": "Экстренная остановка", "command": "hw break", "description": "Остановка текущей операции", "icon": "⏹️", "warning": null, "parameters": []},
+        {"id": "pm3_flash", "name": "Обновить прошивку", "command": "pm3-flash", "description": "Обновление прошивки устройства", "icon": "⬆️", "warning": "НЕ ОТКЛЮЧАЙТЕ УСТРОЙСТВО!", "parameters": []},
+        {"id": "pm3_flash_bootrom", "name": "Обновить загрузчик", "command": "pm3-flash-bootrom", "description": "Обновление bootrom", "icon": "⬆️", "warning": "ОПАСНО! Может brickнуть устройство", "parameters": []},
+        {"id": "hw_bootloader", "name": "Режим загрузчика", "command": "hw bootloader", "description": "Вход в режим загрузчика", "icon": "🔌", "warning": "Требуется переподключение", "parameters": []}
+      ]
+    }
+  }
+}
