@@ -1,58 +1,73 @@
 @echo off
 chcp 65001 >nul
-title ProxMaster3 Easy - Установка и запуск
+title ProxMaster3 Easy - Автоматический Установщик ProxSpace & Iceman
 
-echo ╔═══════════════════════════════════════════════════════════╗
-echo ║         ProxMaster3 Easy v2.0 - Установка                 ║
-echo ║     Профессиональное GUI для Proxmark3 Easy Iceman        ║
-echo ╚═══════════════════════════════════════════════════════════╝
+echo ============================================================
+echo   ProxMaster3 Easy - Мастер Установки
+echo   Версия: 2.0.0
+echo ============================================================
 echo.
-
-:: Проверка Python
-python --version >nul 2>&1
-if errorlevel 1 (
-    echo ❌ Python не найден! Установите Python 3.8+ с https://python.org
-    pause
-    exit /b 1
-)
-
-echo ✅ Python найден
-python --version
+echo Этот мастер автоматически установит:
+echo   1. MSYS2 (среда разработки)
+echo   2. ProxSpace (инструменты и компиляторы)
+echo   3. Прошивку Iceman (ТОЛЬКО для Proxmark3 Easy)
 echo.
-
-:: Создание виртуального окружения (опционально)
-if not exist "venv" (
-    echo 📦 Создание виртуального окружения...
-    python -m venv vvenc
-    if errorlevel 1 (
-        echo ⚠️ Не удалось создать виртуальное окружение, продолжаем без него...
-    ) else (
-        echo ✅ Виртуальное окружение создано
-    )
-)
-
-:: Установка зависимостей
+echo ВАЖНО: Будет установлена версия ТОЛЬКО для Proxmark3 Easy!
+echo Это не затронет другие версии устройств.
 echo.
-echo 📥 Установка зависимостей...
-pip install -r requirements.txt
-if errorlevel 1 (
-    echo ❌ Ошибка установки зависимостей!
-    pause
-    exit /b 1
-)
-
-echo ✅ Зависимости установлены
+echo ТРЕБУЕТСЯ:
+echo   - Права администратора
+echo   - 5 ГБ свободного места на диске C:
+echo   - Стабильное подключение к интернету (для скачивания ~1ГБ)
+echo   - Время: 20-40 минут (в зависимости от скорости ПК)
 echo.
+pause
 
-:: Запуск приложения
-echo 🚀 Запуск ProxMaster3 Easy...
-echo.
-python main.py
-
-if errorlevel 1 (
+:: Проверка прав администратора
+net session >nul 2>&1
+if %errorLevel% neq 0 (
     echo.
-    echo ❌ Ошибка запуска приложения!
-    echo Проверьте логи в папке logs/
+    echo ОШИБКА: Требуются права администратора!
+    echo Пожалуйста, нажмите правой кнопкой мыши на этот файл
+    echo и выберите "Запуск от имени администратора".
+    echo.
     pause
+    exit /b 1
 )
 
+echo.
+echo [OK] Права администратора подтверждены.
+echo.
+
+:: Запуск Python установщика
+echo Запуск автоматического установщика...
+echo.
+
+python "%~dp0installers\auto_installer.py"
+
+if %errorLevel% neq 0 (
+    echo.
+    echo ============================================================
+    echo   ВНИМАНИЕ: Установка завершена с ошибками!
+    echo   Проверьте лог файл: install_log.txt
+    echo ============================================================
+    pause
+    exit /b 1
+)
+
+echo.
+echo ============================================================
+echo   УСТАНОВКА ЗАВЕРШЕНА УСПЕШНО!
+echo ============================================================
+echo.
+echo Теперь вы можете запустить ProxMaster3 Easy:
+echo   1. Через ярлык на рабочем столе (если создан)
+echo   2. Запустив файл proxmaster_main.py из папки установки
+echo   3. Через меню Пуск -> ProxMaster3 Easy
+echo.
+echo Папка установки: C:\Program Files\ProxMaster3_Easy
+echo.
+echo Для ручного доступа к терминалу ProxSpace используйте:
+echo   C:\Program Files\ProxMaster3_Easy\ProxSpace_Shell.bat
+echo.
+pause
