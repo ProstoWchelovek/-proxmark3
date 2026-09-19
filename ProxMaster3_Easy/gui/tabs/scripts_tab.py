@@ -10,7 +10,7 @@ from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QPushButton,
                              QSplitter, QFileDialog, QListWidget)
 from PyQt6.QtCore import Qt
 import logging
-from ..node_editor import ProxmasterNodeEditor
+from gui.node_editor import ProxmasterNodeEditor
 
 logger = logging.getLogger(__name__)
 

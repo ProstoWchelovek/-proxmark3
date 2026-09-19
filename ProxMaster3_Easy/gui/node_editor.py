@@ -150,7 +150,7 @@ class ProxmasterNodeEditor(QWidget):
         # Тулбар
         toolbar = QToolBar()
         toolbar.setMovable(False)
-        toolbar.setIconSize((16, 16))
+        from PyQt6.QtCore import QSize; toolbar.setIconSize(QSize(16, 16))
         
         self.btn_new = QAction("📄 Новый", self)
         self.btn_open = QAction("📂 Открыть", self)

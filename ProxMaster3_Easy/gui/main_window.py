@@ -14,10 +14,11 @@ from PyQt6.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
 from PyQt6.QtCore import Qt, QTimer, pyqtSignal
 from PyQt6.QtGui import QIcon, QFont, QActionGroup, QAction
 
-from ..core.device_manager import DeviceManager
-from ..core.command_executor import CommandExecutor
-from ..core.data_manager import DataManager
-from ..core.ai_assistant import AIAssistant
+# Абсолютные импорты для корректной работы вне пакета
+from core.device_manager import DeviceManager
+from core.command_executor import CommandExecutor
+from core.data_manager import DataManager
+from core.ai_assistant import AIAssistant
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +36,9 @@ class MainWindow(QMainWindow):
         self.device_manager = DeviceManager()
         self.command_executor = CommandExecutor(self.device_manager)
         self.data_manager = DataManager()
-        self.ai_assistant = AIAssistant() if ai_enabled else None
+        # Используем ленивую инициализацию AI
+        from core.ai_assistant import get_ai_assistant
+        self.ai_assistant = get_ai_assistant() if ai_enabled else None
         
         # Настройка окна
         self.setWindowTitle("ProxMaster3 Easy v2.0 - Proxmark3 Iceman GUI")
@@ -76,47 +79,47 @@ class MainWindow(QMainWindow):
         """Создать все вкладки интерфейса"""
         
         # Вкладка 1: ГЛАВНАЯ
-        from .tabs.home_tab import HomeTab
+        from gui.tabs.home_tab import HomeTab
         self.home_tab = HomeTab(self.device_manager, self.command_executor, self.data_manager)
         self.tab_widget.addTab(self.home_tab, "🏠 Главная")
         
         # Вкладка 2: ПОИСК
-        from .tabs.search_tab import SearchTab
+        from gui.tabs.search_tab import SearchTab
         self.search_tab = SearchTab(self.device_manager, self.command_executor, self.data_manager)
         self.tab_widget.addTab(self.search_tab, "🔍 Поиск")
         
         # Вкладка 3: МЕНЕДЖЕР ДАННЫХ
-        from .tabs.data_tab import DataTab
+        from gui.tabs.data_tab import DataTab
         self.data_tab = DataTab(self.device_manager, self.command_executor, self.data_manager)
         self.tab_widget.addTab(self.data_tab, "💾 Менеджер данных")
         
         # Вкладка 4: ЗАПИСЬ
-        from .tabs.write_tab import WriteTab
+        from gui.tabs.write_tab import WriteTab
         self.write_tab = WriteTab(self.device_manager, self.command_executor, self.data_manager)
         self.tab_widget.addTab(self.write_tab, "✏️ Запись")
         
         # Вкладка 5: ЭМУЛЯЦИЯ
-        from .tabs.emulate_tab import EmulateTab
+        from gui.tabs.emulate_tab import EmulateTab
         self.emulate_tab = EmulateTab(self.device_manager, self.command_executor, self.data_manager)
         self.tab_widget.addTab(self.emulate_tab, "🎭 Эмуляция")
         
         # Вкладка 6: СНИФИНГ
-        from .tabs.sniff_tab import SniffTab
+        from gui.tabs.sniff_tab import SniffTab
         self.sniff_tab = SniffTab(self.device_manager, self.command_executor, self.data_manager)
         self.tab_widget.addTab(self.sniff_tab, "📡 Снифинг")
         
         # Вкладка 7: СКРИПТЫ
-        from .tabs.scripts_tab import ScriptsTab
+        from gui.tabs.scripts_tab import ScriptsTab
         self.scripts_tab = ScriptsTab(self.device_manager, self.command_executor, self.data_manager, self.ai_assistant)
         self.tab_widget.addTab(self.scripts_tab, "📜 Скрипты")
         
         # Вкладка 8: ИНСТРУМЕНТЫ
-        from .tabs.tools_tab import ToolsTab
+        from gui.tabs.tools_tab import ToolsTab
         self.tools_tab = ToolsTab(self.device_manager, self.command_executor, self.data_manager)
         self.tab_widget.addTab(self.tools_tab, "🛠️ Инструменты")
         
         # Вкладка 9: НАСТРОЙКИ
-        from .tabs.settings_tab import SettingsTab
+        from gui.tabs.settings_tab import SettingsTab
         self.settings_tab = SettingsTab(self.device_manager, self.command_executor, self.data_manager)
         self.tab_widget.addTab(self.settings_tab, "⚙️ Настройки")
         
@@ -175,7 +178,7 @@ class MainWindow(QMainWindow):
         help_menu.addAction(docs_action)
         
         check_updates_action = QAction("🔄 Проверить обновления", self)
-        check_updates_action.triggered.connect(lambda: self.settings_tab.check_for_updates())
+        check_updates_action.triggered.connect(lambda: self.settings_tab.check_updates())
         help_menu.addAction(check_updates_action)
     
     def _create_status_bar(self):

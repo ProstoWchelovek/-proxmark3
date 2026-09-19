@@ -64,9 +64,13 @@ def main():
     from PyQt6.QtCore import Qt
     from PyQt6.QtGui import QFont
     
-    # Настройка приложения
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
+    # Настройка приложения (совместимость с PyQt6)
+    try:
+        QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
+        QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
+    except AttributeError:
+        # В новых версиях PyQt6 эти атрибуты не нужны
+        pass
     
     app = QApplication(sys.argv)
     app.setApplicationName("ProxMaster3 Easy")

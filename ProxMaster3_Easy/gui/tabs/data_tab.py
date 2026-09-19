@@ -7,8 +7,9 @@ Hex-редактор и управление дампами
 
 from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QPushButton, 
                              QHBoxLayout, QGroupBox, QSplitter, QFileDialog)
+from PyQt6.QtCore import Qt
 import logging
-from ..hex_editor import HexEditorWidget
+from gui.hex_editor import HexEditorWidget
 
 logger = logging.getLogger(__name__)
 

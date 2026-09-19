@@ -528,5 +528,16 @@ class AIAssistant:
             print(f"[AI] Ошибка загрузки конфигурации: {e}")
 
 
-# Глобальный экземпляр
-ai_assistant = AIAssistant()
+# Ленивая инициализация для предотвращения ошибок при импорте
+_ai_instance = None
+
+def get_ai_assistant():
+    """Получить экземпляр AIAssistant с ленивой инициализацией"""
+    global _ai_instance
+    if _ai_instance is None:
+        try:
+            _ai_instance = AIAssistant()
+        except Exception as e:
+            print(f"[AI] Ошибка инициализации: {e}")
+            return None
+    return _ai_instance

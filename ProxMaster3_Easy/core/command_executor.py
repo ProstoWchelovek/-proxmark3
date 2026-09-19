@@ -176,7 +176,7 @@ class CommandExecutor:
         query_lower = query.lower()
         results = []
         
-        for cmd in self.commands_config.get('commands', []):
+        for cmd in self.flat_commands:
             name = cmd.get('name', '').lower()
             description = cmd.get('description', '').lower()
             cmd_str = cmd.get('command', '').lower()
