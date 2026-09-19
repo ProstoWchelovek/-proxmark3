@@ -314,6 +314,11 @@ class ProxMasterApp:
         tab_device = ttk.Frame(self.notebook, style='Dark.TFrame')
         self.notebook.add(tab_device, text="⚙️ Устройство")
         self._create_device_tab(tab_device)
+        
+        # Вкладка 12: Настройки и обновления
+        tab_settings = ttk.Frame(self.notebook, style='Dark.TFrame')
+        self.notebook.add(tab_settings, text="🔧 Настройки")
+        self._create_settings_tab(tab_settings)
     
     def _create_search_tab(self, parent):
         """Вкладка поиска тегов"""
@@ -1381,7 +1386,486 @@ ID: {cmd_id}
     
     def _open_settings(self):
         """Открытие настроек"""
-        messagebox.showinfo("Настройки", "Окно настроек в разработке")
+        self.notebook.select(11)  # Переключаем на вкладку Настройки
+    
+    def _create_settings_tab(self, parent):
+        """Вкладка настроек и обновлений"""
+        # Создаем скролл для контента
+        canvas = tk.Canvas(parent, bg='#2b2b2b', highlightthickness=0)
+        scrollbar = ttk.Scrollbar(parent, orient="vertical", command=canvas.yview)
+        settings_frame = ttk.Frame(canvas, style='Dark.TFrame')
+        
+        settings_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+        )
+        
+        canvas.create_window((0, 0), window=settings_frame, anchor="nw")
+        canvas.configure(yscrollcommand=scrollbar.set)
+        
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+        
+        # Заголовок вкладки
+        title_frame = ttk.Frame(settings_frame, style='Dark.TFrame')
+        title_frame.pack(fill=tk.X, padx=20, pady=20)
+        
+        ttk.Label(title_frame, text="🔧 Настройки и обновления", 
+                 font=('Segoe UI', 16, 'bold'), style='Title.TLabel').pack(anchor='w')
+        ttk.Label(title_frame, text="Управление приложением, прошивкой и компонентами",
+                 font=('Segoe UI', 10)).pack(anchor='w', pady=5)
+        
+        # Разделитель
+        ttk.Separator(settings_frame, orient='horizontal').pack(fill=tk.X, padx=20, pady=10)
+        
+        # === Секция 1: Информация о приложении ===
+        app_info_frame = ttk.LabelFrame(settings_frame, text="📦 Информация о приложении", padding=15)
+        app_info_frame.pack(fill=tk.X, padx=20, pady=10)
+        
+        # Текущая версия
+        version_frame = ttk.Frame(app_info_frame)
+        version_frame.pack(fill=tk.X, pady=5)
+        
+        ttk.Label(version_frame, text="Текущая версия:", width=20).pack(side=tk.LEFT)
+        self.app_version_label = ttk.Label(version_frame, text="3.0.0", font=('Consolas', 10))
+        self.app_version_label.pack(side=tk.LEFT, padx=10)
+        
+        # Статус обновлений
+        update_status_frame = ttk.Frame(app_info_frame)
+        update_status_frame.pack(fill=tk.X, pady=5)
+        
+        ttk.Label(update_status_frame, text="Статус обновлений:", width=20).pack(side=tk.LEFT)
+        self.update_status_label = ttk.Label(update_status_frame, text="Не проверено", 
+                                            foreground='#ff9800')
+        self.update_status_label.pack(side=tk.LEFT, padx=10)
+        
+        # Кнопка проверки обновлений приложения
+        btn_frame = ttk.Frame(app_info_frame)
+        btn_frame.pack(fill=tk.X, pady=10)
+        
+        self.btn_check_app_update = ttk.Button(btn_frame, text="🔄 Проверить обновление приложения",
+                                               command=self._check_app_update)
+        self.btn_check_app_update.pack(side=tk.LEFT, padx=5)
+        
+        self.btn_install_app_update = ttk.Button(btn_frame, text="⬇️ Установить обновление",
+                                                 command=self._install_app_update, state=tk.DISABLED)
+        self.btn_install_app_update.pack(side=tk.LEFT, padx=5)
+        
+        # Прогресс бар для обновления приложения
+        self.app_update_progress = ttk.Progressbar(app_info_frame, mode='indeterminate')
+        self.app_update_progress.pack(fill=tk.X, pady=5)
+        
+        # Лог обновлений приложения
+        app_log_text = tk.Text(app_info_frame, height=4, wrap=tk.WORD, 
+                              font=('Consolas', 9), bg='#1e1e1e', fg='#ffffff')
+        app_log_text.pack(fill=tk.X, pady=5)
+        self.app_update_log = app_log_text
+        
+        # Разделитель
+        ttk.Separator(settings_frame, orient='horizontal').pack(fill=tk.X, padx=20, pady=10)
+        
+        # === Секция 2: ProxSpace ===
+        proxspace_frame = ttk.LabelFrame(settings_frame, text="🌐 ProxSpace (Gator96100)", padding=15)
+        proxspace_frame.pack(fill=tk.X, padx=20, pady=10)
+        
+        # Версия ProxSpace
+        ps_version_frame = ttk.Frame(proxspace_frame)
+        ps_version_frame.pack(fill=tk.X, pady=5)
+        
+        ttk.Label(ps_version_frame, text="Версия ProxSpace:", width=20).pack(side=tk.LEFT)
+        self.proxspace_version_label = ttk.Label(ps_version_frame, text="Не установлен", 
+                                                  font=('Consolas', 10))
+        self.proxspace_version_label.pack(side=tk.LEFT, padx=10)
+        
+        # Кнопки управления ProxSpace
+        ps_btn_frame = ttk.Frame(proxspace_frame)
+        ps_btn_frame.pack(fill=tk.X, pady=10)
+        
+        self.btn_install_proxspace = ttk.Button(ps_btn_frame, text="📥 Установить ProxSpace",
+                                                command=self._install_proxspace)
+        self.btn_install_proxspace.pack(side=tk.LEFT, padx=5)
+        
+        self.btn_update_proxspace = ttk.Button(ps_btn_frame, text="🔄 Обновить ProxSpace",
+                                               command=self._update_proxspace)
+        self.btn_update_proxspace.pack(side=tk.LEFT, padx=5)
+        
+        self.btn_open_proxspace = ttk.Button(ps_btn_frame, text="📂 Открыть папку",
+                                             command=self._open_proxspace_folder)
+        self.btn_open_proxspace.pack(side=tk.LEFT, padx=5)
+        
+        # Прогресс бар для ProxSpace
+        self.proxspace_progress = ttk.Progressbar(proxspace_frame, mode='indeterminate')
+        self.proxspace_progress.pack(fill=tk.X, pady=5)
+        
+        # Лог ProxSpace
+        ps_log_text = tk.Text(proxspace_frame, height=3, wrap=tk.WORD, 
+                             font=('Consolas', 9), bg='#1e1e1e', fg='#ffffff')
+        ps_log_text.pack(fill=tk.X, pady=5)
+        self.proxspace_log = ps_log_text
+        
+        # Разделитель
+        ttk.Separator(settings_frame, orient='horizontal').pack(fill=tk.X, padx=20, pady=10)
+        
+        # === Секция 3: Прошивка Iceman ===
+        firmware_frame = ttk.LabelFrame(settings_frame, text="💾 Прошивка Iceman (RfidResearchGroup)", padding=15)
+        firmware_frame.pack(fill=tk.X, padx=20, pady=10)
+        
+        # Версия прошивки
+        fw_version_frame = ttk.Frame(firmware_frame)
+        fw_version_frame.pack(fill=tk.X, pady=5)
+        
+        ttk.Label(fw_version_frame, text="Версия прошивки:", width=20).pack(side=tk.LEFT)
+        self.firmware_version_label = ttk.Label(firmware_version_frame, text="Не установлена", 
+                                                 font=('Consolas', 10))
+        self.firmware_version_label.pack(side=tk.LEFT, padx=10)
+        
+        # Кнопки управления прошивкой
+        fw_btn_frame = ttk.Frame(firmware_frame)
+        fw_btn_frame.pack(fill=tk.X, pady=10)
+        
+        self.btn_download_firmware = ttk.Button(fw_btn_frame, text="📥 Скачать прошивку",
+                                                command=self._download_firmware)
+        self.btn_download_firmware.pack(side=tk.LEFT, padx=5)
+        
+        self.btn_flash_firmware = ttk.Button(fw_btn_frame, text="⚡ Прошить устройство",
+                                             command=self._flash_firmware)
+        self.btn_flash_firmware.pack(side=tk.LEFT, padx=5)
+        
+        # Прогресс бар для прошивки
+        self.firmware_progress = ttk.Progressbar(firmware_frame, mode='indeterminate')
+        self.firmware_progress.pack(fill=tk.X, pady=5)
+        
+        # Лог прошивки
+        fw_log_text = tk.Text(firmware_frame, height=3, wrap=tk.WORD, 
+                             font=('Consolas', 9), bg='#1e1e1e', fg='#ffffff')
+        fw_log_text.pack(fill=tk.X, pady=5)
+        self.firmware_log = fw_log_text
+        
+        # Разделитель
+        ttk.Separator(settings_frame, orient='horizontal').pack(fill=tk.X, padx=20, pady=10)
+        
+        # === Секция 4: Changelog и Roadmap ===
+        roadmap_frame = ttk.LabelFrame(settings_frame, text="📋 История изменений и план разработки", padding=15)
+        roadmap_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=10)
+        
+        # Создаем Notebook для changelog и roadmap
+        roadmap_notebook = ttk.Notebook(roadmap_frame)
+        roadmap_notebook.pack(fill=tk.BOTH, expand=True)
+        
+        # Вкладка Changelog
+        changelog_tab = ttk.Frame(roadmap_notebook)
+        roadmap_notebook.add(changelog_tab, text="📜 История изменений")
+        
+        self.changelog_text = tk.Text(changelog_tab, wrap=tk.WORD, 
+                                     font=('Consolas', 9), bg='#1e1e1e', fg='#ffffff')
+        self.changelog_text.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+        
+        # Вкладка Roadmap
+        roadmap_tab = ttk.Frame(roadmap_notebook)
+        roadmap_notebook.add(roadmap_tab, text="🗺️ План разработки")
+        
+        roadmap_scroll = ttk.Scrollbar(roadmap_tab, orient=tk.VERTICAL)
+        self.roadmap_tree = ttk.Treeview(roadmap_tab, yscrollcommand=roadmap_scroll.set,
+                                        columns=("ID", "Название", "Статус", "Приоритет"),
+                                        show='headings', height=8)
+        roadmap_scroll.config(command=self.roadmap_tree.yview)
+        
+        self.roadmap_tree.heading("ID", text="ID")
+        self.roadmap_tree.heading("Название", text="Название")
+        self.roadmap_tree.heading("Статус", text="Статус")
+        self.roadmap_tree.heading("Приоритет", text="Приоритет")
+        
+        self.roadmap_tree.column("ID", width=50)
+        self.roadmap_tree.column("Название", width=300)
+        self.roadmap_tree.column("Статус", width=100)
+        self.roadmap_tree.column("Приоритет", width=100)
+        
+        self.roadmap_tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        roadmap_scroll.pack(side=tk.RIGHT, fill=tk.Y)
+        
+        # Вкладка Баги
+        bugs_tab = ttk.Frame(roadmap_notebook)
+        roadmap_notebook.add(bugs_tab, text="🐛 Известные проблемы")
+        
+        self.bugs_text = tk.Text(bugs_tab, wrap=tk.WORD, 
+                                font=('Consolas', 9), bg='#1e1e1e', fg='#ffffff')
+        self.bugs_text.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+        
+        # Загружаем данные roadmap
+        self._load_roadmap_data()
+    
+    def _load_roadmap_data(self):
+        """Загрузка данных из roadmap.json"""
+        try:
+            roadmap_path = os.path.join(self.base_dir, 'data', 'roadmap.json')
+            if os.path.exists(roadmap_path):
+                with open(roadmap_path, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                
+                # Заполняем changelog
+                changelog = data.get('changelog', [])
+                self.changelog_text.delete(1.0, tk.END)
+                for entry in changelog:
+                    version = entry.get('version', '?')
+                    date = entry.get('date', '?')
+                    changes = entry.get('changes', [])
+                    
+                    self.changelog_text.insert(tk.END, f"Версия {version} ({date})\n", 'heading')
+                    for change in changes:
+                        self.changelog_text.insert(tk.END, f"  • {change}\n")
+                    self.changelog_text.insert(tk.END, "\n")
+                
+                # Заполняем roadmap tree
+                planned = data.get('roadmap', {}).get('planned', [])
+                for item in planned:
+                    self.roadmap_tree.insert('', tk.END, values=(
+                        item.get('id', ''),
+                        item.get('title', ''),
+                        item.get('status', ''),
+                        item.get('priority', '')
+                    ))
+                
+                # Заполняем баги
+                bugs = data.get('roadmap', {}).get('bugs', [])
+                self.bugs_text.delete(1.0, tk.END)
+                for bug in bugs:
+                    bug_id = bug.get('id', '?')
+                    title = bug.get('title', '')
+                    desc = bug.get('description', '')
+                    severity = bug.get('severity', '')
+                    status = bug.get('status', '')
+                    
+                    self.bugs_text.insert(tk.END, f"[{bug_id}] {title}\n", 'heading')
+                    self.bugs_text.insert(tk.END, f"  Описание: {desc}\n")
+                    self.bugs_text.insert(tk.END, f"  Важность: {severity}, Статус: {status}\n\n")
+                
+                # Теги для форматирования
+                self.changelog_text.tag_configure('heading', font=('Consolas', 10, 'bold'), 
+                                                 foreground='#4caf50')
+                self.bugs_text.tag_configure('heading', font=('Consolas', 10, 'bold'), 
+                                            foreground='#f44336')
+            else:
+                self.changelog_text.insert(tk.END, "Файл roadmap.json не найден")
+                self.bugs_text.insert(tk.END, "Файл roadmap.json не найден")
+                
+        except Exception as e:
+            error_msg = f"Ошибка загрузки roadmap: {e}"
+            self.changelog_text.insert(tk.END, error_msg)
+            self.bugs_text.insert(tk.END, error_msg)
+    
+    def _check_app_update(self):
+        """Проверка обновления приложения"""
+        try:
+            from core.update_manager import UpdateChecker, UpdateWorker
+            
+            self.app_update_progress.start()
+            self.btn_check_app_update.config(state=tk.DISABLED)
+            self.app_update_log.delete(1.0, tk.END)
+            self.app_update_log.insert(tk.END, "Проверка обновления...\n")
+            
+            self.update_worker = UpdateWorker("check")
+            self.update_worker.checker.progress_update.connect(
+                lambda progress, msg: self.app_update_log.insert(tk.END, f"{msg}\n")
+            )
+            self.update_worker.checker.check_finished.connect(
+                self._on_update_check_complete
+            )
+            self.update_worker.checker.error_occurred.connect(
+                lambda err: self.app_update_log.insert(tk.END, f"Ошибка: {err}\n")
+            )
+            self.update_worker.start()
+            
+        except Exception as e:
+            self.app_update_log.insert(tk.END, f"Ошибка: {e}\n")
+            self.app_update_progress.stop()
+            self.btn_check_app_update.config(state=tk.NORMAL)
+    
+    def _on_update_check_complete(self, results):
+        """Обработка результатов проверки обновлений"""
+        self.app_update_progress.stop()
+        self.btn_check_app_update.config(state=tk.NORMAL)
+        
+        app_info = results.get('app', {})
+        current = app_info.get('current', '?')
+        latest = app_info.get('latest', '?')
+        available = app_info.get('update_available', False)
+        changelog = app_info.get('changelog', '')
+        
+        self.app_version_label.config(text=current)
+        
+        if available:
+            self.update_status_label.config(text=f"Доступна версия {latest}", foreground='#f44336')
+            self.app_update_log.insert(tk.END, f"\n✅ Доступно обновление: v{latest}\n")
+            self.app_update_log.insert(tk.END, f"Текущая версия: v{current}\n\n")
+            self.app_update_log.insert(tk.END, f"Изменения:\n{changelog}\n")
+            self.btn_install_app_update.config(state=tk.NORMAL)
+            self._pending_update_version = latest
+        else:
+            self.update_status_label.config(text="Обновлений нет", foreground='#4caf50')
+            self.app_update_log.insert(tk.END, "\n✅ Установлена актуальная версия\n")
+    
+    def _install_app_update(self):
+        """Установка обновления приложения"""
+        if not hasattr(self, '_pending_update_version'):
+            messagebox.showwarning("Предупреждение", "Сначала проверьте наличие обновлений")
+            return
+        
+        if messagebox.askyesno("Подтверждение", 
+                              f"Установить обновление v{self._pending_update_version}?\n"
+                              "Приложение будет перезапущено после установки."):
+            try:
+                from core.update_manager import UpdateWorker
+                
+                self.app_update_progress.start()
+                self.btn_install_app_update.config(state=tk.DISABLED)
+                self.app_update_log.insert(tk.END, "\nЗагрузка обновления...\n")
+                
+                self.update_worker = UpdateWorker("download_app", 
+                                                  {"version": self._pending_update_version})
+                self.update_worker.downloader.download_progress.connect(
+                    lambda progress, msg: self.app_update_log.insert(tk.END, f"{msg}\n")
+                )
+                self.update_worker.downloader.download_finished.connect(
+                    self._on_app_download_complete
+                )
+                self.update_worker.downloader.error_occurred.connect(
+                    lambda err: self.app_update_log.insert(tk.END, f"Ошибка: {err}\n")
+                )
+                self.update_worker.start()
+                
+            except Exception as e:
+                self.app_update_log.insert(tk.END, f"Ошибка: {e}\n")
+                self.app_update_progress.stop()
+                self.btn_install_app_update.config(state=tk.NORMAL)
+    
+    def _on_app_download_complete(self, archive_path):
+        """Завершение загрузки приложения"""
+        try:
+            from core.update_manager import UpdateWorker
+            
+            self.app_update_log.insert(tk.END, "\nУстановка обновления...\n")
+            
+            self.update_worker = UpdateWorker("install_app", {"path": archive_path})
+            self.update_worker.downloader.download_progress.connect(
+                lambda progress, msg: self.app_update_log.insert(tk.END, f"{msg}\n")
+            )
+            self.update_worker.downloader.download_finished.connect(
+                lambda msg: self._on_app_install_complete(msg)
+            )
+            self.update_worker.downloader.error_occurred.connect(
+                lambda err: self.app_update_log.insert(tk.END, f"Ошибка: {err}\n")
+            )
+            self.update_worker.start()
+            
+        except Exception as e:
+            self.app_update_log.insert(tk.END, f"Ошибка: {e}\n")
+            self.app_update_progress.stop()
+            self.btn_install_app_update.config(state=tk.NORMAL)
+    
+    def _on_app_install_complete(self, message):
+        """Завершение установки приложения"""
+        self.app_update_progress.stop()
+        self.btn_install_app_update.config(state=tk.NORMAL)
+        self.app_update_log.insert(tk.END, f"\n{message}\n")
+        
+        if "успешно" in message.lower() or "перезапустите" in message.lower():
+            if messagebox.askyesno("Перезапуск", "Перезапустить приложение сейчас?"):
+                self.root.destroy()
+                os.execl(sys.executable, sys.executable, *sys.argv)
+    
+    def _install_proxspace(self):
+        """Установка ProxSpace"""
+        try:
+            from core.update_manager import UpdateWorker
+            
+            self.proxspace_progress.start()
+            self.btn_install_proxspace.config(state=tk.DISABLED)
+            self.proxspace_log.delete(1.0, tk.END)
+            self.proxspace_log.insert(tk.END, "Установка ProxSpace...\n")
+            
+            self.update_worker = UpdateWorker("update_proxspace", {"version": "latest"})
+            self.update_worker.downloader.download_progress.connect(
+                lambda progress, msg: self.proxspace_log.insert(tk.END, f"{msg}\n")
+            )
+            self.update_worker.downloader.download_finished.connect(
+                lambda msg: self._on_proxspace_complete(msg)
+            )
+            self.update_worker.downloader.error_occurred.connect(
+                lambda err: self.proxspace_log.insert(tk.END, f"Ошибка: {err}\n")
+            )
+            self.update_worker.start()
+            
+        except Exception as e:
+            self.proxspace_log.insert(tk.END, f"Ошибка: {e}\n")
+            self.proxspace_progress.stop()
+            self.btn_install_proxspace.config(state=tk.NORMAL)
+    
+    def _update_proxspace(self):
+        """Обновление ProxSpace"""
+        self._install_proxspace()  # Используем тот же метод
+    
+    def _on_proxspace_complete(self, message):
+        """Завершение операции ProxSpace"""
+        self.proxspace_progress.stop()
+        self.btn_install_proxspace.config(state=tk.NORMAL)
+        self.proxspace_log.insert(tk.END, f"\n{message}\n")
+        
+        if "успешно" in message.lower():
+            self.proxspace_version_label.config(text="Установлен", foreground='#4caf50')
+    
+    def _open_proxspace_folder(self):
+        """Открытие папки ProxSpace"""
+        proxspace_path = os.path.join(self.base_dir, "proxspace")
+        if os.path.exists(proxspace_path):
+            os.startfile(proxspace_path) if sys.platform == 'win32' else subprocess.Popen(['xdg-open', proxspace_path])
+        else:
+            messagebox.showinfo("ProxSpace", "ProxSpace еще не установлен")
+    
+    def _download_firmware(self):
+        """Загрузка прошивки Iceman"""
+        try:
+            from core.update_manager import UpdateWorker
+            
+            self.firmware_progress.start()
+            self.btn_download_firmware.config(state=tk.DISABLED)
+            self.firmware_log.delete(1.0, tk.END)
+            self.firmware_log.insert(tk.END, "Загрузка прошивки Iceman...\n")
+            
+            self.update_worker = UpdateWorker("update_firmware", {"version": "latest"})
+            self.update_worker.downloader.download_progress.connect(
+                lambda progress, msg: self.firmware_log.insert(tk.END, f"{msg}\n")
+            )
+            self.update_worker.downloader.download_finished.connect(
+                lambda msg: self._on_firmware_complete(msg)
+            )
+            self.update_worker.downloader.error_occurred.connect(
+                lambda err: self.firmware_log.insert(tk.END, f"Ошибка: {err}\n")
+            )
+            self.update_worker.start()
+            
+        except Exception as e:
+            self.firmware_log.insert(tk.END, f"Ошибка: {e}\n")
+            self.firmware_progress.stop()
+            self.btn_download_firmware.config(state=tk.DISABLED)
+    
+    def _on_firmware_complete(self, message):
+        """Завершение операции с прошивкой"""
+        self.firmware_progress.stop()
+        self.btn_download_firmware.config(state=tk.NORMAL)
+        self.firmware_log.insert(tk.END, f"\n{message}\n")
+        
+        if "загружена" in message.lower():
+            self.firmware_version_label.config(text="Загружена", foreground='#4caf50')
+    
+    def _flash_firmware(self):
+        """Прошивка устройства"""
+        messagebox.showinfo("Прошивка", 
+                           "Для прошивки устройства:\n"
+                           "1. Подключите Proxmark3 по USB\n"
+                           "2. Переведите устройство в режим bootloader\n"
+                           "3. Используйте команду из вкладки 'Команды':\n"
+                           "   hw flash\n\n"
+                           "Будьте осторожны! Неправильная прошивка может вывести устройство из строя.")
     
     def _open_docs(self):
         """Открытие документации"""
