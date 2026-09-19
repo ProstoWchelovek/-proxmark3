@@ -1,53 +1,40 @@
 ```
-# Environment files
+# Python compiled files
+*.pyc
+__pycache__/
+
+# Build artifacts
+dist/
+build/
+*.o
+*.obj
+*.so
+*.dll
+*.a
+*.out
+
+# Dependencies
+node_modules/
+.venv/
+venv/
 .env
 .env.local
-*.env.*
+.env.*
 
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-
-# Editor/IDE files
+# IDE and editor files
 .vscode/
 .idea/
 *.swp
 *.swo
+*.tmp
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-*.so
-
-# Build artifacts
-build/
-dist/
-*.egg-info/
-
-# Dependencies
-.venv/
-venv/
-.env/
-
-# OS generated files
-.DS_Store
-Thumbs.db
+# Log files
+*.log
 
 # Coverage reports
 coverage/
 htmlcov/
 .coverage
-
-# MyPy cache
-.mypy_cache/
-
-# PyTest cache
-.pytest_cache/
 
 # Compressed files
 *.zip
@@ -72,4 +59,17 @@ htmlcov/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Proxmark3 specific build artifacts
+armsrc/*.o
+armsrc/*.elf
+armsrc/*.hex
+client/proxmark3
+client/*.exe
+client/*.dll
+client/*.so
 ```
