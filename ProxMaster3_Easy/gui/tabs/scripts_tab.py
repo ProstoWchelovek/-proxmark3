@@ -8,19 +8,21 @@ Node Editor и управление скриптами
 from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QPushButton, 
                              QTextEdit, QGroupBox, QHBoxLayout, QComboBox,
                              QSplitter, QFileDialog, QListWidget)
+from PyQt6.QtCore import Qt
 import logging
-from ..node_editor import ProxmasterNodeEditor as NodeEditorWidget
+from ..node_editor import ProxmasterNodeEditor
 
 logger = logging.getLogger(__name__)
 
 class ScriptsTab(QWidget):
     """Вкладка скриптов с Node Editor"""
     
-    def __init__(self, device_manager, command_executor, data_manager):
+    def __init__(self, device_manager, command_executor, data_manager, ai_assistant=None):
         super().__init__()
         self.device_manager = device_manager
         self.command_executor = command_executor
         self.data_manager = data_manager
+        self.ai_assistant = ai_assistant
         
         self.init_ui()
         
@@ -49,8 +51,9 @@ class ScriptsTab(QWidget):
         self.btn_open = QPushButton("📂 Открыть")
         self.btn_save = QPushButton("💾 Сохранить")
         self.btn_run = QPushButton("▶️ Выполнить")
+        self.btn_ai_gen = QPushButton("🤖 AI Генерация")
         
-        for btn in [self.btn_new, self.btn_open, self.btn_save, self.btn_run]:
+        for btn in [self.btn_new, self.btn_open, self.btn_save, self.btn_run, self.btn_ai_gen]:
             btn.clicked.connect(self.on_button_click)
             btn_layout.addWidget(btn)
         
@@ -64,7 +67,7 @@ class ScriptsTab(QWidget):
         splitter.addWidget(left_panel)
         
         # Правая панель - Node Editor
-        self.node_editor = NodeEditorWidget()
+        self.node_editor = ProxmasterNodeEditor(ai_assistant=self.ai_assistant)
         splitter.addWidget(self.node_editor)
         
         splitter.setStretchFactor(0, 1)
@@ -102,53 +105,40 @@ class ScriptsTab(QWidget):
             self.save_script()
         elif sender == self.btn_run:
             self.run_script()
+        elif sender == self.btn_ai_gen:
+            self.generate_with_ai()
     
     def new_script(self):
-        self.node_editor.clear()
+        self.node_editor.new_file()
         self.log_message("Создан новый скрипт")
     
     def open_script(self):
         file_path, _ = QFileDialog.getOpenFileName(
-            self, "Открыть скрипт", "", 
+            self, "Открыть скрипт", "scripts/", 
             "Lua Files (*.lua);;JavaScript Files (*.js);;All Files (*)"
         )
         if file_path:
             try:
                 with open(file_path, 'r', encoding='utf-8') as f:
                     content = f.read()
-                self.node_editor.set_content(content)
+                self.node_editor.set_code(content)
                 self.log_message(f"Открыт файл: {file_path}")
             except Exception as e:
                 self.log_message(f"Ошибка открытия: {e}")
     
     def save_script(self):
-        file_path, _ = QFileDialog.getSaveFileName(
-            self, "Сохранить скрипт", "", 
-            "Lua Files (*.lua);;JavaScript Files (*.js);;All Files (*)"
-        )
-        if file_path:
-            try:
-                content = self.node_editor.get_content()
-                with open(file_path, 'w', encoding='utf-8') as f:
-                    f.write(content)
-                self.log_message(f"Сохранен файл: {file_path}")
-                self.refresh_scripts_list()
-            except Exception as e:
-                self.log_message(f"Ошибка сохранения: {e}")
+        self.node_editor.save_file()
+        self.refresh_scripts_list()
     
     def run_script(self):
-        content = self.node_editor.get_content()
-        if not content.strip():
-            self.log_message("❌ Ошибка: Скрипт пуст")
-            return
-        
+        self.node_editor.run_script()
         self.log_message("Запуск скрипта...")
-        self.console_text.append("=" * 50)
-        
-        # Здесь будет вызов выполнения скрипта через command_executor
-        # В зависимости от типа скрипта (Lua или JS)
-        
-        self.log_message("Скрипт выполнен")
+    
+    def generate_with_ai(self):
+        if self.ai_assistant:
+            self.node_editor.generate_with_ai()
+        else:
+            self.log_message("AI помощник не подключен")
     
     def load_selected_script(self, item):
         script_name = item.text()
@@ -156,7 +146,7 @@ class ScriptsTab(QWidget):
         try:
             with open(script_path, 'r', encoding='utf-8') as f:
                 content = f.read()
-            self.node_editor.set_content(content)
+            self.node_editor.set_code(content)
             self.log_message(f"Загружен скрипт: {script_name}")
         except Exception as e:
             self.log_message(f"Ошибка загрузки: {e}")

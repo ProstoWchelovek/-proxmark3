@@ -17,6 +17,7 @@ from PyQt6.QtGui import QIcon, QFont, QActionGroup, QAction
 from ..core.device_manager import DeviceManager
 from ..core.command_executor import CommandExecutor
 from ..core.data_manager import DataManager
+from ..core.ai_assistant import AIAssistant
 
 logger = logging.getLogger(__name__)
 
@@ -27,13 +28,14 @@ class MainWindow(QMainWindow):
     status_changed = pyqtSignal(str)
     device_connected = pyqtSignal(bool)
     
-    def __init__(self):
+    def __init__(self, ai_enabled: bool = True):
         super().__init__()
         
         # Инициализация компонентов
         self.device_manager = DeviceManager()
         self.command_executor = CommandExecutor(self.device_manager)
         self.data_manager = DataManager()
+        self.ai_assistant = AIAssistant() if ai_enabled else None
         
         # Настройка окна
         self.setWindowTitle("ProxMaster3 Easy v2.0 - Proxmark3 Iceman GUI")
@@ -105,7 +107,7 @@ class MainWindow(QMainWindow):
         
         # Вкладка 7: СКРИПТЫ
         from .tabs.scripts_tab import ScriptsTab
-        self.scripts_tab = ScriptsTab(self.device_manager, self.command_executor, self.data_manager)
+        self.scripts_tab = ScriptsTab(self.device_manager, self.command_executor, self.data_manager, self.ai_assistant)
         self.tab_widget.addTab(self.scripts_tab, "📜 Скрипты")
         
         # Вкладка 8: ИНСТРУМЕНТЫ

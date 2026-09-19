@@ -19,6 +19,7 @@ class CommandExecutor:
     def __init__(self, device_manager: DeviceManager, config_path: Optional[str] = None):
         self.device = device_manager
         self.commands_config: Dict = {}
+        self.flat_commands: List[Dict] = []  # Плоский список всех команд
         self.config_path = config_path or 'commands.json'
         self.load_commands()
         
@@ -30,7 +31,26 @@ class CommandExecutor:
             with open(path, 'r', encoding='utf-8') as f:
                 self.commands_config = json.load(f)
             
-            logger.info(f"Загружено {len(self.commands_config.get('commands', []))} команд из {path}")
+            # Разворачиваем структуру tabs/categories/commands в плоский список
+            self.flat_commands = []
+            tabs = self.commands_config.get('tabs', {})
+            for tab_name, tab_data in tabs.items():
+                # Прямые команды вкладки
+                if 'commands' in tab_data:
+                    for cmd in tab_data['commands']:
+                        cmd['tab'] = tab_name
+                        self.flat_commands.append(cmd)
+                
+                # Команды по категориям
+                if 'categories' in tab_data:
+                    for cat_name, cat_data in tab_data['categories'].items():
+                        if 'commands' in cat_data:
+                            for cmd in cat_data['commands']:
+                                cmd['tab'] = tab_name
+                                cmd['category'] = cat_name
+                                self.flat_commands.append(cmd)
+            
+            logger.info(f"Загружено {len(self.flat_commands)} команд из {path}")
             return True
             
         except FileNotFoundError:
@@ -45,7 +65,7 @@ class CommandExecutor:
     
     def get_command_by_id(self, command_id: str) -> Optional[Dict]:
         """Получить команду по ID"""
-        for cmd in self.commands_config.get('commands', []):
+        for cmd in self.flat_commands:
             if cmd.get('id') == command_id:
                 return cmd
         return None
@@ -53,17 +73,28 @@ class CommandExecutor:
     def get_commands_by_category(self, category: str) -> List[Dict]:
         """Получить все команды категории"""
         return [
-            cmd for cmd in self.commands_config.get('commands', [])
+            cmd for cmd in self.flat_commands
             if cmd.get('category') == category
+        ]
+    
+    def get_commands_by_tab(self, tab_name: str) -> List[Dict]:
+        """Получить все команды вкладки"""
+        return [
+            cmd for cmd in self.flat_commands
+            if cmd.get('tab') == tab_name
         ]
     
     def get_all_categories(self) -> List[str]:
         """Получить список всех категорий"""
         categories = set()
-        for cmd in self.commands_config.get('commands', []):
+        for cmd in self.flat_commands:
             if 'category' in cmd:
                 categories.add(cmd['category'])
         return sorted(list(categories))
+    
+    def get_all_tabs(self) -> List[str]:
+        """Получить список всех вкладок"""
+        return list(self.commands_config.get('tabs', {}).keys())
     
     def execute_command(self, command_id: str, parameters: Optional[Dict] = None) -> Tuple[bool, str]:
         """
