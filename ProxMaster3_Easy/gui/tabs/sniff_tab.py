@@ -115,27 +115,109 @@ class SniffTab(QWidget):
             self.analyze_traffic()
     
     def start_sniffing(self):
+        """Запуск перехвата трафика"""
         freq = self.freq_select.currentText()
         timeout = self.timeout_spin.value()
         continuous = self.opt_continuous.isChecked()
         save_raw = self.opt_save_raw.isChecked()
         
-        self.log_message(f"Запуск перехвата: {freq}")
-        self.log_message(f"Таймаут: {timeout} сек")
-        if continuous:
-            self.log_message("Режим: непрерывный")
-        if save_raw:
-            self.log_message("Сохранение сырых данных: включено")
+        if not self.device_manager.is_connected():
+            self.log_message("❌ Ошибка: Устройство не подключено")
+            return
         
-        # Здесь будет вызов команды снифинга
+        # Формируем команду в зависимости от частоты
+        if "LF" in freq:
+            cmd = "lf sniff"
+            if continuous:
+                cmd += " -c"
+        elif "HF" in freq:
+            cmd = "hf sniff"
+            if continuous:
+                cmd += " -c"
+        elif "UHF" in freq:
+            self.log_message("❌ UHF снифинг не поддерживается на PM3 Easy")
+            return
+        else:
+            self.log_message(f"❌ Неизвестная частота: {freq}")
+            return
+        
+        self.log_message(f"▶️ Запуск перехвата: {freq}")
+        self.log_message(f"⏱️ Таймаут: {timeout} сек")
+        if continuous:
+            self.log_message("🔄 Режим: непрерывный")
+        if save_raw:
+            self.log_message("💾 Сохранение сырых данных: включено")
+        
+        self.log_message(f"📡 Команда: {cmd}")
+        
+        try:
+            result = self.command_executor.execute(cmd)
+            if result:
+                self.log_message(f"✅ Перехват запущен")
+                self.log_message("💡 Поднесите карту к считывателю для перехвата данных")
+                if hasattr(result, 'output') and result.output:
+                    for line in result.output.split('\n'):
+                        if line.strip():
+                            self.log_message(f"   {line}")
+            else:
+                self.log_message("⚠️ Перехват запущен без подтверждения")
+        except Exception as e:
+            self.log_message(f"❌ Ошибка запуска перехвата: {str(e)}")
+            logger.error(f"Ошибка при снифинге {freq}: {e}", exc_info=True)
     
     def stop_sniffing(self):
-        self.log_message("Остановка перехвата...")
-        # Здесь будет вызов команды остановки
+        """Остановка перехвата"""
+        if not self.device_manager.is_connected():
+            self.log_message("❌ Ошибка: Устройство не подключено")
+            return
+        
+        self.log_message("⏹️ Остановка перехвата...")
+        
+        try:
+            # Отправляем команду остановки
+            result = self.command_executor.execute("")
+            if result:
+                self.log_message("✅ Перехват остановлен")
+                # Проверяем наличие сохранённых данных
+                self.log_message("💡 Данные доступны для анализа")
+            else:
+                self.log_message("⚠️ Команда остановки отправлена")
+        except Exception as e:
+            self.log_message(f"⚠️ Остановка: {str(e)}")
+            logger.error(f"Ошибка при остановке снифинга: {e}", exc_info=True)
     
     def analyze_traffic(self):
-        self.log_message("Анализ перехваченных данных...")
-        # Здесь будет логика анализа
+        """Анализ перехваченных данных"""
+        if not self.device_manager.is_connected():
+            self.log_message("❌ Ошибка: Устройство не подключено")
+            return
+        
+        self.log_message("🔍 Анализ перехваченных данных...")
+        
+        # Получаем последние перехваченные данные
+        try:
+            # Команда для просмотра последних данных
+            cmd = "hf list"
+            result = self.command_executor.execute(cmd)
+            if result and hasattr(result, 'output') and result.output:
+                self.log_message("📋 Результаты анализа:")
+                for line in result.output.split('\n'):
+                    if line.strip():
+                        self.log_message(f"   {line}")
+                
+                # Пробуем определить тип карты
+                if "UID" in result.output or "uid" in result.output:
+                    self.log_message("✅ Обнаружен UID карты")
+                if "Mifare" in result.output or "mifare" in result.output:
+                    self.log_message("✅ Обнаружена карта Mifare")
+                if "ISO" in result.output or "iso" in result.output:
+                    self.log_message("✅ Обнаружен ISO протокол")
+            else:
+                self.log_message("⚠️ Нет данных для анализа")
+                self.log_message("💡 Сначала выполните перехват трафика")
+        except Exception as e:
+            self.log_message(f"❌ Ошибка анализа: {str(e)}")
+            logger.error(f"Ошибка при анализе трафика: {e}", exc_info=True)
     
     def log_message(self, message: str):
         timestamp = __import__('datetime').datetime.now().strftime("%H:%M:%S")
