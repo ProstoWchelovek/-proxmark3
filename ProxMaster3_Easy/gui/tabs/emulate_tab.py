@@ -125,21 +125,92 @@ class EmulateTab(QWidget):
             self.stop_emulation()
     
     def start_emulation(self):
+        """Запуск эмуляции карты"""
         emul_type = self.emul_type.currentText()
         uid = self.uid_input.text().strip()
         dump = self.dump_file.text().strip()
         
-        self.log_message(f"Запуск эмуляции: {emul_type}")
-        if uid:
-            self.log_message(f"UID: {uid}")
-        if dump:
-            self.log_message(f"Дамп: {dump}")
+        if not self.device_manager.is_connected():
+            self.log_message("❌ Ошибка: Устройство не подключено")
+            return
         
-        # Здесь будет вызов команды эмуляции
+        # Формируем команду в зависимости от типа эмуляции
+        if emul_type == "Mifare Classic":
+            if dump:
+                cmd = f"hf mf eload -f {dump}"
+            elif uid:
+                cmd = f"hf mf sim -u {uid}"
+            else:
+                cmd = "hf mf sim"
+        elif emul_type == "Mifare Ultralight":
+            if dump:
+                cmd = f"hf mfu eload -f {dump}"
+            else:
+                cmd = "hf mfu sim"
+        elif emul_type == "EM410x (LF)":
+            if uid:
+                cmd = f"lf em410x sim -u {uid}"
+            else:
+                cmd = "lf em410x sim"
+        elif emul_type == "T55xx (LF)":
+            if dump:
+                cmd = f"lf t55xx sim -f {dump}"
+            else:
+                cmd = "lf t55xx sim"
+        elif emul_type == "iClass":
+            if dump:
+                cmd = f"hf iclass sim -f {dump}"
+            else:
+                cmd = "hf iclass sim"
+        elif emul_type == "LEGIC":
+            cmd = "hf legic sim"
+        elif emul_type == "FeliCa":
+            cmd = "hf felica sim"
+        else:
+            self.log_message(f"❌ Неизвестный тип эмуляции: {emul_type}")
+            return
+        
+        self.log_message(f"▶️ Запуск эмуляции: {emul_type}")
+        if uid:
+            self.log_message(f"📋 UID: {uid}")
+        if dump:
+            self.log_message(f"📂 Дамп: {dump}")
+        self.log_message(f"📡 Команда: {cmd}")
+        
+        try:
+            result = self.command_executor.execute(cmd)
+            if result:
+                self.log_message(f"✅ Эмуляция запущена")
+                self.log_message("💡 Поднесите карту к считывателю")
+                if hasattr(result, 'output') and result.output:
+                    for line in result.output.split('\n'):
+                        if line.strip():
+                            self.log_message(f"   {line}")
+            else:
+                self.log_message("⚠️ Эмуляция запущена без подтверждения")
+        except Exception as e:
+            self.log_message(f"❌ Ошибка запуска эмуляции: {str(e)}")
+            logger.error(f"Ошибка при эмуляции {emul_type}: {e}", exc_info=True)
     
     def stop_emulation(self):
-        self.log_message("Остановка эмуляции...")
-        # Здесь будет вызов команды остановки
+        """Остановка эмуляции"""
+        if not self.device_manager.is_connected():
+            self.log_message("❌ Ошибка: Устройство не подключено")
+            return
+        
+        # Отправляем команду остановки (Ctrl+C или hf tune)
+        self.log_message("⏹️ Остановка эмуляции...")
+        
+        try:
+            # Пробуем отправить команду остановки
+            result = self.command_executor.execute("hf tune")
+            if result:
+                self.log_message("✅ Эмуляция остановлена")
+            else:
+                self.log_message("⚠️ Команда остановки отправлена")
+        except Exception as e:
+            self.log_message(f"⚠️ Остановка: {str(e)}")
+            logger.error(f"Ошибка при остановке эмуляции: {e}", exc_info=True)
     
     def log_message(self, message: str):
         timestamp = __import__('datetime').datetime.now().strftime("%H:%M:%S")
