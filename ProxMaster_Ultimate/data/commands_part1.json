@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "author": "ProxMaster Ultimate",
+    "description": "База команд Proxmark3 - Часть 1 (HF Поиск и Чтение)",
+    "last_updated": "2024-01-15"
+  },
+  "categories": [
+    {"id": "hf_search", "name": "HF Поиск", "description": "Поиск и чтение HF карт (13.56 MHz)"},
+    {"id": "hf_mifare", "name": "Mifare Classic", "description": "Работа с Mifare Classic"},
+    {"id": "hf_desfire", "name": "Mifare DESFire", "description": "Работа с Mifare DESFire"},
+    {"id": "hf_ultralight", "name": "Mifare Ultralight", "description": "Работа с Mifare Ultralight"},
+    {"id": "hf_legic", "name": "LEGIC", "description": "Работа с LEGIC картами"},
+    {"id": "hf_iso14443a", "name": "ISO14443-A", "description": "ISO14443 Type A"},
+    {"id": "hf_iso14443b", "name": "ISO14443-B", "description": "ISO14443 Type B"},
+    {"id": "hf_iso15693", "name": "ISO15693", "description": "ISO15693 карты"},
+    {"id": "hf_ndef", "name": "NDEF", "description": "NDEF сообщения"},
+    {"id": "hf_felica", "name": "FeliCa", "description": "Sony FeliCa карты"},
+    {"id": "hf_jewel", "name": "Jewel", "description": "Innovision Jewel карты"},
+    {"id": "hf_topaz", "name": "Topaz", "description": "Broadcom Topaz карты"}
+  ],
+  "commands": [
+    {"id": "hf_search", "category": "hf_search", "name": "Поиск всех HF карт", "description": "Поиск всех типов карт в поле антенны на высокой частоте (13.56 MHz)", "template": "hf search", "risk_level": "safe", "timeout": 15000, "parameters": [], "examples": ["hf search"], "tips": ["Убедитесь, что карта находится близко к антенне", "Может занять до 15 секунд"]},
+    {"id": "hf_search_verbose", "category": "hf_search", "name": "Поиск HF с подробным выводом", "description": "Поиск HF карт с детальным выводом информации о каждой найденной карте", "template": "hf search -v", "risk_level": "safe", "timeout": 20000, "parameters": [], "examples": ["hf search -v"], "tips": ["Используйте для получения полной информации о карте"]},
+    {"id": "hf_list", "category": "hf_search", "name": "Список последних HF операций", "description": "Отображение списка последних операций с HF картами", "template": "hf list", "risk_level": "safe", "timeout": 5000, "parameters": [], "examples": ["hf list"], "tips": ["Полезно для отладки"]},
+    {"id": "hf_reader_select", "category": "hf_search", "name": "Выбор карты читателем", "description": "Выбор карты с использованием стандартного протокола выбора", "template": "hf reader select", "risk_level": "safe", "timeout": 10000, "parameters": [], "examples": ["hf reader select"], "tips": ["Стандартная процедура выбора карты ISO14443"]},
+    {"id": "hf_scan", "category": "hf_search", "name": "Сканирование HF поля", "description": "Сканирование HF поля для обнаружения карт", "template": "hf scan", "risk_level": "safe", "timeout": 10000, "parameters": [], "examples": ["hf scan"], "tips": ["Быстрое сканирование наличия карт"]},
+    {"id": "hf_info", "category": "hf_search", "name": "Информация о выбранной карте", "description": "Получение подробной информации о выбранной карте", "template": "hf info", "risk_level": "safe", "timeout": 10000, "parameters": [], "examples": ["hf info"], "tips": ["Показывает все доступные данные о карте"]},
+    {"id": "hf_turntable", "category": "hf_search", "name": "Поворотная таблица HF", "description": "Автоматическое определение типа HF карты через перебор протоколов", "template": "hf turntable", "risk_level": "safe", "timeout": 30000, "parameters": [], "examples": ["hf turntable"], "tips": ["Последовательно пробует все протоколы"]},
+    {"id": "hf_trace", "category": "hf_search", "name": "Трассировка HF", "description": "Запись трассировки обмена данными с HF картой", "template": "hf trace", "risk_level": "safe", "timeout": 60000, "parameters": [], "examples": ["hf trace"], "tips": ["Сохраняет полную трассировку в буфер"]},
+    {"id": "hf_clear_trace", "category": "hf_search", "name": "Очистка трассировки", "description": "Очистка буфера трассировки HF", "template": "hf trace clear", "risk_level": "safe", "timeout": 2000, "parameters": [], "examples": ["hf trace clear"], "tips": ["Очищает буфер перед новой записью"]},
+    {"id": "hf_get_trace", "category": "hf_search", "name": "Получение трассировки", "description": "Получение сохраненной трассировки HF обмена", "template": "hf trace get", "risk_level": "safe", "timeout": 10000, "parameters": [], "examples": ["hf trace get"], "tips": ["Выводит сохраненную трассировку"]},
+    {"id": "hf_save_trace", "category": "hf_search", "name": "Сохранение трассировки", "description": "Сохранение трассировки HF в файл", "template": "hf trace save <filename>", "risk_level": "safe", "timeout": 5000, "parameters": [{"name": "filename", "type": "string", "required": true, "description": "Имя файла для сохранения"}], "examples": ["hf trace save trace1.bin"], "tips": ["Сохраняет в формате bin"]},
+    {"id": "hf_load_trace", "category": "hf_search", "name": "Загрузка трассировки", "description": "Загрузка трассировки HF из файла", "template": "hf trace load <filename>", "risk_level": "safe", "timeout": 5000, "parameters": [{"name": "filename", "type": "string", "required": true, "description": "Имя файла для загрузки"}], "examples": ["hf trace load trace1.bin"], "tips": ["Загружает ранее сохраненную трассировку"]},
+    {"id": "hf_replay", "category": "hf_search", "name": "Повтор трассировки", "description": "Повтор воспроизведения сохраненной трассировки", "template": "hf trace replay", "risk_level": "medium", "timeout": 30000, "parameters": [], "examples": ["hf trace replay"], "tips": ["Воспроизводит команды из трассировки"]},
+    {"id": "hf_analyzer", "category": "hf_search", "name": "Анализ HF сигнала", "description": "Анализ качества и параметров HF сигнала", "template": "hf analyzer", "risk_level": "safe", "timeout": 15000, "parameters": [], "examples": ["hf analyzer"], "tips": ["Показывает амплитуду, частоту, модуляцию"]},
+    {"id": "hf_analyzer_mod", "category": "hf_search", "name": "Анализ модуляции HF", "description": "Анализ типа модуляции HF сигнала", "template": "hf analyzer mod", "risk_level": "safe", "timeout": 15000, "parameters": [], "examples": ["hf analyzer mod"], "tips": ["Определяет ASK, FSK, PSK модуляцию"]}
+  ]
+}

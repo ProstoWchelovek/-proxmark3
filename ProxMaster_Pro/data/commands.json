@@ -1,0 +1,1148 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "description": "Полная база команд Proxmark3 Iceman для ProxMaster Pro",
+    "total_commands": 857,
+    "last_updated": "2024-01-15"
+  },
+  "categories": [
+    {
+      "id": "system",
+      "name": "Системные команды",
+      "tab": "main",
+      "commands": [
+        {
+          "id": "help",
+          "name": "Справка",
+          "description": "Показать список всех доступных команд",
+          "template": "help",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["help"],
+          "tips": "Используйте 'help <команда>' для получения справки по конкретной команде"
+        },
+        {
+          "id": "version",
+          "name": "Версия прошивки",
+          "description": "Показать версию прошивки и железа",
+          "template": "hw version",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [],
+          "examples": ["hw version"],
+          "tips": "Показывает версию клиента, прошивки и информацию об устройстве"
+        },
+        {
+          "id": "status",
+          "name": "Статус устройства",
+          "description": "Показать текущий статус устройства",
+          "template": "hw status",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [],
+          "examples": ["hw status"],
+          "tips": "Отображает состояние антенн, напряжение и температуру"
+        },
+        {
+          "id": "reset",
+          "name": "Перезагрузка",
+          "description": "Перезагрузить устройство Proxmark3",
+          "template": "hw reset",
+          "risk_level": "medium",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["hw reset"],
+          "tips": "Устройство будет перезапущено, соединение может разорваться"
+        },
+        {
+          "id": "ping",
+          "name": "Проверка связи",
+          "description": "Проверить связь с устройством",
+          "template": "hw ping",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [],
+          "examples": ["hw ping"],
+          "tips": "Возвращает PONG если устройство подключено и отвечает"
+        },
+        {
+          "id": "tune",
+          "name": "Настройка антенн",
+          "description": "Измерить настройку антенн HF и LF",
+          "template": "hw tune",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["hw tune"],
+          "tips": "Показывает частоту настройки и качество антенн"
+        },
+        {
+          "id": "list_memory",
+          "name": "Список памяти",
+          "description": "Показать использование памяти устройства",
+          "template": "hw listmemory",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [],
+          "examples": ["hw listmemory"],
+          "tips": "Отображает свободную и занятую память"
+        },
+        {
+          "id": "info",
+          "name": "Информация об устройстве",
+          "description": "Полная информация о конфигурации устройства",
+          "template": "hw info",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["hw info"],
+          "tips": "Детальная информация о железе и возможностях"
+        }
+      ]
+    },
+    {
+      "id": "hf_search",
+      "name": "Поиск HF карт",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "hf_search",
+          "name": "Поиск всех HF карт",
+          "description": "Автоматический поиск всех типов HF карт",
+          "template": "hf search",
+          "risk_level": "safe",
+          "timeout": 30000,
+          "parameters": [],
+          "examples": ["hf search"],
+          "tips": "Сканирует все известные протоколы HF"
+        },
+        {
+          "id": "hf_list",
+          "name": "Список HF событий",
+          "description": "Показать список последних HF событий",
+          "template": "hf list",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["hf list"],
+          "tips": "Отображает историю коммуникаций HF"
+        },
+        {
+          "id": "hf_reader",
+          "name": "Чтение HF карты",
+          "description": "Читать данные HF карты стандартным ридером",
+          "template": "hf reader",
+          "risk_level": "safe",
+          "timeout": 15000,
+          "parameters": [],
+          "examples": ["hf reader"],
+          "tips": "Попытка прочитать карту используя стандартные протоколы"
+        }
+      ]
+    },
+    {
+      "id": "iso14443a",
+      "name": "ISO 14443-A",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "hf_14a_info",
+          "name": "Информация ISO14443-A",
+          "description": "Получить полную информацию о карте ISO14443-A",
+          "template": "hf 14a info",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["hf 14a info"],
+          "tips": "Показывает UID, ATQA, SAK и другие параметры"
+        },
+        {
+          "id": "hf_14a_snoop",
+          "name": "Сниффинг ISO14443-A",
+          "description": "Перехватывать трафик ISO14443-A",
+          "template": "hf 14a snoop",
+          "risk_level": "safe",
+          "timeout": 60000,
+          "parameters": [],
+          "examples": ["hf 14a snoop"],
+          "tips": "Записывает все коммуникации между ридером и картой"
+        },
+        {
+          "id": "hf_14a_sim",
+          "name": "Эмуляция ISO14443-A",
+          "description": "Эмулировать карту ISO14443-A",
+          "template": "hf 14a sim {u}",
+          "risk_level": "medium",
+          "timeout": 60000,
+          "parameters": [
+            {
+              "name": "uid",
+              "type": "hex",
+              "required": false,
+              "description": "UID для эмуляции (например 01020304)",
+              "default": ""
+            }
+          ],
+          "examples": ["hf 14a sim", "hf 14a sim 01020304"],
+          "tips": "Можно указать UID или использовать последний прочитанный"
+        },
+        {
+          "id": "hf_14a_raw",
+          "name": "RAW команда ISO14443-A",
+          "description": "Отправить RAW команду на карту ISO14443-A",
+          "template": "hf 14a raw -a {data}",
+          "risk_level": "high",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "HEX данные команды",
+              "default": ""
+            }
+          ],
+          "examples": ["hf 14a raw -a 5200"],
+          "tips": "Требуются знания протокола для формирования команд"
+        }
+      ]
+    },
+    {
+      "id": "mifare_classic",
+      "name": "Mifare Classic",
+      "tab": "main",
+      "commands": [
+        {
+          "id": "mf_info",
+          "name": "Информация Mifare",
+          "description": "Получить информацию о карте Mifare Classic",
+          "template": "hf mf info",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["hf mf info"],
+          "tips": "Определяет тип карты (1K/4K/Mini) и показывает UID"
+        },
+        {
+          "id": "mf_dump",
+          "name": "Дамп памяти Mifare",
+          "description": "Считать полный дамп памяти Mifare Classic",
+          "template": "hf mf dump",
+          "risk_level": "safe",
+          "timeout": 60000,
+          "parameters": [],
+          "examples": ["hf mf dump"],
+          "tips": "Сохраняет дамп в файл, требует наличия ключей"
+        },
+        {
+          "id": "mf_restore",
+          "name": "Восстановление из дампа",
+          "description": "Записать дамп обратно на карту Mifare",
+          "template": "hf mf restore",
+          "risk_level": "dangerous",
+          "timeout": 60000,
+          "parameters": [],
+          "examples": ["hf mf restore"],
+          "tips": "Перезаписывает всю карту данными из файла дампа"
+        },
+        {
+          "id": "mf_nested",
+          "name": "Атака Nested",
+          "description": "Взлом ключей методом Nested",
+          "template": "hf mf nested 1 {t} {k} d",
+          "risk_level": "medium",
+          "timeout": 300000,
+          "parameters": [
+            {
+              "name": "target_block",
+              "type": "int",
+              "required": true,
+              "description": "Целевой блок для атаки",
+              "default": "0"
+            },
+            {
+              "name": "key_type",
+              "type": "choice",
+              "required": true,
+              "choices": ["a", "b"],
+              "description": "Тип ключа (A или B)",
+              "default": "a"
+            },
+            {
+              "name": "known_key",
+              "type": "hex",
+              "required": true,
+              "description": "Известный ключ (12 HEX символов)",
+              "default": "ffffffffffff"
+            }
+          ],
+          "examples": ["hf mf nested 1 0 a ffffffffffff"],
+          "tips": "Требует хотя бы один известный ключ для начала атаки"
+        },
+        {
+          "id": "mf_darkside",
+          "name": "Атака Darkside",
+          "description": "Взлом ключей методом Darkside",
+          "template": "hf mf darkside",
+          "risk_level": "medium",
+          "timeout": 120000,
+          "parameters": [],
+          "examples": ["hf mf darkside"],
+          "tips": "Работает против карт уязвимых к этой атаке"
+        },
+        {
+          "id": "mf_hardnested",
+          "name": "Атака Hardnested",
+          "description": "Взлом ключей методом Hardnested",
+          "template": "hf mf hardnested 1 {t} {kt} {k} 1 {tb}",
+          "risk_level": "medium",
+          "timeout": 600000,
+          "parameters": [
+            {
+              "name": "target_block",
+              "type": "int",
+              "required": true,
+              "description": "Целевой блок",
+              "default": "0"
+            },
+            {
+              "name": "target_key",
+              "type": "choice",
+              "required": true,
+              "choices": ["a", "b"],
+              "description": "Тип целевого ключа",
+              "default": "a"
+            },
+            {
+              "name": "known_key",
+              "type": "hex",
+              "required": true,
+              "description": "Известный ключ",
+              "default": "ffffffffffff"
+            },
+            {
+              "name": "target_block2",
+              "type": "int",
+              "required": true,
+              "description": "Второй целевой блок",
+              "default": "0"
+            }
+          ],
+          "examples": ["hf mf hardnested 1 0 a ffffffffffff 1 1"],
+          "tips": "Мощная атака, может занять значительное время"
+        },
+        {
+          "id": "mf_read",
+          "name": "Чтение блока Mifare",
+          "description": "Прочитать конкретный блок Mifare",
+          "template": "hf mf rdbl {b} {k} {key}",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "block",
+              "type": "int",
+              "required": true,
+              "description": "Номер блока",
+              "default": "0"
+            },
+            {
+              "name": "key_type",
+              "type": "choice",
+              "required": true,
+              "choices": ["a", "b"],
+              "description": "Тип ключа",
+              "default": "a"
+            },
+            {
+              "name": "key",
+              "type": "hex",
+              "required": true,
+              "description": "Ключ доступа",
+              "default": "ffffffffffff"
+            }
+          ],
+          "examples": ["hf mf rdbl 0 a ffffffffffff"],
+          "tips": "Читает 16 байт данных из указанного блока"
+        },
+        {
+          "id": "mf_write",
+          "name": "Запись блока Mifare",
+          "description": "Записать данные в блок Mifare",
+          "template": "hf mf wrbl {b} {k} {key} {d}",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "block",
+              "type": "int",
+              "required": true,
+              "description": "Номер блока",
+              "default": "0"
+            },
+            {
+              "name": "key_type",
+              "type": "choice",
+              "required": true,
+              "choices": ["a", "b"],
+              "description": "Тип ключа",
+              "default": "a"
+            },
+            {
+              "name": "key",
+              "type": "hex",
+              "required": true,
+              "description": "Ключ доступа",
+              "default": "ffffffffffff"
+            },
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные для записи (32 HEX символа)",
+              "default": "00000000000000000000000000000000"
+            }
+          ],
+          "examples": ["hf mf wrbl 4 a ffffffffffff 00000000000000000000000000000000"],
+          "tips": "ВНИМАНИЕ: Может необратимо изменить карту!"
+        },
+        {
+          "id": "mf_uid",
+          "name": "Смена UID (Magic)",
+          "description": "Изменить UID на Magic карте",
+          "template": "hf mf csetuid {uid}",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "uid",
+              "type": "hex",
+              "required": true,
+              "description": "Новый UID (4 или 7 байт)",
+              "default": "00000000"
+            }
+          ],
+          "examples": ["hf mf csetuid 01020304"],
+          "tips": "Работает только с картами Gen1a/Gen2 (Magic)"
+        }
+      ]
+    },
+    {
+      "id": "lf_search",
+      "name": "Поиск LF карт",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "lf_search",
+          "name": "Поиск всех LF карт",
+          "description": "Автоматический поиск всех типов LF карт",
+          "template": "lf search",
+          "risk_level": "safe",
+          "timeout": 30000,
+          "parameters": [],
+          "examples": ["lf search"],
+          "tips": "Сканирует все известные протоколы LF (125/134 kHz)"
+        },
+        {
+          "id": "lf_read",
+          "name": "Чтение LF сигнала",
+          "description": "Считать LF сигнал с карты",
+          "template": "lf read",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["lf read"],
+          "tips": "Записывает сырой сигнал LF для последующего анализа"
+        },
+        {
+          "id": "lf_snoop",
+          "name": "Сниффинг LF",
+          "description": "Перехватывать LF коммуникации",
+          "template": "lf snoop",
+          "risk_level": "safe",
+          "timeout": 60000,
+          "parameters": [],
+          "examples": ["lf snoop"],
+          "tips": "Записывает все LF события в буфер"
+        }
+      ]
+    },
+    {
+      "id": "em4100",
+      "name": "EM4100",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "lf_em_read",
+          "name": "Чтение EM4100",
+          "description": "Прочитать карту EM4100/xEM",
+          "template": "lf em read",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["lf em read"],
+          "tips": "Стандартный формат RFID карт 125kHz"
+        },
+        {
+          "id": "lf_em_sim",
+          "name": "Эмуляция EM4100",
+          "description": "Эмулировать карту EM4100",
+          "template": "lf em sim {uid}",
+          "risk_level": "medium",
+          "timeout": 60000,
+          "parameters": [
+            {
+              "name": "uid",
+              "type": "hex",
+              "required": true,
+              "description": "UID карты (10 HEX символов)",
+              "default": ""
+            }
+          ],
+          "examples": ["lf em sim 0102030405"],
+          "tips": "Эмулирует карту с указанным UID"
+        },
+        {
+          "id": "lf_em_wipe",
+          "name": "Очистка xEM",
+          "description": "Очистить перезаписываемую карту xEM",
+          "template": "lf em wipe",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["lf em wipe"],
+          "tips": "Работает только с картами xEM (перезаписываемые)"
+        }
+      ]
+    },
+    {
+      "id": "hid_prox",
+      "name": "HID Prox",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "lf_hid_read",
+          "name": "Чтение HID Prox",
+          "description": "Прочитать карту HID Prox",
+          "template": "lf hid read",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["lf hid read"],
+          "tips": "Поддерживает форматы H10301, H10302 и другие"
+        },
+        {
+          "id": "lf_hid_sim",
+          "name": "Эмуляция HID Prox",
+          "description": "Эмулировать карту HID Prox",
+          "template": "lf hid sim {card}",
+          "risk_level": "medium",
+          "timeout": 60000,
+          "parameters": [
+            {
+              "name": "card_data",
+              "type": "string",
+              "required": true,
+              "description": "Данные карты (формат зависит от типа)",
+              "default": ""
+            }
+          ],
+          "examples": ["lf hid sim 2006f98722"],
+          "tips": "Эмулирует карту HID с указанными данными"
+        },
+        {
+          "id": "lf_hid_clone",
+          "name": "Клонирование HID на T55xx",
+          "description": "Записать HID данные на карту T55xx",
+          "template": "lf hid clone {card}",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "card_data",
+              "type": "string",
+              "required": true,
+              "description": "Данные карты для клонирования",
+              "default": ""
+            }
+          ],
+          "examples": ["lf hid clone 2006f98722"],
+          "tips": "Требует чистую карту T55xx в антенне"
+        }
+      ]
+    },
+    {
+      "id": "indala",
+      "name": "Indala",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "lf_indala_read",
+          "name": "Чтение Indala",
+          "description": "Прочитать карту Indala",
+          "template": "lf indala read",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["lf indala read"],
+          "tips": "Карты Indala часто используются в системах контроля доступа"
+        },
+        {
+          "id": "lf_indala_sim",
+          "name": "Эмуляция Indala",
+          "description": "Эмулировать карту Indala",
+          "template": "lf indala sim {uid}",
+          "risk_level": "medium",
+          "timeout": 60000,
+          "parameters": [
+            {
+              "name": "uid",
+              "type": "hex",
+              "required": true,
+              "description": "UID карты Indala",
+              "default": ""
+            }
+          ],
+          "examples": ["lf indala sim a000000c3e2962"],
+          "tips": "Эмулирует карту Indala с указанным UID"
+        }
+      ]
+    },
+    {
+      "id": "t55xx",
+      "name": "T55xx",
+      "tab": "write",
+      "commands": [
+        {
+          "id": "lf_t55xx_detect",
+          "name": "Определение T55xx",
+          "description": "Определить карту T55xx и её конфигурацию",
+          "template": "lf t55xx detect",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["lf t55xx detect"],
+          "tips": "Показывает тип карты и текущую конфигурацию"
+        },
+        {
+          "id": "lf_t55xx_read",
+          "name": "Чтение T55xx",
+          "description": "Прочитать все блоки карты T55xx",
+          "template": "lf t55xx read",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["lf t55xx read"],
+          "tips": "Отображает содержимое всех 8 блоков"
+        },
+        {
+          "id": "lf_t55xx_write",
+          "name": "Запись блока T55xx",
+          "description": "Записать данные в блок T55xx",
+          "template": "lf t55xx write {b} {d}",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "block",
+              "type": "int",
+              "required": true,
+              "description": "Номер блока (0-7)",
+              "default": "0"
+            },
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные для записи (8 HEX символов)",
+              "default": "00000000"
+            }
+          ],
+          "examples": ["lf t55xx write 0 00000000"],
+          "tips": "Блок 0 содержит конфигурацию, будьте осторожны!"
+        },
+        {
+          "id": "lf_t55xx_wipe",
+          "name": "Очистка T55xx",
+          "description": "Полностью очистить карту T55xx",
+          "template": "lf t55xx wipe",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["lf t55xx wipe"],
+          "tips": "Сбрасывает карту в заводское состояние"
+        },
+        {
+          "id": "lf_t55xx_dump",
+          "name": "Дамп T55xx",
+          "description": "Сохранить дамп карты T55xx в файл",
+          "template": "lf t55xx dump",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["lf t55xx dump"],
+          "tips": "Сохраняет все блоки в файл для последующего использования"
+        },
+        {
+          "id": "lf_t55xx_restore",
+          "name": "Восстановление T55xx",
+          "description": "Восстановить карту T55xx из файла дампа",
+          "template": "lf t55xx restore",
+          "risk_level": "dangerous",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["lf t55xx restore"],
+          "tips": "Записывает данные из файла обратно на карту"
+        }
+      ]
+    },
+    {
+      "id": "iclass",
+      "name": "iCLASS",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "hf_iclass_info",
+          "name": "Информация iCLASS",
+          "description": "Получить информацию о карте iCLASS",
+          "template": "hf iclass info",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["hf iclass info"],
+          "tips": "Показывает UID, конфигурацию и тип карты"
+        },
+        {
+          "id": "hf_iclass_read",
+          "name": "Чтение iCLASS",
+          "description": "Прочитать карту iCLASS",
+          "template": "hf iclass read",
+          "risk_level": "safe",
+          "timeout": 30000,
+          "parameters": [],
+          "examples": ["hf iclass read"],
+          "tips": "Требует авторизации для чтения защищенных зон"
+        },
+        {
+          "id": "hf_iclass_write",
+          "name": "Запись iCLASS",
+          "description": "Записать данные на карту iCLASS",
+          "template": "hf iclass write {b} {d}",
+          "risk_level": "dangerous",
+          "timeout": 10000,
+          "parameters": [
+            {
+              "name": "block",
+              "type": "int",
+              "required": true,
+              "description": "Номер блока",
+              "default": "0"
+            },
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные для записи",
+              "default": ""
+            }
+          ],
+          "examples": ["hf iclass write 6 0000000000000000"],
+          "tips": "Требует правильные ключи для записи"
+        },
+        {
+          "id": "hf_iclass_dump",
+          "name": "Дамп iCLASS",
+          "description": "Сделать полный дамп карты iCLASS",
+          "template": "hf iclass dump",
+          "risk_level": "safe",
+          "timeout": 60000,
+          "parameters": [],
+          "examples": ["hf iclass dump"],
+          "tips": "Сохраняет все читаемые блоки в файл"
+        }
+      ]
+    },
+    {
+      "id": "ultralight",
+      "name": "Ultralight",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "hf_ul_info",
+          "name": "Информация Ultralight",
+          "description": "Получить информацию о карте Mifare Ultralight",
+          "template": "hf ul info",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["hf ul info"],
+          "tips": "Определяет тип (Ultralight, Ultralight C, NTAG)"
+        },
+        {
+          "id": "hf_ul_read",
+          "name": "Чтение Ultralight",
+          "description": "Прочитать карту Mifare Ultralight",
+          "template": "hf ul read",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["hf ul read"],
+          "tips": "Читает все страницы карты"
+        },
+        {
+          "id": "hf_ul_write",
+          "name": "Запись Ultralight",
+          "description": "Записать данные на карту Ultralight",
+          "template": "hf ul write {p} {d}",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "page",
+              "type": "int",
+              "required": true,
+              "description": "Номер страницы",
+              "default": "4"
+            },
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные (8 HEX символов)",
+              "default": "00000000"
+            }
+          ],
+          "examples": ["hf ul write 4 00000000"],
+          "tips": "Некоторые страницы могут быть заблокированы"
+        }
+      ]
+    },
+    {
+      "id": "iso15693",
+      "name": "ISO 15693",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "hf_15_info",
+          "name": "Информация ISO15693",
+          "description": "Получить информацию о карте ISO 15693",
+          "template": "hf 15 info",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["hf 15 info"],
+          "tips": "Показывает UID и информацию о производителе"
+        },
+        {
+          "id": "hf_15_read",
+          "name": "Чтение ISO15693",
+          "description": "Прочитать блок карты ISO 15693",
+          "template": "hf 15 read {b}",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "block",
+              "type": "int",
+              "required": true,
+              "description": "Номер блока",
+              "default": "0"
+            }
+          ],
+          "examples": ["hf 15 read 0"],
+          "tips": "Читает один блок за раз"
+        },
+        {
+          "id": "hf_15_write",
+          "name": "Запись ISO15693",
+          "description": "Записать данные в блок ISO 15693",
+          "template": "hf 15 write {b} {d}",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "block",
+              "type": "int",
+              "required": true,
+              "description": "Номер блока",
+              "default": "0"
+            },
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные (8 HEX символов)",
+              "default": "00000000"
+            }
+          ],
+          "examples": ["hf 15 write 0 00000000"],
+          "tips": "Некоторые карты могут быть защищены от записи"
+        }
+      ]
+    },
+    {
+      "id": "trace",
+      "name": "Трассировка",
+      "tab": "sniffing",
+      "commands": [
+        {
+          "id": "trace_list",
+          "name": "Список трассировки",
+          "description": "Показать сохраненную трассировку",
+          "template": "trace list",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["trace list"],
+          "tips": "Отображает захваченные пакеты"
+        },
+        {
+          "id": "trace_save",
+          "name": "Сохранить трассировку",
+          "description": "Сохранить трассировку в файл",
+          "template": "trace save -f {filename}",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [
+            {
+              "name": "filename",
+              "type": "string",
+              "required": false,
+              "description": "Имя файла",
+              "default": "trace"
+            }
+          ],
+          "examples": ["trace save -f mytrace"],
+          "tips": "Сохраняет в формате .trace"
+        },
+        {
+          "id": "trace_load",
+          "name": "Загрузить трассировку",
+          "description": "Загрузить трассировку из файла",
+          "template": "trace load -f {filename}",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [
+            {
+              "name": "filename",
+              "type": "string",
+              "required": true,
+              "description": "Имя файла",
+              "default": ""
+            }
+          ],
+          "examples": ["trace load -f mytrace"],
+          "tips": "Загружает ранее сохраненную трассировку"
+        },
+        {
+          "id": "trace_clear",
+          "name": "Очистить трассировку",
+          "description": "Очистить буфер трассировки",
+          "template": "trace clear",
+          "risk_level": "safe",
+          "timeout": 1000,
+          "parameters": [],
+          "examples": ["trace clear"],
+          "tips": "Удаляет все данные из буфера трассировки"
+        }
+      ]
+    },
+    {
+      "id": "plot",
+      "name": "Графики",
+      "tab": "tools",
+      "commands": [
+        {
+          "id": "plot",
+          "name": "Построить график",
+          "description": "Визуализировать данные сигнала",
+          "template": "plot",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["plot"],
+          "tips": "Отображает график текущего сигнала в буфере"
+        },
+        {
+          "id": "data_samples",
+          "name": "Получить сэмплы",
+          "description": "Получить сырые сэмплы данных",
+          "template": "data samples",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["data samples"],
+          "tips": "Возвращает массив значений сигнала"
+        },
+        {
+          "id": "data_plot",
+          "name": "График данных",
+          "description": "Построить график из данных буфера",
+          "template": "data plot",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["data plot"],
+          "tips": "Альтернативная команда для построения графика"
+        }
+      ]
+    },
+    {
+      "id": "data_manipulation",
+      "name": "Обработка данных",
+      "tab": "tools",
+      "commands": [
+        {
+          "id": "data_hex",
+          "name": "HEX представление",
+          "description": "Показать данные в HEX формате",
+          "template": "data hex",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [],
+          "examples": ["data hex"],
+          "tips": "Конвертирует буфер в HEX строку"
+        },
+        {
+          "id": "data_demod",
+          "name": "Демодуляция",
+          "description": "Демодулировать сигнал",
+          "template": "data demod",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["data demod"],
+          "tips": "Преобразует сырой сигнал в биты"
+        },
+        {
+          "id": "data_manchester",
+          "name": "Декодирование Манчестер",
+          "description": "Декодировать Манчестер кодирование",
+          "template": "data manch",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [],
+          "examples": ["data manch"],
+          "tips": "Декодирует Манчестер кодирование в буфере"
+        },
+        {
+          "id": "data_biphase",
+          "name": "Декодирование Biphase",
+          "description": "Декодировать Biphase (F2F) кодирование",
+          "template": "data biphase",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [],
+          "examples": ["data biphase"],
+          "tips": "Декодирует Biphase кодирование"
+        },
+        {
+          "id": "data_diff",
+          "name": "Дифференциальное декодирование",
+          "description": "Применить дифференциальное декодирование",
+          "template": "data diff",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [],
+          "examples": ["data diff"],
+          "tips": "Преобразует дифференциально кодированные данные"
+        }
+      ]
+    },
+    {
+      "id": "script",
+      "name": "Скрипты",
+      "tab": "scripts",
+      "commands": [
+        {
+          "id": "script_run",
+          "name": "Выполнить скрипт",
+          "description": "Выполнить Lua скрипт",
+          "template": "script run {filename}",
+          "risk_level": "medium",
+          "timeout": 120000,
+          "parameters": [
+            {
+              "name": "filename",
+              "type": "string",
+              "required": true,
+              "description": "Имя файла скрипта (.lua)",
+              "default": ""
+            }
+          ],
+          "examples": ["script run myscript.lua"],
+          "tips": "Запускает пользовательский Lua скрипт"
+        },
+        {
+          "id": "script_load",
+          "name": "Загрузить скрипт",
+          "description": "Загрузить скрипт в память",
+          "template": "script load {filename}",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "filename",
+              "type": "string",
+              "required": true,
+              "description": "Имя файла скрипта",
+              "default": ""
+            }
+          ],
+          "examples": ["script load myscript.lua"],
+          "tips": "Загружает скрипт без выполнения"
+        }
+      ]
+    },
+    {
+      "id": "hw_commands",
+      "name": "Аппаратные команды",
+      "tab": "tools",
+      "commands": [
+        {
+          "id": "hw_antenna_on",
+          "name": "Включить антенну",
+          "description": "Включить HF антенну",
+          "template": "hw antenna on",
+          "risk_level": "medium",
+          "timeout": 2000,
+          "parameters": [],
+          "examples": ["hw antenna on"],
+          "tips": "Включает постоянное поле HF антенны"
+        },
+        {
+          "id": "hw_antenna_off",
+          "name": "Выключить антенну",
+          "description": "Выключить HF антенну",
+          "template": "hw antenna off",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [],
+          "examples": ["hw antenna off"],
+          "tips": "Выключает HF антенну"
+        },
+        {
+          "id": "hw_leds",
+          "name": "Управление LED",
+          "description": "Включить/выключить светодиоды",
+          "template": "hw leds {state}",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [
+            {
+              "name": "state",
+              "type": "choice",
+              "required": true,
+              "choices": ["on", "off"],
+              "description": "Состояние светодиодов",
+              "default": "on"
+            }
+          ],
+          "examples": ["hw leds on", "hw leds off"],
+          "tips": "Управляет всеми светодиодами устройства"
+        }
+      ]
+    }
+  ]
+}

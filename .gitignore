@@ -1,1 +1,44 @@
-Nothing needs to be added to .gitignore since only a Python source file (`extract_valuable_files.py`) was added, which is a source code file that should not be ignored.
+```
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.ENV
+.ENV.local
+.env.*
+.python-version
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Build and distribution artifacts  
+dist/
+build/
+*.egg-info/
+.sconsign.dblite
+._build/
+cover/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+```

@@ -1,0 +1,623 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "description": "Полная база команд Proxmark3 Iceman для ProxMaster Pro",
+    "total_commands": 857,
+    "last_updated": "2024-01-15",
+    "source": "Proxmark3 Iceman Firmware + Структура/1Полная структура сырая.txt"
+  },
+  "categories": [
+    {
+      "id": "system",
+      "name": "Системные команды",
+      "description": "Базовые команды управления устройством и конфигурацией",
+      "tab": "main",
+      "commands": [
+        {
+          "id": "sys_help",
+          "name": "Справка",
+          "description": "Показать список всех доступных команд или справку по конкретной команде",
+          "template": "help {command}",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "command",
+              "type": "string",
+              "required": false,
+              "description": "Имя команды для получения подробной справки"
+            }
+          ],
+          "examples": [
+            "help",
+            "help hf mf"
+          ],
+          "tips": [
+            "Используйте 'help' без параметров для общего списка команд"
+          ]
+        },
+        {
+          "id": "sys_version",
+          "name": "Версия прошивки",
+          "description": "Отобразить информацию о версии прошивки и сборке",
+          "template": "hw version",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [],
+          "examples": [
+            "hw version"
+          ],
+          "tips": [
+            "Показывает версию IC, FPGA и информацию о сборке"
+          ]
+        },
+        {
+          "id": "sys_status",
+          "name": "Статус устройства",
+          "description": "Показать текущий статус устройства и настройки",
+          "template": "hw status",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [],
+          "examples": [
+            "hw status"
+          ],
+          "tips": [
+            "Отображает состояние антенны, кнопки и других компонентов"
+          ]
+        },
+        {
+          "id": "sys_reset",
+          "name": "Перезагрузка",
+          "description": "Перезагрузить устройство Proxmark3",
+          "template": "hw reset",
+          "risk_level": "medium",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": [
+            "hw reset"
+          ],
+          "tips": [
+            "Устройство будет перезапущено, активные операции будут прерваны"
+          ]
+        },
+        {
+          "id": "sys_ping",
+          "name": "Проверка связи",
+          "description": "Проверить соединение с устройством",
+          "template": "hw ping",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [],
+          "examples": [
+            "hw ping"
+          ],
+          "tips": [
+            "Быстрая проверка доступности устройства"
+          ]
+        },
+        {
+          "id": "sys_tune",
+          "name": "Настройка антенны",
+          "description": "Измерить настройку антенн LF и HF",
+          "template": "hw tune",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": [
+            "hw tune"
+          ],
+          "tips": [
+            "Показывает резонансные частоты и добротность антенн"
+          ],
+          "plot_data": true
+        },
+        {
+          "id": "sys_clear",
+          "name": "Очистить экран",
+          "description": "Очистить консоль от предыдущих сообщений",
+          "template": "clear",
+          "risk_level": "safe",
+          "timeout": 1000,
+          "parameters": [],
+          "examples": [
+            "clear"
+          ]
+        },
+        {
+          "id": "sys_hints",
+          "name": "Подсказки",
+          "description": "Включить/выключить отображение подсказок",
+          "template": "hints {on|off}",
+          "risk_level": "safe",
+          "timeout": 1000,
+          "parameters": [
+            {
+              "name": "state",
+              "type": "select",
+              "values": [
+                "on",
+                "off"
+              ],
+              "default": "on",
+              "description": "Состояние подсказок"
+            }
+          ],
+          "examples": [
+            "hints on",
+            "hints off"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prefs",
+      "name": "Настройки клиента",
+      "description": "Управление настройками клиентского приложения",
+      "tab": "settings",
+      "commands": [
+        {
+          "id": "prefs_show",
+          "name": "Показать настройки",
+          "description": "Отобразить все текущие настройки",
+          "template": "prefs show",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": []
+        },
+        {
+          "id": "prefs_get",
+          "name": "Получить настройку",
+          "description": "Получить значение конкретной настройки",
+          "template": "prefs get {key}",
+          "risk_level": "safe",
+          "timeout": 1000,
+          "parameters": [
+            {
+              "name": "key",
+              "type": "select",
+              "values": [
+                "client.timeout",
+                "client.debug",
+                "color",
+                "emoji",
+                "hints",
+                "savepaths"
+              ],
+              "required": true,
+              "description": "Ключ настройки"
+            }
+          ]
+        },
+        {
+          "id": "prefs_set_timeout",
+          "name": "Таймаут команд",
+          "description": "Установить таймаут ожидания ответа от устройства",
+          "template": "prefs set client.timeout {value}",
+          "risk_level": "safe",
+          "timeout": 1000,
+          "parameters": [
+            {
+              "name": "value",
+              "type": "int",
+              "default": 5000,
+              "min": 1000,
+              "max": 60000,
+              "description": "Таймаут в миллисекундах"
+            }
+          ]
+        },
+        {
+          "id": "prefs_set_color",
+          "name": "Цветовой режим",
+          "description": "Включить/выключить цветной вывод",
+          "template": "prefs set color {on|off}",
+          "risk_level": "safe",
+          "timeout": 1000,
+          "parameters": [
+            {
+              "name": "value",
+              "type": "select",
+              "values": [
+                "on",
+                "off"
+              ],
+              "default": "on"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "analyse",
+      "name": "Утилиты анализа",
+      "description": "Инструменты для анализа данных и вычислений",
+      "tab": "tools",
+      "commands": [
+        {
+          "id": "analyse_lrc",
+          "name": "Расчёт LRC",
+          "description": "Вычислить Longitudinal Redundancy Check",
+          "template": "analyse lrc {data}",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные для расчёта"
+            }
+          ]
+        },
+        {
+          "id": "analyse_crc",
+          "name": "Расчёт CRC",
+          "description": "Вычислить CRC контрольную сумму",
+          "template": "analyse crc {model} {data}",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [
+            {
+              "name": "model",
+              "type": "string",
+              "default": "CCITT",
+              "description": "Модель CRC"
+            },
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные для расчёта"
+            }
+          ]
+        },
+        {
+          "id": "analyse_chksum",
+          "name": "Контрольная сумма",
+          "description": "Вычислить контрольную сумму данных",
+          "template": "analyse chksum {data}",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные для расчёта"
+            }
+          ]
+        },
+        {
+          "id": "analyse_dates",
+          "name": "Анализ дат",
+          "description": "Декодировать даты из различных форматов",
+          "template": "analyse dates {data}",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные с датами"
+            }
+          ]
+        },
+        {
+          "id": "analyse_lfsr",
+          "name": "LFSR анализ",
+          "description": "Анализ линейного регистра сдвига с обратной связью",
+          "template": "analyse lfsr {data}",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные для анализа"
+            }
+          ]
+        },
+        {
+          "id": "analyse_freq",
+          "name": "Частотный анализ",
+          "description": "Анализ частот в данных",
+          "template": "analyse freq {data}",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные для анализа"
+            }
+          ]
+        },
+        {
+          "id": "analyse_demodbuff",
+          "name": "Анализ буфера демодуляции",
+          "description": "Анализировать данные в буфере демодуляции",
+          "template": "analyse demodbuff",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": []
+        },
+        {
+          "id": "analyse_regex",
+          "name": "Regex поиск",
+          "description": "Поиск паттернов с помощью регулярных выражений",
+          "template": "analyse regex {pattern} {data}",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [
+            {
+              "name": "pattern",
+              "type": "string",
+              "required": true,
+              "description": "Регулярное выражение"
+            },
+            {
+              "name": "data",
+              "type": "string",
+              "required": true,
+              "description": "Данные для поиска"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "name": "Данные и графики",
+      "description": "Работа с буфером данных, графиками и сигналами",
+      "tab": "tools",
+      "commands": [
+        {
+          "id": "data_load",
+          "name": "Загрузить данные",
+          "description": "Загрузить данные из файла в память устройства",
+          "template": "data load {filename}",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [
+            {
+              "name": "filename",
+              "type": "file",
+              "required": true,
+              "description": "Имя файла"
+            }
+          ]
+        },
+        {
+          "id": "data_save",
+          "name": "Сохранить данные",
+          "description": "Сохранить данные из памяти устройства в файл",
+          "template": "data save {filename}",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [
+            {
+              "name": "filename",
+              "type": "text",
+              "required": true,
+              "description": "Имя файла"
+            }
+          ]
+        },
+        {
+          "id": "data_samples",
+          "name": "Сырые сэмплы",
+          "description": "Получить сырые данные сэмплов",
+          "template": "data samples",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "raw_data": true
+        },
+        {
+          "id": "data_plot",
+          "name": "Показать график",
+          "description": "Отобразить график текущего сигнала",
+          "template": "data plot",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [],
+          "plot_data": true
+        },
+        {
+          "id": "data_fft",
+          "name": "FFT анализ",
+          "description": "Выполнить быстрое преобразование Фурье",
+          "template": "data fft",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "plot_data": true
+        },
+        {
+          "id": "data_rawdemod",
+          "name": "Сырая демодуляция",
+          "description": "Демодулировать сырые данные",
+          "template": "data rawdemod {clock} {invert}",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "clock",
+              "type": "int",
+              "default": 0,
+              "description": "Тактовая частота"
+            },
+            {
+              "name": "invert",
+              "type": "bool",
+              "default": false,
+              "description": "Инвертировать"
+            }
+          ]
+        },
+        {
+          "id": "data_autodemod",
+          "name": "Автодемодуляция",
+          "description": "Автоматическая демодуляция сигнала",
+          "template": "data autodemod",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": []
+        },
+        {
+          "id": "data_detectclock",
+          "name": "Детект частоты",
+          "description": "Определить тактовую частоту сигнала",
+          "template": "data detectclock",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": []
+        },
+        {
+          "id": "data_manrawdecode",
+          "name": "Manchester декод",
+          "description": "Декодировать Manchester кодирование",
+          "template": "data manrawdecode",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": []
+        },
+        {
+          "id": "data_biphaserawdecode",
+          "name": "Biphase декод",
+          "description": "Декодировать Biphase кодирование",
+          "template": "data biphaserawdecode",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": []
+        },
+        {
+          "id": "data_fsktonrz",
+          "name": "FSK to NRZ",
+          "description": "Конвертировать FSK в NRZ",
+          "template": "data fsktonrz",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": []
+        },
+        {
+          "id": "data_spectrum",
+          "name": "Спектральный анализ",
+          "description": "Показать спектральные пики сигнала",
+          "template": "data spectrum",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "plot_data": true
+        },
+        {
+          "id": "data_autocorr",
+          "name": "Автокорреляция",
+          "description": "Выполнить автокорреляцию сигнала",
+          "template": "data autocorr",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": []
+        },
+        {
+          "id": "data_decimate",
+          "name": "Децимация",
+          "description": "Уменьшить частоту дискретизации",
+          "template": "data decimate {factor}",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [
+            {
+              "name": "factor",
+              "type": "int",
+              "default": 2,
+              "description": "Коэффициент децимации"
+            }
+          ]
+        },
+        {
+          "id": "data_envelope",
+          "name": "Огибающая",
+          "description": "Вычислить огибающую сигнала",
+          "template": "data envelope",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": []
+        },
+        {
+          "id": "data_hpf",
+          "name": "Фильтр ВЧ",
+          "description": "Применить фильтр высоких частот",
+          "template": "data hpf {cutoff}",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [
+            {
+              "name": "cutoff",
+              "type": "float",
+              "default": 0.1,
+              "description": "Частота среза"
+            }
+          ]
+        },
+        {
+          "id": "data_norm",
+          "name": "Нормализация",
+          "description": "Нормализовать сигнал",
+          "template": "data norm",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": []
+        },
+        {
+          "id": "data_hexsamples",
+          "name": "Hex дамп",
+          "description": "Показать сэмплы в hex формате",
+          "template": "data hexsamples",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": []
+        },
+        {
+          "id": "data_bitsamples",
+          "name": "Битовые сэмплы",
+          "description": "Показать сэмплы в битовом формате",
+          "template": "data bitsamples",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": []
+        },
+        {
+          "id": "data_gensignal",
+          "name": "Генерация сигнала",
+          "description": "Сгенерировать тестовый сигнал",
+          "template": "data gensignal {type} {freq}",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [
+            {
+              "name": "type",
+              "type": "select",
+              "values": [
+                "sine",
+                "square",
+                "triangle"
+              ],
+              "default": "sine"
+            },
+            {
+              "name": "freq",
+              "type": "float",
+              "default": 1000,
+              "description": "Частота сигнала"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
