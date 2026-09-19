@@ -1,1207 +1,1148 @@
 {
-  "metadata": {
-    "version": "3.0.0",
-    "author": "ProxMaster Pro Team",
-    "description": "ПОЛНАЯ база команд Proxmark3 Iceman v4.16000+ - Профессиональный инструмент с 857 командами",
-    "firmware_target": "Iceman RRG 4.16000+",
+  "meta": {
+    "version": "1.0.0",
+    "description": "Полная база команд Proxmark3 Iceman для ProxMaster Pro",
     "total_commands": 857,
-    "last_updated": "2024-01-20",
-    "language": "ru",
-    "license": "GPL-3.0"
+    "last_updated": "2024-01-15"
   },
-  "categories": {
-    "system": {
+  "categories": [
+    {
       "id": "system",
       "name": "Системные команды",
-      "icon": "⚙️",
-      "color": "#3498db",
-      "description": "Базовые системные команды управления Proxmark3, настройка, информация об устройстве",
-      "commands": {
-        "help": {
+      "tab": "main",
+      "commands": [
+        {
           "id": "help",
           "name": "Справка",
-          "description": "Показать справку по всем доступным командам или конкретной команде/категории",
-          "template": "help {command}",
+          "description": "Показать список всех доступных команд",
+          "template": "help",
           "risk_level": "safe",
-          "timeout": 3000,
-          "category": "system",
-          "parameters": [
-            {
-              "name": "command",
-              "type": "string",
-              "required": false,
-              "description": "Имя команды или категории для получения справки",
-              "default": null,
-              "choices": null
-            }
-          ],
-          "examples": ["help", "help hf", "help mf"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Используйте help <категория> для получения справки по разделу", "help без параметров покажет все доступные команды"]
-        },
-        "auto": {
-          "id": "auto",
-          "name": "Автоопределение тега",
-          "description": "Автоматическое определение типа RFID тега и выбор оптимальной команды для работы",
-          "template": "auto",
-          "risk_level": "safe",
-          "timeout": 15000,
-          "category": "system",
+          "timeout": 5000,
           "parameters": [],
-          "examples": ["auto"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Основная команда для начала работы с неизвестным тегом", "Автоматически определяет LF/HF и тип протокола"]
+          "examples": ["help"],
+          "tips": "Используйте 'help <команда>' для получения справки по конкретной команде"
         },
-        "version": {
+        {
           "id": "version",
           "name": "Версия прошивки",
-          "description": "Показать информацию о версии прошивки, сборке и возможностях устройства",
-          "template": "version",
+          "description": "Показать версию прошивки и железа",
+          "template": "hw version",
           "risk_level": "safe",
           "timeout": 3000,
-          "category": "system",
           "parameters": [],
-          "examples": ["version"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Проверяйте версию перед обновлением", "Содержит информацию о размере памяти и функциях"]
+          "examples": ["hw version"],
+          "tips": "Показывает версию клиента, прошивки и информацию об устройстве"
         },
-        "status": {
+        {
           "id": "status",
           "name": "Статус устройства",
-          "description": "Показать текущий статус устройства, состояние антенны, кнопки и светодиодов",
-          "template": "status",
+          "description": "Показать текущий статус устройства",
+          "template": "hw status",
           "risk_level": "safe",
           "timeout": 3000,
-          "category": "system",
           "parameters": [],
-          "examples": ["status"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Проверка состояния перед операциями", "Показывает напряжение антенны"]
+          "examples": ["hw status"],
+          "tips": "Отображает состояние антенн, напряжение и температуру"
         },
-        "reset": {
+        {
           "id": "reset",
           "name": "Перезагрузка",
-          "description": "Перезагрузить устройство Proxmark3 (мягкий сброс)",
-          "template": "reset",
+          "description": "Перезагрузить устройство Proxmark3",
+          "template": "hw reset",
           "risk_level": "medium",
           "timeout": 5000,
-          "category": "system",
           "parameters": [],
-          "examples": ["reset"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Сохраните данные перед перезагрузкой", "Не прерывайте процесс прошивки"]
+          "examples": ["hw reset"],
+          "tips": "Устройство будет перезапущено, соединение может разорваться"
         },
-        "ping": {
+        {
           "id": "ping",
           "name": "Проверка связи",
-          "description": "Проверить соединение с устройством Proxmark3",
-          "template": "ping",
+          "description": "Проверить связь с устройством",
+          "template": "hw ping",
           "risk_level": "safe",
-          "timeout": 3000,
-          "category": "system",
+          "timeout": 2000,
           "parameters": [],
-          "examples": ["ping"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Используйте при проблемах подключения", "Проверяет ответ устройства"]
+          "examples": ["hw ping"],
+          "tips": "Возвращает PONG если устройство подключено и отвечает"
         },
-        "config_save": {
-          "id": "config_save",
-          "name": "Сохранить настройки",
-          "description": "Сохранить текущие настройки в энергонезависимую память устройства",
-          "template": "config save",
-          "risk_level": "safe",
-          "timeout": 3000,
-          "category": "system",
-          "parameters": [],
-          "examples": ["config save"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Сохраняет настройки антенны и режимов", "Используйте после изменения конфигурации"]
-        },
-        "config_clear": {
-          "id": "config_clear",
-          "name": "Сброс настроек",
-          "description": "Очистить сохраненные настройки и восстановить значения по умолчанию",
-          "template": "config clear",
-          "risk_level": "high",
-          "timeout": 3000,
-          "category": "system",
-          "parameters": [],
-          "examples": ["config clear"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Сбрасывает все пользовательские настройки", "Требует подтверждения"]
-        },
-        "config_list": {
-          "id": "config_list",
-          "name": "Список настроек",
-          "description": "Показать текущие сохраненные настройки устройства",
-          "template": "config list",
-          "risk_level": "safe",
-          "timeout": 3000,
-          "category": "system",
-          "parameters": [],
-          "examples": ["config list"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Просмотр активных настроек", "Показывает параметры антенны"]
-        },
-        "tune": {
+        {
           "id": "tune",
-          "name": "Настройка антенны",
-          "description": "Измерить резонансную частоту и добротность антенн LF и HF",
-          "template": "tune",
+          "name": "Настройка антенн",
+          "description": "Измерить настройку антенн HF и LF",
+          "template": "hw tune",
           "risk_level": "safe",
           "timeout": 10000,
-          "category": "system",
           "parameters": [],
-          "examples": ["tune"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Важно для калибровки устройства", "Показывает качество антенны"]
+          "examples": ["hw tune"],
+          "tips": "Показывает частоту настройки и качество антенн"
         },
-        "fpga_version": {
-          "id": "fpga_version",
-          "name": "Версия FPGA",
-          "description": "Показать версию загруженной FPGA битstream",
-          "template": "fpga version",
+        {
+          "id": "list_memory",
+          "name": "Список памяти",
+          "description": "Показать использование памяти устройства",
+          "template": "hw listmemory",
           "risk_level": "safe",
           "timeout": 3000,
-          "category": "system",
           "parameters": [],
-          "examples": ["fpga version"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Проверка совместимости FPGA", "Важно для новых функций"]
+          "examples": ["hw listmemory"],
+          "tips": "Отображает свободную и занятую память"
+        },
+        {
+          "id": "info",
+          "name": "Информация об устройстве",
+          "description": "Полная информация о конфигурации устройства",
+          "template": "hw info",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["hw info"],
+          "tips": "Детальная информация о железе и возможностях"
         }
-      }
+      ]
     },
-
-    "hf": {
-      "id": "hf",
-      "name": "Высокая частота (HF 13.56 MHz)",
-      "icon": "📡",
-      "color": "#9b59b6",
-      "description": "Команды для работы с высокочастотными RFID картами (13.56 MHz) - ISO, Mifare, NFC",
-      "commands": {
-        "hf_search": {
+    {
+      "id": "hf_search",
+      "name": "Поиск HF карт",
+      "tab": "search",
+      "commands": [
+        {
           "id": "hf_search",
-          "name": "Поиск карт HF",
-          "description": "Выполнить поиск всех карт HF в поле и определить их типы",
+          "name": "Поиск всех HF карт",
+          "description": "Автоматический поиск всех типов HF карт",
           "template": "hf search",
           "risk_level": "safe",
-          "timeout": 10000,
-          "category": "hf",
+          "timeout": 30000,
           "parameters": [],
           "examples": ["hf search"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Первая команда для работы с HF картами", "Определяет тип карты автоматически"]
+          "tips": "Сканирует все известные протоколы HF"
         },
-        "hf_list": {
+        {
           "id": "hf_list",
-          "name": "Список транзакций HF",
-          "description": "Показать список последних транзакций HF из буфера устройства",
-          "template": "hf list {protocol} {range}",
+          "name": "Список HF событий",
+          "description": "Показать список последних HF событий",
+          "template": "hf list",
           "risk_level": "safe",
           "timeout": 5000,
-          "category": "hf",
-          "parameters": [
-            {
-              "name": "protocol",
-              "type": "string",
-              "required": false,
-              "description": "Протокол для фильтрации (14a, 14b, 15, iso14443a, mifare и т.д.)",
-              "default": null,
-              "choices": ["14a", "14b", "15", "iso14443a", "mifare", "iclass", "ultralight"]
-            },
-            {
-              "name": "range",
-              "type": "string",
-              "required": false,
-              "description": "Диапазон записей (например, 0-100)",
-              "default": null,
-              "choices": null
-            }
-          ],
-          "examples": ["hf list", "hf list 14a", "hf list 14a 0-50"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Анализ последних операций", "Полезно для отладки"]
+          "parameters": [],
+          "examples": ["hf list"],
+          "tips": "Отображает историю коммуникаций HF"
         },
-        "hf_reader": {
+        {
           "id": "hf_reader",
-          "name": "Режим читателя",
-          "description": "Включить режим эмуляции читателя HF карт",
+          "name": "Чтение HF карты",
+          "description": "Читать данные HF карты стандартным ридером",
           "template": "hf reader",
           "risk_level": "safe",
-          "timeout": 30000,
-          "category": "hf",
+          "timeout": 15000,
           "parameters": [],
           "examples": ["hf reader"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Эмулирует поведение ридера", "Для взаимодействия с картами"]
-        },
-        "hf_detect": {
-          "id": "hf_detect",
-          "name": "Детектирование карт",
-          "description": "Обнаружить присутствие HF карты в поле антенны",
-          "template": "hf detect",
-          "risk_level": "safe",
-          "timeout": 5000,
-          "category": "hf",
-          "parameters": [],
-          "examples": ["hf detect"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Быстрая проверка наличия карты", "Минимальное воздействие на карту"]
-        },
-        "hf_sniff": {
-          "id": "hf_sniff",
-          "name": "Перехват трафика HF",
-          "description": "Включить режим сниффинга для перехвата обмена между картой и ридером",
-          "template": "hf sniff {options}",
-          "risk_level": "safe",
-          "timeout": 60000,
-          "category": "hf",
-          "parameters": [
-            {
-              "name": "options",
-              "type": "string",
-              "required": false,
-              "description": "Дополнительные опции сниффинга",
-              "default": null,
-              "choices": null
-            }
-          ],
-          "examples": ["hf sniff", "hf sniff -c"],
-          "output_format": "binary",
-          "can_batch": false,
-          "tips": ["Перехватывает весь трафик", "Требует близкого расположения к ридеру"]
-        },
-        "hf_plot": {
-          "id": "hf_plot",
-          "name": "График сигнала HF",
-          "description": "Записать и отобразить график аналогового сигнала HF антенны",
-          "template": "hf plot",
-          "risk_level": "safe",
-          "timeout": 15000,
-          "category": "hf",
-          "parameters": [],
-          "examples": ["hf plot"],
-          "output_format": "plot",
-          "can_batch": false,
-          "tips": ["Визуализация формы сигнала", "Анализ качества связи"]
-        },
-        "hf_download": {
-          "id": "hf_download",
-          "name": "Скачать данные HF",
-          "description": "Скачать сырые данные из буфера устройства после операции",
-          "template": "hf download {options}",
+          "tips": "Попытка прочитать карту используя стандартные протоколы"
+        }
+      ]
+    },
+    {
+      "id": "iso14443a",
+      "name": "ISO 14443-A",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "hf_14a_info",
+          "name": "Информация ISO14443-A",
+          "description": "Получить полную информацию о карте ISO14443-A",
+          "template": "hf 14a info",
           "risk_level": "safe",
           "timeout": 10000,
-          "category": "hf",
-          "parameters": [
-            {
-              "name": "options",
-              "type": "string",
-              "required": false,
-              "description": "Опции скачивания (format, range)",
-              "default": null,
-              "choices": null
-            }
-          ],
-          "examples": ["hf download", "hf download -s"],
-          "output_format": "binary",
-          "can_batch": true,
-          "tips": ["Получение сырых данных", "Для дальнейшего анализа"]
-        }
-      }
-    },
-
-    "hf_14a": {
-      "id": "hf_14a",
-      "name": "ISO 14443-A",
-      "icon": "💳",
-      "color": "#e74c3c",
-      "description": "Команды для работы с картами стандарта ISO 14443 Type A (Mifare Classic, Ultralight, Plus)",
-      "commands": {
-        "hf_14a_info": {
-          "id": "hf_14a_info",
-          "name": "Информация ISO 14443-A",
-          "description": "Получить полную информацию о карте ISO 14443 Type A (UID, ATQA, SAK, тип)",
-          "template": "hf 14a info {--extended}",
-          "risk_level": "safe",
-          "timeout": 5000,
-          "category": "hf_14a",
-          "parameters": [
-            {
-              "name": "extended",
-              "type": "boolean",
-              "required": false,
-              "description": "Расширенная информация с дополнительными данными",
-              "default": false,
-              "choices": null
-            }
-          ],
-          "examples": ["hf 14a info", "hf 14a info --extended"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Основная команда для идентификации карты", "Показывает UID, ATQA, SAK"]
-        },
-        "hf_14a_sak": {
-          "id": "hf_14a_sak",
-          "name": "SAK карты",
-          "description": "Получить SAK (Select Acknowledge) карты ISO 14443-A",
-          "template": "hf 14a sak",
-          "risk_level": "safe",
-          "timeout": 3000,
-          "category": "hf_14a",
           "parameters": [],
-          "examples": ["hf 14a sak"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Определяет тип карты по SAK", "Часть процесса идентификации"]
+          "examples": ["hf 14a info"],
+          "tips": "Показывает UID, ATQA, SAK и другие параметры"
         },
-        "hf_14a_atqa": {
-          "id": "hf_14a_atqa",
-          "name": "ATQA карты",
-          "description": "Получить ATQA (Answer To Request Type A) карты",
-          "template": "hf 14a atqa",
+        {
+          "id": "hf_14a_snoop",
+          "name": "Сниффинг ISO14443-A",
+          "description": "Перехватывать трафик ISO14443-A",
+          "template": "hf 14a snoop",
           "risk_level": "safe",
-          "timeout": 3000,
-          "category": "hf_14a",
+          "timeout": 60000,
           "parameters": [],
-          "examples": ["hf 14a atqa"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Первый ответ карты на запрос", "Используется для классификации"]
+          "examples": ["hf 14a snoop"],
+          "tips": "Записывает все коммуникации между ридером и картой"
         },
-        "hf_14a_uid": {
-          "id": "hf_14a_uid",
-          "name": "UID карты",
-          "description": "Получить UID (уникальный идентификатор) карты ISO 14443-A",
-          "template": "hf 14a uid",
-          "risk_level": "safe",
-          "timeout": 3000,
-          "category": "hf_14a",
-          "parameters": [],
-          "examples": ["hf 14a uid"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Серийный номер карты", "Может быть изменен на некоторых картах"]
-        },
-        "hf_14a_read": {
-          "id": "hf_14a_read",
-          "name": "Чтение сектора",
-          "description": "Прочитать данные из сектора карты ISO 14443-A с использованием ключа",
-          "template": "hf 14a read -b {block} -k {key} -t {keytype}",
-          "risk_level": "medium",
-          "timeout": 5000,
-          "category": "hf_14a",
-          "parameters": [
-            {
-              "name": "block",
-              "type": "integer",
-              "required": true,
-              "description": "Номер блока для чтения (0-255)",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "key",
-              "type": "hex",
-              "required": true,
-              "description": "Ключ доступа (6 байт в hex)",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "keytype",
-              "type": "choice",
-              "required": false,
-              "description": "Тип ключа (A или B)",
-              "default": "A",
-              "choices": ["A", "B"]
-            }
-          ],
-          "examples": ["hf 14a read -b 4 -k ffffffffffff -t A"],
-          "output_format": "hex",
-          "can_batch": true,
-          "tips": ["Требует действительного ключа", "Используйте после подбора ключей"]
-        },
-        "hf_14a_raw": {
-          "id": "hf_14a_raw",
-          "name": "RAW команды",
-          "description": "Отправить произвольную RAW команду карте ISO 14443-A",
-          "template": "hf 14a raw {options} {data}",
-          "risk_level": "high",
-          "timeout": 5000,
-          "category": "hf_14a",
-          "parameters": [
-            {
-              "name": "options",
-              "type": "string",
-              "required": false,
-              "description": "Опции (-a, -b, -c, -p и т.д.)",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "data",
-              "type": "hex",
-              "required": true,
-              "description": "Hex данные команды",
-              "default": null,
-              "choices": null
-            }
-          ],
-          "examples": ["hf 14a raw 30 04", "hf 14a raw -a 40"],
-          "output_format": "hex",
-          "can_batch": true,
-          "tips": ["Для продвинутых пользователей", "Требует знания протокола"]
-        },
-        "hf_14a_sim": {
+        {
           "id": "hf_14a_sim",
-          "name": "Эмуляция карты",
-          "description": "Эмулировать карту ISO 14443 Type A с заданным UID и данными",
-          "template": "hf 14a sim {uid} {sak} {atqa}",
+          "name": "Эмуляция ISO14443-A",
+          "description": "Эмулировать карту ISO14443-A",
+          "template": "hf 14a sim {u}",
           "risk_level": "medium",
           "timeout": 60000,
-          "category": "hf_14a",
           "parameters": [
             {
               "name": "uid",
               "type": "hex",
               "required": false,
-              "description": "UID для эмуляции (4, 7 или 10 байт)",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "sak",
-              "type": "hex",
-              "required": false,
-              "description": "SAK значение",
-              "default": "08",
-              "choices": null
-            },
-            {
-              "name": "atqa",
-              "type": "hex",
-              "required": false,
-              "description": "ATQA значение",
-              "default": "0004",
-              "choices": null
+              "description": "UID для эмуляции (например 01020304)",
+              "default": ""
             }
           ],
-          "examples": ["hf 14a sim 12345678", "hf 14a sim 12345678 08 0004"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Эмулирует поведение карты", "Для тестирования ридеров"]
+          "examples": ["hf 14a sim", "hf 14a sim 01020304"],
+          "tips": "Можно указать UID или использовать последний прочитанный"
         },
-        "hf_14a_sniff": {
-          "id": "hf_14a_sniff",
-          "name": "Сниффинг 14a",
-          "description": "Перехват трафика между картой и ридером ISO 14443-A",
-          "template": "hf 14a sniff {options}",
-          "risk_level": "safe",
-          "timeout": 60000,
-          "category": "hf_14a",
-          "parameters": [
-            {
-              "name": "options",
-              "type": "string",
-              "required": false,
-              "description": "Опции сниффинга",
-              "default": null,
-              "choices": null
-            }
-          ],
-          "examples": ["hf 14a sniff", "hf 14a sniff -c 1000"],
-          "output_format": "binary",
-          "can_batch": false,
-          "tips": ["Перехватывает весь обмен", "Требует proximity к антенне"]
-        },
-        "hf_14a_cascade": {
-          "id": "hf_14a_cascade",
-          "name": "Каскадный уровень",
-          "description": "Работа с каскадными уровнями UID (для длинных UID)",
-          "template": "hf 14a cascade {level}",
-          "risk_level": "safe",
-          "timeout": 5000,
-          "category": "hf_14a",
-          "parameters": [
-            {
-              "name": "level",
-              "type": "integer",
-              "required": true,
-              "description": "Уровень каскада (1, 2 или 3)",
-              "default": 1,
-              "choices": [1, 2, 3]
-            }
-          ],
-          "examples": ["hf 14a cascade 2"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Для карт с UID > 4 байт", "Редко используемая функция"]
-        },
-        "hf_14a_antocoll": {
-          "id": "hf_14a_antocoll",
-          "name": "Антиколлизия",
-          "description": "Включить/выключить антиколлизion для работы с несколькими картами",
-          "template": "hf 14a antocoll {on|off}",
-          "risk_level": "safe",
-          "timeout": 3000,
-          "category": "hf_14a",
-          "parameters": [
-            {
-              "name": "state",
-              "type": "choice",
-              "required": true,
-              "description": "Включить или выключить",
-              "default": "on",
-              "choices": ["on", "off"]
-            }
-          ],
-          "examples": ["hf 14a antocoll on", "hf 14a antocoll off"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Для работы с несколькими картами", "По умолчанию включено"]
-        }
-      }
-    },
-
-    "hf_mf": {
-      "id": "hf_mf",
-      "name": "Mifare Classic",
-      "icon": "🔐",
-      "color": "#f39c12",
-      "description": "Команды для работы с картами Mifare Classic 1K/4K - чтение, запись, взлом ключей",
-      "commands": {
-        "hf_mf_info": {
-          "id": "hf_mf_info",
-          "name": "Информация Mifare",
-          "description": "Получить полную информацию о карте Mifare Classic (тип, размер, секторы)",
-          "template": "hf mf info",
-          "risk_level": "safe",
-          "timeout": 5000,
-          "category": "hf_mf",
-          "parameters": [],
-          "examples": ["hf mf info"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Определяет тип карты (1K/4K)", "Показывает количество секторов"]
-        },
-        "hf_mf_uid": {
-          "id": "hf_mf_uid",
-          "name": "UID Mifare",
-          "description": "Получить UID карты Mifare Classic",
-          "template": "hf mf uid",
-          "risk_level": "safe",
-          "timeout": 3000,
-          "category": "hf_mf",
-          "parameters": [],
-          "examples": ["hf mf uid"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Серийный номер карты", "4 байта для обычных карт"]
-        },
-        "hf_mf_sak": {
-          "id": "hf_mf_sak",
-          "name": "SAK Mifare",
-          "description": "Получить SAK карты Mifare",
-          "template": "hf mf sak",
-          "risk_level": "safe",
-          "timeout": 3000,
-          "category": "hf_mf",
-          "parameters": [],
-          "examples": ["hf mf sak"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Определяет тип Mifare карты", "08 = 1K, 18 = 4K"]
-        },
-        "hf_mf_atqa": {
-          "id": "hf_mf_atqa",
-          "name": "ATQA Mifare",
-          "description": "Получить ATQA карты Mifare",
-          "template": "hf mf atqa",
-          "risk_level": "safe",
-          "timeout": 3000,
-          "category": "hf_mf",
-          "parameters": [],
-          "examples": ["hf mf atqa"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Ответ на запрос", "0004 = Mifare Classic"]
-        },
-        "hf_mf_nonce": {
-          "id": "hf_mf_nonce",
-          "name": "Получить Nonce",
-          "description": "Получить nonce (случайное число) от карты для криптоанализа",
-          "template": "hf mf nonce -b {block} -t {keytype}",
-          "risk_level": "medium",
-          "timeout": 10000,
-          "category": "hf_mf",
-          "parameters": [
-            {
-              "name": "block",
-              "type": "integer",
-              "required": true,
-              "description": "Номер блока",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "keytype",
-              "type": "choice",
-              "required": false,
-              "description": "Тип ключа",
-              "default": "A",
-              "choices": ["A", "B"]
-            }
-          ],
-          "examples": ["hf mf nonce -b 4 -t A"],
-          "output_format": "hex",
-          "can_batch": false,
-          "tips": ["Для атак на криптографию", "Требует знания блока"]
-        },
-        "hf_mf_nested": {
-          "id": "hf_mf_nested",
-          "name": "Nested атака",
-          "description": "Выполнить nested attack для восстановления ключей Mifare Classic",
-          "template": "hf mf nested -1 {target_block} -t {keytype} -k {known_key} -d {dump_file}",
+        {
+          "id": "hf_14a_raw",
+          "name": "RAW команда ISO14443-A",
+          "description": "Отправить RAW команду на карту ISO14443-A",
+          "template": "hf 14a raw -a {data}",
           "risk_level": "high",
-          "timeout": 300000,
-          "category": "hf_mf",
-          "parameters": [
-            {
-              "name": "target_block",
-              "type": "integer",
-              "required": true,
-              "description": "Целевой блок для атаки",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "keytype",
-              "type": "choice",
-              "required": true,
-              "description": "Тип известного ключа",
-              "default": null,
-              "choices": ["A", "B"]
-            },
-            {
-              "name": "known_key",
-              "type": "hex",
-              "required": true,
-              "description": "Известный ключ (6 байт)",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "dump_file",
-              "type": "string",
-              "required": false,
-              "description": "Файл для сохранения дампа",
-              "default": null,
-              "choices": null
-            }
-          ],
-          "examples": ["hf mf nested -1 0 -t A -k ffffffffffff -d dump.bin"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Требует одного известного ключа", "Может занять несколько минут"]
-        },
-        "hf_mf_darkside": {
-          "id": "hf_mf_darkside",
-          "name": "Darkside атака",
-          "description": "Выполнить Darkside attack для восстановления первого ключа",
-          "template": "hf mf darkside",
-          "risk_level": "high",
-          "timeout": 120000,
-          "category": "hf_mf",
-          "parameters": [],
-          "examples": ["hf mf darkside"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Атака на первый сектор", "Работает на уязвимых картах"]
-        },
-        "hf_mf_hardnested": {
-          "id": "hf_mf_hardnested",
-          "name": "Hard Nested атака",
-          "description": "Выполнить hardnested attack - улучшенная версия nested атаки",
-          "template": "hf mf hardnested -1 {target_block} -t {keytype} -k {known_key}",
-          "risk_level": "high",
-          "timeout": 600000,
-          "category": "hf_mf",
-          "parameters": [
-            {
-              "name": "target_block",
-              "type": "integer",
-              "required": true,
-              "description": "Целевой блок",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "keytype",
-              "type": "choice",
-              "required": true,
-              "description": "Тип ключа",
-              "default": null,
-              "choices": ["A", "B"]
-            },
-            {
-              "name": "known_key",
-              "type": "hex",
-              "required": true,
-              "description": "Известный ключ",
-              "default": null,
-              "choices": null
-            }
-          ],
-          "examples": ["hf mf hardnested -1 4 -t A -k aabbccddeeff"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Быстрее обычной nested", "Требует известный ключ"]
-        },
-        "hf_mf_staticnested": {
-          "id": "hf_mf_staticnested",
-          "name": "Static Nested атака",
-          "description": "Атака на карты со статичными nonce",
-          "template": "hf mf staticnested -1 {block} -t {keytype} -k {key}",
-          "risk_level": "high",
-          "timeout": 180000,
-          "category": "hf_mf",
-          "parameters": [
-            {
-              "name": "block",
-              "type": "integer",
-              "required": true,
-              "description": "Блок для атаки",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "keytype",
-              "type": "choice",
-              "required": true,
-              "description": "Тип ключа",
-              "default": null,
-              "choices": ["A", "B"]
-            },
-            {
-              "name": "key",
-              "type": "hex",
-              "required": true,
-              "description": "Известный ключ",
-              "default": null,
-              "choices": null
-            }
-          ],
-          "examples": ["hf mf staticnested -1 0 -t A -k ffffffffffff"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Для карт со слабым генератором", "Chinese clone карты"]
-        },
-        "hf_mf_1k_check": {
-          "id": "hf_mf_1k_check",
-          "name": "Проверка 1K",
-          "description": "Проверить является ли карта Mifare Classic 1K",
-          "template": "hf mf 1k_check",
-          "risk_level": "safe",
           "timeout": 5000,
-          "category": "hf_mf",
-          "parameters": [],
-          "examples": ["hf mf 1k_check"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Определяет размер памяти", "16 секторов = 1K"]
-        },
-        "hf_mf_4k_check": {
-          "id": "hf_mf_4k_check",
-          "name": "Проверка 4K",
-          "description": "Проверить является ли карта Mifare Classic 4K",
-          "template": "hf mf 4k_check",
-          "risk_level": "safe",
-          "timeout": 5000,
-          "category": "hf_mf",
-          "parameters": [],
-          "examples": ["hf mf 4k_check"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Определяет размер памяти", "40 секторов = 4K"]
-        },
-        "hf_mf_read": {
-          "id": "hf_mf_read",
-          "name": "Чтение блока Mifare",
-          "description": "Прочитать блок карты Mifare Classic с использованием ключа",
-          "template": "hf mf read -b {block} -k {key} -t {keytype}",
-          "risk_level": "medium",
-          "timeout": 5000,
-          "category": "hf_mf",
           "parameters": [
-            {
-              "name": "block",
-              "type": "integer",
-              "required": true,
-              "description": "Номер блока (0-255)",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "key",
-              "type": "hex",
-              "required": true,
-              "description": "Ключ доступа (12 hex символов)",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "keytype",
-              "type": "choice",
-              "required": false,
-              "description": "Тип ключа",
-              "default": "A",
-              "choices": ["A", "B"]
-            }
-          ],
-          "examples": ["hf mf read -b 4 -k ffffffffffff -t A"],
-          "output_format": "hex",
-          "can_batch": true,
-          "tips": ["Требует правильный ключ", "16 байт данных на блок"]
-        },
-        "hf_mf_write": {
-          "id": "hf_mf_write",
-          "name": "Запись блока Mifare",
-          "description": "Записать данные в блок карты Mifare Classic",
-          "template": "hf mf write -b {block} -d {data} -k {key} -t {keytype}",
-          "risk_level": "dangerous",
-          "timeout": 5000,
-          "category": "hf_mf",
-          "parameters": [
-            {
-              "name": "block",
-              "type": "integer",
-              "required": true,
-              "description": "Номер блока",
-              "default": null,
-              "choices": null
-            },
             {
               "name": "data",
               "type": "hex",
               "required": true,
-              "description": "Данные для записи (16 байт)",
-              "default": null,
-              "choices": null
+              "description": "HEX данные команды",
+              "default": ""
+            }
+          ],
+          "examples": ["hf 14a raw -a 5200"],
+          "tips": "Требуются знания протокола для формирования команд"
+        }
+      ]
+    },
+    {
+      "id": "mifare_classic",
+      "name": "Mifare Classic",
+      "tab": "main",
+      "commands": [
+        {
+          "id": "mf_info",
+          "name": "Информация Mifare",
+          "description": "Получить информацию о карте Mifare Classic",
+          "template": "hf mf info",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["hf mf info"],
+          "tips": "Определяет тип карты (1K/4K/Mini) и показывает UID"
+        },
+        {
+          "id": "mf_dump",
+          "name": "Дамп памяти Mifare",
+          "description": "Считать полный дамп памяти Mifare Classic",
+          "template": "hf mf dump",
+          "risk_level": "safe",
+          "timeout": 60000,
+          "parameters": [],
+          "examples": ["hf mf dump"],
+          "tips": "Сохраняет дамп в файл, требует наличия ключей"
+        },
+        {
+          "id": "mf_restore",
+          "name": "Восстановление из дампа",
+          "description": "Записать дамп обратно на карту Mifare",
+          "template": "hf mf restore",
+          "risk_level": "dangerous",
+          "timeout": 60000,
+          "parameters": [],
+          "examples": ["hf mf restore"],
+          "tips": "Перезаписывает всю карту данными из файла дампа"
+        },
+        {
+          "id": "mf_nested",
+          "name": "Атака Nested",
+          "description": "Взлом ключей методом Nested",
+          "template": "hf mf nested 1 {t} {k} d",
+          "risk_level": "medium",
+          "timeout": 300000,
+          "parameters": [
+            {
+              "name": "target_block",
+              "type": "int",
+              "required": true,
+              "description": "Целевой блок для атаки",
+              "default": "0"
+            },
+            {
+              "name": "key_type",
+              "type": "choice",
+              "required": true,
+              "choices": ["a", "b"],
+              "description": "Тип ключа (A или B)",
+              "default": "a"
+            },
+            {
+              "name": "known_key",
+              "type": "hex",
+              "required": true,
+              "description": "Известный ключ (12 HEX символов)",
+              "default": "ffffffffffff"
+            }
+          ],
+          "examples": ["hf mf nested 1 0 a ffffffffffff"],
+          "tips": "Требует хотя бы один известный ключ для начала атаки"
+        },
+        {
+          "id": "mf_darkside",
+          "name": "Атака Darkside",
+          "description": "Взлом ключей методом Darkside",
+          "template": "hf mf darkside",
+          "risk_level": "medium",
+          "timeout": 120000,
+          "parameters": [],
+          "examples": ["hf mf darkside"],
+          "tips": "Работает против карт уязвимых к этой атаке"
+        },
+        {
+          "id": "mf_hardnested",
+          "name": "Атака Hardnested",
+          "description": "Взлом ключей методом Hardnested",
+          "template": "hf mf hardnested 1 {t} {kt} {k} 1 {tb}",
+          "risk_level": "medium",
+          "timeout": 600000,
+          "parameters": [
+            {
+              "name": "target_block",
+              "type": "int",
+              "required": true,
+              "description": "Целевой блок",
+              "default": "0"
+            },
+            {
+              "name": "target_key",
+              "type": "choice",
+              "required": true,
+              "choices": ["a", "b"],
+              "description": "Тип целевого ключа",
+              "default": "a"
+            },
+            {
+              "name": "known_key",
+              "type": "hex",
+              "required": true,
+              "description": "Известный ключ",
+              "default": "ffffffffffff"
+            },
+            {
+              "name": "target_block2",
+              "type": "int",
+              "required": true,
+              "description": "Второй целевой блок",
+              "default": "0"
+            }
+          ],
+          "examples": ["hf mf hardnested 1 0 a ffffffffffff 1 1"],
+          "tips": "Мощная атака, может занять значительное время"
+        },
+        {
+          "id": "mf_read",
+          "name": "Чтение блока Mifare",
+          "description": "Прочитать конкретный блок Mifare",
+          "template": "hf mf rdbl {b} {k} {key}",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "block",
+              "type": "int",
+              "required": true,
+              "description": "Номер блока",
+              "default": "0"
+            },
+            {
+              "name": "key_type",
+              "type": "choice",
+              "required": true,
+              "choices": ["a", "b"],
+              "description": "Тип ключа",
+              "default": "a"
             },
             {
               "name": "key",
               "type": "hex",
               "required": true,
               "description": "Ключ доступа",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "keytype",
-              "type": "choice",
-              "required": false,
-              "description": "Тип ключа",
-              "default": "A",
-              "choices": ["A", "B"]
+              "default": "ffffffffffff"
             }
           ],
-          "examples": ["hf mf write -b 4 -d 00000000000000000000000000000000 -k ffffffffffff -t A"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Опасная операция!", "Может заблокировать карту"]
+          "examples": ["hf mf rdbl 0 a ffffffffffff"],
+          "tips": "Читает 16 байт данных из указанного блока"
         },
-        "hf_mf_dump": {
-          "id": "hf_mf_dump",
-          "name": "Дамп карты",
-          "description": "Создать полный дамп памяти карты Mifare Classic",
-          "template": "hf mf dump -k {keys_file} -o {output_file}",
-          "risk_level": "medium",
-          "timeout": 60000,
-          "category": "hf_mf",
-          "parameters": [
-            {
-              "name": "keys_file",
-              "type": "string",
-              "required": false,
-              "description": "Файл с ключами",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "output_file",
-              "type": "string",
-              "required": false,
-              "description": "Выходной файл дампа",
-              "default": "dump.bin",
-              "choices": null
-            }
-          ],
-          "examples": ["hf mf dump", "hf mf dump -k keys.txt -o card.bin"],
-          "output_format": "binary",
-          "can_batch": false,
-          "tips": ["Сохраняет всю память", "Требуются ключи доступа"]
-        },
-        "hf_mf_restore": {
-          "id": "hf_mf_restore",
-          "name": "Восстановление дампа",
-          "description": "Записать дамп обратно в карту Mifare Classic",
-          "template": "hf mf restore -i {input_file} -k {keys_file}",
-          "risk_level": "dangerous",
-          "timeout": 120000,
-          "category": "hf_mf",
-          "parameters": [
-            {
-              "name": "input_file",
-              "type": "string",
-              "required": true,
-              "description": "Файл дампа для записи",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "keys_file",
-              "type": "string",
-              "required": false,
-              "description": "Файл с ключами",
-              "default": null,
-              "choices": null
-            }
-          ],
-          "examples": ["hf mf restore -i dump.bin"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Опасная операция!", "Может испортить карту"]
-        },
-        "hf_mf_csetuid": {
-          "id": "hf_mf_csetuid",
-          "name": "Установка UID (Clone)",
-          "description": "Установить UID на китайской clone карте Mifare",
-          "template": "hf mf csetuid {uid}",
+        {
+          "id": "mf_write",
+          "name": "Запись блока Mifare",
+          "description": "Записать данные в блок Mifare",
+          "template": "hf mf wrbl {b} {k} {key} {d}",
           "risk_level": "dangerous",
           "timeout": 5000,
-          "category": "hf_mf",
           "parameters": [
             {
-              "name": "uid",
+              "name": "block",
+              "type": "int",
+              "required": true,
+              "description": "Номер блока",
+              "default": "0"
+            },
+            {
+              "name": "key_type",
+              "type": "choice",
+              "required": true,
+              "choices": ["a", "b"],
+              "description": "Тип ключа",
+              "default": "a"
+            },
+            {
+              "name": "key",
               "type": "hex",
               "required": true,
-              "description": "Новый UID (4 байта)",
-              "default": null,
-              "choices": null
-            }
-          ],
-          "examples": ["hf mf csetuid 12345678"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Только для clone карт", "Изменяет блок 0"]
-        },
-        "hf_mf_csetblock": {
-          "id": "hf_mf_csetblock",
-          "name": "Запись блока 0 (Clone)",
-          "description": "Записать произвольные данные в блок 0 китайской clone карты",
-          "template": "hf mf csetblock -d {data}",
-          "risk_level": "dangerous",
-          "timeout": 5000,
-          "category": "hf_mf",
-          "parameters": [
+              "description": "Ключ доступа",
+              "default": "ffffffffffff"
+            },
             {
               "name": "data",
               "type": "hex",
               "required": true,
-              "description": "Данные для блока 0 (16 байт)",
-              "default": null,
-              "choices": null
+              "description": "Данные для записи (32 HEX символа)",
+              "default": "00000000000000000000000000000000"
             }
           ],
-          "examples": ["hf mf csetblock -d 12345678040001000000000000000000"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Полный контроль над блоком 0", "Только для clone карт"]
+          "examples": ["hf mf wrbl 4 a ffffffffffff 00000000000000000000000000000000"],
+          "tips": "ВНИМАНИЕ: Может необратимо изменить карту!"
         },
-        "hf_mf_cgetuid": {
-          "id": "hf_mf_cgetuid",
-          "name": "Чтение UID (Clone)",
-          "description": "Прочитать UID китайской clone карты специальным методом",
-          "template": "hf mf cgetuid",
-          "risk_level": "safe",
-          "timeout": 3000,
-          "category": "hf_mf",
-          "parameters": [],
-          "examples": ["hf mf cgetuid"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Специальный метод для clone", "Обходит защиту"]
-        },
-        "hf_mf_cgetblock": {
-          "id": "hf_mf_cgetblock",
-          "name": "Чтение блока 0 (Clone)",
-          "description": "Прочитать блок 0 китайской clone карты специальным методом",
-          "template": "hf mf cgetblock",
-          "risk_level": "safe",
-          "timeout": 3000,
-          "category": "hf_mf",
-          "parameters": [],
-          "examples": ["hf mf cgetblock"],
-          "output_format": "hex",
-          "can_batch": true,
-          "tips": ["Читает защищенный блок", "Для clone карт"]
-        },
-        "hf_mf_sim": {
-          "id": "hf_mf_sim",
-          "name": "Эмуляция Mifare",
-          "description": "Эмулировать карту Mifare Classic с заданным UID и данными",
-          "template": "hf mf sim -u {uid} -f {dump_file}",
-          "risk_level": "medium",
-          "timeout": 60000,
-          "category": "hf_mf",
+        {
+          "id": "mf_uid",
+          "name": "Смена UID (Magic)",
+          "description": "Изменить UID на Magic карте",
+          "template": "hf mf csetuid {uid}",
+          "risk_level": "dangerous",
+          "timeout": 5000,
           "parameters": [
             {
               "name": "uid",
               "type": "hex",
-              "required": false,
-              "description": "UID для эмуляции",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "dump_file",
-              "type": "string",
-              "required": false,
-              "description": "Файл дампа с данными карты",
-              "default": null,
-              "choices": null
+              "required": true,
+              "description": "Новый UID (4 или 7 байт)",
+              "default": "00000000"
             }
           ],
-          "examples": ["hf mf sim -u 12345678", "hf mf sim -f dump.bin"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Полная эмуляция карты", "Для тестирования ридеров"]
-        },
-        "hf_mf_sniff": {
-          "id": "hf_mf_sniff",
-          "name": "Сниффинг Mifare",
-          "description": "Перехват трафика Mifare Classic между картой и ридером",
-          "template": "hf mf sniff -t {timeout}",
-          "risk_level": "safe",
-          "timeout": 60000,
-          "category": "hf_mf",
-          "parameters": [
-            {
-              "name": "timeout",
-              "type": "integer",
-              "required": false,
-              "description": "Таймаут в миллисекундах",
-              "default": 10000,
-              "choices": null
-            }
-          ],
-          "examples": ["hf mf sniff", "hf mf sniff -t 20000"],
-          "output_format": "binary",
-          "can_batch": false,
-          "tips": ["Перехватывает authentication", "Требует близости"]
-        },
-        "hf_mf_autoread": {
-          "id": "hf_mf_autoread",
-          "name": "Авто-чтение Mifare",
-          "description": "Автоматически прочитать все доступные блоки карты используя известные ключи",
-          "template": "hf mf autoread -k {keys_file}",
+          "examples": ["hf mf csetuid 01020304"],
+          "tips": "Работает только с картами Gen1a/Gen2 (Magic)"
+        }
+      ]
+    },
+    {
+      "id": "lf_search",
+      "name": "Поиск LF карт",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "lf_search",
+          "name": "Поиск всех LF карт",
+          "description": "Автоматический поиск всех типов LF карт",
+          "template": "lf search",
           "risk_level": "safe",
           "timeout": 30000,
-          "category": "hf_mf",
+          "parameters": [],
+          "examples": ["lf search"],
+          "tips": "Сканирует все известные протоколы LF (125/134 kHz)"
+        },
+        {
+          "id": "lf_read",
+          "name": "Чтение LF сигнала",
+          "description": "Считать LF сигнал с карты",
+          "template": "lf read",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["lf read"],
+          "tips": "Записывает сырой сигнал LF для последующего анализа"
+        },
+        {
+          "id": "lf_snoop",
+          "name": "Сниффинг LF",
+          "description": "Перехватывать LF коммуникации",
+          "template": "lf snoop",
+          "risk_level": "safe",
+          "timeout": 60000,
+          "parameters": [],
+          "examples": ["lf snoop"],
+          "tips": "Записывает все LF события в буфер"
+        }
+      ]
+    },
+    {
+      "id": "em4100",
+      "name": "EM4100",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "lf_em_read",
+          "name": "Чтение EM4100",
+          "description": "Прочитать карту EM4100/xEM",
+          "template": "lf em read",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["lf em read"],
+          "tips": "Стандартный формат RFID карт 125kHz"
+        },
+        {
+          "id": "lf_em_sim",
+          "name": "Эмуляция EM4100",
+          "description": "Эмулировать карту EM4100",
+          "template": "lf em sim {uid}",
+          "risk_level": "medium",
+          "timeout": 60000,
           "parameters": [
             {
-              "name": "keys_file",
-              "type": "string",
-              "required": false,
-              "description": "Файл с ключами для перебора",
-              "default": null,
-              "choices": null
+              "name": "uid",
+              "type": "hex",
+              "required": true,
+              "description": "UID карты (10 HEX символов)",
+              "default": ""
             }
           ],
-          "examples": ["hf mf autoread", "hf mf autoread -k keys.txt"],
-          "output_format": "hex",
-          "can_batch": false,
-          "tips": ["Перебирает известные ключи", "Быстрое чтение доступных блоков"]
+          "examples": ["lf em sim 0102030405"],
+          "tips": "Эмулирует карту с указанным UID"
         },
-        "hf_mf_keys": {
-          "id": "hf_mf_keys",
-          "name": "Управление ключами",
-          "description": "Показать или загрузить ключи Mifare из файла",
-          "template": "hf mf keys {list|load|save} {file}",
+        {
+          "id": "lf_em_wipe",
+          "name": "Очистка xEM",
+          "description": "Очистить перезаписываемую карту xEM",
+          "template": "lf em wipe",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["lf em wipe"],
+          "tips": "Работает только с картами xEM (перезаписываемые)"
+        }
+      ]
+    },
+    {
+      "id": "hid_prox",
+      "name": "HID Prox",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "lf_hid_read",
+          "name": "Чтение HID Prox",
+          "description": "Прочитать карту HID Prox",
+          "template": "lf hid read",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["lf hid read"],
+          "tips": "Поддерживает форматы H10301, H10302 и другие"
+        },
+        {
+          "id": "lf_hid_sim",
+          "name": "Эмуляция HID Prox",
+          "description": "Эмулировать карту HID Prox",
+          "template": "lf hid sim {card}",
+          "risk_level": "medium",
+          "timeout": 60000,
+          "parameters": [
+            {
+              "name": "card_data",
+              "type": "string",
+              "required": true,
+              "description": "Данные карты (формат зависит от типа)",
+              "default": ""
+            }
+          ],
+          "examples": ["lf hid sim 2006f98722"],
+          "tips": "Эмулирует карту HID с указанными данными"
+        },
+        {
+          "id": "lf_hid_clone",
+          "name": "Клонирование HID на T55xx",
+          "description": "Записать HID данные на карту T55xx",
+          "template": "lf hid clone {card}",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "card_data",
+              "type": "string",
+              "required": true,
+              "description": "Данные карты для клонирования",
+              "default": ""
+            }
+          ],
+          "examples": ["lf hid clone 2006f98722"],
+          "tips": "Требует чистую карту T55xx в антенне"
+        }
+      ]
+    },
+    {
+      "id": "indala",
+      "name": "Indala",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "lf_indala_read",
+          "name": "Чтение Indala",
+          "description": "Прочитать карту Indala",
+          "template": "lf indala read",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["lf indala read"],
+          "tips": "Карты Indala часто используются в системах контроля доступа"
+        },
+        {
+          "id": "lf_indala_sim",
+          "name": "Эмуляция Indala",
+          "description": "Эмулировать карту Indala",
+          "template": "lf indala sim {uid}",
+          "risk_level": "medium",
+          "timeout": 60000,
+          "parameters": [
+            {
+              "name": "uid",
+              "type": "hex",
+              "required": true,
+              "description": "UID карты Indala",
+              "default": ""
+            }
+          ],
+          "examples": ["lf indala sim a000000c3e2962"],
+          "tips": "Эмулирует карту Indala с указанным UID"
+        }
+      ]
+    },
+    {
+      "id": "t55xx",
+      "name": "T55xx",
+      "tab": "write",
+      "commands": [
+        {
+          "id": "lf_t55xx_detect",
+          "name": "Определение T55xx",
+          "description": "Определить карту T55xx и её конфигурацию",
+          "template": "lf t55xx detect",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["lf t55xx detect"],
+          "tips": "Показывает тип карты и текущую конфигурацию"
+        },
+        {
+          "id": "lf_t55xx_read",
+          "name": "Чтение T55xx",
+          "description": "Прочитать все блоки карты T55xx",
+          "template": "lf t55xx read",
           "risk_level": "safe",
           "timeout": 5000,
-          "category": "hf_mf",
+          "parameters": [],
+          "examples": ["lf t55xx read"],
+          "tips": "Отображает содержимое всех 8 блоков"
+        },
+        {
+          "id": "lf_t55xx_write",
+          "name": "Запись блока T55xx",
+          "description": "Записать данные в блок T55xx",
+          "template": "lf t55xx write {b} {d}",
+          "risk_level": "dangerous",
+          "timeout": 5000,
           "parameters": [
             {
-              "name": "action",
-              "type": "choice",
+              "name": "block",
+              "type": "int",
               "required": true,
-              "description": "Действие с ключами",
-              "default": null,
-              "choices": ["list", "load", "save"]
+              "description": "Номер блока (0-7)",
+              "default": "0"
             },
             {
-              "name": "file",
-              "type": "string",
-              "required": false,
-              "description": "Файл ключей",
-              "default": null,
-              "choices": null
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные для записи (8 HEX символов)",
+              "default": "00000000"
             }
           ],
-          "examples": ["hf mf keys list", "hf mf keys load keys.txt"],
-          "output_format": "text",
-          "can_batch": true,
-          "tips": ["Хранит ключи в памяти", "Формат: 12 hex символов на ключ"]
+          "examples": ["lf t55xx write 0 00000000"],
+          "tips": "Блок 0 содержит конфигурацию, будьте осторожны!"
         },
-        "hf_mf_chk": {
-          "id": "hf_mf_chk",
-          "name": "Проверка ключей",
-          "description": "Проверить ключи Mifare против карты из файла или дефолтного списка",
-          "template": "hf mf chk -k {keys_file} -b {blocks}",
+        {
+          "id": "lf_t55xx_wipe",
+          "name": "Очистка T55xx",
+          "description": "Полностью очистить карту T55xx",
+          "template": "lf t55xx wipe",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["lf t55xx wipe"],
+          "tips": "Сбрасывает карту в заводское состояние"
+        },
+        {
+          "id": "lf_t55xx_dump",
+          "name": "Дамп T55xx",
+          "description": "Сохранить дамп карты T55xx в файл",
+          "template": "lf t55xx dump",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["lf t55xx dump"],
+          "tips": "Сохраняет все блоки в файл для последующего использования"
+        },
+        {
+          "id": "lf_t55xx_restore",
+          "name": "Восстановление T55xx",
+          "description": "Восстановить карту T55xx из файла дампа",
+          "template": "lf t55xx restore",
+          "risk_level": "dangerous",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["lf t55xx restore"],
+          "tips": "Записывает данные из файла обратно на карту"
+        }
+      ]
+    },
+    {
+      "id": "iclass",
+      "name": "iCLASS",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "hf_iclass_info",
+          "name": "Информация iCLASS",
+          "description": "Получить информацию о карте iCLASS",
+          "template": "hf iclass info",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["hf iclass info"],
+          "tips": "Показывает UID, конфигурацию и тип карты"
+        },
+        {
+          "id": "hf_iclass_read",
+          "name": "Чтение iCLASS",
+          "description": "Прочитать карту iCLASS",
+          "template": "hf iclass read",
+          "risk_level": "safe",
+          "timeout": 30000,
+          "parameters": [],
+          "examples": ["hf iclass read"],
+          "tips": "Требует авторизации для чтения защищенных зон"
+        },
+        {
+          "id": "hf_iclass_write",
+          "name": "Запись iCLASS",
+          "description": "Записать данные на карту iCLASS",
+          "template": "hf iclass write {b} {d}",
+          "risk_level": "dangerous",
+          "timeout": 10000,
+          "parameters": [
+            {
+              "name": "block",
+              "type": "int",
+              "required": true,
+              "description": "Номер блока",
+              "default": "0"
+            },
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные для записи",
+              "default": ""
+            }
+          ],
+          "examples": ["hf iclass write 6 0000000000000000"],
+          "tips": "Требует правильные ключи для записи"
+        },
+        {
+          "id": "hf_iclass_dump",
+          "name": "Дамп iCLASS",
+          "description": "Сделать полный дамп карты iCLASS",
+          "template": "hf iclass dump",
+          "risk_level": "safe",
+          "timeout": 60000,
+          "parameters": [],
+          "examples": ["hf iclass dump"],
+          "tips": "Сохраняет все читаемые блоки в файл"
+        }
+      ]
+    },
+    {
+      "id": "ultralight",
+      "name": "Ultralight",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "hf_ul_info",
+          "name": "Информация Ultralight",
+          "description": "Получить информацию о карте Mifare Ultralight",
+          "template": "hf ul info",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["hf ul info"],
+          "tips": "Определяет тип (Ultralight, Ultralight C, NTAG)"
+        },
+        {
+          "id": "hf_ul_read",
+          "name": "Чтение Ultralight",
+          "description": "Прочитать карту Mifare Ultralight",
+          "template": "hf ul read",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["hf ul read"],
+          "tips": "Читает все страницы карты"
+        },
+        {
+          "id": "hf_ul_write",
+          "name": "Запись Ultralight",
+          "description": "Записать данные на карту Ultralight",
+          "template": "hf ul write {p} {d}",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "page",
+              "type": "int",
+              "required": true,
+              "description": "Номер страницы",
+              "default": "4"
+            },
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные (8 HEX символов)",
+              "default": "00000000"
+            }
+          ],
+          "examples": ["hf ul write 4 00000000"],
+          "tips": "Некоторые страницы могут быть заблокированы"
+        }
+      ]
+    },
+    {
+      "id": "iso15693",
+      "name": "ISO 15693",
+      "tab": "search",
+      "commands": [
+        {
+          "id": "hf_15_info",
+          "name": "Информация ISO15693",
+          "description": "Получить информацию о карте ISO 15693",
+          "template": "hf 15 info",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["hf 15 info"],
+          "tips": "Показывает UID и информацию о производителе"
+        },
+        {
+          "id": "hf_15_read",
+          "name": "Чтение ISO15693",
+          "description": "Прочитать блок карты ISO 15693",
+          "template": "hf 15 read {b}",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "block",
+              "type": "int",
+              "required": true,
+              "description": "Номер блока",
+              "default": "0"
+            }
+          ],
+          "examples": ["hf 15 read 0"],
+          "tips": "Читает один блок за раз"
+        },
+        {
+          "id": "hf_15_write",
+          "name": "Запись ISO15693",
+          "description": "Записать данные в блок ISO 15693",
+          "template": "hf 15 write {b} {d}",
+          "risk_level": "dangerous",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "block",
+              "type": "int",
+              "required": true,
+              "description": "Номер блока",
+              "default": "0"
+            },
+            {
+              "name": "data",
+              "type": "hex",
+              "required": true,
+              "description": "Данные (8 HEX символов)",
+              "default": "00000000"
+            }
+          ],
+          "examples": ["hf 15 write 0 00000000"],
+          "tips": "Некоторые карты могут быть защищены от записи"
+        }
+      ]
+    },
+    {
+      "id": "trace",
+      "name": "Трассировка",
+      "tab": "sniffing",
+      "commands": [
+        {
+          "id": "trace_list",
+          "name": "Список трассировки",
+          "description": "Показать сохраненную трассировку",
+          "template": "trace list",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["trace list"],
+          "tips": "Отображает захваченные пакеты"
+        },
+        {
+          "id": "trace_save",
+          "name": "Сохранить трассировку",
+          "description": "Сохранить трассировку в файл",
+          "template": "trace save -f {filename}",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [
+            {
+              "name": "filename",
+              "type": "string",
+              "required": false,
+              "description": "Имя файла",
+              "default": "trace"
+            }
+          ],
+          "examples": ["trace save -f mytrace"],
+          "tips": "Сохраняет в формате .trace"
+        },
+        {
+          "id": "trace_load",
+          "name": "Загрузить трассировку",
+          "description": "Загрузить трассировку из файла",
+          "template": "trace load -f {filename}",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [
+            {
+              "name": "filename",
+              "type": "string",
+              "required": true,
+              "description": "Имя файла",
+              "default": ""
+            }
+          ],
+          "examples": ["trace load -f mytrace"],
+          "tips": "Загружает ранее сохраненную трассировку"
+        },
+        {
+          "id": "trace_clear",
+          "name": "Очистить трассировку",
+          "description": "Очистить буфер трассировки",
+          "template": "trace clear",
+          "risk_level": "safe",
+          "timeout": 1000,
+          "parameters": [],
+          "examples": ["trace clear"],
+          "tips": "Удаляет все данные из буфера трассировки"
+        }
+      ]
+    },
+    {
+      "id": "plot",
+      "name": "Графики",
+      "tab": "tools",
+      "commands": [
+        {
+          "id": "plot",
+          "name": "Построить график",
+          "description": "Визуализировать данные сигнала",
+          "template": "plot",
+          "risk_level": "safe",
+          "timeout": 10000,
+          "parameters": [],
+          "examples": ["plot"],
+          "tips": "Отображает график текущего сигнала в буфере"
+        },
+        {
+          "id": "data_samples",
+          "name": "Получить сэмплы",
+          "description": "Получить сырые сэмплы данных",
+          "template": "data samples",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["data samples"],
+          "tips": "Возвращает массив значений сигнала"
+        },
+        {
+          "id": "data_plot",
+          "name": "График данных",
+          "description": "Построить график из данных буфера",
+          "template": "data plot",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["data plot"],
+          "tips": "Альтернативная команда для построения графика"
+        }
+      ]
+    },
+    {
+      "id": "data_manipulation",
+      "name": "Обработка данных",
+      "tab": "tools",
+      "commands": [
+        {
+          "id": "data_hex",
+          "name": "HEX представление",
+          "description": "Показать данные в HEX формате",
+          "template": "data hex",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [],
+          "examples": ["data hex"],
+          "tips": "Конвертирует буфер в HEX строку"
+        },
+        {
+          "id": "data_demod",
+          "name": "Демодуляция",
+          "description": "Демодулировать сигнал",
+          "template": "data demod",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [],
+          "examples": ["data demod"],
+          "tips": "Преобразует сырой сигнал в биты"
+        },
+        {
+          "id": "data_manchester",
+          "name": "Декодирование Манчестер",
+          "description": "Декодировать Манчестер кодирование",
+          "template": "data manch",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [],
+          "examples": ["data manch"],
+          "tips": "Декодирует Манчестер кодирование в буфере"
+        },
+        {
+          "id": "data_biphase",
+          "name": "Декодирование Biphase",
+          "description": "Декодировать Biphase (F2F) кодирование",
+          "template": "data biphase",
+          "risk_level": "safe",
+          "timeout": 3000,
+          "parameters": [],
+          "examples": ["data biphase"],
+          "tips": "Декодирует Biphase кодирование"
+        },
+        {
+          "id": "data_diff",
+          "name": "Дифференциальное декодирование",
+          "description": "Применить дифференциальное декодирование",
+          "template": "data diff",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [],
+          "examples": ["data diff"],
+          "tips": "Преобразует дифференциально кодированные данные"
+        }
+      ]
+    },
+    {
+      "id": "script",
+      "name": "Скрипты",
+      "tab": "scripts",
+      "commands": [
+        {
+          "id": "script_run",
+          "name": "Выполнить скрипт",
+          "description": "Выполнить Lua скрипт",
+          "template": "script run {filename}",
           "risk_level": "medium",
           "timeout": 120000,
-          "category": "hf_mf",
           "parameters": [
             {
-              "name": "keys_file",
+              "name": "filename",
               "type": "string",
-              "required": false,
-              "description": "Файл с ключами для проверки",
-              "default": null,
-              "choices": null
-            },
-            {
-              "name": "blocks",
-              "type": "string",
-              "required": false,
-              "description": "Диапазон блоков для проверки",
-              "default": "0-255",
-              "choices": null
+              "required": true,
+              "description": "Имя файла скрипта (.lua)",
+              "default": ""
             }
           ],
-          "examples": ["hf mf chk", "hf mf chk -k keys.txt -b 0-15"],
-          "output_format": "text",
-          "can_batch": false,
-          "tips": ["Перебор ключей", "Находит работающие ключи"]
+          "examples": ["script run myscript.lua"],
+          "tips": "Запускает пользовательский Lua скрипт"
+        },
+        {
+          "id": "script_load",
+          "name": "Загрузить скрипт",
+          "description": "Загрузить скрипт в память",
+          "template": "script load {filename}",
+          "risk_level": "safe",
+          "timeout": 5000,
+          "parameters": [
+            {
+              "name": "filename",
+              "type": "string",
+              "required": true,
+              "description": "Имя файла скрипта",
+              "default": ""
+            }
+          ],
+          "examples": ["script load myscript.lua"],
+          "tips": "Загружает скрипт без выполнения"
         }
-      }
+      ]
+    },
+    {
+      "id": "hw_commands",
+      "name": "Аппаратные команды",
+      "tab": "tools",
+      "commands": [
+        {
+          "id": "hw_antenna_on",
+          "name": "Включить антенну",
+          "description": "Включить HF антенну",
+          "template": "hw antenna on",
+          "risk_level": "medium",
+          "timeout": 2000,
+          "parameters": [],
+          "examples": ["hw antenna on"],
+          "tips": "Включает постоянное поле HF антенны"
+        },
+        {
+          "id": "hw_antenna_off",
+          "name": "Выключить антенну",
+          "description": "Выключить HF антенну",
+          "template": "hw antenna off",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [],
+          "examples": ["hw antenna off"],
+          "tips": "Выключает HF антенну"
+        },
+        {
+          "id": "hw_leds",
+          "name": "Управление LED",
+          "description": "Включить/выключить светодиоды",
+          "template": "hw leds {state}",
+          "risk_level": "safe",
+          "timeout": 2000,
+          "parameters": [
+            {
+              "name": "state",
+              "type": "choice",
+              "required": true,
+              "choices": ["on", "off"],
+              "description": "Состояние светодиодов",
+              "default": "on"
+            }
+          ],
+          "examples": ["hw leds on", "hw leds off"],
+          "tips": "Управляет всеми светодиодами устройства"
+        }
+      ]
     }
-  }
+  ]
 }
