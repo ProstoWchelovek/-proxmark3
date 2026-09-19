@@ -99,6 +99,7 @@ class SearchTab(QWidget):
             self.execute_command("detect_type")
     
     def execute_command(self, cmd_type):
+        """Выполнение команды поиска/чтения карт"""
         commands = {
             "search_lf": "lf search",
             "search_hf": "hf search",
@@ -107,9 +108,33 @@ class SearchTab(QWidget):
         }
         
         cmd = commands.get(cmd_type, "")
-        if cmd:
-            self.log_message(f"Выполнение: {cmd}")
-            # Здесь будет вызов command_executor.execute(cmd)
+        if not cmd:
+            self.log_message(f"❌ Неизвестная команда: {cmd_type}")
+            return
+        
+        if not self.device_manager.is_connected():
+            self.log_message("❌ Ошибка: Устройство не подключено")
+            self.log_message("💡 Подключитесь к Proxmark3 на вкладке 'Главная'")
+            return
+        
+        self.log_message(f"▶️ Выполнение: {cmd}")
+        
+        # Выполняем команду через command_executor
+        try:
+            result = self.command_executor.execute(cmd)
+            if result:
+                self.log_message(f"✅ Успешно: {cmd}")
+                # Если есть данные в результате, показываем их
+                if hasattr(result, 'output') and result.output:
+                    self.log_message("📋 Результат:")
+                    for line in result.output.split('\n'):
+                        if line.strip():
+                            self.log_message(f"   {line}")
+            else:
+                self.log_message(f"⚠️ Команда выполнена без результата")
+        except Exception as e:
+            self.log_message(f"❌ Ошибка выполнения: {str(e)}")
+            logger.error(f"Ошибка при выполнении команды {cmd}: {e}", exc_info=True)
             
     def log_message(self, message: str):
         timestamp = __import__('datetime').datetime.now().strftime("%H:%M:%S")
