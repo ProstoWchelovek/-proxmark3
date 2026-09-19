@@ -49,6 +49,14 @@ except ImportError:
     print("PyQt6 не найден. Установите: pip install PyQt6")
 
 # Импорт локальных модулей
+from gui.hex_editor import HexEditorWidget
+from core.device_connector import DeviceConnector
+from core.ai_assistant import AIAssistant
+from gui.ai_widget import AIAssistantWidget
+from utils.logger import ProxMasterLogger
+from utils.file_manager import FileManager
+
+# Импорт локальных модулей
 from installer.proxspace_installer import ProxSpaceInstaller, IcemanFirmwareManager
 from core.ai_assistant import AIAssistant, AIProvider, ai_assistant
 from gui.ai_widget import AIFloatingPanel
@@ -534,40 +542,100 @@ class MainWindow(QMainWindow):
         return widget
         
     def create_data_manager_tab(self) -> QWidget:
-        """Создание вкладки Менеджер данных"""
+        """Создание вкладки Менеджер данных с профессиональным Hex редактором"""
         widget = QWidget()
         layout = QVBoxLayout(widget)
+        layout.setContentsMargins(0, 0, 0, 0)
         
-        # Hex редактор
-        hex_group = QGroupBox("📝 Hex Редактор")
-        hex_layout = QVBoxLayout(hex_group)
+        # Панель инструментов
+        toolbar = QHBoxLayout()
         
-        self.hex_editor = QTextEdit()
-        self.hex_editor.setFontFamily("Courier New")
-        self.hex_editor.setPlaceholderText("Вставьте hex данные здесь...")
-        hex_layout.addWidget(self.hex_editor)
+        self.btn_load_dump = QPushButton("📂 Открыть файл")
+        self.btn_save_dump = QPushButton("💾 Сохранить в файл")
+        self.btn_copy_hex = QPushButton("📋 Копировать HEX")
+        self.btn_paste_hex = QPushButton("📥 Вставить HEX")
+        self.btn_fill = QPushButton("🎨 Заполнить")
+        self.btn_undo = QPushButton("↩️ Отменить")
         
-        # Кнопки действий
-        hex_btn_layout = QHBoxLayout()
+        for btn in [self.btn_load_dump, self.btn_save_dump, self.btn_copy_hex, self.btn_paste_hex, self.btn_fill, self.btn_undo]:
+            btn.setFixedHeight(35)
+            toolbar.addWidget(btn)
         
-        load_btn = QPushButton("📂 Загрузить дамп")
-        load_btn.clicked.connect(self.load_dump)
+        toolbar.addStretch()
         
-        save_btn = QPushButton("💾 Сохранить дамп")
-        save_btn.clicked.connect(self.save_dump)
+        self.lbl_file_info = QLabel("Файл: нет | Размер: 0 байт")
+        self.lbl_file_info.setStyleSheet("color: #aaa; padding: 5px;")
+        toolbar.addWidget(self.lbl_file_info)
         
-        clear_btn = QPushButton("🗑️ Очистить")
-        clear_btn.clicked.connect(self.hex_editor.clear)
+        layout.addLayout(toolbar)
         
-        hex_btn_layout.addWidget(load_btn)
-        hex_btn_layout.addWidget(save_btn)
-        hex_btn_layout.addWidget(clear_btn)
-        hex_btn_layout.addStretch()
+        # Профессиональный Hex редактор
+        self.hex_editor = HexEditorWidget()
+        self.hex_editor.data_changed.connect(self.on_hex_data_changed)
+        layout.addWidget(self.hex_editor)
         
-        hex_layout.addLayout(hex_btn_layout)
-        layout.addWidget(hex_group)
+        # Подключение кнопок
+        self.btn_load_dump.clicked.connect(self.load_dump_file)
+        self.btn_save_dump.clicked.connect(self.save_dump_file)
+        self.btn_copy_hex.clicked.connect(self.hex_editor.copy_hex)
+        self.btn_paste_hex.clicked.connect(self.hex_editor.paste_hex)
+        self.btn_undo.clicked.connect(self.hex_editor.undo_last_change)
+        self.btn_fill.clicked.connect(self.show_fill_dialog)
         
         return widget
+    
+    def load_dump_file(self):
+        """Загрузка дампа из файла"""
+        file_path, _ = QFileDialog.getOpenFileName(
+            self, "Открыть дамп", "dumps/", 
+            "Все файлы (*);;Hex файлы (*.hex);;Bin файлы (*.bin)"
+        )
+        if file_path:
+            try:
+                with open(file_path, 'rb') as f:
+                    data = f.read()
+                self.hex_editor.set_data(data)
+                self.lbl_file_info.setText(f"Файл: {os.path.basename(file_path)} | Размер: {len(data)} байт")
+                self.log_success(f"Загружен дамп: {file_path} ({len(data)} байт)")
+            except Exception as e:
+                self.log_error(f"Ошибка загрузки: {e}")
+    
+    def save_dump_file(self):
+        """Сохранение дампа в файл"""
+        data = self.hex_editor.get_data()
+        if not data:
+            self.log_warning("Нет данных для сохранения")
+            return
+            
+        file_path, _ = QFileDialog.getSaveFileName(
+            self, "Сохранить дамп", "dumps/dump_", 
+            "Bin файлы (*.bin);;Hex файлы (*.hex);;Все файлы (*)"
+        )
+        if file_path:
+            try:
+                with open(file_path, 'wb') as f:
+                    f.write(data)
+                self.log_success(f"Сохранен дамп: {file_path} ({len(data)} байт)")
+            except Exception as e:
+                self.log_error(f"Ошибка сохранения: {e}")
+    
+    def on_hex_data_changed(self, data: bytes):
+        """Обработка изменения данных в hex редакторе"""
+        self.lbl_file_info.setText(f"Размер: {len(data)} байт | Изменено")
+    
+    def show_fill_dialog(self):
+        """Показ диалога заполнения"""
+        from gui.hex_editor import FillDialog
+        dialog = FillDialog(self)
+        if dialog.exec() == QDialog.DialogCode.Accepted:
+            start = dialog.spin_start.value()
+            end = dialog.spin_end.value()
+            value = dialog.spin_value.value()
+            if start <= end and end < len(self.hex_editor.get_data()):
+                self.hex_editor.fill_bytes(start, end, value)
+                self.log_success(f"Заполнено {end - start + 1} байт значением 0x{value:02X}")
+            else:
+                self.log_error("Неверный диапазон")
         
     def create_write_tab(self) -> QWidget:
         """Создание вкладки Запись"""
