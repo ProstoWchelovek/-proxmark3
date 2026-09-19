@@ -490,7 +490,7 @@ class AIFloatingPanel(QWidget):
         if not self.settings_dialog:
             self.settings_dialog = AISettingsDialog(self.ai, self)
         
-        self.settings_dialog.exec_()
+        self.settings_dialog.exec()
         self.refresh_models()
         self.update_status()
     

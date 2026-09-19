@@ -93,17 +93,14 @@ class DataTab(QWidget):
             try:
                 with open(file_path, 'rb') as f:
                     data = f.read()
-                self.hex_editor.load_data(data)
+                self.hex_editor.set_data(data)
                 self.file_info.setText(f"Файл: {file_path}\nРазмер: {len(data)} байт")
                 self.log_message(f"Загружен файл: {file_path}")
             except Exception as e:
                 self.log_message(f"Ошибка загрузки: {e}")
     
     def save_dump(self):
-        if self.hex_editor.file_path:
-            self.save_dump_as()
-        else:
-            self.save_dump_as()
+        self.save_dump_as()
     
     def save_dump_as(self):
         file_path, _ = QFileDialog.getSaveFileName(
@@ -120,7 +117,7 @@ class DataTab(QWidget):
                 self.log_message(f"Ошибка сохранения: {e}")
     
     def clear_editor(self):
-        self.hex_editor.clear()
+        self.hex_editor.set_data(b'\x00' * 256)
         self.file_info.setText("Файл не загружен")
         self.log_message("Редактор очищен")
     

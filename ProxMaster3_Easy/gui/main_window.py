@@ -9,10 +9,10 @@ import sys
 import logging
 from PyQt6.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
                              QTabWidget, QLabel, QPushButton, QStatusBar,
-                             QMenuBar, QMenu, QAction, QMessageBox, QToolBar,
+                             QMenuBar, QMenu, QMessageBox, QToolBar,
                              QSystemTrayIcon, QFrame)
 from PyQt6.QtCore import Qt, QTimer, pyqtSignal
-from PyQt6.QtGui import QIcon, QFont, QActionGroup
+from PyQt6.QtGui import QIcon, QFont, QActionGroup, QAction
 
 from ..core.device_manager import DeviceManager
 from ..core.command_executor import CommandExecutor
@@ -129,12 +129,12 @@ class MainWindow(QMainWindow):
         
         open_action = QAction("📂 Открыть дамп", self)
         open_action.setShortcut("Ctrl+O")
-        open_action.triggered.connect(lambda: self.data_tab.load_dump_file())
+        open_action.triggered.connect(lambda: self.data_tab.load_dump())
         file_menu.addAction(open_action)
         
         save_action = QAction("💾 Сохранить дамп", self)
         save_action.setShortcut("Ctrl+S")
-        save_action.triggered.connect(lambda: self.data_tab.save_current_dump())
+        save_action.triggered.connect(lambda: self.data_tab.save_dump())
         file_menu.addAction(save_action)
         
         file_menu.addSeparator()

@@ -7,7 +7,7 @@ ProxMaster3 Easy - Вкладка ИНСТРУМЕНТЫ
 
 from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QPushButton, 
                              QTextEdit, QGroupBox, QHBoxLayout, QComboBox,
-                             QTabWidget, QSpinBox)
+                             QTabWidget, QSpinBox, QLineEdit)
 import logging
 
 logger = logging.getLogger(__name__)
