@@ -1,64 +1,52 @@
 ```
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Virtual Environment
-venv/
-ENV/
-env/
-.venv/
-env.bak/
-ENV.bak/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*.tmp
-
-# Logs
-*.log
-
-# Environment variables
+# Environment files
 .env
 .env.local
 *.env.*
 
-# OS
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Dependencies
+.venv/
+venv/
+.env/
+
+# OS generated files
 .DS_Store
 Thumbs.db
 
-# Coverage
-.coverage
+# Coverage reports
 coverage/
 htmlcov/
+.coverage
 
-# MyPy
+# MyPy cache
 .mypy_cache/
-.dmypy.json
-dmypy.json
 
-# PyTest
+# PyTest cache
 .pytest_cache/
 
 # Compressed files

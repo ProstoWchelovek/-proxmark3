@@ -1,0 +1,791 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Полный список команд Proxmark3 Iceman для ProxMaster Complete",
+    "total_commands": 850,
+    "last_updated": "2024"
+  },
+  "tabs": [
+    {
+      "id": "main",
+      "name": "ГЛАВНАЯ",
+      "icon": "🏠",
+      "description": "Основная работа с устройством - безопасные операции",
+      "commands": [
+        {
+          "id": "hw_status",
+          "name": "Статус устройства",
+          "command": "hw status",
+          "description": "Показать текущий статус подключенного Proxmark3",
+          "category": "device",
+          "dangerous": false,
+          "tab": "main"
+        },
+        {
+          "id": "hw_version",
+          "name": "Версии прошивки",
+          "command": "hw version",
+          "description": "Показать версии firmware, bootloader и hardware",
+          "category": "device",
+          "dangerous": false,
+          "tab": "main"
+        },
+        {
+          "id": "hw_tune",
+          "name": "Настройка антенн",
+          "command": "hw tune",
+          "description": "Измерить резонансные частоты антенн LF и HF",
+          "category": "antenna",
+          "dangerous": false,
+          "tab": "main"
+        },
+        {
+          "id": "auto_search",
+          "name": "Автопоиск карт",
+          "command": "auto",
+          "description": "Автоматический поиск всех типов карт LF и HF",
+          "category": "search",
+          "dangerous": false,
+          "tab": "main"
+        },
+        {
+          "id": "hw_ping",
+          "name": "Проверка связи",
+          "command": "hw ping",
+          "description": "Проверить соединение с устройством",
+          "category": "device",
+          "dangerous": false,
+          "tab": "main"
+        },
+        {
+          "id": "hw_antennaf",
+          "name": "Тест антенны HF",
+          "command": "hw antennaf",
+          "description": "Измерить добротность HF антенны",
+          "category": "antenna",
+          "dangerous": false,
+          "tab": "main"
+        },
+        {
+          "id": "data_samples",
+          "name": "Последние сэмплы",
+          "command": "data samples",
+          "description": "Показать информацию о захваченных сэмплах",
+          "category": "data",
+          "dangerous": false,
+          "tab": "main"
+        },
+        {
+          "id": "trace_list",
+          "name": "Последний трейс",
+          "command": "trace list",
+          "description": "Показать последний захваченный трейс",
+          "category": "trace",
+          "dangerous": false,
+          "tab": "main"
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "name": "ПОИСК",
+      "icon": "🔍",
+      "description": "Поиск и чтение карт всех протоколов",
+      "commands": [
+        {
+          "id": "lf_search",
+          "name": "Поиск LF",
+          "command": "lf search",
+          "description": "Поиск карт низкочастотного диапазона (125 kHz)",
+          "category": "lf",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_search",
+          "name": "Поиск HF",
+          "command": "hf search",
+          "description": "Поиск карт высокочастотного диапазона (13.56 MHz)",
+          "category": "hf",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_em_410x_reader",
+          "name": "EM4100/410x чтение",
+          "command": "lf em 410x reader",
+          "description": "Чтение карт EM4100/410x",
+          "category": "lf_em",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_em_4x05_read",
+          "name": "EM4x05 чтение",
+          "command": "lf em 4x05 read",
+          "description": "Чтение карт EM4x05",
+          "category": "lf_em",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_em_4x50_reader",
+          "name": "EM4x50 чтение",
+          "command": "lf em 4x50 reader",
+          "description": "Чтение карт EM4x50",
+          "category": "lf_em",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_t55xx_detect",
+          "name": "T55xx детекция",
+          "command": "lf t55xx detect",
+          "description": "Определить конфигурацию карты T55xx",
+          "category": "lf_t55xx",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_t55xx_info",
+          "name": "T55xx информация",
+          "command": "lf t55xx info",
+          "description": "Показать информацию о карте T55xx",
+          "category": "lf_t55xx",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_hitag_reader",
+          "name": "Hitag чтение",
+          "command": "lf hitag reader",
+          "description": "Чтение карт Hitag",
+          "category": "lf_hitag",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_hid_reader",
+          "name": "HID чтение",
+          "command": "lf hid reader",
+          "description": "Чтение карт HID Prox",
+          "category": "lf_hid",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_awid_reader",
+          "name": "AWID чтение",
+          "command": "lf awid reader",
+          "description": "Чтение карт AWID",
+          "category": "lf_awid",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_fdxb_reader",
+          "name": "FDX-B чтение",
+          "command": "lf fdxb reader",
+          "description": "Чтение карт FDX-B (ISO 11784)",
+          "category": "lf_fdxb",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_destron_reader",
+          "name": "Destron чтение",
+          "command": "lf destron reader",
+          "description": "Чтение карт Destron (FDX-A)",
+          "category": "lf_destron",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_cotag_reader",
+          "name": "COTAG чтение",
+          "command": "lf cotag reader",
+          "description": "Чтение карт COTAG",
+          "category": "lf_cotag",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_gallagher_reader",
+          "name": "Gallagher чтение",
+          "command": "lf gallagher reader",
+          "description": "Чтение карт Gallagher",
+          "category": "lf_gallagher",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_gproxii_reader",
+          "name": "GProxII чтение",
+          "command": "lf gproxii reader",
+          "description": "Чтение карт GProxII",
+          "category": "lf_gproxii",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_idteck_reader",
+          "name": "Idteck чтение",
+          "command": "lf idteck reader",
+          "description": "Чтение карт Idteck",
+          "category": "lf_idteck",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_indala_reader",
+          "name": "Indala чтение",
+          "command": "lf indala reader",
+          "description": "Чтение карт Indala",
+          "category": "lf_indala",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_io_reader",
+          "name": "IO Prox чтение",
+          "command": "lf io reader",
+          "description": "Чтение карт IO Prox",
+          "category": "lf_io",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_jablotron_reader",
+          "name": "Jablotron чтение",
+          "command": "lf jablotron reader",
+          "description": "Чтение карт Jablotron",
+          "category": "lf_jablotron",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_keri_reader",
+          "name": "Keri чтение",
+          "command": "lf keri reader",
+          "description": "Чтение карт Keri",
+          "category": "lf_keri",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_motorola_reader",
+          "name": "Motorola чтение",
+          "command": "lf motorola reader",
+          "description": "Чтение карт Motorola",
+          "category": "lf_motorola",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_nedap_reader",
+          "name": "Nedap чтение",
+          "command": "lf nedap reader",
+          "description": "Чтение карт Nedap",
+          "category": "lf_nedap",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_nexwatch_reader",
+          "name": "NexWatch чтение",
+          "command": "lf nexwatch reader",
+          "description": "Чтение карт NexWatch",
+          "category": "lf_nexwatch",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_noralsy_reader",
+          "name": "Noralsy чтение",
+          "command": "lf noralsy reader",
+          "description": "Чтение карт Noralsy",
+          "category": "lf_noralsy",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_pac_reader",
+          "name": "PAC чтение",
+          "command": "lf pac reader",
+          "description": "Чтение карт PAC",
+          "category": "lf_pac",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_paradox_reader",
+          "name": "Paradox чтение",
+          "command": "lf paradox reader",
+          "description": "Чтение карт Paradox",
+          "category": "lf_paradox",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_pcf7931_reader",
+          "name": "PCF7931 чтение",
+          "command": "lf pcf7931 reader",
+          "description": "Чтение карт PCF7931",
+          "category": "lf_pcf7931",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_presco_reader",
+          "name": "Presco чтение",
+          "command": "lf presco reader",
+          "description": "Чтение карт Presco",
+          "category": "lf_presco",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_pyramid_reader",
+          "name": "Pyramid чтение",
+          "command": "lf pyramid reader",
+          "description": "Чтение карт Pyramid",
+          "category": "lf_pyramid",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_securakey_reader",
+          "name": "Securakey чтение",
+          "command": "lf securakey reader",
+          "description": "Чтение карт Securakey",
+          "category": "lf_securakey",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_ti_reader",
+          "name": "TI чтение",
+          "command": "lf ti reader",
+          "description": "Чтение карт TI (Texas Instruments)",
+          "category": "lf_ti",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_trovan_reader",
+          "name": "Trovan чтение",
+          "command": "lf trovan reader",
+          "description": "Чтение карт Trovan",
+          "category": "lf_trovan",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_viking_reader",
+          "name": "Viking чтение",
+          "command": "lf viking reader",
+          "description": "Чтение карт Viking",
+          "category": "lf_viking",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_visa2000_reader",
+          "name": "VISA2000 чтение",
+          "command": "lf visa2000 reader",
+          "description": "Чтение карт VISA 2000",
+          "category": "lf_visa2000",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "lf_zx8211_reader",
+          "name": "ZX8211 чтение",
+          "command": "lf zx8211 reader",
+          "description": "Чтение карт ZX8211",
+          "category": "lf_zx8211",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_14a_reader",
+          "name": "ISO 14443A чтение",
+          "command": "hf 14a reader",
+          "description": "Чтение карт ISO 14443A",
+          "category": "hf_14a",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_14b_reader",
+          "name": "ISO 14443B чтение",
+          "command": "hf 14b reader",
+          "description": "Чтение карт ISO 14443B",
+          "category": "hf_14b",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_15_reader",
+          "name": "ISO 15693 чтение",
+          "command": "hf 15 reader",
+          "description": "Чтение карт ISO 15693",
+          "category": "hf_15",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_mf_info",
+          "name": "Mifare Classic информация",
+          "command": "hf mf info",
+          "description": "Получить информацию о карте Mifare Classic",
+          "category": "hf_mf",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_mfu_info",
+          "name": "Mifare Ultralight информация",
+          "command": "hf mfu info",
+          "description": "Получить информацию о карте Mifare Ultralight",
+          "category": "hf_mfu",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_mfdes_info",
+          "name": "Mifare DESFire информация",
+          "command": "hf mfdes info",
+          "description": "Получить информацию о карте Mifare DESFire",
+          "category": "hf_mfdes",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_mfp_info",
+          "name": "Mifare Plus информация",
+          "command": "hf mfp info",
+          "description": "Получить информацию о карте Mifare Plus",
+          "category": "hf_mfp",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_iclass_reader",
+          "name": "iClass чтение",
+          "command": "hf iclass reader",
+          "description": "Чтение карт iClass",
+          "category": "hf_iclass",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_legic_reader",
+          "name": "Legic чтение",
+          "command": "hf legic reader",
+          "description": "Чтение карт Legic",
+          "category": "hf_legic",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_felica_reader",
+          "name": "FeliCa чтение",
+          "command": "hf felica reader",
+          "description": "Чтение карт FeliCa",
+          "category": "hf_felica",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_calypso_info",
+          "name": "Calypso информация",
+          "command": "hf calypso info",
+          "description": "Получить информацию о карте Calypso",
+          "category": "hf_calypso",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_cipurse_info",
+          "name": "CIPURSE информация",
+          "command": "hf cipurse info",
+          "description": "Получить информацию о карте CIPURSE",
+          "category": "hf_cipurse",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_seos_info",
+          "name": "SEOS информация",
+          "command": "hf seos info",
+          "description": "Получить информацию о карте SEOS",
+          "category": "hf_seos",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_secc_info",
+          "name": "SECC информация",
+          "command": "hf secc info",
+          "description": "Получить информацию о карте SECC",
+          "category": "hf_secc",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_topaz_reader",
+          "name": "Topaz чтение",
+          "command": "hf topaz reader",
+          "description": "Чтение карт Topaz",
+          "category": "hf_topaz",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_saflok_info",
+          "name": "Saflok информация",
+          "command": "hf saflok info",
+          "description": "Получить информацию о карте Saflok",
+          "category": "hf_saflok",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_st25ta_info",
+          "name": "ST25TA информация",
+          "command": "hf st25ta info",
+          "description": "Получить информацию о карте ST25TA",
+          "category": "hf_st25ta",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_ntag424_info",
+          "name": "NTAG424 информация",
+          "command": "hf ntag424 info",
+          "description": "Получить информацию о карте NTAG424",
+          "category": "hf_ntag424",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_aliro_info",
+          "name": "ALIRO информация",
+          "command": "hf aliro info",
+          "description": "Получить информацию о карте ALIRO",
+          "category": "hf_aliro",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_emrtd_info",
+          "name": "EMRTD информация",
+          "command": "hf emrtd info",
+          "description": "Получить информацию о карте EMRTD",
+          "category": "hf_emrtd",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_epa_info",
+          "name": "EPA информация",
+          "command": "hf epa info",
+          "description": "Получить информацию о карте EPA",
+          "category": "hf_epa",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_fido_info",
+          "name": "FIDO информация",
+          "command": "hf fido info",
+          "description": "Получить информацию о ключе FIDO",
+          "category": "hf_fido",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_ict_reader",
+          "name": "ICT чтение",
+          "command": "hf ict reader",
+          "description": "Чтение карт ICT",
+          "category": "hf_ict",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_jooki_decode",
+          "name": "Jooki декодирование",
+          "command": "hf jooki decode",
+          "description": "Декодировать карту Jooki",
+          "category": "hf_jooki",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_ksx6924_info",
+          "name": "KS X 6924 информация",
+          "command": "hf ksx6924 info",
+          "description": "Получить информацию о карте KS X 6924",
+          "category": "hf_ksx6924",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_lto_reader",
+          "name": "LTO чтение",
+          "command": "hf lto reader",
+          "description": "Чтение карт LTO",
+          "category": "hf_lto",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_fudan_reader",
+          "name": "Fudan чтение",
+          "command": "hf fudan reader",
+          "description": "Чтение карт Fudan",
+          "category": "hf_fudan",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_cryptorf_reader",
+          "name": "CryptoRF чтение",
+          "command": "hf cryptorf reader",
+          "description": "Чтение карт CryptoRF",
+          "category": "hf_cryptorf",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_gst_reader",
+          "name": "GST чтение",
+          "command": "hf gst reader",
+          "description": "Чтение карт GST",
+          "category": "hf_gst",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_gallagher_info",
+          "name": "Gallagher HF информация",
+          "command": "hf gallagher info",
+          "description": "Получить информацию о карте Gallagher HF",
+          "category": "hf_gallagher",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_st_info",
+          "name": "ST информация",
+          "command": "hf st info",
+          "description": "Получить информацию о карте ST",
+          "category": "hf_st",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_tesla_info",
+          "name": "Tesla информация",
+          "command": "hf tesla info",
+          "description": "Получить информацию о карте Tesla",
+          "category": "hf_tesla",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_texkom_reader",
+          "name": "Texkom чтение",
+          "command": "hf texkom reader",
+          "description": "Чтение карт Texkom",
+          "category": "hf_texkom",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_thinfilm_info",
+          "name": "Thinfilm информация",
+          "command": "hf thinfilm info",
+          "description": "Получить информацию о карте Thinfilm",
+          "category": "hf_thinfilm",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_xerox_reader",
+          "name": "Xerox чтение",
+          "command": "hf xerox reader",
+          "description": "Чтение карт Xerox",
+          "category": "hf_xerox",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_waveshare_info",
+          "name": "Waveshare информация",
+          "command": "hf waveshare info",
+          "description": "Получить информацию о карте Waveshare",
+          "category": "hf_waveshare",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_fmcos_info",
+          "name": "FMCOS информация",
+          "command": "hf fmcos info",
+          "description": "Получить информацию о карте FMCOS",
+          "category": "hf_fmcos",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "hf_mfsen_info",
+          "name": "Mifare SEN информация",
+          "command": "hf mfsen info",
+          "description": "Получить информацию о карте Mifare SEN",
+          "category": "hf_mfsen",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "nfc_decode",
+          "name": "NFC декодирование",
+          "command": "nfc decode",
+          "description": "Декодировать NDEF сообщения NFC",
+          "category": "nfc",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "emv_reader",
+          "name": "EMV чтение",
+          "command": "emv reader",
+          "description": "Чтение банковских карт EMV",
+          "category": "emv",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "smart_reader",
+          "name": "Smart Card чтение",
+          "command": "smart reader",
+          "description": "Чтение смарт-карт ISO 7816",
+          "category": "smart",
+          "dangerous": false,
+          "tab": "search"
+        },
+        {
+          "id": "piv_scan",
+          "name": "PIV сканирование",
+          "command": "piv scan",
+          "description": "Сканирование PIV карт",
+          "category": "piv",
+          "dangerous": false,
+          "tab": "search"
+        }
+      ]
+    }
+  ]
+}
