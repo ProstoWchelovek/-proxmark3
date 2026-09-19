@@ -147,19 +147,93 @@ class SettingsTab(QWidget):
             self.log_message(f"ProxSpace путь установлен: {folder}")
     
     def install_proxspace(self):
-        self.log_message("Запуск установщика ProxSpace...")
-        # Здесь будет вызов installer/proxspace_installer.py
-        self.log_message("Установщик будет запущен в отдельном окне")
+        """Запуск установки ProxSpace"""
+        self.log_message("📦 Запуск установщика ProxSpace...")
+        
+        try:
+            from installer.proxspace_installer import ProxSpaceInstaller
+            
+            installer = ProxSpaceInstaller()
+            
+            # Проверка существующей установки
+            exists, status = installer.check_existing_installation()
+            if exists and status.get('proxmark_client'):
+                self.log_message(f"✅ ProxSpace уже установлен: {status['install_path']}")
+                return
+            
+            # Запуск установки
+            self.log_message("⏳ Начало установки... Это может занять 20-40 минут")
+            
+            success, message = installer.full_install()
+            
+            if success:
+                self.log_message(f"✅ Успех: {message}")
+                self.log_message("💡 Перезапустите приложение для применения изменений")
+            else:
+                self.log_message(f"❌ Ошибка: {message}")
+                self.log_message("💡 Попробуйте установить вручную через GitHub")
+                
+        except Exception as e:
+            self.log_message(f"❌ Ошибка установщика: {e}")
+            self.log_message("💡 Убедитесь, что у вас есть права администратора")
     
     def check_updates(self):
-        self.log_message("Проверка обновлений приложения...")
-        # Здесь будет логика проверки обновлений
+        """Проверка обновлений приложения"""
+        self.log_message("🔄 Проверка обновлений приложения...")
+        
+        try:
+            import requests
+            import json
+            
+            # Получаем последнюю версию из GitHub
+            response = requests.get(
+                "https://api.github.com/repos/ProxMaster3/ProxMaster3_Easy/releases/latest",
+                timeout=10
+            )
+            
+            if response.status_code == 200:
+                data = response.json()
+                latest_version = data.get('tag_name', 'v0.0.0')
+                current_version = "v2.0.0"  # Текущая версия приложения
+                
+                if latest_version > current_version:
+                    self.log_message(f"✅ Доступна новая версия: {latest_version}")
+                    self.log_message(f"📥 Ссылка для загрузки: {data.get('html_url')}")
+                else:
+                    self.log_message("✅ Установлена последняя версия")
+            else:
+                self.log_message("⚠️ Не удалось проверить обновления")
+                
+        except Exception as e:
+            self.log_message(f"⚠️ Ошибка проверки обновлений: {e}")
+        
         self.log_message("Проверка завершена")
     
     def update_firmware(self):
-        self.log_message("Обновление прошивки Proxmark3...")
-        # Здесь будет логика обновления прошивки
-        self.log_message("Используйте команду: hf mf fkeys или аналогичную")
+        """Обновление прошивки Proxmark3"""
+        if not self.device_manager or not self.device_manager.is_connected():
+            self.log_message("❌ Ошибка: Устройство не подключено")
+            self.log_message("💡 Подключите Proxmark3 и попробуйте снова")
+            return
+        
+        self.log_message("📲 Обновление прошивки Proxmark3...")
+        self.log_message("⚠️ Внимание: Не отключайте устройство во время обновления!")
+        
+        try:
+            # Команда обновления прошивки Iceman
+            cmd = "hw flash -u"
+            
+            result = self.command_executor.execute(cmd, callback=self.log_message)
+            
+            if result:
+                self.log_message("✅ Прошивка обновлена успешно")
+                self.log_message("💡 Перезагрузите устройство для применения изменений")
+            else:
+                self.log_message("⚠️ Обновление выполнено с предупреждениями")
+                
+        except Exception as e:
+            self.log_message(f"❌ Ошибка обновления: {e}")
+            self.log_message("💡 Попробуйте выполнить обновление через консоль Proxmark3")
     
     def load_settings(self):
         """Загрузка настроек из файла"""

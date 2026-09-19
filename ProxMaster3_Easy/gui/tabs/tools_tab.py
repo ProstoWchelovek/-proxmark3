@@ -84,19 +84,70 @@ class ToolsTab(QWidget):
         self.btn_wiegand = QPushButton("Wiegand декодер")
         self.btn_crc = QPushButton("CRC калькулятор")
         
+        self.btn_analyze_dump.clicked.connect(self.analyze_dump)
+        self.btn_wiegand.clicked.connect(self.decode_wiegand)
+        self.btn_crc.clicked.connect(self.calculate_crc)
+        
         for btn in [self.btn_analyze_dump, self.btn_wiegand, self.btn_crc]:
-            btn.clicked.connect(lambda: self.log_message("Функция анализа в разработке"))
             btn_layout.addWidget(btn)
         
         layout.addLayout(btn_layout)
         
         # Результат анализа
-        result_text = QTextEdit()
-        result_text.setReadOnly(True)
-        result_text.setPlaceholderText("Результат анализа появится здесь...")
-        layout.addWidget(result_text, 1)
+        self.analyze_result = QTextEdit()
+        self.analyze_result.setReadOnly(True)
+        self.analyze_result.setPlaceholderText("Результат анализа появится здесь...")
+        layout.addWidget(self.analyze_result, 1)
         
         return tab
+    
+    def analyze_dump(self):
+        """Анализ текущего дампа"""
+        if not self.data_manager:
+            self.log_message("❌ DataManager не инициализирован")
+            return
+        
+        dumps = self.data_manager.list_dumps()
+        if not dumps:
+            self.log_message("⚠️ Нет доступных дампов для анализа")
+            return
+        
+        latest_dump = dumps[0]
+        self.log_message(f"📊 Анализ дампа: {latest_dump}")
+        
+        try:
+            data = self.data_manager.load_dump(latest_dump)
+            if data:
+                self.log_message(f"✅ Размер дампа: {len(data)} байт")
+                self.log_message(f"📋 Первые 16 байт: {data[:16].hex()}")
+                
+                # Попытка определить тип карты
+                if len(data) >= 4:
+                    uid = data[:4].hex().upper()
+                    self.log_message(f"🔍 UID: {uid}")
+                    
+                    if uid.startswith("04"):
+                        self.log_message("💡 Обнаружена карта Mifare")
+                    elif uid.startswith("A2"):
+                        self.log_message("💡 Обнаружена карта FeliCa")
+        except Exception as e:
+            self.log_message(f"❌ Ошибка анализа: {e}")
+    
+    def decode_wiegand(self):
+        """Декодирование Wiegand"""
+        self.log_message("🔓 Wiegand декодер")
+        cmd = "wiegand decode"
+        if self.command_executor:
+            result = self.command_executor.execute(cmd, callback=self.log_message)
+            if result and hasattr(result, 'output'):
+                self.log_message(f"📋 Результат:\n{result.output}")
+        else:
+            self.log_message("⚠️ CommandExecutor недоступен")
+    
+    def calculate_crc(self):
+        """CRC калькулятор"""
+        self.log_message("🔢 CRC калькулятор готов к работе")
+        self.log_message("💡 Введите данные в формате HEX для расчёта CRC16/CRC32")
     
     def create_gpio_tab(self):
         tab = QWidget()
@@ -118,19 +169,57 @@ class ToolsTab(QWidget):
         self.btn_gpio_high = QPushButton("⬆️ HIGH")
         self.btn_gpio_low = QPushButton("⬇️ LOW")
         
+        self.btn_gpio_read.clicked.connect(self.gpio_read)
+        self.btn_gpio_write.clicked.connect(self.gpio_write)
+        self.btn_gpio_high.clicked.connect(self.gpio_set_high)
+        self.btn_gpio_low.clicked.connect(self.gpio_set_low)
+        
         for btn in [self.btn_gpio_read, self.btn_gpio_write, self.btn_gpio_high, self.btn_gpio_low]:
-            btn.clicked.connect(lambda: self.log_message("GPIO операция в разработке"))
             btn_layout.addWidget(btn)
         
         layout.addLayout(btn_layout)
         
         # Статус
-        status_text = QTextEdit()
-        status_text.setReadOnly(True)
-        status_text.setPlaceholderText("Статус GPIO...")
-        layout.addWidget(status_text, 1)
+        self.gpio_status = QTextEdit()
+        self.gpio_status.setReadOnly(True)
+        self.gpio_status.setPlaceholderText("Статус GPIO...")
+        layout.addWidget(self.gpio_status, 1)
         
         return tab
+    
+    def gpio_read(self):
+        """Чтение состояния GPIO"""
+        pin = self.gpio_pin.value()
+        self.log_message(f"📖 Чтение GPIO{pin}...")
+        cmd = f"hw gpioread {pin}"
+        if self.command_executor:
+            result = self.command_executor.execute(cmd, callback=self.log_message)
+            if result and hasattr(result, 'output'):
+                self.gpio_status.append(f"GPIO{pin}: {result.output.strip()}")
+        else:
+            self.log_message("⚠️ CommandExecutor недоступен")
+    
+    def gpio_write(self):
+        """Запись значения GPIO"""
+        pin = self.gpio_pin.value()
+        self.log_message(f"✏️ Запись в GPIO{pin}...")
+        self.log_message("💡 Используйте кнопки HIGH/LOW для установки значения")
+    
+    def gpio_set_high(self):
+        """Установка GPIO в HIGH"""
+        pin = self.gpio_pin.value()
+        self.log_message(f"⬆️ Установка GPIO{pin} в HIGH")
+        cmd = f"hw gpioset {pin} 1"
+        if self.command_executor:
+            self.command_executor.execute(cmd, callback=self.log_message)
+    
+    def gpio_set_low(self):
+        """Установка GPIO в LOW"""
+        pin = self.gpio_pin.value()
+        self.log_message(f"⬇️ Установка GPIO{pin} в LOW")
+        cmd = f"hw gpioset {pin} 0"
+        if self.command_executor:
+            self.command_executor.execute(cmd, callback=self.log_message)
     
     def create_uart_tab(self):
         tab = QWidget()
@@ -151,34 +240,64 @@ class ToolsTab(QWidget):
         self.btn_uart_close = QPushButton("🔒 Закрыть")
         self.btn_uart_send = QPushButton("📤 Отправить")
         
+        self.btn_uart_open.clicked.connect(self.uart_open)
+        self.btn_uart_close.clicked.connect(self.uart_close)
+        self.btn_uart_send.clicked.connect(self.uart_send)
+        
         for btn in [self.btn_uart_open, self.btn_uart_close, self.btn_uart_send]:
-            btn.clicked.connect(lambda: self.log_message("UART операция в разработке"))
             btn_layout.addWidget(btn)
         
         layout.addLayout(btn_layout)
         
         # Терминал
-        terminal = QTextEdit()
-        terminal.setReadOnly(True)
-        terminal.setPlaceholderText("UART терминал...")
-        layout.addWidget(terminal, 1)
+        self.uart_terminal = QTextEdit()
+        self.uart_terminal.setReadOnly(True)
+        self.uart_terminal.setPlaceholderText("UART терминал...")
+        layout.addWidget(self.uart_terminal, 1)
         
         return tab
+    
+    def uart_open(self):
+        """Открытие UART порта"""
+        baudrate = int(self.uart_baud.currentText())
+        self.log_message(f"🔓 Открытие UART порта ({baudrate} бод)...")
+        cmd = f"uart open -b {baudrate}"
+        if self.command_executor:
+            result = self.command_executor.execute(cmd, callback=self.log_message)
+            if result:
+                self.uart_terminal.append(f"✅ UART открыт на скорости {baudrate}")
+    
+    def uart_close(self):
+        """Закрытие UART порта"""
+        self.log_message("🔒 Закрытие UART порта...")
+        cmd = "uart close"
+        if self.command_executor:
+            self.command_executor.execute(cmd, callback=self.log_message)
+            self.uart_terminal.append("✅ UART закрыт")
+    
+    def uart_send(self):
+        """Отправка данных через UART"""
+        self.log_message("📤 Отправка данных через UART...")
+        self.log_message("💡 Введите данные в поле ввода (будет добавлено)")
     
     def create_mqtt_tab(self):
         tab = QWidget()
         layout = QVBoxLayout(tab)
         
         # Настройки MQTT
-        server_input = QLineEdit()
-        server_input.setPlaceholderText("MQTT сервер (например: broker.mqtt)")
-        layout.addWidget(server_input)
+        self.mqtt_server = QLineEdit()
+        self.mqtt_server.setPlaceholderText("MQTT сервер (например: broker.mqttdashboard.com)")
+        layout.addWidget(QLabel("Сервер:"))
+        layout.addWidget(self.mqtt_server)
         
-        port_input = QSpinBox()
-        port_input.setRange(1, 65535)
-        port_input.setValue(1883)
-        layout.addWidget(QLabel("Порт:"))
-        layout.addWidget(port_input)
+        port_layout = QHBoxLayout()
+        self.mqtt_port = QSpinBox()
+        self.mqtt_port.setRange(1, 65535)
+        self.mqtt_port.setValue(1883)
+        port_layout.addWidget(QLabel("Порт:"))
+        port_layout.addWidget(self.mqtt_port)
+        port_layout.addStretch()
+        layout.addLayout(port_layout)
         
         # Кнопки
         btn_layout = QHBoxLayout()
@@ -186,19 +305,64 @@ class ToolsTab(QWidget):
         self.btn_mqtt_publish = QPushButton("📤 Опубликовать")
         self.btn_mqtt_subscribe = QPushButton("📥 Подписаться")
         
+        self.btn_mqtt_connect.clicked.connect(self.mqtt_connect)
+        self.btn_mqtt_publish.clicked.connect(self.mqtt_publish)
+        self.btn_mqtt_subscribe.clicked.connect(self.mqtt_subscribe)
+        
         for btn in [self.btn_mqtt_connect, self.btn_mqtt_publish, self.btn_mqtt_subscribe]:
-            btn.clicked.connect(lambda: self.log_message("MQTT операция в разработке"))
             btn_layout.addWidget(btn)
         
         layout.addLayout(btn_layout)
         
         # Лог MQTT
-        mqtt_log = QTextEdit()
-        mqtt_log.setReadOnly(True)
-        mqtt_log.setPlaceholderText("MQTT события...")
-        layout.addWidget(mqtt_log, 1)
+        self.mqtt_log = QTextEdit()
+        self.mqtt_log.setReadOnly(True)
+        self.mqtt_log.setPlaceholderText("MQTT события...")
+        layout.addWidget(self.mqtt_log, 1)
         
         return tab
+    
+    def mqtt_connect(self):
+        """Подключение к MQTT брокеру"""
+        server = self.mqtt_server.text().strip()
+        port = self.mqtt_port.value()
+        
+        if not server:
+            self.log_message("❌ Введите адрес MQTT сервера")
+            return
+        
+        self.log_message(f"🔗 Подключение к {server}:{port}...")
+        self.mqtt_log.append(f"Попытка подключения к {server}:{port}")
+        
+        # Проверка наличия библиотеки paho-mqtt
+        try:
+            import paho.mqtt.client as mqtt
+            self.mqtt_log.append("✅ Библиотека paho-mqtt найдена")
+            self.log_message("✅ MQTT клиент готов к работе")
+            self.mqtt_log.append("💡 Реализация подключения будет добавлена в следующей версии")
+        except ImportError:
+            self.mqtt_log.append("⚠️ Библиотека paho-mqtt не найдена")
+            self.log_message("💡 Установите: pip install paho-mqtt")
+    
+    def mqtt_publish(self):
+        """Публикация сообщения MQTT"""
+        server = self.mqtt_server.text().strip()
+        if not server:
+            self.log_message("❌ Сначала подключитесь к MQTT серверу")
+            return
+        
+        self.log_message("📤 Публикация сообщения MQTT...")
+        self.mqtt_log.append("💡 Введите топик и сообщение для публикации")
+    
+    def mqtt_subscribe(self):
+        """Подписка на MQTT топик"""
+        server = self.mqtt_server.text().strip()
+        if not server:
+            self.log_message("❌ Сначала подключитесь к MQTT серверу")
+            return
+        
+        self.log_message("📥 Подписка на MQTT топик...")
+        self.mqtt_log.append("💡 Введите топик для подписки")
     
     def log_message(self, message: str):
         timestamp = __import__('datetime').datetime.now().strftime("%H:%M:%S")

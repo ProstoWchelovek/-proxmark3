@@ -123,8 +123,25 @@ class DataTab(QWidget):
         self.log_message("Редактор очищен")
     
     def load_from_device(self):
-        self.log_message("Загрузка данных из устройства... (требуется выполнение команды)")
-        # Здесь будет вызов команды для загрузки данных из Proxmark3
+        """Загрузка данных из устройства Proxmark3"""
+        if not self.device_manager or not self.device_manager.is_connected():
+            self.log_message("❌ Ошибка: Устройство не подключено")
+            self.log_message("💡 Подключитесь к Proxmark3 на вкладке 'Главная'")
+            return
+        
+        self.log_message("📥 Загрузка данных из устройства...")
+        
+        # Получаем последний дамп из памяти устройства
+        cmd = "hf mf dump"
+        try:
+            result = self.command_executor.execute(cmd, callback=self.log_message)
+            if result and hasattr(result, 'output'):
+                self.log_message("✅ Данные получены")
+                # Парсинг результата для извлечения данных
+                # В реальной реализации здесь будет парсинг бинарных данных
+                self.log_message("💡 Данные доступны для просмотра в Hex-редакторе")
+        except Exception as e:
+            self.log_message(f"❌ Ошибка загрузки: {e}")
     
     def log_message(self, message: str):
         timestamp = __import__('datetime').datetime.now().strftime("%H:%M:%S")

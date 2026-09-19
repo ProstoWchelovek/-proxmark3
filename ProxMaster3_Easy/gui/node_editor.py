@@ -305,24 +305,66 @@ class ProxmasterNodeEditor(QWidget):
         )
 
     def generate_with_ai(self):
+        """Генерация кода с помощью AI"""
         if not self.ai_assistant:
-            QMessageBox.warning(self, "AI недоступен", "AI помощник не инициализирован.")
+            QMessageBox.warning(self, "AI недоступен", "AI помощник не инициализирован.\n\nНастройте AI в настройках приложения.")
             return
 
-        prompt = """
-Напиши скрипт на Node.js для Proxmark3 (используя библиотеку proxmark3 или эмулируя команды CLI).
-Задача: Автоматизировать атаку на Mifare Classic (Darkside или Nested).
-Скрипт должен:
-1. Проверять наличие карты.
-2. Читать секторы.
-3. Пытаться подобрать ключи.
-4. Выводить результаты в консоль.
-Используй async/await.
-"""
-        # Вызов AI (предполагается, что ai_assistant имеет метод generate_code)
-        # Здесь мы эмулируем вызов, реальная логика зависит от реализации ai_assistant
-        self.append_console_output("Запрос к AI для генерации кода...")
+        # Получаем текущий код или создаем подсказку
+        current_code = self.get_code()
         
-        # В реальной реализации:
-        # self.ai_assistant.generate(prompt, callback=self.set_code)
-        QMessageBox.information(self, "AI Генерация", "Функция генерации кода будет вызвана через интерфейс AI Помощника.\n\n(Здесь должен быть вызов API LM Studio/Ollama)")
+        prompt = f"""
+Напиши скрипт на Node.js для Proxmark3 Iceman firmware.
+Задача: Автоматизировать работу с Mifare Classic картами.
+
+Скрипт должен:
+1. Проверять наличие карты в поле
+2. Читать UID карты
+3. Выполнять аутентификацию по ключам A/B
+4. Читать данные из секторов
+5. Выводить результаты в консоль
+
+Используй async/await pattern.
+Добавь обработку ошибок.
+
+Текущий код (если есть):
+{current_code if current_code.strip() else "// Код будет сгенерирован"}
+"""
+        
+        self.append_console_output("🤖 Запрос к AI для генерации кода...")
+        self.append_console_output(f"Подсказка: {prompt[:200]}...\n")
+        
+        try:
+            # Вызов AI ассистента через API
+            from core.ai_assistant import get_ai_assistant
+            ai = get_ai_assistant()
+            
+            if ai and ai.is_available():
+                self.append_console_output("⏳ Ожидание ответа от AI...")
+                
+                # Асинхронный запрос к AI
+                def on_ai_response(response):
+                    if response:
+                        self.append_console_output("\n✅ AI ответил:")
+                        self.set_code(response)
+                        self.append_console_output(f"\n📝 Сгенерировано {len(response)} символов")
+                    else:
+                        self.append_console_error("\n❌ AI не вернул ответ")
+                
+                def on_ai_error(error):
+                    self.append_console_error(f"\n❌ Ошибка AI: {error}")
+                
+                # Запуск в отдельном потоке
+                import threading
+                thread = threading.Thread(
+                    target=lambda: ai.ask(prompt, callback=on_ai_response, error_callback=on_ai_error)
+                )
+                thread.daemon = True
+                thread.start()
+            else:
+                self.append_console_error("❌ AI сервер недоступен")
+                self.append_console_output("💡 Запустите LM Studio/Ollama и загрузите модель")
+                
+        except Exception as e:
+            self.append_console_error(f"❌ Ошибка при вызове AI: {e}")
+            self.append_console_output("💡 Убедитесь, что AI сервер запущен и настроен")
