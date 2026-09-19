@@ -50,6 +50,7 @@ except ImportError:
 
 # Импорт локальных модулей
 from gui.hex_editor import HexEditorWidget
+from gui.node_editor import ProxmasterNodeEditor
 from core.device_connector import DeviceConnector
 from core.ai_assistant import AIAssistant
 from gui.ai_widget import AIAssistantWidget
@@ -724,40 +725,17 @@ class MainWindow(QMainWindow):
         """Создание вкладки Скрипты"""
         widget = QWidget()
         layout = QVBoxLayout(widget)
-        
-        # Node Editor
+
+        # Node Editor - профессиональный редактор с подсветкой и консолью
         node_group = QGroupBox("🔧 Node Editor (JavaScript/Lua)")
         node_layout = QVBoxLayout(node_group)
         
-        self.script_editor = QTextEdit()
-        self.script_editor.setFontFamily("Consolas")
-        self.script_editor.setPlaceholderText("// Напишите ваш скрипт здесь...\n// Поддерживается JavaScript и Lua")
-        node_layout.addWidget(self.script_editor)
-        
-        # Кнопки
-        script_btn_layout = QHBoxLayout()
-        
-        new_script_btn = QPushButton("📄 Новый")
-        new_script_btn.clicked.connect(self.script_editor.clear)
-        
-        load_script_btn = QPushButton("📂 Загрузить")
-        load_script_btn.clicked.connect(self.load_script)
-        
-        save_script_btn = QPushButton("💾 Сохранить")
-        save_script_btn.clicked.connect(self.save_script)
-        
-        run_script_btn = QPushButton("▶️ Выполнить")
-        run_script_btn.clicked.connect(self.run_script)
-        
-        script_btn_layout.addWidget(new_script_btn)
-        script_btn_layout.addWidget(load_script_btn)
-        script_btn_layout.addWidget(save_script_btn)
-        script_btn_layout.addWidget(run_script_btn)
-        script_btn_layout.addStretch()
-        
-        node_layout.addLayout(script_btn_layout)
+        # Используем профессиональный компонент NodeEditor
+        self.node_editor = ProxmasterNodeEditor(ai_assistant=self.ai_assistant)
+        node_layout.addWidget(self.node_editor)
+
         layout.addWidget(node_group)
-        
+
         return widget
         
     def create_tools_tab(self) -> QWidget:
@@ -970,52 +948,6 @@ class MainWindow(QMainWindow):
             except Exception as e:
                 self.append_log(f"Ошибка сохранения: {str(e)}", "ERROR")
                 
-    def load_script(self):
-        """Загрузка скрипта"""
-        file_path, _ = QFileDialog.getOpenFileName(
-            self, "Загрузить скрипт", "scripts/", "Скрипты (*.lua *.js);;Все файлы (*.*)"
-        )
-        if file_path:
-            try:
-                with open(file_path, 'r') as f:
-                    content = f.read()
-                self.script_editor.setText(content)
-                self.append_log(f"Загружен скрипт: {file_path}", "SUCCESS")
-            except Exception as e:
-                self.append_log(f"Ошибка загрузки: {str(e)}", "ERROR")
-                
-    def save_script(self):
-        """Сохранение скрипта"""
-        file_path, _ = QFileDialog.getSaveFileName(
-            self, "Сохранить скрипт", "scripts/script_", "Lua скрипты (*.lua);;JS скрипты (*.js);;Все файлы (*.*)"
-        )
-        if file_path:
-            try:
-                with open(file_path, 'w') as f:
-                    f.write(self.script_editor.toPlainText())
-                self.append_log(f"Сохранён скрипт: {file_path}", "SUCCESS")
-            except Exception as e:
-                self.append_log(f"Ошибка сохранения: {str(e)}", "ERROR")
-                
-    def run_script(self):
-        """Выполнение скрипта"""
-        script_content = self.script_editor.toPlainText()
-        if not script_content.strip():
-            QMessageBox.warning(self, "Внимание", "Скрипт пуст!")
-            return
-        
-        # Временное сохранение и выполнение
-        temp_file = "scripts/temp_script.lua"
-        try:
-            with open(temp_file, 'w') as f:
-                f.write(script_content)
-            
-            command = f"script run {temp_file}"
-            self.execute_command(command)
-            self.append_log("Скрипт выполнен", "SUCCESS")
-        except Exception as e:
-            self.append_log(f"Ошибка выполнения скрипта: {str(e)}", "ERROR")
-            
     def run_installer(self):
         """Запуск установщика"""
         self.append_log("Запуск установщика ProxSpace...", "INFO")
