@@ -50,6 +50,8 @@ except ImportError:
 
 # Импорт локальных модулей
 from installer.proxspace_installer import ProxSpaceInstaller, IcemanFirmwareManager
+from core.ai_assistant import AIAssistant, AIProvider, ai_assistant
+from gui.ai_widget import AIFloatingPanel
 
 
 class CommandLoader:
@@ -315,6 +317,8 @@ class MainWindow(QMainWindow):
         self.device = ProxmarkDevice()
         self.command_loader = CommandLoader("commands.json")
         self.installer = ProxSpaceInstaller()
+        self.ai_assistant = ai_assistant  # Глобальный экземпляр ИИ
+        self.ai_panel = None  # Плавающая панель ИИ
         
         # Загрузка команд
         if not self.command_loader.load():
@@ -1021,6 +1025,50 @@ class MainWindow(QMainWindow):
             "<p>Поддержка прошивки Iceman через ProxSpace</p>"
             "<p>© 2024 ProxMaster Team</p>"
         )
+
+    def show_ai_assistant(self):
+        """Показать ИИ помощника"""
+        if not self.ai_panel:
+            self.ai_panel = AIFloatingPanel(self.ai_assistant, self)
+        
+        self.ai_panel.show()
+        self.ai_panel.raise_()
+        self.ai_panel.activateWindow()
+    
+    def toggle_dev_mode(self):
+        """Переключить режим разработчика"""
+        is_enabled = not self.ai_assistant.config.dev_mode
+        self.ai_assistant.enable_dev_mode(is_enabled)
+        
+        if is_enabled:
+            QMessageBox.information(
+                self,
+                "Режим разработчика",
+                "✅ Режим разработчика активирован!\n\n"
+                "Теперь ИИ имеет доступ к:\n"
+                "- Исходному коду приложения\n"
+                "- Модулям GUI\n"
+                "- Ядру работы с устройством\n"
+                "- Конфигурационным файлам\n"
+                "- Системе обновлений\n\n"
+                "Выберите режим 'developer' в панели ИИ для начала работы."
+            )
+        else:
+            QMessageBox.information(
+                self,
+                "Режим разработчика",
+                "Режим разработчика деактивирован"
+            )
+    
+    def load_ai_config(self):
+        """Загрузить конфигурацию ИИ"""
+        try:
+            config_path = "models/ai_config.json"
+            if os.path.exists(config_path):
+                self.ai_assistant.load_config(config_path)
+                print(f"[Main] Конфигурация ИИ загружена из {config_path}")
+        except Exception as e:
+            print(f"[Main] Ошибка загрузки конфигурации ИИ: {e}")
 
 
 def main():
